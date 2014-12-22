@@ -1,0 +1,5 @@
+*.spyderproject
+*.pro.*
+*.pro
+*.pyc
+*.session.tar
