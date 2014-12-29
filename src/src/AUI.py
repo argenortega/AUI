@@ -14,7 +14,6 @@ from AUIWidgets import *
 from ScreenshotImage import *
 from CameraViews import *
 from Parameters import *
-from AUIParam import *
 
 '''
 Adaptive User Interface for TRADR project
@@ -59,7 +58,7 @@ class AUI(QtGui.QWidget):
         v.addWidget(si)        
         self.grid.addLayout(v,1,2)
         #self.grid.addWidget(ss,2,2)
-        p = loadUi('AUIParam.ui')
+        p = loadUi('../../ui/AUIParam.ui')
         self.hbox.addWidget(p)
         self.show()
         

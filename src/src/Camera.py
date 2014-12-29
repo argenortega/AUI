@@ -5,24 +5,63 @@ Created on Tue Dec  2 00:48:21 2014
 @author: Argen
 """
 from PyQt4 import QtGui, QtCore
+from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame)
+import sys
 
 class Camera(QtGui.QWidget):
     '''
     Simulation of a camera widget
     '''
-    def __init__(self,parent,num):
+    def __init__(self,parent,num,minSize,maxSize,stretch):
         QtGui.QWidget.__init__(self,parent)
         self.num = num
+        self.minSize = minSize
+        self.maxSize = maxSize
+        self.stretch = stretch
         self.initUI()
         
-    def initUI(self):        
-        self.setMinimumSize(300,300)
-        self.resize(300,300)        
-        self.cam = QtGui.QLabel("Camera %d"%self.num)  
+    def initUI(self):
+        self.setObjectName("Camera%d"%self.num)
+        self.layout = QVBoxLayout()
+        self.layout.setMargin(0)
+        #self.layout.setObjectName("cam%dLayout"%self.num)
+        self.setLayout(self.layout)
+        
+        self.cam = QLabel("Camera %d"%self.num,self)  
         self.cam.setAlignment(QtCore.Qt.AlignCenter)
-        self.cam.setFrameStyle(QtGui.QFrame.Sunken | QtGui.QFrame.StyledPanel)
-        #cam.sizeHint(300,300)
-        #self.setCentralWidget(self.cam)
-        self.hbox = QtGui.QHBoxLayout()
-        self.hbox.addWidget(self.cam)        
-        self.setLayout(self.hbox)
+        self.cam.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
+        #cam.sizeHint(300,300)        
+        font = QtGui.QFont()
+        font.setPointSize(28)
+        self.cam.setFont(font)
+        #self.cam.setObjectName("Cam1Label")
+        self.layout.addWidget(self.cam)
+        
+        '''
+        Size of the widget
+        '''
+        #self.setMinimumSize(300,300)
+        #self.resize(300,300)        
+        self.setMinimumSize(self.minSize)
+        self.setMaximumSize(self.maxSize)        
+        self.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
+        self.setMouseTracking(True)
+
+        
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(self.stretch)
+        sizePolicy.setVerticalStretch(self.stretch)
+        sizePolicy.setHeightForWidth(True)
+        self.setSizePolicy(sizePolicy)        
+        
+        
+def main():
+    app = QtGui.QApplication(sys.argv)
+    main = Camera(None,1)
+    
+    main.show()
+ 
+    sys.exit(app.exec_())
+ 
+if __name__ == "__main__":
+    main()
