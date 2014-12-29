@@ -1,0 +1,53 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Dec 29 18:33:54 2014
+
+@author: Argen
+"""
+
+from PyQt4 import QtGui, QtCore
+from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame)
+import sys
+
+class Battery(QtGui.QWidget):
+    '''
+    Simulation of a Battery level widget
+    '''
+    def __init__(self,parent,minSize,maxSize,stretch):
+        QtGui.QWidget.__init__(self,parent)
+        self.initUI()
+        
+    def initUI(self):
+        self.setObjectName("battery_status")
+        self.layout = QtGui.QVBoxLayout(self)
+        self.layout.setMargin(0)
+        self.layout.setObjectName("BatteryLayout")
+        self.batteryLevel = QtGui.QGroupBox("Battery",self)
+        self.batteryLevel.setObjectName("batteryLevel")
+        
+        self.batteryBoxLevel = QVBoxLayout(self.batteryLevel)
+        self.batteryBoxLevel.setObjectName("batteryBoxLevel")
+        
+        self.battery = QtGui.QProgressBar(self.batteryLevel)
+        self.battery.setProperty("value", 100)
+        self.battery.setAlignment(QtCore.Qt.AlignCenter)
+        self.battery.setInvertedAppearance(False)
+        self.battery.setObjectName("battery")
+        
+        self.batteryBoxLevel.addWidget(self.battery)
+        self.layout.addWidget(self.batteryLevel)
+        
+
+def main():
+    app = QtGui.QApplication(sys.argv)
+    minSize = QtCore.QSize(100, 100)
+    maxSize = QtCore.QSize(300, 300)
+    stretch = 3
+    main = Battery(None,minSize,maxSize,stretch)
+    
+    main.show()
+ 
+    sys.exit(app.exec_())
+ 
+if __name__ == "__main__":
+    main()
