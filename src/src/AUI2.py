@@ -13,6 +13,10 @@ from PyQt4.QtGui import (QWidget, QFrame,
                          
 import Camera
 import MixedInitiative
+import NewView
+import Map
+import Pointcloud
+import Screenshot
 
 '''
 Adaptive User Interface for TRADR project
@@ -38,12 +42,6 @@ class AUI(QWidget):
         self.MainLayout.setObjectName("MainLayout")
         self.globalLayout.addLayout(self.MainLayout)
         
-        self.mixedInitiativeLayout = QVBoxLayout()
-        self.AUIStatusLayout = QHBoxLayout()
-        self.AUIMsgsLayout = QHBoxLayout()
-        #self.mixedInitiativeLayout.addLayout(self.AUIStatusLayout)        
-        #self.mixedInitiativeLayout.addLayout(self.AUIMsgsLayout)        
-        
         self.GUILayout = QHBoxLayout()
         self.GUILayout.setObjectName("GUILayout")
         
@@ -68,74 +66,28 @@ class AUI(QWidget):
         
         self.MainLayout.addLayout(self.GUILayout)
         self.views = QtGui.QGroupBox("Available Views",self)
-        self.views.setMinimumSize(QtCore.QSize(1200, 70))
+        self.views.setMinimumSize(QtCore.QSize(650, 70))
         self.views.setMaximumSize(QtCore.QSize(5000, 150))
         self.views.setObjectName("views")
         self.viewsGroupLayout = QtGui.QHBoxLayout(self.views)
         self.viewsGroupLayout.setObjectName("viewsGroupLayout")
-        self.pointcloud = QtGui.QWidget(self.views)
-        self.pointcloud.setObjectName("pointcloud")
-        self.pointcloudLayout = QtGui.QVBoxLayout()
-        self.pointcloud.setLayout(self.pointcloudLayout)
-        self.pointcloudLayout.setMargin(0)
-        self.pointcloudLayout.setObjectName("pointcloudLayout")
-        self.pointcloudLabel = QtGui.QLabel("3D Pointcould", self.pointcloud)
-        self.pointcloudLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.pointcloudLabel.setFrameStyle(QtGui.QFrame.Sunken | QtGui.QFrame.StyledPanel)
-        self.pointcloudLabel.setMouseTracking(True)
-        self.pointcloudLabel.setObjectName("pointcloudLabel")
-        self.pointcloudLayout.addWidget(self.pointcloudLabel)
-        self.pointcloud.setMinimumSize(QtCore.QSize(80, 80))
-        self.pointcloud.setMaximumSize(QtCore.QSize(100, 100))
-        sizePolicy = QtGui.QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(True)
-        self.pointcloud.setSizePolicy(sizePolicy)
-        self.viewsGroupLayout.addWidget(self.pointcloud)
         
-        self.map = QtGui.QWidget(self.views)
-        self.map.setObjectName("map")
-        self.mapLayout = QtGui.QVBoxLayout()
-        self.map.setLayout(self.mapLayout)
-        self.mapLayout.setMargin(0)
-        self.mapLayout.setObjectName("mapLayout")
-        self.mapLabel = QtGui.QLabel(self.map)
-        self.mapLabel.setMouseTracking(True)
-        self.mapLabel.setText("")
-        self.mapLabel.setPixmap(QtGui.QPixmap("Maps/05.jpg"))
-        self.mapLabel.setScaledContents(True)
-        self.mapLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.mapLabel.setObjectName("mapLabel")
-        self.mapLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.mapLabel.setFrameStyle(QtGui.QFrame.Sunken | QtGui.QFrame.StyledPanel)
-        self.mapLayout.addWidget(self.mapLabel)
-        self.map.setMinimumSize(QtCore.QSize(80, 80))
-        self.map.setMaximumSize(QtCore.QSize(100, 100))
-        sizePolicy = QtGui.QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(True)
-        self.map.setSizePolicy(sizePolicy)
+        minSize = QtCore.QSize(80, 80)
+        maxSize = QtCore.QSize(100, 100)
+        stretch = 0
+        self.pointcloud = Pointcloud.Pointcloud(self,minSize,maxSize,stretch)
+        self.viewsGroupLayout.addWidget(self.pointcloud)
+
+        minSize = QtCore.QSize(80, 80)
+        maxSize = QtCore.QSize(100, 100)
+        stretch = 0
+        self.map = Map.Map(self,minSize,maxSize,stretch)
         self.viewsGroupLayout.addWidget(self.map)
 
-        self.extra = QtGui.QWidget(self.views)
-        self.extra.setObjectName("extra")
-        self.extraViewLayout = QtGui.QVBoxLayout(self.extra)
-        self.extraViewLayout.setMargin(0)
-        self.extraViewLayout.setObjectName("extraViewLayout")
-        self.extraviewLabel = QtGui.QLabel("Additional View", self.extra)
-        self.extraviewLabel.setObjectName("extraviewLabel")
-        self.extraviewLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.extraviewLabel.setFrameStyle(QtGui.QFrame.Sunken | QtGui.QFrame.StyledPanel)
-        self.extraViewLayout.addWidget(self.extraviewLabel)
-        self.extra.setMinimumSize(QtCore.QSize(80, 80))
-        self.extra.setMaximumSize(QtCore.QSize(100, 100))
-        sizePolicy = QtGui.QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(True)
-        self.extra.setSizePolicy(sizePolicy)
+        minSize = QtCore.QSize(80, 80)
+        maxSize = QtCore.QSize(100, 100)
+        stretch = 0         
+        self.extra = NewView.NewView(self,minSize,maxSize,stretch)        
         self.viewsGroupLayout.addWidget(self.extra)
         self.ViewsLayout.addWidget(self.views)
         
@@ -153,46 +105,20 @@ class AUI(QWidget):
         
         minSize = QtCore.QSize(100, 100)
         maxSize = QtCore.QSize(200, 200)
-        stretch = 3 
+        stretch = 1 
         self.Camera2 = Camera.Camera(self,2,minSize,maxSize,stretch)
         self.MainViews.addWidget(self.Camera2, 0, 0)
         
         self.ViewsLayout.addLayout(self.MainViews)
         self.GUILayout.addLayout(self.ViewsLayout)
-                
-        self.CurrentScreenshot = QWidget(self)
-        self.CurrentScreenshot.setObjectName("CurrentScreenshot")
-        self.currentScreenshotLayout = QVBoxLayout()
-        self.CurrentScreenshot.setLayout(self.currentScreenshotLayout)
-        self.currentScreenshotLayout.setMargin(0)
-        self.currentScreenshotLayout.setObjectName("currentScreenshotLayout")
-        self.ScreenshotLabel = QLabel(self.CurrentScreenshot)
-        self.ScreenshotLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.ScreenshotLabel.setObjectName("ScreenshotLabel")
-        self.currentScreenshotLayout.addWidget(self.ScreenshotLabel)
         
-        self.ExtraScreenshots = QFrame(self.CurrentScreenshot)
-        self.ExtraScreenshots.setObjectName("ExtraScreenshots")
-        self.extraScreenshotLayout = QtGui.QVBoxLayout(self.ExtraScreenshots)
-        self.extraScreenshotLayout.setMargin(0)
-        self.extraScreenshotLayout.setObjectName("extraScreenshotLayout")
-        self.extraScreenGroup = QtGui.QGroupBox("Screenshots", self.ExtraScreenshots)
-        self.extraScreenGroup.setObjectName("extraScreenGroup")
-        self.extraScreenshotGroupLayout = QtGui.QHBoxLayout(self.extraScreenGroup)
-        self.extraScreenshotGroupLayout.setObjectName("extraScreenshotGroupLayout")
-        self.img1 = QtGui.QLabel(self.extraScreenGroup)
-        self.img1.setObjectName("img1")
-        self.extraScreenshotGroupLayout.addWidget(self.img1)
-        self.img2 = QtGui.QLabel(self.extraScreenGroup)
-        self.img2.setObjectName("img2")
-        self.extraScreenshotGroupLayout.addWidget(self.img2)
-        self.img3 = QtGui.QLabel(self.extraScreenGroup)
-        self.img3.setObjectName("img3")
-        self.extraScreenshotGroupLayout.addWidget(self.img3)
-        self.extraScreenshotLayout.addWidget(self.extraScreenGroup)
-        self.currentScreenshotLayout.addWidget(self.ExtraScreenshots)
-        self.ScreenshotLayout.addWidget(self.CurrentScreenshot)
-        self.GUILayout.addLayout(self.ScreenshotLayout)
+        minSize = QtCore.QSize(150, 150)
+        maxSize = QtCore.QSize(200, 200)
+        stretch = 1
+        self.CurrentScreenshot = Screenshot.Screenshots(self,minSize,maxSize,stretch)
+        
+        
+        self.GUILayout.addWidget(self.CurrentScreenshot)
         
         '''
         self.verticalLayout_4 = QtGui.QVBoxLayout(self.StatusLayout)

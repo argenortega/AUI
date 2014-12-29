@@ -1,41 +1,41 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Dec  2 00:48:21 2014
+Created on Mon Dec 29 15:28:54 2014
 
 @author: Argen
 """
+
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame)
 import sys
 
-class Camera(QtGui.QWidget):
+class NewView(QtGui.QWidget):
     '''
-    Simulation of a camera widget
+    Simulation of an additional view widget
     '''
-    def __init__(self,parent,num,minSize,maxSize,stretch):
+    def __init__(self,parent,minSize,maxSize,stretch):
         QtGui.QWidget.__init__(self,parent)
-        self.num = num
         self.minSize = minSize
         self.maxSize = maxSize
         self.stretch = stretch
         self.initUI()
         
     def initUI(self):
-        self.setObjectName("Camera%d"%self.num)
+        self.setObjectName("NewView")
         self.layout = QVBoxLayout()
         self.layout.setMargin(0)
-        #self.layout.setObjectName("cam%dLayout"%self.num)
+        #self.layout.setObjectName("view%dLayout"%self.num)
         self.setLayout(self.layout)
         
-        self.cam = QLabel("Camera %d"%self.num,self)  
-        self.cam.setAlignment(QtCore.Qt.AlignCenter)
-        self.cam.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
-        #cam.sizeHint(300,300)        
+        self.view = QLabel("Additional View",self)  
+        self.view.setAlignment(QtCore.Qt.AlignCenter)
+        self.view.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
+        #view.sizeHint(300,300)        
         font = QtGui.QFont()
-        font.setPointSize(28)
-        self.cam.setFont(font)
-        #self.cam.setObjectName("Cam1Label")
-        self.layout.addWidget(self.cam)
+        font.setPointSize(14)
+        self.view.setFont(font)
+        #self.view.setObjectName("view1Label")
+        self.layout.addWidget(self.view)
         
         '''
         Size of the widget
@@ -48,7 +48,7 @@ class Camera(QtGui.QWidget):
         self.setMouseTracking(True)
 
         
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(self.stretch)
         sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(True)
@@ -60,7 +60,8 @@ def main():
     minSize = QtCore.QSize(100, 100)
     maxSize = QtCore.QSize(300, 300)
     stretch = 3
-    main = Camera(None,1,minSize,maxSize,stretch)
+    main = NewView(None,minSize,maxSize,stretch)
+    
     
     main.show()
  

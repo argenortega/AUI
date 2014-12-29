@@ -1,41 +1,40 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Dec  2 00:48:21 2014
+Created on Mon Dec 29 15:28:42 2014
 
 @author: Argen
 """
+
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame)
 import sys
 
-class Camera(QtGui.QWidget):
+class Pointcloud(QtGui.QWidget):
     '''
-    Simulation of a camera widget
+    Simulation of a 3d pointcloud widget
     '''
-    def __init__(self,parent,num,minSize,maxSize,stretch):
+    def __init__(self,parent,minSize,maxSize,stretch):
         QtGui.QWidget.__init__(self,parent)
-        self.num = num
         self.minSize = minSize
         self.maxSize = maxSize
         self.stretch = stretch
         self.initUI()
         
     def initUI(self):
-        self.setObjectName("Camera%d"%self.num)
+        self.setObjectName("Pointcloud")
         self.layout = QVBoxLayout()
         self.layout.setMargin(0)
-        #self.layout.setObjectName("cam%dLayout"%self.num)
         self.setLayout(self.layout)
         
-        self.cam = QLabel("Camera %d"%self.num,self)  
-        self.cam.setAlignment(QtCore.Qt.AlignCenter)
-        self.cam.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
-        #cam.sizeHint(300,300)        
+        self.pointcloud = QLabel("3D pointcloud",self)  
+        self.pointcloud.setAlignment(QtCore.Qt.AlignCenter)
+        self.pointcloud.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
+        #pointcloud.sizeHint(300,300)        
         font = QtGui.QFont()
-        font.setPointSize(28)
-        self.cam.setFont(font)
-        #self.cam.setObjectName("Cam1Label")
-        self.layout.addWidget(self.cam)
+        font.setPointSize(14)
+        self.pointcloud.setFont(font)
+        #self.pointcloud.setObjectName("pointcloud1Label")
+        self.layout.addWidget(self.pointcloud)
         
         '''
         Size of the widget
@@ -60,7 +59,7 @@ def main():
     minSize = QtCore.QSize(100, 100)
     maxSize = QtCore.QSize(300, 300)
     stretch = 3
-    main = Camera(None,1,minSize,maxSize,stretch)
+    main = Pointcloud(None,minSize,maxSize,stretch)
     
     main.show()
  
