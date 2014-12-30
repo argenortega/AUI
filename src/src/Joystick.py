@@ -20,7 +20,10 @@ class Joystick(QtGui.QWidget):
         QtGui.QWidget.__init__(self,parent)
         self.minSize = minSize
         self.maxSize = maxSize
-        self.handled = False
+        self.pressUp = False
+        self.pressDown = False
+        self.pressLeft = False
+        self.pressRight = False
         self.initUI()
         
     def initUI(self):
@@ -122,42 +125,74 @@ class Joystick(QtGui.QWidget):
     def keyPressEvent (self, event):
         key = event.key()
         
-        if not self.handled:
-            if key == QtCore.Qt.Key_Left:
-                self.left.setStyleSheet('color: green')
-                self.center.setStyleSheet('color: black')
-                self.left.setFocus(True)
-                self.handled = True
-            elif key == QtCore.Qt.Key_Up:
-                self.up.setStyleSheet('color: green')
-                self.center.setStyleSheet('color: black')
-                self.handled = True
-            elif key == QtCore.Qt.Key_Right:    
-                self.right.setStyleSheet('color: green')
-                self.center.setStyleSheet('color: black')
-                self.handled = True
-            elif key == QtCore.Qt.Key_Down:
-                self.down.setStyleSheet('color: green')
-                self.center.setStyleSheet('color: black')
-                self.handled = True
-            elif key == QtCore.Qt.Key_Down and key == QtCore.Qt.Key_Left:
-                print "Two keys!"
-    
+        #if not self.handled:
+        if not self.pressLeft and key == QtCore.Qt.Key_Left:
+            self.left.setStyleSheet('border: 2px solid green; color: green')
+            self.center.setStyleSheet('color: black')            
+            self.pressLeft = True
+        elif not self.pressUp and key == QtCore.Qt.Key_Up:
+            self.up.setStyleSheet('border: 2px solid green; color: green')
+            self.center.setStyleSheet('color: black')
+            self.pressUp = True
+        elif not self.pressRight and key == QtCore.Qt.Key_Right:    
+            self.right.setStyleSheet('border: 2px solid green; color: green')
+            self.center.setStyleSheet('color: black')
+            self.pressRight = True
+        elif not self.pressDown and key == QtCore.Qt.Key_Down:
+            self.down.setStyleSheet('border: 2px solid green; color: green')
+            self.center.setStyleSheet('color: black')
+            self.pressDown = True
+        elif self.pressDown and self.pressLeft:
+            self.downleft.setStyleSheet('border: 2px solid green; color: green')
+            self.center.setStyleSheet('color: black')
+            self.down.setStyleSheet('color: black')
+            self.left.setStyleSheet('color: black')
+        elif self.pressUp and self.pressLeft:
+            self.topleft.setStyleSheet('border: 2px solid green; color: green')
+            self.center.setStyleSheet('color: black')
+            self.up.setStyleSheet('color: black')
+            self.left.setStyleSheet('color: black')
+        elif self.pressDown and self.pressRight:
+            self.downright.setStyleSheet('border: 2px solid green; color: green')
+            self.center.setStyleSheet('color: black')
+            self.down.setStyleSheet('color: black')
+            self.right.setStyleSheet('color: black')
+        elif self.pressUp and self.pressRight:
+            self.topright.setStyleSheet('border: 2px solid green; color: green')
+            self.center.setStyleSheet('color: black')
+            self.up.setStyleSheet('color: black')
+            self.right.setStyleSheet('color: black')
+        else:
+            self.center.setStyleSheet('border: 2px solid green; color: green')
+        
+            
+        
     def keyReleaseEvent(self, event):
         key = event.key()   
-        self.handled = False
         if key == QtCore.Qt.Key_Left:
             self.left.setStyleSheet('color: black')
-            self.center.setStyleSheet('color: green')
+            self.topleft.setStyleSheet('color: black')
+            self.downleft.setStyleSheet('color: black')
+            self.center.setStyleSheet('border: 2px solid green; color: green')
+            self.pressLeft = False
         elif key == QtCore.Qt.Key_Up:
             self.up.setStyleSheet('color: black')
-            self.center.setStyleSheet('color: green')
+            self.topleft.setStyleSheet('color: black')
+            self.topright.setStyleSheet('color: black')
+            self.center.setStyleSheet('border: 2px solid green; color: green')
+            self.pressUp = False
         elif key == QtCore.Qt.Key_Right:
             self.right.setStyleSheet('color: black')
-            self.center.setStyleSheet('color: green')
+            self.downright.setStyleSheet('color: black')
+            self.topright.setStyleSheet('color: black')
+            self.center.setStyleSheet('border: 2px solid green; color: green')
+            self.pressRight = False
         elif key == QtCore.Qt.Key_Down:
             self.down.setStyleSheet('color: black')
-            self.center.setStyleSheet('color: green')
+            self.downleft.setStyleSheet('color: black')
+            self.downright.setStyleSheet('color: black')
+            self.center.setStyleSheet('border: 2px solid green; color: green')
+            self.pressDown = False
         #else: 
          #   QWidget.keyReleaseEvent(self,event)
     
