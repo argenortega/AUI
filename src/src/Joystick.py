@@ -7,7 +7,9 @@ Created on Mon Dec 29 18:34:05 2014
 
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame, 
-                         QApplication, QGroupBox, QFont, QGridLayout)
+                         QApplication, QGroupBox, QFont, QGridLayout,
+                         QWidget)
+from PyQt4.QtCore import (QEvent, QString, QTimer, Qt)
 import sys
 
 class Joystick(QtGui.QWidget):
@@ -18,6 +20,7 @@ class Joystick(QtGui.QWidget):
         QtGui.QWidget.__init__(self,parent)
         self.minSize = minSize
         self.maxSize = maxSize
+        self.handled = False
         self.initUI()
         
     def initUI(self):
@@ -116,7 +119,48 @@ class Joystick(QtGui.QWidget):
         self.downright.setText(QApplication.translate("joystick", "↘︎", None,QApplication.UnicodeUTF8))
         
         
+    def keyPressEvent (self, event):
+        key = event.key()
         
+        if not self.handled:
+            if key == QtCore.Qt.Key_Left:
+                self.left.setStyleSheet('color: green')
+                self.center.setStyleSheet('color: black')
+                self.left.setFocus(True)
+                self.handled = True
+            elif key == QtCore.Qt.Key_Up:
+                self.up.setStyleSheet('color: green')
+                self.center.setStyleSheet('color: black')
+                self.handled = True
+            elif key == QtCore.Qt.Key_Right:    
+                self.right.setStyleSheet('color: green')
+                self.center.setStyleSheet('color: black')
+                self.handled = True
+            elif key == QtCore.Qt.Key_Down:
+                self.down.setStyleSheet('color: green')
+                self.center.setStyleSheet('color: black')
+                self.handled = True
+            elif key == QtCore.Qt.Key_Down and key == QtCore.Qt.Key_Left:
+                print "Two keys!"
+    
+    def keyReleaseEvent(self, event):
+        key = event.key()   
+        self.handled = False
+        if key == QtCore.Qt.Key_Left:
+            self.left.setStyleSheet('color: black')
+            self.center.setStyleSheet('color: green')
+        elif key == QtCore.Qt.Key_Up:
+            self.up.setStyleSheet('color: black')
+            self.center.setStyleSheet('color: green')
+        elif key == QtCore.Qt.Key_Right:
+            self.right.setStyleSheet('color: black')
+            self.center.setStyleSheet('color: green')
+        elif key == QtCore.Qt.Key_Down:
+            self.down.setStyleSheet('color: black')
+            self.center.setStyleSheet('color: green')
+        #else: 
+         #   QWidget.keyReleaseEvent(self,event)
+    
 
 def main():
     app = QtGui.QApplication(sys.argv)

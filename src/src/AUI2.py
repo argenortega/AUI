@@ -145,16 +145,12 @@ class AUI(QWidget):
         self.globalLayout.addWidget(self.parameters)
         
         '''
-        self.horizontalLayout_4.addLayout(self.MainLayout)
-        self.horizontalLayout_4.addWidget(self.AUIParameters)
-
         QtCore.QObject.connect(self.battery_slider, QtCore.SIGNAL("valueChanged(int)"), self.battery.setValue)
         QtCore.QObject.connect(self.wifi_slider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.setValue)
         QtCore.QObject.connect(self.battery_slider, QtCore.SIGNAL("valueChanged(int)"), self.battery_level.setValue)
         QtCore.QObject.connect(self.wifi_slider, QtCore.SIGNAL("valueChanged(int)"), self.wifi_level.setValue)
         QtCore.QObject.connect(self.stress_slider, QtCore.SIGNAL("valueChanged(int)"), self.stress_level.setValue)
-        QtCore.QMetaObject.connectSlotsByName(self)    
-        
+        QtCore.QMetaObject.connectSlotsByName(self)            
         '''
         self.show()
         
