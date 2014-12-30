@@ -17,6 +17,9 @@ import NewView
 import Map
 import Pointcloud
 import Screenshot
+import Wifi
+import Battery
+import Joystick
 
 '''
 Adaptive User Interface for TRADR project
@@ -72,20 +75,20 @@ class AUI(QWidget):
         self.viewsGroupLayout = QtGui.QHBoxLayout(self.views)
         self.viewsGroupLayout.setObjectName("viewsGroupLayout")
         
-        minSize = QtCore.QSize(80, 80)
-        maxSize = QtCore.QSize(100, 100)
+        minSize = QtCore.QSize(50, 50)
+        maxSize = QtCore.QSize(70, 70)
         stretch = 0
         self.pointcloud = Pointcloud.Pointcloud(self,minSize,maxSize,stretch)
         self.viewsGroupLayout.addWidget(self.pointcloud)
 
-        minSize = QtCore.QSize(80, 80)
-        maxSize = QtCore.QSize(100, 100)
+        minSize = QtCore.QSize(50, 50)
+        maxSize = QtCore.QSize(70, 70)
         stretch = 0
         self.map = Map.Map(self,minSize,maxSize,stretch)
         self.viewsGroupLayout.addWidget(self.map)
 
-        minSize = QtCore.QSize(80, 80)
-        maxSize = QtCore.QSize(100, 100)
+        minSize = QtCore.QSize(50, 50)
+        maxSize = QtCore.QSize(70, 70)
         stretch = 0         
         self.extra = NewView.NewView(self,minSize,maxSize,stretch)        
         self.viewsGroupLayout.addWidget(self.extra)
@@ -115,26 +118,29 @@ class AUI(QWidget):
         minSize = QtCore.QSize(150, 150)
         maxSize = QtCore.QSize(200, 200)
         stretch = 1
-        self.CurrentScreenshot = Screenshot.Screenshots(self,minSize,maxSize,stretch)
+        self.CurrentScreenshot = Screenshot.Screenshots(self,250,300,stretch)
         
         
         self.GUILayout.addWidget(self.CurrentScreenshot)
         
+        minSize = QtCore.QSize(80, 80)
+        maxSize = QtCore.QSize(120, 120)
+        
+        self.battery = Battery.Battery(self, minSize, maxSize)
+        self.wifi = Wifi.Wifi(self, minSize, maxSize)
+        
+        minSize = QtCore.QSize(80, 80)
+        maxSize = QtCore.QSize(120, 120)
+        self.joystick = Joystick.Joystick(self, minSize, maxSize)
+        
+        self.StatusLayout.addWidget(self.battery)
+        self.StatusLayout.addWidget(self.wifi)
+        self.StatusLayout.addStretch()        
+        self.StatusLayout.addWidget(self.joystick)
+        
+        self.GUILayout.addLayout(self.StatusLayout)
+        
         '''
-        self.verticalLayout_4 = QtGui.QVBoxLayout(self.StatusLayout)
-        self.verticalLayout_4.setMargin(0)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        
-        
-        
-        spacerItem2 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.verticalLayout_4.addItem(spacerItem2)
-        
-        self.verticalLayout_4.addWidget(self.joystick)
-        self.GUILayout.addWidget(self.StatusLayout)
-
-        self.MainLayout.addLayout(self.GUILayout)
-        
         self.horizontalLayout_4.addLayout(self.MainLayout)
         self.AUIParameters = QtGui.QDockWidget(self)
         self.AUIParameters.setObjectName("AUIParameters")
@@ -232,7 +238,6 @@ class AUI(QWidget):
         self.AUIParameters.setWidget(self.dockWidgetContents)
         self.horizontalLayout_4.addWidget(self.AUIParameters)
 
-        #self.retranslateUi(self)
         QtCore.QObject.connect(self.battery_slider, QtCore.SIGNAL("valueChanged(int)"), self.battery.setValue)
         QtCore.QObject.connect(self.wifi_slider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.setValue)
         QtCore.QObject.connect(self.battery_slider, QtCore.SIGNAL("valueChanged(int)"), self.battery_level.setValue)

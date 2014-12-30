@@ -13,8 +13,10 @@ class Battery(QtGui.QWidget):
     '''
     Simulation of a Battery level widget
     '''
-    def __init__(self,parent,minSize,maxSize,stretch):
+    def __init__(self,parent, minSize, maxSize):
         QtGui.QWidget.__init__(self,parent)
+        self.minSize = minSize
+        self.maxSize = maxSize
         self.initUI()
         
     def initUI(self):
@@ -22,6 +24,7 @@ class Battery(QtGui.QWidget):
         self.layout = QtGui.QVBoxLayout(self)
         self.layout.setMargin(0)
         self.layout.setObjectName("BatteryLayout")
+        self.setLayout(self.layout)
         self.batteryLevel = QtGui.QGroupBox("Battery",self)
         self.batteryLevel.setObjectName("batteryLevel")
         
@@ -36,6 +39,15 @@ class Battery(QtGui.QWidget):
         
         self.batteryBoxLevel.addWidget(self.battery)
         self.layout.addWidget(self.batteryLevel)
+        
+        self.setMinimumSize(self.minSize)
+        #self.setMaximumSize(self.maxSize)        
+        
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(False)
+        self.setSizePolicy(sizePolicy)
         
 
 def main():

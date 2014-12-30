@@ -12,8 +12,10 @@ class Wifi(QtGui.QWidget):
     '''
     Simulation of a Wifi level widget
     '''
-    def __init__(self,parent,minSize,maxSize,stretch):
+    def __init__(self,parent, minSize, maxSize):
         QtGui.QWidget.__init__(self,parent)
+        self.minSize = minSize
+        self.maxSize = maxSize
         self.initUI()
         
     def initUI(self):
@@ -21,6 +23,7 @@ class Wifi(QtGui.QWidget):
         self.layout = QtGui.QVBoxLayout(self)
         self.layout.setMargin(0)
         self.layout.setObjectName("WifiLayout")
+        self.setLayout(self.layout)
         self.wifiLevel = QtGui.QGroupBox("Wifi",self)
         self.wifiLevel.setObjectName("wifiLevel")
         
@@ -35,6 +38,16 @@ class Wifi(QtGui.QWidget):
         
         self.wifiBoxLevel.addWidget(self.wifi)
         self.layout.addWidget(self.wifiLevel)
+        
+        
+        self.setMinimumSize(self.minSize)
+        #self.setMaximumSize(self.maxSize)        
+        
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(False)
+        self.setSizePolicy(sizePolicy)
         
 
 def main():

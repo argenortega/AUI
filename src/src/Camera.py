@@ -48,7 +48,7 @@ class Camera(QtGui.QWidget):
         self.setMouseTracking(True)
 
         
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(self.stretch)
         sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(True)

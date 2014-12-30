@@ -13,10 +13,10 @@ from PyQt4.QtCore import QSize
 import sys
 
 class Screenshots(QtGui.QWidget):
-    def __init__(self,parent,minSize,maxSize,stretch):
+    def __init__(self,parent,minWidth,maxWidth,stretch):
         QtGui.QWidget.__init__(self,parent)
-        self.minSize = minSize
-        self.maxSize = maxSize
+        self.minWidth = minWidth
+        self.maxWidth = maxWidth
         self.stretch = stretch
         self.initUI()
         
@@ -36,11 +36,11 @@ class Screenshots(QtGui.QWidget):
         font.setPointSize(28)
         self.currentScreenshot.setFont(font)
         #self.currentScreenshot.setObjectName("currentScreenshotLabel")
-        self.currentScreenshot.setMinimumSize(self.minSize)
-        self.currentScreenshot.setMaximumSize(self.maxSize)        
+        self.currentScreenshot.setMinimumSize(QSize(self.minWidth*0.9,self.minWidth*0.9))
+        #self.currentScreenshot.setMaximumSize(QSize(self.maxWidth*0.9,self.maxWidth*0.9))        
         self.currentScreenshot.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.currentScreenshot.setMouseTracking(True)
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(self.stretch)
         sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(True)
@@ -50,7 +50,7 @@ class Screenshots(QtGui.QWidget):
         self.ExtraScreenshots = QFrame(self)
         self.ExtraScreenshots.setObjectName("ExtraScreenshots")
         self.extraScreenshotLayout = QVBoxLayout(self.ExtraScreenshots)
-        self.extraScreenshotLayout.setMargin(1)
+        self.extraScreenshotLayout.setMargin(0)
         self.extraScreenshotLayout.setObjectName("extraScreenshotLayout")
         
         self.extraScreenGroup = QGroupBox("Screenshots", self.ExtraScreenshots)
@@ -58,27 +58,31 @@ class Screenshots(QtGui.QWidget):
         self.extraScreenshotGroupLayout = QHBoxLayout(self.extraScreenGroup)
         self.extraScreenshotGroupLayout.setObjectName("extraScreenshotGroupLayout")
         
-        self.img1 = QtGui.QLabel("Image 1", self.extraScreenGroup)
-        self.img1.setObjectName("img1")
-        self.format_screenshot(self.img1)
+        self.img1 = self.new_screenshot(1)
         self.extraScreenshotGroupLayout.addWidget(self.img1)
         
-        self.img2 = QtGui.QLabel("Image 2", self.extraScreenGroup)
-        self.img2.setObjectName("img2")
-        self.format_screenshot(self.img2)
+        self.img2 = self.new_screenshot(2)
         self.extraScreenshotGroupLayout.addWidget(self.img2)
         
-        self.img3 = QtGui.QLabel("Image 3", self.extraScreenGroup)
-        self.img3.setObjectName("img3")
-        self.format_screenshot(self.img3)
+        self.img3 = self.new_screenshot(3)
         self.extraScreenshotGroupLayout.addWidget(self.img3)
+        
+        #self.extraScreenGroup.setMinimumSize(QSize(self.minWidth*0.9,self.minWidth*0.5))
+        #self.extraScreenGroup.setMaximumSize(QSize(self.maxWidth*0.9,self.maxWidth*0.5))
+        
+        #sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
+        #sizePolicy.setHorizontalStretch(self.stretch)
+        #sizePolicy.setVerticalStretch(self.stretch)
+        #sizePolicy.setHeightForWidth(False)
+        #self.extraScreenGroup.setSizePolicy(sizePolicy)
         
         self.extraScreenshotLayout.addWidget(self.extraScreenGroup)
         self.layout.addWidget(self.ExtraScreenshots)
         
+        #self.layout.setAlignment(QtCore.Qt.AlignHCenter)
         
-        self.setMinimumSize(QSize(self.minSize.width()*1.1,self.minSize.height()*1.7))
-        self.setMaximumSize(QSize(self.maxSize.width()*1.3,self.maxSize.height()*2))
+        #self.setMinimumSize(QSize())
+        #self.setMaximumSize(QSize(self.maxSize.width()*1.3,self.maxSize.height()*2))
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(self.stretch)
         sizePolicy.setVerticalStretch(self.stretch)
@@ -86,17 +90,21 @@ class Screenshots(QtGui.QWidget):
         self.setSizePolicy(sizePolicy)
         
         
-    def format_screenshot(self,img):
+    def new_screenshot(self,num):
+        img = QtGui.QLabel("Image %d"%num, self.extraScreenGroup)
+        img.setObjectName("img%d"%num)
         img.setAlignment(QtCore.Qt.AlignCenter)
         img.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
-        img.setMinimumSize(self.minSize/3)
-        img.setMaximumSize(self.maxSize/3)        
+        img.setMinimumSize(QSize(self.minWidth/3,self.minWidth/3))
+        img.setMaximumSize(QSize(self.maxWidth/3,self.maxWidth/3))        
         img.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
-        sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
-        sizePolicy.setHorizontalStretch(self.stretch)
-        sizePolicy.setVerticalStretch(self.stretch)
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(True)
         img.setSizePolicy(sizePolicy)
+        #img.resize(self.minWidth/3,self.minWidth/3)
+        return img
         
         
     
@@ -105,7 +113,7 @@ def main():
     minSize = QtCore.QSize(350, 350)
     maxSize = QtCore.QSize(400, 400)
     stretch = 1
-    main = Screenshots(None,minSize,maxSize,stretch)
+    main = Screenshots(None,350,400,stretch)
     
     main.show()
  

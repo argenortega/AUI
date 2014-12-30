@@ -30,6 +30,8 @@ class NewView(QtGui.QWidget):
         self.view = QLabel("Additional View",self)  
         self.view.setAlignment(QtCore.Qt.AlignCenter)
         self.view.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
+        self.view.setWordWrap(True)
+        self.view.setScaledContents(True)
         #view.sizeHint(300,300)        
         font = QtGui.QFont()
         font.setPointSize(14)

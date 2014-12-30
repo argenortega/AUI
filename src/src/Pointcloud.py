@@ -29,6 +29,8 @@ class Pointcloud(QtGui.QWidget):
         self.pointcloud = QLabel("3D pointcloud",self)  
         self.pointcloud.setAlignment(QtCore.Qt.AlignCenter)
         self.pointcloud.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
+        self.pointcloud.setWordWrap(True)
+        self.pointcloud.setScaledContents(True)
         #pointcloud.sizeHint(300,300)        
         font = QtGui.QFont()
         font.setPointSize(14)

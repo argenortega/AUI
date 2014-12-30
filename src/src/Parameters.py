@@ -8,9 +8,9 @@ Created on Sun Dec 14 03:33:10 2014
 
 from PyQt4 import QtGui, QtCore
 
-class Parameters(QtGui.QDockWidget):
+class AUIParameters(QtGui.QDockWidget):
     '''
-    Simulation of a camera widget
+    Parameters related to the GUI's adaptivity simulation. 
     '''
     def __init__(self,parent):
         QtGui.QWidget.__init__(self,parent)
