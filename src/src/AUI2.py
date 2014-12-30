@@ -144,17 +144,21 @@ class AUI(QWidget):
         self.parameters = Parameters.AUIParameters(self)
         self.globalLayout.addWidget(self.parameters)
         
-        '''
-        QtCore.QObject.connect(self.battery_slider, QtCore.SIGNAL("valueChanged(int)"), self.battery.setValue)
-        QtCore.QObject.connect(self.wifi_slider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.setValue)
-        QtCore.QObject.connect(self.battery_slider, QtCore.SIGNAL("valueChanged(int)"), self.battery_level.setValue)
-        QtCore.QObject.connect(self.wifi_slider, QtCore.SIGNAL("valueChanged(int)"), self.wifi_level.setValue)
-        QtCore.QObject.connect(self.stress_slider, QtCore.SIGNAL("valueChanged(int)"), self.stress_level.setValue)
+        
+        self.mixedInitiative.AUItoggleButton.clicked[bool].connect(self.AUIupdate)        
+        self.AUIupdate()
+        QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.battery.battery.setValue)
+        QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.wifi.setValue)
         QtCore.QMetaObject.connectSlotsByName(self)            
-        '''
+        
         self.show()
         
-   
+    def keyPressEvent(self,e):
+        self.joystick.setFocus(True)
+    
+    def AUIupdate(self):
+        enable = self.mixedInitiative.AUItoggleButton.isChecked()
+        self.parameters.setEnabled(enable)
         
 def main():
     app = QtGui.QApplication(sys.argv)

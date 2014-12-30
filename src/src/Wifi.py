@@ -5,7 +5,7 @@ Created on Mon Dec 29 18:33:45 2014
 @author: Argen
 """
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame)
+from PyQt4.QtGui import (QSizePolicy, QLabel, QHBoxLayout, QFrame)
 import sys
 
 class Wifi(QtGui.QWidget):
@@ -27,7 +27,7 @@ class Wifi(QtGui.QWidget):
         self.wifiLevel = QtGui.QGroupBox("Wifi",self)
         self.wifiLevel.setObjectName("wifiLevel")
         
-        self.wifiBoxLevel = QVBoxLayout(self.wifiLevel)
+        self.wifiBoxLevel = QHBoxLayout(self.wifiLevel)
         self.wifiBoxLevel.setObjectName("wifiBoxLevel")
         
         self.wifi = QtGui.QProgressBar(self.wifiLevel)
@@ -37,6 +37,11 @@ class Wifi(QtGui.QWidget):
         self.wifi.setObjectName("wifi")
         
         self.wifiBoxLevel.addWidget(self.wifi)
+        
+        self.value = QtGui.QLabel(self.wifiLevel)
+        self.value.setText("%d"%self.wifi.value())        
+        self.wifiBoxLevel.addWidget(self.value)
+        
         self.layout.addWidget(self.wifiLevel)
         
         
@@ -55,7 +60,7 @@ def main():
     minSize = QtCore.QSize(100, 100)
     maxSize = QtCore.QSize(300, 300)
     stretch = 3
-    main = Wifi(None,minSize,maxSize,stretch)
+    main = Wifi(None,minSize,maxSize)
     
     main.show()
  

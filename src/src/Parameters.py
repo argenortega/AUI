@@ -152,6 +152,12 @@ class AUIParameters(QtGui.QDockWidget):
         self.contentsLayout.addWidget(self.robotStatus)
         self.setWidget(self.contents)
         
+        QtCore.QObject.connect(self.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.AUIbattery.setValue)
+        QtCore.QObject.connect(self.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.AUIwifi.setValue)
+        QtCore.QObject.connect(self.stressSlider, QtCore.SIGNAL("valueChanged(int)"), self.stressLevel.setValue)
+        QtCore.QMetaObject.connectSlotsByName(self)        
+        
+        
 def main():
     app = QtGui.QApplication(sys.argv)
     minSize = QtCore.QSize(100, 100)

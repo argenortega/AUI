@@ -86,7 +86,7 @@ class MixedInitiative(QtGui.QWidget):
         sizePolicy.setVerticalStretch(0)
         #sizePolicy.setHeightForWidth(True)
         self.textBrowserAUIMix.setSizePolicy(sizePolicy)
-
+        self.textBrowserAUIMix.setText("Welcome to the Adaptive User Interface for TRADR\n")
         self.horizontalLayout = QtGui.QHBoxLayout(self.textBrowserAUIMix)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.AUIMsgsLayout.addWidget(self.textBrowserAUIMix)
