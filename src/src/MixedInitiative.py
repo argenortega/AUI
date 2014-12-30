@@ -68,18 +68,21 @@ class MixedInitiative(QtGui.QWidget):
         
         
         self.AUIMsgsLayout = QtGui.QHBoxLayout(self.AUIMsgs)
-        self.AUIMsgsLayout.setMargin(0)
+        self.AUIMsgsLayout.setMargin(2)
         self.AUIMsgsLayout.setObjectName("AUIMsgsLayout")
+        
+        self.AUIMsgs.setLayout(self.AUIMsgsLayout)        
+        
         self.textBrowserAUIMix = QTextEdit(self.AUIMsgs)
         self.textBrowserAUIMix.setReadOnly(True)
         self.textBrowserAUIMix.moveCursor(QTextCursor.End)
         sb = self.textBrowserAUIMix.verticalScrollBar()
         sb.setValue(sb.maximum())
         self.textBrowserAUIMix.setMinimumSize(QtCore.QSize(700, 30))
-        self.textBrowserAUIMix.setMaximumSize(QtCore.QSize(1200, 50))
+        self.textBrowserAUIMix.setMaximumSize(QtCore.QSize(1200, 60))
         self.textBrowserAUIMix.setObjectName("textBrowserAUIMix")
-        sizePolicy = QtGui.QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
+        sizePolicy = QtGui.QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
         #sizePolicy.setHeightForWidth(True)
         self.textBrowserAUIMix.setSizePolicy(sizePolicy)
@@ -96,7 +99,7 @@ class MixedInitiative(QtGui.QWidget):
         self.AUIMsgsLayout.addWidget(self.buttonBoxAUIMix)
         self.AUIMsgsLayout.addStretch()
         
-        sizePolicy = QtGui.QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
+        sizePolicy = QtGui.QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         self.AUIMsgs.setSizePolicy(sizePolicy)        
@@ -106,7 +109,7 @@ class MixedInitiative(QtGui.QWidget):
         self.AUIMsgs.hide()
         self.mixedInitiativeLayout.addWidget(self.AUIMsgs)
         
-        self.sizePolicy = QtGui.QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
+        self.sizePolicy = QtGui.QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
         self.sizePolicy.setHorizontalStretch(0)
         self.sizePolicy.setVerticalStretch(0)
         #sizePolicy.setHeightForWidth(True)
