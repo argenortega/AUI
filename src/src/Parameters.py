@@ -4,12 +4,21 @@ Created on Sun Dec 14 03:33:10 2014
 
 @author: Argen
 @version: 2.0
+
+
+Timer function is based on the stopwatch found here: 
+http://thecodeinn.blogspot.de/2013/08/pyqt-stopwatch-and-timer.html
 """
 
 
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame)
 import sys
+
+s = 0
+m = 0
+h = 0
+
 
 class AUIParameters(QtGui.QDockWidget):
     '''
@@ -25,31 +34,53 @@ class AUIParameters(QtGui.QDockWidget):
         self.contents = QtGui.QWidget()
         self.contents.setObjectName("contents")
         
-        self.contentsLayout = QtGui.QVBoxLayout(self.contents)
+        self.contentsLayout = QVBoxLayout(self.contents)
         self.contentsLayout.setObjectName("contentsLayout")
         self.contents.setLayout(self.contentsLayout)
         
         self.episodes = QtGui.QGroupBox("Episodes",self.contents)
         self.episodes.setObjectName("episodes")
-        self.episodesLayout = QtGui.QHBoxLayout(self.episodes)
+        self.episodesLayout = QtGui.QGridLayout()
         self.episodesLayout.setObjectName("episodesLayout")
         self.episodes.setLayout(self.episodesLayout)
         #self.episodesLayout.addStretch()
         
         self.episodeTimer = QtGui.QLCDNumber(self.episodes)
-        self.episodeTimer.setMinimumSize(QtCore.QSize(60, 0))
-        self.episodeTimer.setMaximumSize(QtCore.QSize(16777215, 60))
+        self.episodeTimer.setMinimumSize(QtCore.QSize(80, 30))
+        #self.episodeTimer.setMaximumSize(QtCore.QSize(16777215, 60))
         self.episodeTimer.setFrameShape(QtGui.QFrame.StyledPanel)
         self.episodeTimer.setFrameShadow(QtGui.QFrame.Plain)
         self.episodeTimer.setObjectName("episodeTimer")
-        self.episodesLayout.addWidget(self.episodeTimer)
-        self.episodesLayout.setAlignment(QtCore.Qt.AlignVCenter)
+        self.episodeTimer.setStyleSheet('color: black')
+        self.episodesLayout.addWidget(self.episodeTimer,2,0,1,3)
+        #self.episodesLayout.setAlignment(QtCore.Qt.AlignVCenter)
+        
+        self.timer = QtCore.QTimer(self)
+        self.timer.timeout.connect(self.Time)
+        time = "%d:%02d:%02d"%(h,m,s) 
+        self.episodeTimer.setDigitCount(len(time))
+        self.episodeTimer.display(time)
         
         self.startEpisodeButton = QtGui.QPushButton("Start", self.episodes)
-        self.startEpisodeButton.setMaximumSize(QtCore.QSize(60, 16777215))
+        self.startEpisodeButton.setMinimumSize(QtCore.QSize(60, 35))
         self.startEpisodeButton.setObjectName("startEpisodeButton")
-        self.startEpisodeButton.setCheckable(True)
-        self.episodesLayout.addWidget(self.startEpisodeButton)
+        #self.startEpisodeButton.setCheckable(True)
+        self.episodesLayout.addWidget(self.startEpisodeButton,1,0)
+        
+        self.stopEpisodeButton = QtGui.QPushButton("Stop", self.episodes)
+        self.stopEpisodeButton.setMinimumSize(QtCore.QSize(60, 35))
+        self.stopEpisodeButton.setObjectName("stopEpisodeButton")
+        #self.stopEpisodeButton.setCheckable(True)
+        self.episodesLayout.addWidget(self.stopEpisodeButton,1,1)
+        
+        self.resetEpisodeButton = QtGui.QPushButton("New", self.episodes)
+        self.resetEpisodeButton.setMinimumSize(QtCore.QSize(60, 35))
+        self.resetEpisodeButton.setObjectName("resetEpisodeButton")
+        self.episodesLayout.addWidget(self.resetEpisodeButton,1,2)
+        
+        self.startEpisodeButton.clicked.connect(self.Start)
+        self.stopEpisodeButton.clicked.connect(lambda: self.timer.stop())
+        self.resetEpisodeButton.clicked.connect(self.Reset)
         
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -93,7 +124,7 @@ class AUIParameters(QtGui.QDockWidget):
         self.taskLayout.addWidget(self.currentContext)
         
         
-        self.currentWidget = QtGui.QLabel(self.taskContext)
+        self.currentWidget = QtGui.QLabel("<No Widget>",self.taskContext)
         self.currentWidget.setFrameShape(QtGui.QFrame.StyledPanel)
         self.currentWidget.setFrameShadow(QtGui.QFrame.Raised)
         self.currentWidget.setObjectName("currentWidget")
@@ -157,6 +188,49 @@ class AUIParameters(QtGui.QDockWidget):
         QtCore.QObject.connect(self.stressSlider, QtCore.SIGNAL("valueChanged(int)"), self.stressLevel.setValue)
         QtCore.QMetaObject.connectSlotsByName(self)        
         
+
+    def Reset(self):
+        global s,m,h
+ 
+        self.timer.stop()
+ 
+        s = 0
+        m = 0
+        h = 0
+ 
+        time = "%d:%02d:%02d"%(h,m,s)
+ 
+        self.episodeTimer.setDigitCount(len(time))
+        self.episodeTimer.display(time)
+ 
+    def Start(self):
+        global s,m,h
+         
+        self.timer.start(1000)
+     
+    def Time(self):
+        global s,m,h
+ 
+        if s < 59:
+            s += 1
+        else:
+            if m < 59:
+                s = 0
+                m += 1
+            elif m == 59 and h < 24:
+                h += 1
+                m = 0
+                s = 0
+            else:
+                self.timer.stop()
+ 
+        time = "%d:%02d:%02d"%(h,m,s)
+ 
+        self.episodeTimer.setDigitCount(len(time))
+        self.episodeTimer.display(time)
+
+
+
         
 def main():
     app = QtGui.QApplication(sys.argv)
