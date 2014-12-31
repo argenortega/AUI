@@ -117,7 +117,7 @@ class MixedInitiative(QtGui.QWidget):
         self.setSizePolicy(self.sizePolicy)
         
     def press(self,toggled):
-        source = self.sender()
+        #source = self.sender()
         if toggled:
             self.AUItoggleButton.setText("On")
             #self.AUItoggleButton.setChecked(False)
