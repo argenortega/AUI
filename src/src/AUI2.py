@@ -33,6 +33,7 @@ class AUI(QWidget):
     def initUI(self):
         self.setGeometry(0, 0 , 1280, 800)
         self.setWindowTitle("Adaptive TRADR OCU")
+        self.setMouseTracking(True)
         
         '''        
         Layout Definitions for the complete AUI
@@ -147,6 +148,9 @@ class AUI(QWidget):
         
         self.mixedInitiative.AUItoggleButton.clicked[bool].connect(self.AUIupdate)        
         self.AUIupdate()
+        QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.value.setNum)        
+        QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.battery.value.setNum)        
+                
         QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.battery.battery.setValue)
         QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.wifi.setValue)
         QtCore.QMetaObject.connectSlotsByName(self)            
@@ -159,6 +163,12 @@ class AUI(QWidget):
     def AUIupdate(self):
         enable = self.mixedInitiative.AUItoggleButton.isChecked()
         self.parameters.setEnabled(enable)
+    
+    def mouseMoveEvent(self,e):
+        #print "Mouse moving"
+        if self.mixedInitiative.AUItoggleButton.isChecked():
+            if self.Camera1.underMouse():
+                self.parameters.currentWidget.setText("Camera 1")
         
 def main():
     app = QtGui.QApplication(sys.argv)
