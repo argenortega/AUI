@@ -8,7 +8,7 @@ Created on Mon Dec 29 17:21:56 2014
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QSizePolicy, QVBoxLayout, QFrame,
                          QHBoxLayout, QPushButton, QLabel,
-                         QGroupBox)
+                         QGroupBox, QGridLayout)
 from PyQt4.QtCore import QSize
 import sys
 
@@ -18,6 +18,7 @@ class Screenshots(QtGui.QWidget):
         self.minWidth = minWidth
         self.maxWidth = maxWidth
         self.stretch = stretch
+        self.num = 3
         self.initUI()
         
     def initUI(self):
@@ -46,38 +47,71 @@ class Screenshots(QtGui.QWidget):
         sizePolicy.setHeightForWidth(True)
         self.currentScreenshot.setSizePolicy(sizePolicy)
         self.layout.addWidget(self.currentScreenshot)
+                
+        self.buttonLayout = QHBoxLayout()
+        self.buttonLayout.addStretch()        
+
+        self.newS = QPushButton("New", self)
+        self.buttonLayout.addWidget(self.newS)
+        self.newS.clicked.connect(self.add_new)
         
-        self.ExtraScreenshots = QFrame(self)
-        self.ExtraScreenshots.setObjectName("ExtraScreenshots")
-        self.extraScreenshotLayout = QVBoxLayout(self.ExtraScreenshots)
+        
+        self.layout.addLayout(self.buttonLayout)
+        
+        
+        self.extraScreenGroup = QGroupBox("Screenshots", self)
+        self.extraScreenGroup.setObjectName("extraScreenGroup")
+        self.extraScreenshotGroupLayout = QVBoxLayout(self.extraScreenGroup)
+        self.extraScreenshotGroupLayout.setObjectName("extraScreenshotGroupLayout")
+
+        self.showLayout = QHBoxLayout()
+        self.showLayout.addStretch()
+        self.showB = QPushButton("Hide",self)
+        self.showB.setCheckable(True)
+        self.showLayout.addWidget(self.showB)
+        self.extraScreenshotGroupLayout.addLayout(self.showLayout)
+        
+        self.scrollArea = QtGui.QScrollArea(self)
+        self.scrollArea.setWidgetResizable(True)
+        self.extraScreenshots = QFrame(self.scrollArea)
+        self.extraScreenshots = QFrame(self.extraScreenGroup)
+        self.extraScreenshots.setObjectName("extraScreenshots")
+        self.scrollArea.setWidget(self.extraScreenshots)
+        self.scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.scrollArea.setViewportMargins(1,1,1,1)
+        self.extraScreenshotGroupLayout.addWidget(self.scrollArea)
+
+        #self.scrollBar = QtGui.QScrollBar(QtCore.Qt.Horizontal,self.extraScreenshots)
+        
+        self.extraScreenshotLayout = QHBoxLayout(self.extraScreenshots)
         self.extraScreenshotLayout.setMargin(0)
         self.extraScreenshotLayout.setObjectName("extraScreenshotLayout")
         
-        self.extraScreenGroup = QGroupBox("Screenshots", self.ExtraScreenshots)
-        self.extraScreenGroup.setObjectName("extraScreenGroup")
-        self.extraScreenshotGroupLayout = QHBoxLayout(self.extraScreenGroup)
-        self.extraScreenshotGroupLayout.setObjectName("extraScreenshotGroupLayout")
+        self.showB.clicked[bool].connect(self.press)
+        #self.showB.toggled.connect(self.extraScreenshots.setVisible)
         
         self.img1 = self.new_screenshot(1)
-        self.extraScreenshotGroupLayout.addWidget(self.img1)
+        self.extraScreenshotLayout.addWidget(self.img1)
         
         self.img2 = self.new_screenshot(2)
-        self.extraScreenshotGroupLayout.addWidget(self.img2)
+        self.extraScreenshotLayout.addWidget(self.img2)
         
         self.img3 = self.new_screenshot(3)
-        self.extraScreenshotGroupLayout.addWidget(self.img3)
+        self.extraScreenshotLayout.addWidget(self.img3)
         
-        #self.extraScreenGroup.setMinimumSize(QSize(self.minWidth*0.9,self.minWidth*0.5))
-        #self.extraScreenGroup.setMaximumSize(QSize(self.maxWidth*0.9,self.maxWidth*0.5))
+        self.scrollArea.setMinimumSize(QSize(self.minWidth*9/10,self.minWidth*.4))
+        self.scrollArea.setMaximumSize(QSize(self.maxWidth*0.9,self.maxWidth*.4))
         
-        #sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
-        #sizePolicy.setHorizontalStretch(self.stretch)
-        #sizePolicy.setVerticalStretch(self.stretch)
-        #sizePolicy.setHeightForWidth(False)
-        #self.extraScreenGroup.setSizePolicy(sizePolicy)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(self.stretch)
+        sizePolicy.setVerticalStretch(self.stretch)
+        sizePolicy.setHeightForWidth(False)
+        self.scrollArea.setSizePolicy(sizePolicy)
         
-        self.extraScreenshotLayout.addWidget(self.extraScreenGroup)
-        self.layout.addWidget(self.ExtraScreenshots)
+        self.extraScreenshotGroupLayout.addWidget(self.scrollArea)
+        #self.extraScreenshotGroupLayout.addWidget(self.extraScreenshots)
+        #self.extraScreenshotGroupLayout.addWidget(self.scrollBar)
+        self.layout.addWidget(self.extraScreenGroup)
         
         #self.layout.setAlignment(QtCore.Qt.AlignHCenter)
         
@@ -105,6 +139,19 @@ class Screenshots(QtGui.QWidget):
         img.setSizePolicy(sizePolicy)
         #img.resize(self.minWidth/3,self.minWidth/3)
         return img
+    
+    def add_new(self):
+        self.num = self.num + 1
+        ns = self.new_screenshot(self.num)
+        self.extraScreenshotLayout.addWidget(ns)
+        
+    def press(self,toggled):
+        if toggled:
+            self.showB.setText("Show")
+            self.scrollArea.setVisible(False)
+        else:
+            self.showB.setText("Hide")
+            self.scrollArea.setVisible(True)
         
         
     
