@@ -38,6 +38,14 @@ class Battery(QtGui.QWidget):
         self.battery.setObjectName("battery")
         
         self.batteryBoxLevel.addWidget(self.battery)
+        
+        self.value = QtGui.QLabel(self.batteryLevel)
+        self.value.setText("%d%%"%self.battery.value())        
+        self.batteryBoxLevel.addWidget(self.value)        
+        
+        self.p = QLabel("%",self.batteryLevel)
+        self.batteryBoxLevel.addWidget(self.p)
+        
         self.layout.addWidget(self.batteryLevel)
         
         self.setMinimumSize(self.minSize)

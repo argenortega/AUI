@@ -42,6 +42,8 @@ class Wifi(QtGui.QWidget):
         self.value.setText("%d"%self.wifi.value())        
         self.wifiBoxLevel.addWidget(self.value)
         
+        self.p = QLabel("%",self.wifiLevel)
+        self.wifiBoxLevel.addWidget(self.p)
         self.layout.addWidget(self.wifiLevel)
         
         
