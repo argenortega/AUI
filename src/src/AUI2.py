@@ -153,7 +153,15 @@ class AUI(QWidget):
                 
         QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.battery.battery.setValue)
         QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.wifi.setValue)
-        QtCore.QMetaObject.connectSlotsByName(self)            
+        QtCore.QMetaObject.connectSlotsByName(self) 
+
+
+        machine = QtCore.QStateMachine()
+        state1 = QtCore.QState(machine)
+        state2 = QtCore.QState(machine)
+        state3 = QtCore.QState(machine)
+        machine.setInitialState(state1)
+           
         
         self.show()
         
@@ -166,10 +174,15 @@ class AUI(QWidget):
     
     def mouseMoveEvent(self,e):
         #print "Mouse moving"
-        if self.mixedInitiative.AUItoggleButton.isChecked():
-            if self.Camera1.underMouse():
-                self.parameters.currentWidget.setText("Camera 1")
-        
+        #if self.mixedInitiative.AUItoggleButton.isChecked():
+        self.Camera1.setFocus(True)
+        if self.Camera1.underMouse():
+            print "Camera 1"
+            self.parameters.currentWidget.setText("Camera 1")
+    
+    def mouseReleaseEvent(self,e):
+        print "Mouse entered"
+    
 def main():
     app = QtGui.QApplication(sys.argv)
     main = AUI()

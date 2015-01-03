@@ -100,7 +100,7 @@ class Screenshots(QtGui.QWidget):
         self.extraScreenshotLayout.addWidget(self.img3)
         
         self.scrollArea.setMinimumSize(QSize(self.minWidth*9/10,self.minWidth*.4))
-        self.scrollArea.setMaximumSize(QSize(self.maxWidth*0.9,self.maxWidth*.4))
+        self.scrollArea.setMaximumSize(QSize(16777215,self.maxWidth*.4))
         
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(self.stretch)
@@ -152,6 +152,9 @@ class Screenshots(QtGui.QWidget):
         else:
             self.showB.setText("Hide")
             self.scrollArea.setVisible(True)
+    
+    def select_screenshot():
+        pass
         
         
     

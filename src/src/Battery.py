@@ -6,7 +6,7 @@ Created on Mon Dec 29 18:33:54 2014
 """
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame)
+from PyQt4.QtGui import (QSizePolicy, QLabel, QHBoxLayout, QFrame)
 import sys
 
 class Battery(QtGui.QWidget):
@@ -28,7 +28,7 @@ class Battery(QtGui.QWidget):
         self.batteryLevel = QtGui.QGroupBox("Battery",self)
         self.batteryLevel.setObjectName("batteryLevel")
         
-        self.batteryBoxLevel = QVBoxLayout(self.batteryLevel)
+        self.batteryBoxLevel = QHBoxLayout(self.batteryLevel)
         self.batteryBoxLevel.setObjectName("batteryBoxLevel")
         
         self.battery = QtGui.QProgressBar(self.batteryLevel)
@@ -40,7 +40,7 @@ class Battery(QtGui.QWidget):
         self.batteryBoxLevel.addWidget(self.battery)
         
         self.value = QtGui.QLabel(self.batteryLevel)
-        self.value.setText("%d%%"%self.battery.value())        
+        self.value.setText("%d"%self.battery.value())        
         self.batteryBoxLevel.addWidget(self.value)        
         
         self.p = QLabel("%",self.batteryLevel)
@@ -63,7 +63,7 @@ def main():
     minSize = QtCore.QSize(100, 100)
     maxSize = QtCore.QSize(300, 300)
     stretch = 3
-    main = Battery(None,minSize,maxSize,stretch)
+    main = Battery(None,minSize,maxSize)
     
     main.show()
  
