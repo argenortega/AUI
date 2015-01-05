@@ -125,7 +125,6 @@ class Joystick(QtGui.QWidget):
     def keyPressEvent (self, event):
         key = event.key()
         
-        #if not self.handled:
         if not self.pressLeft and key == QtCore.Qt.Key_Left:
             self.left.setStyleSheet('border: 2px solid green; color: green')
             self.center.setStyleSheet('color: black')            
@@ -162,8 +161,8 @@ class Joystick(QtGui.QWidget):
             self.center.setStyleSheet('color: black')
             self.up.setStyleSheet('color: black')
             self.right.setStyleSheet('color: black')
-        else:
-            self.center.setStyleSheet('border: 2px solid green; color: green')
+        #else:
+            #self.center.setStyleSheet('border: 2px solid green; color: green')
         
             
         
@@ -193,6 +192,8 @@ class Joystick(QtGui.QWidget):
             self.downright.setStyleSheet('color: black')
             self.center.setStyleSheet('border: 2px solid green; color: green')
             self.pressDown = False
+        else:
+            self.center.setStyleSheet('border: 2px solid green; color: green')
         #else: 
          #   QWidget.keyReleaseEvent(self,event)
     

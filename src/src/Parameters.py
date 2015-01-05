@@ -12,8 +12,11 @@ http://thecodeinn.blogspot.de/2013/08/pyqt-stopwatch-and-timer.html
 
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame)
+from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame,
+                         QTabWidget)
 import sys
+
+import UtilitiesLogic
 
 s = 0
 m = 0
@@ -31,17 +34,31 @@ class AUIParameters(QtGui.QDockWidget):
     def initUI(self):        
         self.setObjectName("AUIParameters")
         self.setWindowTitle("AUI Parameters")
-        self.contents = QtGui.QWidget()
-        self.contents.setObjectName("contents")
         
-        self.contentsLayout = QVBoxLayout(self.contents)
-        self.contentsLayout.setObjectName("contentsLayout")
-        self.contents.setLayout(self.contentsLayout)
+        self.contents = QTabWidget()
+        self.contents.setTabPosition(QTabWidget.South)
         
-        self.episodes = QtGui.QGroupBox("Episodes",self.contents)
+        self.tab1 = QtGui.QWidget()
+        self.tab1.setObjectName("Tab 1")
+        
+        self.tab2 = UtilitiesLogic.UtilitiesLogic(self)
+        #self.tab2.setObjectName("Tab 2")
+        
+        self.tab3 = QtGui.QWidget()
+        self.tab3.setObjectName("Tab 3")
+        
+        self.tab1Layout = QVBoxLayout(self.tab1)
+        self.tab1Layout.setObjectName("tab1Layout")
+        self.tab1Layout.setSpacing(0)
+        self.tab1Layout.setMargin(1)
+        self.tab1.setLayout(self.tab1Layout)
+        
+        self.episodes = QtGui.QGroupBox("Episodes",self.tab1)
         self.episodes.setObjectName("episodes")
         self.episodesLayout = QtGui.QGridLayout()
         self.episodesLayout.setObjectName("episodesLayout")
+        self.episodesLayout.setMargin(1)
+        #self.episodesLayout.setSpacing(0)
         self.episodes.setLayout(self.episodesLayout)
         #self.episodesLayout.addStretch()
         
@@ -62,19 +79,19 @@ class AUIParameters(QtGui.QDockWidget):
         self.episodeTimer.display(time)
         
         self.startEpisodeButton = QtGui.QPushButton("Start", self.episodes)
-        self.startEpisodeButton.setMinimumSize(QtCore.QSize(60, 35))
+        self.startEpisodeButton.setMinimumSize(QtCore.QSize(60, 32))
         self.startEpisodeButton.setObjectName("startEpisodeButton")
         #self.startEpisodeButton.setCheckable(True)
         self.episodesLayout.addWidget(self.startEpisodeButton,1,0)
         
         self.stopEpisodeButton = QtGui.QPushButton("Stop", self.episodes)
-        self.stopEpisodeButton.setMinimumSize(QtCore.QSize(60, 35))
+        self.stopEpisodeButton.setMinimumSize(QtCore.QSize(60, 32))
         self.stopEpisodeButton.setObjectName("stopEpisodeButton")
         #self.stopEpisodeButton.setCheckable(True)
         self.episodesLayout.addWidget(self.stopEpisodeButton,1,1)
         
         self.resetEpisodeButton = QtGui.QPushButton("New", self.episodes)
-        self.resetEpisodeButton.setMinimumSize(QtCore.QSize(60, 35))
+        self.resetEpisodeButton.setMinimumSize(QtCore.QSize(60, 32))
         self.resetEpisodeButton.setObjectName("resetEpisodeButton")
         self.episodesLayout.addWidget(self.resetEpisodeButton,1,2)
         
@@ -88,12 +105,24 @@ class AUIParameters(QtGui.QDockWidget):
         sizePolicy.setHeightForWidth(False)
         self.episodes.setSizePolicy(sizePolicy)        
         
-        self.contentsLayout.addWidget(self.episodes)
+        self.tab1Layout.addWidget(self.episodes)
         
-        self.stress = QtGui.QGroupBox("Stress level", self.contents)
+        self.userStatus = QtGui.QGroupBox("User status", self.tab1)
+        self.userStatus.setObjectName("userStatus")
+        
+        self.userStatusLayout = QtGui.QVBoxLayout(self.userStatus)
+        self.userStatusLayout.setObjectName("userStatusLayout")
+        self.userStatusLayout.setSpacing(0)
+        self.userStatusLayout.setMargin(1)
+        self.userStatus.setLayout(self.userStatusLayout)
+        
+        self.stress = QtGui.QGroupBox("Stress level", self.userStatus)
         self.stress.setObjectName("stress")
+        self.stress.setFlat(True)
         self.stressLayout = QtGui.QVBoxLayout(self.stress)
         self.stressLayout.setObjectName("stressLayout")
+        self.stressLayout.setSpacing(0)
+        self.stressLayout.setMargin(1)
         self.stress.setLayout(self.stressLayout)
         
         self.stressLevel = QtGui.QProgressBar(self.stress)
@@ -111,12 +140,44 @@ class AUIParameters(QtGui.QDockWidget):
         self.stressSlider.setTickPosition(QtGui.QSlider.TicksAbove)
         self.stressSlider.setTickInterval(1)
         self.stressLayout.addWidget(self.stressSlider)
-        self.contentsLayout.addWidget(self.stress)
         
-        self.taskContext = QtGui.QGroupBox("Task context", self.contents)
+        self.userStatusLayout.addWidget(self.stress)
+        
+        self.cognitiveLoad = QtGui.QGroupBox("Cognitive load", self.userStatus)
+        self.cognitiveLoad.setObjectName("Cognitive Load")
+        self.cognitiveLoad.setFlat(True)
+        self.cognitiveLoadLayout = QtGui.QVBoxLayout(self.cognitiveLoad)
+        self.cognitiveLoadLayout.setObjectName("stressLayout")
+        self.cognitiveLoadLayout.setSpacing(0)
+        self.cognitiveLoadLayout.setMargin(1)
+        self.cognitiveLoad.setLayout(self.cognitiveLoadLayout)
+        
+        self.cognitiveLoadLevel = QtGui.QProgressBar(self.cognitiveLoad)
+        self.cognitiveLoadLevel.setMouseTracking(True)
+        self.cognitiveLoadLevel.setProperty("value", 0)
+        self.cognitiveLoadLevel.setMaximum(10)
+        self.cognitiveLoadLevel.setObjectName("cognitiveLoadLevel")
+        self.cognitiveLoadLevel.setTextVisible(True)
+        self.cognitiveLoadLayout.addWidget(self.cognitiveLoadLevel)
+        
+        self.cognitiveLoadSlider = QtGui.QSlider(self.cognitiveLoad)
+        self.cognitiveLoadSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.cognitiveLoadSlider.setObjectName("cognitiveLoadSlider")
+        self.cognitiveLoadSlider.setMaximum(10)
+        self.cognitiveLoadSlider.setTickPosition(QtGui.QSlider.TicksAbove)
+        self.cognitiveLoadSlider.setTickInterval(1)
+        self.cognitiveLoadLayout.addWidget(self.cognitiveLoadSlider)
+        
+        self.userStatusLayout.addWidget(self.cognitiveLoad)
+        
+        self.tab1Layout.addWidget(self.userStatus)
+        
+        self.taskContext = QtGui.QGroupBox("Task context", self.tab1)
         self.taskContext.setObjectName("taskContext")
         self.taskLayout = QtGui.QVBoxLayout(self.taskContext)
         self.taskLayout.setObjectName("taskLayout")
+        self.taskLayout.setMargin(1)
+        #self.taskLayout.setSpacing(0)
         self.currentContext = QtGui.QComboBox(self.taskContext)
         self.currentContext.setObjectName("currentContext")
         self.currentContext.addItem("<Select task>")
@@ -133,19 +194,24 @@ class AUIParameters(QtGui.QDockWidget):
         self.currentWidget.setFrameShadow(QtGui.QFrame.Raised)
         self.currentWidget.setObjectName("currentWidget")
         self.taskLayout.addWidget(self.currentWidget)
-        self.contentsLayout.addWidget(self.taskContext)
+        self.tab1Layout.addWidget(self.taskContext)
         
-        self.robotStatus = QtGui.QGroupBox("Robot status", self.contents)
+        self.robotStatus = QtGui.QGroupBox("Robot status", self.tab1)
         self.robotStatus.setObjectName("robotStatus")
         
         self.AUIStatusLayout = QtGui.QVBoxLayout(self.robotStatus)
         self.AUIStatusLayout.setObjectName("AUIStatusLayout")
+        self.AUIStatusLayout.setSpacing(0)
+        self.AUIStatusLayout.setMargin(1)
         self.robotStatus.setLayout(self.AUIStatusLayout)
         
         self.AUIwifiLevel = QtGui.QGroupBox("Wifi level", self.robotStatus)
         self.AUIwifiLevel.setObjectName("AUIwifiLevel")
         self.AUIwifiLevelLayout = QtGui.QVBoxLayout(self.AUIwifiLevel)
         self.AUIwifiLevelLayout.setObjectName("AUIwifiLevelLayout")
+        self.AUIwifiLevelLayout.setSpacing(0)
+        self.AUIwifiLevelLayout.setMargin(1)
+        self.AUIwifiLevel.setFlat(True)
         self.AUIwifiLevel.setLayout(self.AUIwifiLevelLayout)
         
         self.AUIwifi = QtGui.QProgressBar(self.AUIwifiLevel)
@@ -169,6 +235,9 @@ class AUIParameters(QtGui.QDockWidget):
         self.AUIbatteryLevel.setObjectName("AUIbatteryLevel")
         self.AUIbatteryLayout = QtGui.QVBoxLayout(self.AUIbatteryLevel)
         self.AUIbatteryLayout.setObjectName("AUIbatteryLayout")
+        self.AUIbatteryLayout.setSpacing(0)
+        self.AUIbatteryLayout.setMargin(1)
+        self.AUIbatteryLevel.setFlat(True)
         self.AUIbatteryLevel.setLayout(self.AUIbatteryLayout)
         
         self.AUIbattery = QtGui.QProgressBar(self.AUIbatteryLevel)
@@ -188,12 +257,18 @@ class AUIParameters(QtGui.QDockWidget):
         self.AUIbatteryLayout.addWidget(self.batterySlider)
         self.AUIStatusLayout.addWidget(self.AUIbatteryLevel)
         
-        self.contentsLayout.addWidget(self.robotStatus)
+        self.tab1Layout.addWidget(self.robotStatus)
+        #self.setWidget(self.tab1)
+        
+        self.contents.addTab(self.tab1, "Control")
+        self.contents.addTab(self.tab2, "Utilities")
+        self.contents.addTab(self.tab3, "Probabilities")
         self.setWidget(self.contents)
         
         QtCore.QObject.connect(self.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.AUIbattery.setValue)
         QtCore.QObject.connect(self.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.AUIwifi.setValue)
         QtCore.QObject.connect(self.stressSlider, QtCore.SIGNAL("valueChanged(int)"), self.stressLevel.setValue)
+        QtCore.QObject.connect(self.cognitiveLoadSlider, QtCore.SIGNAL("valueChanged(int)"), self.cognitiveLoadLevel.setValue)
         QtCore.QMetaObject.connectSlotsByName(self)        
         
 

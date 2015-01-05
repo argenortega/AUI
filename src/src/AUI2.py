@@ -21,6 +21,7 @@ import Wifi
 import Battery
 import Joystick
 import Parameters
+import Utilities
 
 '''
 Adaptive User Interface for TRADR project
@@ -146,6 +147,8 @@ class AUI(QWidget):
         self.globalLayout.addWidget(self.parameters)
         
         
+        
+        #Connect internal widgets        
         self.mixedInitiative.AUItoggleButton.clicked[bool].connect(self.AUIupdate)        
         self.AUIupdate()
         QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.value.setNum)        
@@ -155,7 +158,7 @@ class AUI(QWidget):
         QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.wifi.setValue)
         QtCore.QMetaObject.connectSlotsByName(self) 
 
-
+        #State machine.
         machine = QtCore.QStateMachine()
         state1 = QtCore.QState(machine)
         state2 = QtCore.QState(machine)
@@ -170,18 +173,23 @@ class AUI(QWidget):
     
     def AUIupdate(self):
         enable = self.mixedInitiative.AUItoggleButton.isChecked()
-        self.parameters.setEnabled(enable)
+        self.parameters.contents.setEnabled(enable)
     
     def mouseMoveEvent(self,e):
         #print "Mouse moving"
         #if self.mixedInitiative.AUItoggleButton.isChecked():
-        self.Camera1.setFocus(True)
+        #self.Camera1.setFocus(True)
         if self.Camera1.underMouse():
             print "Camera 1"
             self.parameters.currentWidget.setText("Camera 1")
     
     def mouseReleaseEvent(self,e):
-        print "Mouse entered"
+        #print "Mouse entered"
+        if self.Camera1.underMouse():
+            #print "Camera 1"
+            #self.parameters.currentWidget.clear()
+            #self.parameters.currentWidget.setText("Camera 1")
+            pass
     
 def main():
     app = QtGui.QApplication(sys.argv)
