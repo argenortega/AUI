@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>utilities</class>
- <widget class="QWidget" name="utilities">
+ <class>probabilities</class>
+ <widget class="QWidget" name="probabilities">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -25,7 +25,7 @@
      <property name="maximumSize">
       <size>
        <width>300</width>
-       <height>16777215</height>
+       <height>300</height>
       </size>
      </property>
      <property name="text">
@@ -89,75 +89,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QStackedWidget" name="probTables">
-     <property name="locale">
-      <locale language="English" country="UnitedStates"/>
-     </property>
-     <property name="currentIndex">
-      <number>6</number>
-     </property>
-     <widget class="QWidget" name="select">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="margin">
-        <number>1</number>
-       </property>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="detect">
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="margin">
-        <number>1</number>
-       </property>
-       <item>
-        <widget class="QTableView" name="detectTable"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="mapping">
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="margin">
-        <number>1</number>
-       </property>
-       <item>
-        <widget class="QTableView" name="mappingTable"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="navigate">
-      <layout class="QVBoxLayout" name="verticalLayout_4">
-       <item>
-        <widget class="QTableView" name="navigateTable"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="review">
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <widget class="QTableView" name="reviewTable"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="inspect">
-      <layout class="QVBoxLayout" name="verticalLayout_6">
-       <item>
-        <widget class="QTableView" name="inspectTable"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="explore">
-      <layout class="QVBoxLayout" name="verticalLayout_7">
-       <item>
-        <widget class="QTableView" name="exploreTable"/>
-       </item>
-      </layout>
-     </widget>
-    </widget>
+    <widget class="QTableView" name="probTable"/>
    </item>
    <item>
     <layout class="QHBoxLayout" name="updateLayout">
@@ -216,22 +148,6 @@
     <hint type="destinationlabel">
      <x>144</x>
      <y>49</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>goalList</sender>
-   <signal>activated(int)</signal>
-   <receiver>probTables</receiver>
-   <slot>setCurrentIndex(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>208</x>
-     <y>121</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>208</x>
-     <y>285</y>
     </hint>
    </hints>
   </connection>
