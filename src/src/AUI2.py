@@ -21,7 +21,7 @@ import Wifi
 import Battery
 import Joystick
 import Parameters
-import Utilities
+
 
 '''
 Adaptive User Interface for TRADR project

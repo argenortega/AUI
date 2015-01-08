@@ -16,7 +16,8 @@ from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame,
                          QTabWidget)
 import sys
 
-import UtilitiesLogic
+import Utilities
+import Probabilities
 
 s = 0
 m = 0
@@ -41,11 +42,11 @@ class AUIParameters(QtGui.QDockWidget):
         self.tab1 = QtGui.QWidget()
         self.tab1.setObjectName("Tab 1")
         
-        self.tab2 = UtilitiesLogic.UtilitiesLogic(self)
+        self.tab2 = Utilities.Utilities(self)
         #self.tab2.setObjectName("Tab 2")
         
-        self.tab3 = QtGui.QWidget()
-        self.tab3.setObjectName("Tab 3")
+        self.tab3 = Probabilities.Probabilities(self)
+        #self.tab3.setObjectName("Tab 3")
         
         self.tab1Layout = QVBoxLayout(self.tab1)
         self.tab1Layout.setObjectName("tab1Layout")

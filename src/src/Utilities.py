@@ -1,153 +1,221 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  4 02:05:08 2015
 
-# Form implementation generated from reading ui file '../../ui/utilities.ui'
-#
-# Created: Mon Jan  5 14:34:54 2015
-#      by: PyQt4 UI code generator 4.11.1
-#
-# WARNING! All changes made in this file will be lost!
+@author: Argen
+"""
 
-from PyQt4 import QtCore, QtGui
+import sys
+from PyQt4 import QtGui, QtCore
+from PyQt4.QtGui import (QWidget)
+from PyQt4.QtCore import QString
+import UtilitiesUi 
+import csv 
+import matplotlib.pyplot as plt
+import numpy as np
 
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
+ 
+class Utilities(QWidget, UtilitiesUi.Ui_utilities):
+    def __init__(self, parent):
+        QWidget.__init__(self, parent)
+        self.setupUi(self)
+        self.detectmodel = QtGui.QStandardItemModel(self)
+        self.inspectmodel = QtGui.QStandardItemModel(self)
+        self.mappingmodel = QtGui.QStandardItemModel(self)
+        self.navigatemodel = QtGui.QStandardItemModel(self)
+        self.reviewmodel = QtGui.QStandardItemModel(self)
+        self.exploremodel = QtGui.QStandardItemModel(self)
+        
+        self.utilityPath ='../../database_data/utilities/'
+        
+        self.utilityFile = 'detect-detect.csv'
+        self.loadCsv(self.utilityPath + self.utilityFile,self.detectmodel)
+        self.setHeaders(self.detectmodel)
+        self.detectTable.setModel(self.detectmodel)
+        self.detectTable.resizeColumnsToContents()
+        self.detectTable.resizeRowsToContents()
+        
+        self.utilityFile = 'explore-explore.csv'
+        self.loadCsv(self.utilityPath + self.utilityFile, self.exploremodel)
+        self.setHeaders(self.exploremodel)
+        self.exploreTable.setModel(self.exploremodel)
+        self.exploreTable.resizeColumnsToContents()
+        self.exploreTable.resizeRowsToContents()
 
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+        self.utilityFile = 'inspect-inspect.csv'
+        self.loadCsv(self.utilityPath + self.utilityFile, self.inspectmodel)
+        self.setHeaders(self.inspectmodel)
+        self.inspectTable.setModel(self.inspectmodel)
+        self.inspectTable.resizeColumnsToContents()
+        self.inspectTable.resizeRowsToContents()
 
-class Ui_utilities(object):
-    def setupUi(self, utilities):
-        utilities.setObjectName(_fromUtf8("utilities"))
-        utilities.resize(418, 484)
-        self.utilitiesLayout = QtGui.QVBoxLayout(utilities)
-        self.utilitiesLayout.setObjectName(_fromUtf8("utilitiesLayout"))
-        self.utilityPlot = QtGui.QLabel(utilities)
-        self.utilityPlot.setMinimumSize(QtCore.QSize(0, 70))
-        self.utilityPlot.setMaximumSize(QtCore.QSize(300, 16777215))
-        self.utilityPlot.setText(_fromUtf8(""))
-        self.utilityPlot.setScaledContents(True)
-        self.utilityPlot.setObjectName(_fromUtf8("utilityPlot"))
-        self.utilitiesLayout.addWidget(self.utilityPlot)
-        self.goalLabel = QtGui.QLabel(utilities)
-        self.goalLabel.setObjectName(_fromUtf8("goalLabel"))
-        self.utilitiesLayout.addWidget(self.goalLabel)
-        self.goalList = QtGui.QComboBox(utilities)
-        self.goalList.setObjectName(_fromUtf8("goalList"))
-        self.goalList.addItem(_fromUtf8(""))
-        self.goalList.addItem(_fromUtf8(""))
-        self.goalList.addItem(_fromUtf8(""))
-        self.goalList.addItem(_fromUtf8(""))
-        self.goalList.addItem(_fromUtf8(""))
-        self.goalList.addItem(_fromUtf8(""))
-        self.goalList.addItem(_fromUtf8(""))
-        self.utilitiesLayout.addWidget(self.goalList)
-        self.tables = QtGui.QStackedWidget(utilities)
-        self.tables.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        self.tables.setObjectName(_fromUtf8("tables"))
-        self.select = QtGui.QWidget()
-        self.select.setObjectName(_fromUtf8("select"))
-        self.verticalLayout = QtGui.QVBoxLayout(self.select)
-        self.verticalLayout.setMargin(1)
-        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.tables.addWidget(self.select)
-        self.detect = QtGui.QWidget()
-        self.detect.setObjectName(_fromUtf8("detect"))
-        self.verticalLayout_2 = QtGui.QVBoxLayout(self.detect)
-        self.verticalLayout_2.setSpacing(0)
-        self.verticalLayout_2.setMargin(1)
-        self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
-        self.detectTable = QtGui.QTableView(self.detect)
-        self.detectTable.setObjectName(_fromUtf8("detectTable"))
-        self.verticalLayout_2.addWidget(self.detectTable)
-        self.tables.addWidget(self.detect)
-        self.mapping = QtGui.QWidget()
-        self.mapping.setObjectName(_fromUtf8("mapping"))
-        self.verticalLayout_3 = QtGui.QVBoxLayout(self.mapping)
-        self.verticalLayout_3.setSpacing(0)
-        self.verticalLayout_3.setMargin(1)
-        self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
-        self.mappingTable = QtGui.QTableView(self.mapping)
-        self.mappingTable.setObjectName(_fromUtf8("mappingTable"))
-        self.verticalLayout_3.addWidget(self.mappingTable)
-        self.tables.addWidget(self.mapping)
-        self.navigate = QtGui.QWidget()
-        self.navigate.setObjectName(_fromUtf8("navigate"))
-        self.verticalLayout_4 = QtGui.QVBoxLayout(self.navigate)
-        self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
-        self.navigateTable = QtGui.QTableView(self.navigate)
-        self.navigateTable.setObjectName(_fromUtf8("navigateTable"))
-        self.verticalLayout_4.addWidget(self.navigateTable)
-        self.tables.addWidget(self.navigate)
-        self.review = QtGui.QWidget()
-        self.review.setObjectName(_fromUtf8("review"))
-        self.verticalLayout_5 = QtGui.QVBoxLayout(self.review)
-        self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
-        self.reviewTable = QtGui.QTableView(self.review)
-        self.reviewTable.setObjectName(_fromUtf8("reviewTable"))
-        self.verticalLayout_5.addWidget(self.reviewTable)
-        self.tables.addWidget(self.review)
-        self.inspect = QtGui.QWidget()
-        self.inspect.setObjectName(_fromUtf8("inspect"))
-        self.verticalLayout_6 = QtGui.QVBoxLayout(self.inspect)
-        self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
-        self.inspectTable = QtGui.QTableView(self.inspect)
-        self.inspectTable.setObjectName(_fromUtf8("inspectTable"))
-        self.verticalLayout_6.addWidget(self.inspectTable)
-        self.tables.addWidget(self.inspect)
-        self.explore = QtGui.QWidget()
-        self.explore.setObjectName(_fromUtf8("explore"))
-        self.verticalLayout_7 = QtGui.QVBoxLayout(self.explore)
-        self.verticalLayout_7.setObjectName(_fromUtf8("verticalLayout_7"))
-        self.exploreTable = QtGui.QTableView(self.explore)
-        self.exploreTable.setObjectName(_fromUtf8("exploreTable"))
-        self.verticalLayout_7.addWidget(self.exploreTable)
-        self.tables.addWidget(self.explore)
-        self.utilitiesLayout.addWidget(self.tables)
-        self.updateLayout = QtGui.QHBoxLayout()
-        self.updateLayout.setSpacing(0)
-        self.updateLayout.setMargin(1)
-        self.updateLayout.setObjectName(_fromUtf8("updateLayout"))
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.updateLayout.addItem(spacerItem)
-        self.saveButton = QtGui.QPushButton(utilities)
-        self.saveButton.setMinimumSize(QtCore.QSize(0, 32))
-        self.saveButton.setObjectName(_fromUtf8("saveButton"))
-        self.updateLayout.addWidget(self.saveButton)
-        spacerItem1 = QtGui.QSpacerItem(30, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
-        self.updateLayout.addItem(spacerItem1)
-        self.updateButton = QtGui.QPushButton(utilities)
-        self.updateButton.setMinimumSize(QtCore.QSize(0, 32))
-        self.updateButton.setObjectName(_fromUtf8("updateButton"))
-        self.updateLayout.addWidget(self.updateButton)
-        self.utilitiesLayout.addLayout(self.updateLayout)
-        self.utilityPlot.setBuddy(self.updateButton)
-        self.goalLabel.setBuddy(self.goalList)
+        self.utilityFile = 'mapping-mapping.csv'
+        self.loadCsv(self.utilityPath + self.utilityFile, self.mappingmodel)
+        self.setHeaders(self.mappingmodel)
+        self.mappingTable.setModel(self.mappingmodel)
+        self.mappingTable.resizeColumnsToContents()
+        self.mappingTable.resizeRowsToContents()
 
-        self.retranslateUi(utilities)
-        self.tables.setCurrentIndex(6)
-        QtCore.QObject.connect(self.updateButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.utilityPlot.update)
-        QtCore.QObject.connect(self.goalList, QtCore.SIGNAL(_fromUtf8("activated(int)")), self.tables.setCurrentIndex)
-        QtCore.QMetaObject.connectSlotsByName(utilities)
-        utilities.setTabOrder(self.goalList, self.updateButton)
+        self.utilityFile = 'navigate-navigate.csv'
+        self.loadCsv(self.utilityPath + self.utilityFile, self.navigatemodel)
+        self.setHeaders(self.navigatemodel)
+        self.navigateTable.setModel(self.navigatemodel)
+        self.navigateTable.resizeColumnsToContents()
+        self.navigateTable.resizeRowsToContents()
 
-    def retranslateUi(self, utilities):
-        utilities.setWindowTitle(_translate("utilities", "Form", None))
-        self.goalLabel.setText(_translate("utilities", "Goal:", None))
-        self.goalList.setItemText(0, _translate("utilities", "<Select>", None))
-        self.goalList.setItemText(1, _translate("utilities", "Detect", None))
-        self.goalList.setItemText(2, _translate("utilities", "Map", None))
-        self.goalList.setItemText(3, _translate("utilities", "Navigate", None))
-        self.goalList.setItemText(4, _translate("utilities", "Review status", None))
-        self.goalList.setItemText(5, _translate("utilities", "Inspect current site", None))
-        self.goalList.setItemText(6, _translate("utilities", "Explore", None))
-        self.saveButton.setText(_translate("utilities", "Save", None))
-        self.updateButton.setText(_translate("utilities", "Update", None))
+        self.utilityFile = 'review-review.csv'        
+        self.loadCsv(self.utilityPath + self.utilityFile, self.reviewmodel)
+        self.setHeaders(self.reviewmodel)
+        self.reviewTable.setModel(self.reviewmodel)
+        self.reviewTable.resizeColumnsToContents()
+        self.reviewTable.resizeRowsToContents()
+        
+        self.saveButton.clicked.connect(self.saving)
+        self.updateButton.clicked.connect(self.updatePlot)
+        self.goalList.activated[str].connect(self.changePlot)
+        
+    def main(self):
+        self.show()
+    '''
+    Load and write methods are based on http://stackoverflow.com/questions/15416663/pyqt-populating-qtablewidget-with-csv-data
+    '''    
+    def loadCsv(self, fileName, model):
+        with open(fileName, "rb") as fileInput:
+            for row in csv.reader(fileInput):    
+                items = [
+                    QtGui.QStandardItem(field)
+                    for field in row
+                ]
+                model.appendRow(items)
+                
+    def writeCsv(self, fileName, model):
+        with open(fileName, "wb") as fileOutput:
+            writer = csv.writer(fileOutput)
+            for rowNumber in range(model.rowCount()):
+                fields = []
+                for columnNumber in range(model.columnCount()):
+                    data, flag = model.data(model.index(rowNumber, columnNumber),
+                                            QtCore.Qt.DisplayRole).toFloat()
+                    fields.append(data)
+                writer.writerow(fields)
+    
+    def changePlot(self,text):
+        self.goalList.setItemData(0,QtCore.QVariant(0),QtCore.Qt.UserRole-1)
+        #self.goalList.setItemData(0,QtCore.QVariant(33),QtCore.Qt.UserRole-1)
+        self.plotPath = '../../database_data/plots/utilities/'
+        if text == "<Select>":
+            plotname=""
+        elif text == "Detect":
+            plotname = 'detect.png'
+        elif text == "Map":
+            plotname = 'mapping.png'        
+        elif text == "Navigate":
+            plotname = 'navigate.png'        
+        elif text == "Review status":
+            plotname = 'review.png'        
+        elif text == "Inspect current site":
+            plotname = 'inspect.png'        
+        elif text == "Explore":
+            plotname = 'explore.png'
+            
+        if text == "<Select>":
+            self.utilityPlot.clear()
+        else:
+            self.utilityPlot.clear()
+            self.utilityPlot.setPixmap(QtGui.QPixmap(self.plotPath+plotname))
+            
+    def saving(self):
+        if self.goalList.currentText() == "Detect":
+            self.utilityFile = 'detect-detect.csv'
+            self.writeCsv(self.utilityPath+self.utilityFile, self.detectmodel)
+        elif self.goalList.currentText() == "Map":
+            self.utilityFile = 'mapping-mapping.csv'        
+            self.writeCsv(self.utilityPath+self.utilityFile, self.mappingmodel)
+        elif self.goalList.currentText() == "Navigate":
+            self.utilityFile = 'navigate-navigate.csv'        
+            self.writeCsv(self.utilityPath+self.utilityFile, self.navigatemodel)
+        elif self.goalList.currentText() == "Review status":
+            self.utilityFile = 'review-review.csv'        
+            self.writeCsv(self.utilityPath+self.utilityFile, self.reviewmodel)
+        elif self.goalList.currentText() == "Inspect current site":
+            self.utilityFile = 'inspect-inspect.csv'        
+            self.writeCsv(self.utilityPath+self.utilityFile, self.inspectmodel)
+        elif self.goalList.currentText() == "Explore":
+            self.utilityFile = 'explore-explore.csv'
+            self.writeCsv(self.utilityPath+self.utilityFile, self.exploremodel)
+        
+        
+        
+    def updatePlot(self):
+        self.plotPath = '../../database_data/plots/utilities/'
+        fig = plt.figure()
 
+        if self.goalList.currentText() == "Detect":
+            filename = 'detect-detect.csv'
+            plotname = 'detect.png'
+        elif self.goalList.currentText() == "Map":
+            filename = 'mapping-mapping.csv'        
+            plotname = 'mapping.png'        
+        elif self.goalList.currentText() == "Navigate":
+            filename = 'navigate-navigate.csv'        
+            plotname = 'navigate.png'        
+        elif self.goalList.currentText() == "Review status":
+            filename = 'review-review.csv'        
+            plotname = 'review.png'        
+        elif self.goalList.currentText() == "Inspect current site":
+            filename = 'inspect-inspect.csv'        
+            plotname = 'inspect.png'        
+        elif self.goalList.currentText() == "Explore":
+            filename = 'explore-explore.csv'
+            plotname = 'explore.png'
+            
+        data = np.genfromtxt(self.utilityPath+filename, delimiter = ",")
+        labels = ["Fwd","Fwd+turn","Back",
+                    "Back+turn","Turn","Charge battery",
+                    "Repair wifi", "New ss", "Change ss",
+                    "Ch map","Chpointcloud","Ch extra",
+                    "Ch C1","Ch C2","Zoom"]
+        x = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        plt.title(self.goalList.currentText())
+        plt.ylabel('Utility')        
+        plt.plot(data[:,0],'ro-',label = r'$u(A,G)$')
+        plt.plot(data[:,1],'go-',label = r'$u(A,\neg{G})$')
+        plt.plot(data[:,2],'co-',label = r'$u(\neg{A},G)$')
+        plt.plot(data[:,3],'bo-',label = r'$u(\neg{A},\neg{G})$')
+        plt.plot(data[:,4],'ko-',label = r'$u(D,G)$')
+        plt.plot(data[:,5],'yo-',label = r'$u(D,\ne{G})$')
+        plt.xticks(x,labels, rotation='vertical')
+        plt.subplots_adjust(bottom=0.15)
+        plt.legend(loc=2)
+        plt.ylim(0,3)
+        
+        fig.savefig(self.plotPath + plotname)  
+        self.utilityPlot.clear()
+        self.utilityPlot.setPixmap(QtGui.QPixmap(self.plotPath+plotname))
+
+    
+    def setHeaders(self,model):
+        QString.fromUtf8("Test")
+        headersH = ["Move forward","Move front and turn","Move backward",
+                    "Move backward and turn","Turn","Charge battery",
+                    "Repair wifi", "New screenshot", "Change screenshot",
+                    "Change to map","Change to pointcloud","Change to extra view",
+                    "Change to C1","Change to C2","Zoom"]
+                    
+        model.setHeaderData(0,QtCore.Qt.Horizontal,QString.fromUtf8("u(A,G)"))
+        model.setHeaderData(1,QtCore.Qt.Horizontal,QString.fromUtf8("u(A,¬G)"))
+        model.setHeaderData(2,QtCore.Qt.Horizontal,QString.fromUtf8("u(¬A,G)"))
+        model.setHeaderData(3,QtCore.Qt.Horizontal,QString.fromUtf8("u(¬A,¬G)"))
+        model.setHeaderData(4,QtCore.Qt.Horizontal,QString.fromUtf8("u(D,G)"))
+        model.setHeaderData(5,QtCore.Qt.Horizontal,QString.fromUtf8("u(D,¬G)"))
+        
+        for i in xrange(15):
+            model.setHeaderData(i,QtCore.Qt.Vertical,headersH[i])
+        
+        
+        
+if __name__=='__main__':
+    app = QtGui.QApplication(sys.argv)
+    main = Utilities(None)
+    main.main()
+    sys.exit(app.exec_())        
