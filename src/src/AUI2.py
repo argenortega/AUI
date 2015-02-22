@@ -157,6 +157,10 @@ class AUI(QWidget):
         QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.battery.value.setNum)
         QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.battery.battery.setValue)
         QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.wifi.setValue)
+
+        self.battery.charge.clicked.connect(self.chargeBattery)
+        self.wifi.repair.clicked.connect(self.repairWifi)
+
         QtCore.QMetaObject.connectSlotsByName(self) 
 
         '''
@@ -169,7 +173,18 @@ class AUI(QWidget):
         '''
         
         self.show()
-        
+
+
+    def chargeBattery(self):
+        self.parameters.batterySlider.setValue(100)
+        self.battery.battery.setValue(100)
+        self.battery.value.setText('100')
+
+    def repairWifi(self):
+        self.parameters.wifiSlider.setValue(100)
+        self.wifi.wifi.setValue(100)
+        self.battery.value.setText('100')
+
     def keyPressEvent(self,e):
         self.joystick.setFocus(True)
     

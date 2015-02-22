@@ -5,18 +5,20 @@ Created on Mon Dec 29 18:33:45 2014
 @author: Argen
 """
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QSizePolicy, QLabel, QHBoxLayout, QFrame)
+from PyQt4.QtGui import (QWidget, QSizePolicy, QLabel, QHBoxLayout, QFrame)
+import WifiUI
 import sys
 
-class Wifi(QtGui.QWidget):
+class Wifi(QWidget, WifiUI.Ui_WifiStatus):
     '''
     Simulation of a Wifi level widget
     '''
     def __init__(self,parent, minSize, maxSize):
-        QtGui.QWidget.__init__(self,parent)
-        self.minSize = minSize
-        self.maxSize = maxSize
-        self.initUI()
+        QWidget.__init__(self,parent)
+        self.setupUi(self)
+        #self.minSize = minSize
+        #self.maxSize = maxSize
+        #self.initUI()
         
     def initUI(self):
         self.setObjectName("wifi_status")

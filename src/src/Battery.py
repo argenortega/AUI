@@ -61,7 +61,7 @@ class Battery(QWidget, BatteryUI.Ui_batteryStatus):
         sizePolicy.setHeightForWidth(False)
         self.setSizePolicy(sizePolicy)
         '''
-        
+
 
 def main():
     app = QtGui.QApplication(sys.argv)
