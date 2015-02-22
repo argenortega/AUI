@@ -148,23 +148,25 @@ class AUI(QWidget):
         
         
         
-        #Connect internal widgets        
-        self.mixedInitiative.AUItoggleButton.clicked[bool].connect(self.AUIupdate)        
+        '''
+        Connect internal widgets
+        '''
+        self.mixedInitiative.AUItoggleButton.clicked[bool].connect(self.AUIupdate)
         self.AUIupdate()
         QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.value.setNum)        
-        QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.battery.value.setNum)        
-                
+        QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.battery.value.setNum)
         QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.battery.battery.setValue)
         QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.wifi.setValue)
         QtCore.QMetaObject.connectSlotsByName(self) 
 
-        #State machine.
+        '''
+        State machine.
         machine = QtCore.QStateMachine()
         state1 = QtCore.QState(machine)
         state2 = QtCore.QState(machine)
         state3 = QtCore.QState(machine)
         machine.setInitialState(state1)
-           
+        '''
         
         self.show()
         

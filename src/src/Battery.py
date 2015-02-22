@@ -6,20 +6,24 @@ Created on Mon Dec 29 18:33:54 2014
 """
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QSizePolicy, QLabel, QHBoxLayout, QFrame)
+from PyQt4.QtGui import (QSizePolicy, QLabel, QHBoxLayout, QFrame, QWidget)
+import BatteryUI
 import sys
 
-class Battery(QtGui.QWidget):
+class Battery(QWidget, BatteryUI.Ui_batteryStatus):
     '''
     Simulation of a Battery level widget
     '''
     def __init__(self,parent, minSize, maxSize):
-        QtGui.QWidget.__init__(self,parent)
-        self.minSize = minSize
-        self.maxSize = maxSize
-        self.initUI()
+        QWidget.__init__(self,parent)
+        self.setupUi(self)
+        #self.minSize = minSize
+        #self.maxSize = maxSize
+        #self.initUI()
         
     def initUI(self):
+        self.setupUi(self)
+        '''
         self.setObjectName("battery_status")
         self.layout = QtGui.QVBoxLayout(self)
         self.layout.setMargin(0)
@@ -56,6 +60,7 @@ class Battery(QtGui.QWidget):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(False)
         self.setSizePolicy(sizePolicy)
+        '''
         
 
 def main():

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BatteryWidget</class>
- <widget class="QWidget" name="BatteryWidget">
+ <class>batteryStatus</class>
+ <widget class="QWidget" name="batteryStatus">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,29 +13,29 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="batteryWidgetLayout">
+  <layout class="QVBoxLayout" name="BatteryLayout">
    <property name="margin">
     <number>0</number>
    </property>
    <item>
-    <widget class="QGroupBox" name="battery">
+    <widget class="QGroupBox" name="batteryLevel">
      <property name="title">
       <string>Battery</string>
      </property>
      <property name="flat">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="checkable">
       <bool>false</bool>
      </property>
      <layout class="QVBoxLayout" name="batteryBoxLayout">
       <item>
-       <layout class="QHBoxLayout" name="batteryLevel">
+       <layout class="QHBoxLayout" name="batteryBoxLevel">
         <property name="spacing">
          <number>1</number>
         </property>
         <item>
-         <widget class="QProgressBar" name="batteryBar">
+         <widget class="QProgressBar" name="battery">
           <property name="value">
            <number>100</number>
           </property>
@@ -86,7 +86,7 @@
   <connection>
    <sender>charge</sender>
    <signal>clicked()</signal>
-   <receiver>batteryBar</receiver>
+   <receiver>battery</receiver>
    <slot>reset()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -100,7 +100,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>batteryBar</sender>
+   <sender>battery</sender>
    <signal>valueChanged(int)</signal>
    <receiver>value</receiver>
    <slot>setNum(int)</slot>
