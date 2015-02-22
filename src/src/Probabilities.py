@@ -167,6 +167,9 @@ class Probabilities(QWidget, ProbabilitiesUi.Ui_probabilities):
         
         for i in xrange(28):
             model.setHeaderData(i,QtCore.Qt.Vertical,headersH[i])
+            
+    def plotGraph(self):
+        pass
         
     def setFlags(self,index):
         self.hideRowsCols()
