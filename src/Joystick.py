@@ -6,20 +6,22 @@ Created on Mon Dec 29 18:34:05 2014
 """
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame, 
+from PyQt4.QtGui import (QWidget, QSizePolicy, QLabel, QVBoxLayout, QFrame,
                          QApplication, QGroupBox, QFont, QGridLayout,
                          QWidget)
 from PyQt4.QtCore import (QEvent, QString, QTimer, Qt)
 import sys
+import JoystickUI
 
-class Joystick(QtGui.QWidget):
+class Joystick(QWidget, JoystickUI.Ui_joystickWidget):
     '''
     Simulation of a Battery level widget
     '''
-    def __init__(self,parent,minSize,maxSize):
-        QtGui.QWidget.__init__(self,parent)
-        self.minSize = minSize
-        self.maxSize = maxSize
+    def __init__(self,parent):
+        QWidget.__init__(self,parent)
+        self.setupUi(self)
+        #self.minSize = minSize
+        #self.maxSize = maxSize
         self.pressUp = False
         self.pressDown = False
         self.pressLeft = False
@@ -27,7 +29,7 @@ class Joystick(QtGui.QWidget):
         self.initUI()
         
     def initUI(self):
-        
+        '''
         self.setObjectName("joystick")
         self.layout = QVBoxLayout(self)
         self.layout.setMargin(1)
@@ -88,15 +90,15 @@ class Joystick(QtGui.QWidget):
         
         self.layout.addWidget(self.joystickControl)
         
-        self.setMinimumSize(self.minSize)
+        #self.setMinimumSize(self.minSize)
         #self.setMaximumSize(self.maxSize)        
-        
+        '''
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)
-        
+    '''
     def format_key(self,key):
         font = QFont()
         font.setPointSize(20)
@@ -105,8 +107,8 @@ class Joystick(QtGui.QWidget):
         key.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
         
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)
         
@@ -120,7 +122,7 @@ class Joystick(QtGui.QWidget):
         self.downleft.setText(QApplication.translate("joystick", "↙︎", None,QApplication.UnicodeUTF8))
         self.down.setText(QApplication.translate("joystick", "↓", None,QApplication.UnicodeUTF8))
         self.downright.setText(QApplication.translate("joystick", "↘︎", None,QApplication.UnicodeUTF8))
-        
+    '''
         
     def keyPressEvent (self, event):
         key = event.key()
@@ -202,7 +204,7 @@ def main():
     app = QtGui.QApplication(sys.argv)
     minSize = QtCore.QSize(250, 250)
     maxSize = QtCore.QSize(300, 300)
-    main = Joystick(None,minSize,maxSize)
+    main = Joystick(None)
     
     main.show()
  

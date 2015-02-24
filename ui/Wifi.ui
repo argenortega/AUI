@@ -7,19 +7,25 @@
     <x>0</x>
     <y>0</y>
     <width>224</width>
-    <height>112</height>
+    <height>102</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <property name="margin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QGroupBox" name="wifiLevel">
      <property name="title">
       <string>WiFi</string>
      </property>
      <layout class="QVBoxLayout" name="wifiLayout">
+      <property name="margin">
+       <number>6</number>
+      </property>
       <item>
        <layout class="QHBoxLayout" name="wifiBoxLevel">
         <property name="spacing">

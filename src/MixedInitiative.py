@@ -6,16 +6,19 @@ Created on Mon Dec 29 04:42:13 2014
 """
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QSizePolicy, QVBoxLayout, QFrame,
+from PyQt4.QtGui import (QWidget, QSizePolicy, QVBoxLayout, QFrame,
                          QHBoxLayout, QPushButton, QTextEdit, QTextCursor)
+import MixedInitiativeUI as MixInitUI
 import sys
 
-class MixedInitiative(QtGui.QWidget):
+class MixedInitiative(QWidget,MixInitUI.Ui_mixedInitiative):
     def __init__(self,parent):
-        QtGui.QWidget.__init__(self,parent)
+        QWidget.__init__(self,parent)
+        self.setupUi(self)
         self.initUI()
         
     def initUI(self):
+        '''
         self.mixedInitiativeLayout = QVBoxLayout()
         self.AUIStatusLayout = QHBoxLayout()
         self.AUIMsgsLayout = QHBoxLayout()
@@ -108,13 +111,20 @@ class MixedInitiative(QtGui.QWidget):
 
         self.AUIMsgs.hide()
         self.mixedInitiativeLayout.addWidget(self.AUIMsgs)
-        
+        '''
+
+        self.AUItoggleButton.clicked[bool].connect(self.press)
+        self.AUItoggleButton.toggled.connect(self.AUIMsgs.setVisible)
+
+        self.AUIMsgs.hide()
+
         self.sizePolicy = QtGui.QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
         self.sizePolicy.setHorizontalStretch(0)
         self.sizePolicy.setVerticalStretch(0)
         #sizePolicy.setHeightForWidth(True)
         
         self.setSizePolicy(self.sizePolicy)
+
         
     def press(self,toggled):
         #source = self.sender()

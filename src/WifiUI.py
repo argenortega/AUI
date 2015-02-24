@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../../ui/Wifi.ui'
 #
-# Created: Sun Feb 22 20:58:49 2015
+# Created: Tue Feb 24 18:11:18 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,12 +26,14 @@ except AttributeError:
 class Ui_WifiStatus(object):
     def setupUi(self, WifiStatus):
         WifiStatus.setObjectName(_fromUtf8("WifiStatus"))
-        WifiStatus.resize(224, 112)
+        WifiStatus.resize(224, 102)
         self.horizontalLayout_2 = QtGui.QHBoxLayout(WifiStatus)
+        self.horizontalLayout_2.setMargin(0)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.wifiLevel = QtGui.QGroupBox(WifiStatus)
         self.wifiLevel.setObjectName(_fromUtf8("wifiLevel"))
         self.wifiLayout = QtGui.QVBoxLayout(self.wifiLevel)
+        self.wifiLayout.setMargin(6)
         self.wifiLayout.setObjectName(_fromUtf8("wifiLayout"))
         self.wifiBoxLevel = QtGui.QHBoxLayout()
         self.wifiBoxLevel.setSpacing(1)

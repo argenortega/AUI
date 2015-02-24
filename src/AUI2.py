@@ -102,17 +102,17 @@ class AUI(QWidget):
         self.MainViews.setObjectName("MainViews")
 
         
-        minSize = QtCore.QSize(100, 100)
-        maxSize = QtCore.QSize(300, 300)
+        #minSize = QtCore.QSize(100, 100)
+        #maxSize = QtCore.QSize(300, 300)
         stretch = 3        
-        self.Camera1 = Camera.Camera(self,1,minSize,maxSize,stretch)        
+        self.Camera1 = Camera.Camera(self,1,stretch)
         self.MainViews.addWidget(self.Camera1,1,2)
         
         
-        minSize = QtCore.QSize(100, 100)
-        maxSize = QtCore.QSize(200, 200)
+        #minSize = QtCore.QSize(100, 100)
+        #maxSize = QtCore.QSize(300, 300)
         stretch = 1 
-        self.Camera2 = Camera.Camera(self,2,minSize,maxSize,stretch)
+        self.Camera2 = Camera.Camera(self,2,stretch)
         self.MainViews.addWidget(self.Camera2, 0, 0)
         
         self.ViewsLayout.addLayout(self.MainViews)
@@ -132,9 +132,8 @@ class AUI(QWidget):
         self.battery = Battery.Battery(self, minSize, maxSize)
         self.wifi = Wifi.Wifi(self, minSize, maxSize)
         
-        minSize = QtCore.QSize(80, 80)
-        maxSize = QtCore.QSize(120, 120)
-        self.joystick = Joystick.Joystick(self, minSize, maxSize)
+
+        self.joystick = Joystick.Joystick(self)
         
         self.StatusLayout.addWidget(self.battery)
         self.StatusLayout.addWidget(self.wifi)
@@ -199,6 +198,11 @@ class AUI(QWidget):
         if self.Camera1.underMouse():
             print "Camera 1"
             self.parameters.currentWidget.setText("Camera 1")
+        elif self.Camera2.underMouse():
+            print "Camera 2"
+            self.parameters.currentWidget.setText("Camera 2")
+        else:
+            self.parameters.currentWidget.setText("")
     
     def mouseReleaseEvent(self,e):
         #print "Mouse entered"

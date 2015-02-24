@@ -6,15 +6,15 @@ Created on Mon Dec 29 17:21:56 2014
 """
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QSizePolicy, QVBoxLayout, QFrame,
+from PyQt4.QtGui import (QWidget, QSizePolicy, QVBoxLayout, QFrame,
                          QHBoxLayout, QPushButton, QLabel,
                          QGroupBox, QGridLayout)
 from PyQt4.QtCore import QSize
 import sys
 
-class Screenshots(QtGui.QWidget):
+class Screenshots(QWidget):
     def __init__(self,parent,minWidth,maxWidth,stretch):
-        QtGui.QWidget.__init__(self,parent)
+        QWidget.__init__(self,parent)
         self.minWidth = minWidth
         self.maxWidth = maxWidth
         self.stretch = stretch

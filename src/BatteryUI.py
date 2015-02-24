@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../../ui/Battery.ui'
 #
-# Created: Sun Feb 22 19:04:27 2015
+# Created: Tue Feb 24 18:11:04 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_batteryStatus(object):
     def setupUi(self, batteryStatus):
         batteryStatus.setObjectName(_fromUtf8("batteryStatus"))
-        batteryStatus.resize(227, 102)
+        batteryStatus.resize(224, 101)
         self.BatteryLayout = QtGui.QVBoxLayout(batteryStatus)
         self.BatteryLayout.setMargin(0)
         self.BatteryLayout.setObjectName(_fromUtf8("BatteryLayout"))
