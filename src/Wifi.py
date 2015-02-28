@@ -13,7 +13,7 @@ class Wifi(QWidget, WifiUI.Ui_WifiStatus):
     '''
     Simulation of a Wifi level widget
     '''
-    def __init__(self,parent, minSize, maxSize):
+    def __init__(self,parent):
         QWidget.__init__(self,parent)
         self.setupUi(self)
         #self.minSize = minSize

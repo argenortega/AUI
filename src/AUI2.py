@@ -10,6 +10,7 @@ from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QWidget, QFrame, 
                          QHBoxLayout, QVBoxLayout, 
                          QSizePolicy, QLabel)
+from PyQt4.uic import loadUi
                          
 import Camera
 import MixedInitiative
@@ -21,6 +22,7 @@ import Wifi
 import Battery
 import Joystick
 import Parameters
+import Views
 
 
 '''
@@ -72,28 +74,30 @@ class AUI(QWidget):
         
         self.MainLayout.addLayout(self.GUILayout)
         self.views = QtGui.QGroupBox("Available Views",self)
+
         self.views.setMinimumSize(QtCore.QSize(550, 70))
         self.views.setMaximumSize(QtCore.QSize(5000, 150))
         self.views.setObjectName("views")
         self.viewsGroupLayout = QtGui.QHBoxLayout(self.views)
         self.viewsGroupLayout.setObjectName("viewsGroupLayout")
-        
-        minSize = QtCore.QSize(50, 50)
-        maxSize = QtCore.QSize(70, 70)
-        stretch = 0
-        self.pointcloud = Pointcloud.Pointcloud(self,minSize,maxSize,stretch)
+
+
+        #minSize = QtCore.QSize(50, 50)
+        #maxSize = QtCore.QSize(70, 70)
+        #stretch = 0
+        self.pointcloud = Pointcloud.Pointcloud(self)
         self.viewsGroupLayout.addWidget(self.pointcloud)
 
-        minSize = QtCore.QSize(50, 50)
-        maxSize = QtCore.QSize(70, 70)
-        stretch = 0
-        self.map = Map.Map(self,minSize,maxSize,stretch)
+        #minSize = QtCore.QSize(50, 50)
+        #maxSize = QtCore.QSize(70, 70)
+        #stretch = 0
+        self.map = Map.Map(self)
         self.viewsGroupLayout.addWidget(self.map)
 
-        minSize = QtCore.QSize(50, 50)
-        maxSize = QtCore.QSize(70, 70)
-        stretch = 0         
-        self.extra = NewView.NewView(self,minSize,maxSize,stretch)        
+        #minSize = QtCore.QSize(50, 50)
+        #maxSize = QtCore.QSize(70, 70)
+        #stretch = 0
+        self.extra = NewView.NewView(self)
         self.viewsGroupLayout.addWidget(self.extra)
         self.ViewsLayout.addWidget(self.views)
         
@@ -104,34 +108,33 @@ class AUI(QWidget):
         
         #minSize = QtCore.QSize(100, 100)
         #maxSize = QtCore.QSize(300, 300)
-        stretch = 3        
-        self.Camera1 = Camera.Camera(self,1,stretch)
+        #stretch = 3
+        self.Camera1 = Camera.Camera(self,1)
         self.MainViews.addWidget(self.Camera1,1,2)
         
         
         #minSize = QtCore.QSize(100, 100)
         #maxSize = QtCore.QSize(300, 300)
-        stretch = 1 
-        self.Camera2 = Camera.Camera(self,2,stretch)
+        #stretch = 1
+        self.Camera2 = Camera.Camera(self,2)
         self.MainViews.addWidget(self.Camera2, 0, 0)
         
         self.ViewsLayout.addLayout(self.MainViews)
         self.GUILayout.addLayout(self.ViewsLayout)
         
-        minSize = QtCore.QSize(150, 150)
-        maxSize = QtCore.QSize(200, 200)
-        stretch = 1
-        self.CurrentScreenshot = Screenshot.Screenshots(self,250,300,stretch)
+        #minSize = QtCore.QSize(150, 150)
+        #maxSize = QtCore.QSize(200, 200)
+        #stretch = 1
+        self.CurrentScreenshot = Screenshot.Screenshots(self)
         
         
         self.GUILayout.addWidget(self.CurrentScreenshot)
         
-        minSize = QtCore.QSize(80, 80)
-        maxSize = QtCore.QSize(120, 120)
+        #minSize = QtCore.QSize(80, 80)
+        #maxSize = QtCore.QSize(120, 120)
         
-        self.battery = Battery.Battery(self, minSize, maxSize)
-        self.wifi = Wifi.Wifi(self, minSize, maxSize)
-        
+        self.battery = Battery.Battery(self)
+        self.wifi = Wifi.Wifi(self)
 
         self.joystick = Joystick.Joystick(self)
         
@@ -196,10 +199,10 @@ class AUI(QWidget):
         #if self.mixedInitiative.AUItoggleButton.isChecked():
         #self.Camera1.setFocus(True)
         if self.Camera1.underMouse():
-            print "Camera 1"
+            #print "Camera 1"
             self.parameters.currentWidget.setText("Camera 1")
         elif self.Camera2.underMouse():
-            print "Camera 2"
+            #print "Camera 2"
             self.parameters.currentWidget.setText("Camera 2")
         else:
             self.parameters.currentWidget.setText("")

@@ -12,7 +12,7 @@ http://thecodeinn.blogspot.de/2013/08/pyqt-stopwatch-and-timer.html
 
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame,
+from PyQt4.QtGui import (QDockWidget, QSizePolicy, QLabel, QVBoxLayout, QFrame,
                          QTabWidget)
 import sys
 
@@ -24,7 +24,7 @@ m = 0
 h = 0
 
 
-class AUIParameters(QtGui.QDockWidget):
+class AUIParameters(QDockWidget):
     '''
     Parameters related to the GUI's adaptivity simulation. 
     '''

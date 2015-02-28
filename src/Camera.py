@@ -13,13 +13,13 @@ class Camera(QWidget, CameraUI.Ui_Camera):
     '''
     Simulation of a camera widget
     '''
-    def __init__(self,parent,num,stretch):
+    def __init__(self,parent,num):
         QWidget.__init__(self,parent)
         self.setupUi(self)
         self.num = num
         #self.minSize = minSize
         #self.maxSize = maxSize
-        self.stretch = stretch
+        #self.stretch = stretch
         self.initUI()
         
     def initUI(self):
@@ -49,19 +49,23 @@ class Camera(QWidget, CameraUI.Ui_Camera):
         #self.setMouseTracking(True)
 
         
-        sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
-        sizePolicy.setHorizontalStretch(self.stretch)
-        sizePolicy.setVerticalStretch(self.stretch)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        #sizePolicy.setHorizontalStretch(self.stretch)
+        #sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(True)
-        self.setSizePolicy(sizePolicy)        
-        
+        #sizePolicy.hasHeightForWidth()
+        self.setSizePolicy(sizePolicy)
+        #self.cam.setSizePolicy(sizePolicy)
+
+        def heightForWidth(self, width):
+           return width * 1
         
 def main():
     app = QtGui.QApplication(sys.argv)
     minSize = QtCore.QSize(100, 100)
     maxSize = QtCore.QSize(300, 300)
     stretch = 3
-    main = Camera(None,1,minSize,maxSize,stretch)
+    main = Camera(None,1)
     
     main.show()
  

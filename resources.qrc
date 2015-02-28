@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/ui">
+    <qresource prefix="/AUI">
         <file>maps/08.jpg</file>
         <file>maps/06.jpg</file>
         <file>maps/05.jpg</file>

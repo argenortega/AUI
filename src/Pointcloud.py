@@ -6,21 +6,24 @@ Created on Mon Dec 29 15:28:42 2014
 """
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame)
+from PyQt4.QtGui import (QWidget, QSizePolicy, QLabel, QVBoxLayout, QFrame)
 import sys
+import PointcloudUI
 
-class Pointcloud(QtGui.QWidget):
+class Pointcloud(QWidget, PointcloudUI.Ui_PointcloudWidget):
     '''
     Simulation of a 3d pointcloud widget
     '''
-    def __init__(self,parent,minSize,maxSize,stretch):
-        QtGui.QWidget.__init__(self,parent)
-        self.minSize = minSize
-        self.maxSize = maxSize
-        self.stretch = stretch
+    def __init__(self,parent):
+        QWidget.__init__(self,parent)
+        self.setupUi(self)
+        #self.minSize = minSize
+        #self.maxSize = maxSize
+        #self.stretch = stretch
         self.initUI()
         
     def initUI(self):
+        '''
         self.setObjectName("Pointcloud")
         self.layout = QVBoxLayout()
         self.layout.setMargin(0)
@@ -37,21 +40,22 @@ class Pointcloud(QtGui.QWidget):
         self.pointcloud.setFont(font)
         #self.pointcloud.setObjectName("pointcloud1Label")
         self.layout.addWidget(self.pointcloud)
-        
+        '''
         '''
         Size of the widget
         '''
         #self.setMinimumSize(300,300)
         #self.resize(300,300)        
-        self.setMinimumSize(self.minSize)
-        self.setMaximumSize(self.maxSize)        
-        self.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
-        self.setMouseTracking(True)
+
+        #self.setMinimumSize(self.minSize)
+        #self.setMaximumSize(self.maxSize)
+        #self.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
+        #self.setMouseTracking(True)
 
         
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(self.stretch)
-        sizePolicy.setVerticalStretch(self.stretch)
+        #sizePolicy.setHorizontalStretch(self.stretch)
+        #sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)        
         

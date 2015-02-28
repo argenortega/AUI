@@ -14,12 +14,12 @@ class Map(QWidget, MapUI.Ui_MapWidget):
     '''
     Simulation of an additional view widget
     '''
-    def __init__(self,parent,minSize,maxSize,stretch):
+    def __init__(self,parent):
         QtGui.QWidget.__init__(self,parent)
         self.setupUi(self)
-        self.minSize = minSize
-        self.maxSize = maxSize
-        self.stretch = stretch
+        #self.minSize = minSize
+        #self.maxSize = maxSize
+        #self.stretch = stretch
         self.initUI()
         
     def initUI(self):
@@ -46,7 +46,7 @@ class Map(QWidget, MapUI.Ui_MapWidget):
         '''
         #self.setMinimumSize(300,300)
         #self.resize(300,300)        
-        self.map.setPixmap(QtGui.QPixmap('../../ui/maps/05.jpg'))
+        #self.map.setPixmap(QtGui.QPixmap('../../ui/maps/05.jpg'))
         #self.setMinimumSize(self.minSize)
         #self.setMaximumSize(self.maxSize)
         #self.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
@@ -65,7 +65,7 @@ def main():
     minSize = QtCore.QSize(100, 100)
     maxSize = QtCore.QSize(300, 300)
     stretch = 3
-    main = Map(None,minSize,maxSize,stretch)
+    main = Map(None)
     
     
     main.show()

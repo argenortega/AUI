@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '../../ui/Map.ui'
+# Form implementation generated from reading ui file '../ui/Map.ui'
 #
-# Created: Tue Feb 24 21:52:04 2015
+# Created: Tue Feb 24 22:52:01 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,14 +26,14 @@ except AttributeError:
 class Ui_MapWidget(object):
     def setupUi(self, MapWidget):
         MapWidget.setObjectName(_fromUtf8("MapWidget"))
-        MapWidget.resize(300, 300)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
+        MapWidget.resize(70, 70)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(MapWidget.sizePolicy().hasHeightForWidth())
         MapWidget.setSizePolicy(sizePolicy)
         MapWidget.setMinimumSize(QtCore.QSize(0, 0))
-        MapWidget.setMaximumSize(QtCore.QSize(300, 300))
+        MapWidget.setMaximumSize(QtCore.QSize(70, 70))
         MapWidget.setSizeIncrement(QtCore.QSize(1, 1))
         MapWidget.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         MapWidget.setMouseTracking(True)
@@ -46,6 +46,7 @@ class Ui_MapWidget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.map.sizePolicy().hasHeightForWidth())
         self.map.setSizePolicy(sizePolicy)
+        self.map.setMaximumSize(QtCore.QSize(70, 70))
         font = QtGui.QFont()
         font.setPointSize(28)
         self.map.setFont(font)
@@ -54,7 +55,7 @@ class Ui_MapWidget(object):
         self.map.setFrameShape(QtGui.QFrame.StyledPanel)
         self.map.setFrameShadow(QtGui.QFrame.Sunken)
         self.map.setText(_fromUtf8(""))
-        self.map.setPixmap(QtGui.QPixmap(_fromUtf8(":/ui/maps/05.jpg")))
+        self.map.setPixmap(QtGui.QPixmap(_fromUtf8(":/AUI/maps/05.jpg")))
         self.map.setScaledContents(True)
         self.map.setAlignment(QtCore.Qt.AlignCenter)
         self.map.setWordWrap(True)

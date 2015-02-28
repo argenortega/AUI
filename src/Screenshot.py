@@ -11,17 +11,20 @@ from PyQt4.QtGui import (QWidget, QSizePolicy, QVBoxLayout, QFrame,
                          QGroupBox, QGridLayout)
 from PyQt4.QtCore import QSize
 import sys
+import ScreenshotUI
 
-class Screenshots(QWidget):
-    def __init__(self,parent,minWidth,maxWidth,stretch):
+class Screenshots(QWidget, ScreenshotUI.Ui_ScreenshotWidget):
+    def __init__(self,parent):
         QWidget.__init__(self,parent)
-        self.minWidth = minWidth
-        self.maxWidth = maxWidth
-        self.stretch = stretch
+        self.setupUi(self)
+        #self.minWidth = minWidth
+        #self.maxWidth = maxWidth
+        #self.stretch = stretch
         self.num = 3
         self.initUI()
         
     def initUI(self):
+        '''
         self.setObjectName("CurrentScreenshot")
         self.layout = QVBoxLayout()
         self.setLayout(self.layout)
@@ -53,7 +56,7 @@ class Screenshots(QWidget):
 
         self.newS = QPushButton("New", self)
         self.buttonLayout.addWidget(self.newS)
-        self.newS.clicked.connect(self.add_new)
+
         
         
         self.layout.addLayout(self.buttonLayout)
@@ -70,12 +73,14 @@ class Screenshots(QWidget):
         self.showB.setCheckable(True)
         self.showLayout.addWidget(self.showB)
         self.extraScreenshotGroupLayout.addLayout(self.showLayout)
-        
+        '''
+        self.newS.clicked.connect(self.add_new)
+
         self.scrollArea = QtGui.QScrollArea(self)
         self.scrollArea.setWidgetResizable(True)
         self.extraScreenshots = QFrame(self.scrollArea)
         self.extraScreenshots = QFrame(self.extraScreenGroup)
-        self.extraScreenshots.setObjectName("extraScreenshots")
+        #self.extraScreenshots.setObjectName("extraScreenshots")
         self.scrollArea.setWidget(self.extraScreenshots)
         self.scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.scrollArea.setViewportMargins(1,1,1,1)
@@ -99,27 +104,27 @@ class Screenshots(QWidget):
         self.img3 = self.new_screenshot(3)
         self.extraScreenshotLayout.addWidget(self.img3)
         
-        self.scrollArea.setMinimumSize(QSize(self.minWidth*9/10,self.minWidth*.4))
-        self.scrollArea.setMaximumSize(QSize(16777215,self.maxWidth*.4))
+        self.scrollArea.setMinimumSize(QSize(225,100))
+        self.scrollArea.setMaximumSize(QSize(16777215,120))
         
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
-        sizePolicy.setHorizontalStretch(self.stretch)
-        sizePolicy.setVerticalStretch(self.stretch)
+        #sizePolicy.setHorizontalStretch(self.stretch)
+        #sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(False)
         self.scrollArea.setSizePolicy(sizePolicy)
         
         self.extraScreenshotGroupLayout.addWidget(self.scrollArea)
         #self.extraScreenshotGroupLayout.addWidget(self.extraScreenshots)
         #self.extraScreenshotGroupLayout.addWidget(self.scrollBar)
-        self.layout.addWidget(self.extraScreenGroup)
+        #self.layout.addWidget(self.extraScreenGroup)
         
         #self.layout.setAlignment(QtCore.Qt.AlignHCenter)
         
         #self.setMinimumSize(QSize())
         #self.setMaximumSize(QSize(self.maxSize.width()*1.3,self.maxSize.height()*2))
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(self.stretch)
-        sizePolicy.setVerticalStretch(self.stretch)
+        #sizePolicy.setHorizontalStretch(self.stretch)
+        #sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(False)
         self.setSizePolicy(sizePolicy)
         
@@ -129,9 +134,10 @@ class Screenshots(QWidget):
         img.setObjectName("img%d"%num)
         img.setAlignment(QtCore.Qt.AlignCenter)
         img.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
-        img.setMinimumSize(QSize(self.minWidth/3,self.minWidth/3))
-        img.setMaximumSize(QSize(self.maxWidth/3,self.maxWidth/3))        
+        img.setMinimumSize(QSize(85,85))
+        img.setMaximumSize(QSize(100,100))
         img.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
+        img.setMouseTracking(True)
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -153,7 +159,7 @@ class Screenshots(QWidget):
             self.showB.setText("Hide")
             self.scrollArea.setVisible(True)
     
-    def select_screenshot():
+    def select_screenshot(self):
         pass
         
         
@@ -163,7 +169,7 @@ def main():
     minSize = QtCore.QSize(350, 350)
     maxSize = QtCore.QSize(400, 400)
     stretch = 1
-    main = Screenshots(None,350,400,stretch)
+    main = Screenshots(None)
     
     main.show()
  

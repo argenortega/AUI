@@ -6,21 +6,24 @@ Created on Mon Dec 29 15:28:54 2014
 """
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame)
+from PyQt4.QtGui import (QWidget, QSizePolicy, QLabel, QVBoxLayout, QFrame)
 import sys
+import ExtraViewUI
 
-class NewView(QtGui.QWidget):
+class NewView(QWidget, ExtraViewUI.Ui_NewView):
     '''
     Simulation of an additional view widget
     '''
-    def __init__(self,parent,minSize,maxSize,stretch):
+    def __init__(self,parent):
         QtGui.QWidget.__init__(self,parent)
-        self.minSize = minSize
-        self.maxSize = maxSize
-        self.stretch = stretch
+        self.setupUi(self)
+        #self.minSize = minSize
+        #self.maxSize = maxSize
+        #self.stretch = stretch
         self.initUI()
         
     def initUI(self):
+        '''
         self.setObjectName("NewView")
         self.layout = QVBoxLayout()
         self.layout.setMargin(0)
@@ -38,21 +41,22 @@ class NewView(QtGui.QWidget):
         self.view.setFont(font)
         #self.view.setObjectName("view1Label")
         self.layout.addWidget(self.view)
-        
+        '''
+
         '''
         Size of the widget
         '''
         #self.setMinimumSize(300,300)
         #self.resize(300,300)        
-        self.setMinimumSize(self.minSize)
-        self.setMaximumSize(self.maxSize)        
-        self.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
-        self.setMouseTracking(True)
+        #self.setMinimumSize(self.minSize)
+        #self.setMaximumSize(self.maxSize)
+        #self.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
+        #self.setMouseTracking(True)
 
         
         sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
-        sizePolicy.setHorizontalStretch(self.stretch)
-        sizePolicy.setVerticalStretch(self.stretch)
+        #sizePolicy.setHorizontalStretch(self.stretch)
+        #sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)        
         

@@ -23,7 +23,7 @@ class Probabilities(QWidget, ProbabilitiesUi.Ui_probabilities):
 
         self.model = QtGui.QStandardItemModel(self)
         
-        self.probabilityPath ='../../database_data/probabilities/'
+        self.probabilityPath ='../database_data/probabilities/'
         
         self.probabilityFile = 'probabilities-probabilities.csv'
         self.loadCsv(self.probabilityPath + self.probabilityFile,self.model)
@@ -75,7 +75,7 @@ class Probabilities(QWidget, ProbabilitiesUi.Ui_probabilities):
     
     def changePlot(self,text):
         self.goalList.setItemData(0,QtCore.QVariant(0),QtCore.Qt.UserRole-1)
-        self.plotPath = '../../database_data/plots/prob/'
+        self.plotPath = '../database_data/plots/prob/'
         if text == "<Select>":
             plotname=""
         elif text == "Detect":
@@ -104,7 +104,7 @@ class Probabilities(QWidget, ProbabilitiesUi.Ui_probabilities):
         
     def updatePlot(self):
         self.saving()
-        self.plotPath = '../../database_data/plots/prob/'
+        self.plotPath = '../database_data/plots/prob/'
         fig = plt.figure()
 
         if self.goalList.currentText() == "Detect":

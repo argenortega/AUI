@@ -28,6 +28,12 @@
     <height>300</height>
    </size>
   </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>1</width>
+    <height>1</height>
+   </size>
+  </property>
   <property name="cursor">
    <cursorShape>CrossCursor</cursorShape>
   </property>
@@ -37,7 +43,7 @@
   <property name="windowTitle">
    <string>Camera</string>
   </property>
-  <layout class="QVBoxLayout" name="layout">
+  <layout class="QVBoxLayout" name="layout" stretch="0">
    <property name="margin">
     <number>0</number>
    </property>

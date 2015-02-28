@@ -14,7 +14,7 @@ class Battery(QWidget, BatteryUI.Ui_batteryStatus):
     '''
     Simulation of a Battery level widget
     '''
-    def __init__(self,parent, minSize, maxSize):
+    def __init__(self,parent):
         QWidget.__init__(self,parent)
         self.setupUi(self)
         #self.minSize = minSize
