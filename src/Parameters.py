@@ -18,21 +18,24 @@ import sys
 
 import Utilities
 import Probabilities
+import ParametersUI
 
 s = 0
 m = 0
 h = 0
 
 
-class AUIParameters(QDockWidget):
+class AUIParameters(QDockWidget, ParametersUI.Ui_AUIParameters):
     '''
     Parameters related to the GUI's adaptivity simulation. 
     '''
     def __init__(self,parent):
         QtGui.QWidget.__init__(self,parent)
+        self.setupUi(self)
         self.initUI()
         
-    def initUI(self):        
+    def initUI(self):
+        '''
         self.setObjectName("AUIParameters")
         self.setWindowTitle("AUI Parameters")
         
@@ -42,11 +45,7 @@ class AUIParameters(QDockWidget):
         self.tab1 = QtGui.QWidget()
         self.tab1.setObjectName("Tab 1")
         
-        self.tab2 = Utilities.Utilities(self)
-        #self.tab2.setObjectName("Tab 2")
-        
-        self.tab3 = Probabilities.Probabilities(self)
-        #self.tab3.setObjectName("Tab 3")
+
         
         self.tab1Layout = QVBoxLayout(self.tab1)
         self.tab1Layout.setObjectName("tab1Layout")
@@ -72,13 +71,15 @@ class AUIParameters(QDockWidget):
         self.episodeTimer.setStyleSheet('color: black')
         self.episodesLayout.addWidget(self.episodeTimer,2,0,1,3)
         #self.episodesLayout.setAlignment(QtCore.Qt.AlignVCenter)
-        
+        '''
+
         self.timer = QtCore.QTimer(self)
         self.timer.timeout.connect(self.Time)
         time = "%d:%02d:%02d"%(h,m,s) 
         self.episodeTimer.setDigitCount(len(time))
         self.episodeTimer.display(time)
-        
+
+        '''
         self.startEpisodeButton = QtGui.QPushButton("Start", self.episodes)
         self.startEpisodeButton.setMinimumSize(QtCore.QSize(60, 32))
         self.startEpisodeButton.setObjectName("startEpisodeButton")
@@ -95,11 +96,12 @@ class AUIParameters(QDockWidget):
         self.resetEpisodeButton.setMinimumSize(QtCore.QSize(60, 32))
         self.resetEpisodeButton.setObjectName("resetEpisodeButton")
         self.episodesLayout.addWidget(self.resetEpisodeButton,1,2)
-        
+        '''
         self.startEpisodeButton.clicked.connect(self.Start)
         self.stopEpisodeButton.clicked.connect(lambda: self.timer.stop())
         self.resetEpisodeButton.clicked.connect(self.Reset)
-        
+
+        '''
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -260,18 +262,25 @@ class AUIParameters(QDockWidget):
         
         self.tab1Layout.addWidget(self.robotStatus)
         #self.setWidget(self.tab1)
-        
-        self.contents.addTab(self.tab1, "Control")
+        '''
+        self.tab2 = Utilities.Utilities(self)
+        #self.tab2.setObjectName("Tab2")
+
+        self.tab3 = Probabilities.Probabilities(self)
+        #self.tab3.setObjectName("Tab3")
+
+        #self.contents.addTab(self.tab1, "Control")
         self.contents.addTab(self.tab2, "Utilities")
         self.contents.addTab(self.tab3, "Probabilities")
         self.setWidget(self.contents)
-        
+
+        '''
         QtCore.QObject.connect(self.batterySlider, QtCore.SIGNAL("valueChanged(int)"), self.AUIbattery.setValue)
         QtCore.QObject.connect(self.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.AUIwifi.setValue)
         QtCore.QObject.connect(self.stressSlider, QtCore.SIGNAL("valueChanged(int)"), self.stressLevel.setValue)
         QtCore.QObject.connect(self.cognitiveLoadSlider, QtCore.SIGNAL("valueChanged(int)"), self.cognitiveLoadLevel.setValue)
         QtCore.QMetaObject.connectSlotsByName(self)        
-        
+        '''
 
     def Reset(self):
         global s,m,h
