@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/Map.ui'
 #
-# Created: Tue Feb 24 22:52:01 2015
+# Created: Wed Mar 18 13:57:55 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -55,7 +55,7 @@ class Ui_MapWidget(object):
         self.map.setFrameShape(QtGui.QFrame.StyledPanel)
         self.map.setFrameShadow(QtGui.QFrame.Sunken)
         self.map.setText(_fromUtf8(""))
-        self.map.setPixmap(QtGui.QPixmap(_fromUtf8(":/AUI/maps/05.jpg")))
+        self.map.setPixmap(QtGui.QPixmap(_fromUtf8(":/maps/maps/02.jpg")))
         self.map.setScaledContents(True)
         self.map.setAlignment(QtCore.Qt.AlignCenter)
         self.map.setWordWrap(True)
