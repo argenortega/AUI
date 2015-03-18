@@ -1,10 +1,26 @@
 <RCC>
-    <qresource prefix="/AUI">
-        <file>maps/08.jpg</file>
-        <file>maps/06.jpg</file>
-        <file>maps/05.jpg</file>
-        <file>maps/04.jpg</file>
-        <file>maps/03.jpg</file>
+    <qresource prefix="/maps">
         <file>maps/02.jpg</file>
+        <file>maps/03.jpg</file>
+        <file>maps/04.jpg</file>
+        <file>maps/05.jpg</file>
+        <file>maps/06.jpg</file>
+        <file>maps/08.jpg</file>
+    </qresource>
+    <qresource prefix="/probability">
+        <file>database_data/plots/prob/detect.png</file>
+        <file>database_data/plots/prob/explore.png</file>
+        <file>database_data/plots/prob/inspect.png</file>
+        <file>database_data/plots/prob/mapping.png</file>
+        <file>database_data/plots/prob/navigate.png</file>
+        <file>database_data/plots/prob/review.png</file>
+    </qresource>
+    <qresource prefix="/utility">
+        <file>database_data/plots/utilities/detect.png</file>
+        <file>database_data/plots/utilities/explore.png</file>
+        <file>database_data/plots/utilities/inspect.png</file>
+        <file>database_data/plots/utilities/mapping.png</file>
+        <file>database_data/plots/utilities/navigate.png</file>
+        <file>database_data/plots/utilities/review.png</file>
     </qresource>
 </RCC>
