@@ -26,7 +26,7 @@ class Utilities(QWidget, UtilitiesUi.Ui_utilities):
         self.reviewmodel = QtGui.QStandardItemModel(self)
         self.exploremodel = QtGui.QStandardItemModel(self)
         
-        self.utilityPath ='../database_data/utilities/'
+        self.utilityPath ='resources/database_data/utilities/'
         
         self.utilityFile = 'detect-detect.csv'
         self.loadCsv(self.utilityPath + self.utilityFile,self.detectmodel)
@@ -102,7 +102,7 @@ class Utilities(QWidget, UtilitiesUi.Ui_utilities):
     def changePlot(self,text):
         self.goalList.setItemData(0,QtCore.QVariant(0),QtCore.Qt.UserRole-1)
         #self.goalList.setItemData(0,QtCore.QVariant(33),QtCore.Qt.UserRole-1)
-        self.plotPath = '../database_data/plots/utilities/'
+        self.plotPath = 'resources/plots/utilities/'
         if text == "<Select>":
             plotname=""
         elif text == "Detect":
@@ -147,7 +147,7 @@ class Utilities(QWidget, UtilitiesUi.Ui_utilities):
         
         
     def updatePlot(self):
-        self.plotPath = '../database_data/plots/utilities/'
+        self.plotPath = 'resources/plots/utilities/'
         fig = plt.figure()
 
         if self.goalList.currentText() == "Detect":
