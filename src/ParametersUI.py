@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '../ui/AUIParam.ui'
+# Form implementation generated from reading ui file '../ui/Parameters.ui'
 #
-# Created: Tue Mar 24 23:21:29 2015
-#      by: PyQt4 UI code generator 4.11.1
+# Created: Sun Apr  5 22:41:15 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_AUIParameters(object):
     def setupUi(self, AUIParameters):
         AUIParameters.setObjectName(_fromUtf8("AUIParameters"))
-        AUIParameters.resize(300, 599)
+        AUIParameters.resize(250, 599)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -54,24 +54,25 @@ class Ui_AUIParameters(object):
         self.episodes.setObjectName(_fromUtf8("episodes"))
         self.episodesLayout = QtGui.QGridLayout(self.episodes)
         self.episodesLayout.setMargin(1)
-        self.episodesLayout.setHorizontalSpacing(0)
-        self.episodesLayout.setVerticalSpacing(6)
         self.episodesLayout.setObjectName(_fromUtf8("episodesLayout"))
         self.startEpisodeButton = QtGui.QPushButton(self.episodes)
         self.startEpisodeButton.setMinimumSize(QtCore.QSize(44, 44))
         self.startEpisodeButton.setCheckable(False)
         self.startEpisodeButton.setFlat(False)
         self.startEpisodeButton.setObjectName(_fromUtf8("startEpisodeButton"))
-        self.episodesLayout.addWidget(self.startEpisodeButton, 1, 0, 1, 1)
+        self.episodesLayout.addWidget(self.startEpisodeButton, 1, 0, 1, 1, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.resetEpisodeButton = QtGui.QPushButton(self.episodes)
         self.resetEpisodeButton.setMinimumSize(QtCore.QSize(44, 44))
+        self.resetEpisodeButton.setAutoFillBackground(True)
+        self.resetEpisodeButton.setAutoDefault(True)
+        self.resetEpisodeButton.setFlat(False)
         self.resetEpisodeButton.setObjectName(_fromUtf8("resetEpisodeButton"))
-        self.episodesLayout.addWidget(self.resetEpisodeButton, 1, 2, 1, 1)
+        self.episodesLayout.addWidget(self.resetEpisodeButton, 1, 2, 1, 1, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.stopEpisodeButton = QtGui.QPushButton(self.episodes)
         self.stopEpisodeButton.setMinimumSize(QtCore.QSize(44, 44))
         self.stopEpisodeButton.setCheckable(False)
         self.stopEpisodeButton.setObjectName(_fromUtf8("stopEpisodeButton"))
-        self.episodesLayout.addWidget(self.stopEpisodeButton, 1, 1, 1, 1)
+        self.episodesLayout.addWidget(self.stopEpisodeButton, 1, 1, 1, 1, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.episodeTimer = QtGui.QLCDNumber(self.episodes)
         self.episodeTimer.setMinimumSize(QtCore.QSize(60, 30))
         self.episodeTimer.setMaximumSize(QtCore.QSize(16777215, 44))
@@ -137,6 +138,8 @@ class Ui_AUIParameters(object):
         self.taskLayout.setObjectName(_fromUtf8("taskLayout"))
         self.currentContext = QtGui.QComboBox(self.taskContext)
         self.currentContext.setMinimumSize(QtCore.QSize(0, 44))
+        self.currentContext.setSizeAdjustPolicy(QtGui.QComboBox.AdjustToContents)
+        self.currentContext.setFrame(True)
         self.currentContext.setObjectName(_fromUtf8("currentContext"))
         self.currentContext.addItem(_fromUtf8(""))
         self.currentContext.addItem(_fromUtf8(""))

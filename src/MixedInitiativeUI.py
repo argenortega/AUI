@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file '../ui/MixedInitiative.ui'
 #
-# Created: Tue Mar 24 23:23:25 2015
-#      by: PyQt4 UI code generator 4.11.1
+# Created: Sun Apr  5 22:41:15 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 

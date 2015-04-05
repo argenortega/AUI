@@ -14,6 +14,9 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="BatteryLayout">
+   <property name="spacing">
+    <number>1</number>
+   </property>
    <property name="margin">
     <number>0</number>
    </property>
@@ -96,12 +99,12 @@
    <slot>reset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>68</y>
+     <x>112</x>
+     <y>128</y>
     </hint>
     <hint type="destinationlabel">
-     <x>100</x>
-     <y>40</y>
+     <x>116</x>
+     <y>62</y>
     </hint>
    </hints>
   </connection>
@@ -112,8 +115,8 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>133</x>
-     <y>34</y>
+     <x>149</x>
+     <y>62</y>
     </hint>
     <hint type="destinationlabel">
      <x>174</x>

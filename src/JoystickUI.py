@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '../../ui/Joystick.ui'
+# Form implementation generated from reading ui file '../ui/Joystick.ui'
 #
-# Created: Tue Feb 24 19:18:53 2015
-#      by: PyQt4 UI code generator 4.11.1
+# Created: Sun Apr  5 22:41:15 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_joystickWidget(object):
     def setupUi(self, joystickWidget):
         joystickWidget.setObjectName(_fromUtf8("joystickWidget"))
-        joystickWidget.resize(100, 117)
+        joystickWidget.resize(100, 100)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -47,7 +47,8 @@ class Ui_joystickWidget(object):
         self.joystickControl = QtGui.QGroupBox(joystickWidget)
         self.joystickControl.setObjectName(_fromUtf8("joystickControl"))
         self.gridLayout = QtGui.QGridLayout(self.joystickControl)
-        self.gridLayout.setMargin(6)
+        self.gridLayout.setSpacing(0)
+        self.gridLayout.setContentsMargins(2, 2, 5, 2)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.down = QtGui.QLabel(self.joystickControl)
         font = QtGui.QFont()

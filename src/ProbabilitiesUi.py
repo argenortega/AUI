@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '../../ui/Probabilities.ui'
+# Form implementation generated from reading ui file '../ui/Probabilities.ui'
 #
-# Created: Wed Jan  7 11:47:20 2015
-#      by: PyQt4 UI code generator 4.11.1
+# Created: Sun Apr  5 22:41:15 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_probabilities(object):
     def setupUi(self, probabilities):
         probabilities.setObjectName(_fromUtf8("probabilities"))
-        probabilities.resize(418, 484)
+        probabilities.resize(278, 484)
         self.utilitiesLayout = QtGui.QVBoxLayout(probabilities)
         self.utilitiesLayout.setObjectName(_fromUtf8("utilitiesLayout"))
         self.probPlot = QtGui.QLabel(probabilities)

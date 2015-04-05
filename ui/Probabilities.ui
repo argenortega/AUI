@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>418</width>
+    <width>278</width>
     <height>484</height>
    </rect>
   </property>
@@ -142,8 +142,8 @@
    <slot>update()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>342</x>
-     <y>462</y>
+     <x>265</x>
+     <y>471</y>
     </hint>
     <hint type="destinationlabel">
      <x>144</x>

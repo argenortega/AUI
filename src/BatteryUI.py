@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file '../ui/Battery.ui'
 #
-# Created: Tue Mar 24 23:28:29 2015
-#      by: PyQt4 UI code generator 4.11.1
+# Created: Sun Apr  5 22:41:14 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -28,6 +28,7 @@ class Ui_batteryStatus(object):
         batteryStatus.setObjectName(_fromUtf8("batteryStatus"))
         batteryStatus.resize(224, 113)
         self.BatteryLayout = QtGui.QVBoxLayout(batteryStatus)
+        self.BatteryLayout.setSpacing(1)
         self.BatteryLayout.setMargin(0)
         self.BatteryLayout.setObjectName(_fromUtf8("BatteryLayout"))
         self.batteryLevel = QtGui.QGroupBox(batteryStatus)

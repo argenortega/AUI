@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file '../ui/Map.ui'
 #
-# Created: Wed Mar 25 00:25:58 2015
-#      by: PyQt4 UI code generator 4.11.1
+# Created: Sun Apr  5 22:41:15 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -57,7 +57,7 @@ class Ui_MapWidget(object):
         self.map.setFrameShape(QtGui.QFrame.StyledPanel)
         self.map.setFrameShadow(QtGui.QFrame.Sunken)
         self.map.setText(_fromUtf8(""))
-        self.map.setPixmap(QtGui.QPixmap(_fromUtf8(":/02.png")))
+        self.map.setPixmap(QtGui.QPixmap(_fromUtf8(":/maps/resources/maps/03.jpg")))
         self.map.setScaledContents(True)
         self.map.setAlignment(QtCore.Qt.AlignCenter)
         self.map.setWordWrap(True)
@@ -71,3 +71,4 @@ class Ui_MapWidget(object):
     def retranslateUi(self, MapWidget):
         MapWidget.setWindowTitle(_translate("MapWidget", "Map", None))
 
+import resources_rc

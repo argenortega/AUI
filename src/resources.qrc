@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file alias="02.png">maps/02.png</file>
-    </qresource>
-</RCC>

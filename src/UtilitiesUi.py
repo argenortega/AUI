@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '../../ui/utilities.ui'
+# Form implementation generated from reading ui file '../ui/Utilities.ui'
 #
-# Created: Mon Jan  5 14:34:54 2015
-#      by: PyQt4 UI code generator 4.11.1
+# Created: Sun Apr  5 22:41:15 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_utilities(object):
     def setupUi(self, utilities):
         utilities.setObjectName(_fromUtf8("utilities"))
-        utilities.resize(418, 484)
+        utilities.resize(287, 484)
         self.utilitiesLayout = QtGui.QVBoxLayout(utilities)
         self.utilitiesLayout.setObjectName(_fromUtf8("utilitiesLayout"))
         self.utilityPlot = QtGui.QLabel(utilities)

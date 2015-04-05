@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file '../ui/Views.ui'
 #
-# Created: Sat Feb 28 00:34:17 2015
-#      by: PyQt4 UI code generator 4.11.1
+# Created: Sun Apr  5 22:41:15 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_views(object):
     def setupUi(self, views):
         views.setObjectName(_fromUtf8("views"))
-        views.resize(550, 150)
+        views.resize(550, 101)
         views.setMinimumSize(QtCore.QSize(550, 70))
         views.setMaximumSize(QtCore.QSize(5000, 150))
         self.viewsGroupLayout = QtGui.QHBoxLayout(views)

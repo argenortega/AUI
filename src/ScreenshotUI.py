@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file '../ui/Screenshot.ui'
 #
-# Created: Wed Mar 25 00:51:08 2015
-#      by: PyQt4 UI code generator 4.11.1
+# Created: Sun Apr  5 22:41:15 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_ScreenshotWidget(object):
     def setupUi(self, ScreenshotWidget):
         ScreenshotWidget.setObjectName(_fromUtf8("ScreenshotWidget"))
-        ScreenshotWidget.resize(252, 486)
+        ScreenshotWidget.resize(306, 486)
         ScreenshotWidget.setMinimumSize(QtCore.QSize(0, 30))
         ScreenshotWidget.setMouseTracking(True)
         self.layout = QtGui.QVBoxLayout(ScreenshotWidget)
@@ -74,6 +74,19 @@ class Ui_ScreenshotWidget(object):
         self.extraScreenshotGroupLayout = QtGui.QVBoxLayout(self.extraScreenGroup)
         self.extraScreenshotGroupLayout.setMargin(0)
         self.extraScreenshotGroupLayout.setObjectName(_fromUtf8("extraScreenshotGroupLayout"))
+        self.scrollArea = QtGui.QScrollArea(self.extraScreenGroup)
+        self.scrollArea.setFrameShape(QtGui.QFrame.NoFrame)
+        self.scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.scrollArea.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
+        self.extraScreenshots = QtGui.QWidget()
+        self.extraScreenshots.setGeometry(QtCore.QRect(0, 0, 298, 76))
+        self.extraScreenshots.setObjectName(_fromUtf8("extraScreenshots"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.extraScreenshots)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.scrollArea.setWidget(self.extraScreenshots)
+        self.extraScreenshotGroupLayout.addWidget(self.scrollArea)
         self.showLayout = QtGui.QHBoxLayout()
         self.showLayout.setSpacing(-1)
         self.showLayout.setSizeConstraint(QtGui.QLayout.SetMinimumSize)
