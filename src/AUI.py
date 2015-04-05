@@ -93,7 +93,6 @@ class AUI(QWidget):
         # stretch = 0
         self.extra = NewView.NewView(self)
         self.viewsGroupLayout.addWidget(self.extra)
-        self.ViewsLayout.addWidget(self.views)
 
         self.MainViews = QtGui.QGridLayout()
         self.MainViews.setObjectName("MainViews")
@@ -114,6 +113,8 @@ class AUI(QWidget):
         self.MainViews.addWidget(self.Camera2, 0, 0)
 
         self.ViewsLayout.addLayout(self.MainViews)
+        self.ViewsLayout.addWidget(self.views)
+
         self.GUILayout.addLayout(self.ViewsLayout)
 
         # minSize = QtCore.QSize(150, 150)
