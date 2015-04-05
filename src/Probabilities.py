@@ -124,7 +124,7 @@ class Probabilities(QWidget, ProbabilitiesUi.Ui_probabilities):
         labels = ["On C1", "On C2", "On Map", "On Pointcloud", "On Extraview",
                     "On Main Screenshot", "On Extra Screenshot", "C1 Clicked",
                     "C2 Clicked", "Map Clicked", "Pointcloud Clicked",
-                    "Extra Clicked", "On Main  View", "On Add View", 
+                    "Extra Clicked", "On Main View", "On Add View",
                     "Main Screenshot Clicked", "Extra Screenshot Clicked",
                     "New Clicked", "Hide Clicked", "On Battery", 
                     "Charge Clicked", "On Wifi", "Repair Clicked",
@@ -150,7 +150,7 @@ class Probabilities(QWidget, ProbabilitiesUi.Ui_probabilities):
         headersH = ["On C1", "On C2", "On Map", "On Pointcloud", "On Extraview",
                     "On Main Screenshot", "On Extra Screenshot", "C1 Clicked",
                     "C2 Clicked", "Map Clicked", "Pointcloud Clicked",
-                    "Extra Clicked", "On Main  View", "On Add View", 
+                    "Extra Clicked", "On Main View", "On Add View",
                     "Main Screenshot Clicked", "Extra Screenshot Clicked",
                     "New Clicked", "Hide Clicked", "On Battery", 
                     "Charge Clicked", "On Wifi", "Repair Clicked",
@@ -179,7 +179,7 @@ class Probabilities(QWidget, ProbabilitiesUi.Ui_probabilities):
         evidence = ["On C1", "On C2", "On Map", "On Pointcloud", "On Extraview",
             "On Main Screenshot", "On Extra Screenshot", "C1 Clicked",
             "C2 Clicked", "Map Clicked", "Pointcloud Clicked",
-            "Extra Clicked", "On Main  View", "On Add View", 
+            "Extra Clicked", "On Main View", "On Add View",
             "Main Screenshot Clicked", "Extra Screenshot Clicked",
             "New Clicked", "Hide Clicked", "On Battery", 
             "Charge Clicked", "On Wifi", "Repair Clicked",
@@ -190,14 +190,14 @@ class Probabilities(QWidget, ProbabilitiesUi.Ui_probabilities):
             #Detect
             influence = ["On C1", "On C2","On Main Screenshot", 
             "On Extra Screenshot", "C1 Clicked","C2 Clicked", 
-            "Extra Clicked", "On Main  View", "On Add View"]
+            "Extra Clicked", "On Main View", "On Add View"]
         elif index == 2:
             #Map
             influence = ["On Map", "On Pointcloud", "On Extraview",
-            "Pointcloud Clicked","On Main  View", "On Add View"]
+            "Pointcloud Clicked","On Main View", "On Add View"]
         elif index == 3:
             #Navigate
-            influence = ["On C1", "On C2", "On Map",  "On Main  View", "On Add View", 
+            influence = ["On C1", "On C2", "On Map",  "On Main View", "On Add View",
             "Up Pressed", "Down Pressed", "Left Pressed", "Right Pressed"]
         elif index == 4:
             #Review
@@ -210,7 +210,7 @@ class Probabilities(QWidget, ProbabilitiesUi.Ui_probabilities):
             "New Clicked", "Hide Clicked"]
         elif index == 6:
             #Explore
-            influence = ["On Map", "Map Clicked", "On Main  View", 
+            influence = ["On Map", "Map Clicked", "On Main View",
                          "On Add View"]
         
         for i in influence:

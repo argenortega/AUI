@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '../../ui/Battery.ui'
+# Form implementation generated from reading ui file '../ui/Battery.ui'
 #
-# Created: Tue Feb 24 18:11:04 2015
+# Created: Tue Mar 24 23:28:29 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,11 +26,13 @@ except AttributeError:
 class Ui_batteryStatus(object):
     def setupUi(self, batteryStatus):
         batteryStatus.setObjectName(_fromUtf8("batteryStatus"))
-        batteryStatus.resize(224, 101)
+        batteryStatus.resize(224, 113)
         self.BatteryLayout = QtGui.QVBoxLayout(batteryStatus)
         self.BatteryLayout.setMargin(0)
         self.BatteryLayout.setObjectName(_fromUtf8("BatteryLayout"))
         self.batteryLevel = QtGui.QGroupBox(batteryStatus)
+        self.batteryLevel.setMouseTracking(True)
+        self.batteryLevel.setInputMethodHints(QtCore.Qt.ImhNone)
         self.batteryLevel.setFlat(False)
         self.batteryLevel.setCheckable(False)
         self.batteryLevel.setObjectName(_fromUtf8("batteryLevel"))
@@ -53,7 +55,7 @@ class Ui_batteryStatus(object):
         self.batteryBoxLevel.addWidget(self.p)
         self.batteryBoxLayout.addLayout(self.batteryBoxLevel)
         self.charge = QtGui.QPushButton(self.batteryLevel)
-        self.charge.setMinimumSize(QtCore.QSize(0, 32))
+        self.charge.setMinimumSize(QtCore.QSize(0, 44))
         self.charge.setObjectName(_fromUtf8("charge"))
         self.batteryBoxLayout.addWidget(self.charge)
         self.BatteryLayout.addWidget(self.batteryLevel)

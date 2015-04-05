@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/Screenshot.ui'
 #
-# Created: Fri Feb 27 23:45:24 2015
+# Created: Wed Mar 25 00:51:08 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,8 @@ except AttributeError:
 class Ui_ScreenshotWidget(object):
     def setupUi(self, ScreenshotWidget):
         ScreenshotWidget.setObjectName(_fromUtf8("ScreenshotWidget"))
-        ScreenshotWidget.resize(252, 439)
+        ScreenshotWidget.resize(252, 486)
+        ScreenshotWidget.setMinimumSize(QtCore.QSize(0, 30))
         ScreenshotWidget.setMouseTracking(True)
         self.layout = QtGui.QVBoxLayout(ScreenshotWidget)
         self.layout.setMargin(1)
@@ -56,20 +57,31 @@ class Ui_ScreenshotWidget(object):
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.buttonLayout.addItem(spacerItem)
         self.newS = QtGui.QPushButton(ScreenshotWidget)
+        self.newS.setMinimumSize(QtCore.QSize(0, 44))
         self.newS.setMouseTracking(True)
         self.newS.setObjectName(_fromUtf8("newS"))
         self.buttonLayout.addWidget(self.newS)
         self.layout.addLayout(self.buttonLayout)
         self.extraScreenGroup = QtGui.QGroupBox(ScreenshotWidget)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.extraScreenGroup.sizePolicy().hasHeightForWidth())
+        self.extraScreenGroup.setSizePolicy(sizePolicy)
+        self.extraScreenGroup.setMinimumSize(QtCore.QSize(0, 0))
+        self.extraScreenGroup.setBaseSize(QtCore.QSize(0, 0))
         self.extraScreenGroup.setObjectName(_fromUtf8("extraScreenGroup"))
         self.extraScreenshotGroupLayout = QtGui.QVBoxLayout(self.extraScreenGroup)
-        self.extraScreenshotGroupLayout.setMargin(6)
+        self.extraScreenshotGroupLayout.setMargin(0)
         self.extraScreenshotGroupLayout.setObjectName(_fromUtf8("extraScreenshotGroupLayout"))
         self.showLayout = QtGui.QHBoxLayout()
+        self.showLayout.setSpacing(-1)
+        self.showLayout.setSizeConstraint(QtGui.QLayout.SetMinimumSize)
         self.showLayout.setObjectName(_fromUtf8("showLayout"))
-        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        spacerItem1 = QtGui.QSpacerItem(40, 15, QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Minimum)
         self.showLayout.addItem(spacerItem1)
         self.showB = QtGui.QPushButton(self.extraScreenGroup)
+        self.showB.setMinimumSize(QtCore.QSize(0, 44))
         self.showB.setMouseTracking(True)
         self.showB.setCheckable(True)
         self.showB.setObjectName(_fromUtf8("showB"))

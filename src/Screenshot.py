@@ -76,10 +76,16 @@ class Screenshots(QWidget, ScreenshotUI.Ui_ScreenshotWidget):
         '''
         self.newS.clicked.connect(self.add_new)
 
+
+
         self.scrollArea = QtGui.QScrollArea(self)
         self.scrollArea.setWidgetResizable(True)
-        self.extraScreenshots = QFrame(self.scrollArea)
+        self.scrollArea.setFrameShape(QtGui.QFrame.NoFrame)
+        self.scrollArea.setFrameShadow(QtGui.QFrame.Plain)
+        #self.extraScreenshots = QFrame(self.scrollArea)
         self.extraScreenshots = QFrame(self.extraScreenGroup)
+        self.extraScreenshots.setFrameShape(QtGui.QFrame.NoFrame)
+        self.extraScreenshots.setFrameShadow(QtGui.QFrame.Plain)
         #self.extraScreenshots.setObjectName("extraScreenshots")
         self.scrollArea.setWidget(self.extraScreenshots)
         self.scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)

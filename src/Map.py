@@ -45,8 +45,9 @@ class Map(QWidget, MapUI.Ui_MapWidget):
         Size of the widget
         '''
         #self.setMinimumSize(300,300)
-        #self.resize(300,300)        
-        #self.map.setPixmap(QtGui.QPixmap('../../ui/maps/05.jpg'))
+        #self.resize(300,300)
+        self.map.clear()
+        self.map.setPixmap(QtGui.QPixmap(':/maps/02.png'))
         #self.setMinimumSize(self.minSize)
         #self.setMaximumSize(self.maxSize)
         #self.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
@@ -62,9 +63,6 @@ class Map(QWidget, MapUI.Ui_MapWidget):
         
 def main():
     app = QtGui.QApplication(sys.argv)
-    minSize = QtCore.QSize(100, 100)
-    maxSize = QtCore.QSize(300, 300)
-    stretch = 3
     main = Map(None)
     
     

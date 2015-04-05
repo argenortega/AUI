@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/Map.ui'
 #
-# Created: Wed Mar 18 13:57:55 2015
+# Created: Wed Mar 25 00:25:58 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,15 +26,17 @@ except AttributeError:
 class Ui_MapWidget(object):
     def setupUi(self, MapWidget):
         MapWidget.setObjectName(_fromUtf8("MapWidget"))
+        MapWidget.setWindowModality(QtCore.Qt.NonModal)
         MapWidget.resize(70, 70)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(MapWidget.sizePolicy().hasHeightForWidth())
         MapWidget.setSizePolicy(sizePolicy)
-        MapWidget.setMinimumSize(QtCore.QSize(0, 0))
+        MapWidget.setMinimumSize(QtCore.QSize(50, 50))
         MapWidget.setMaximumSize(QtCore.QSize(70, 70))
         MapWidget.setSizeIncrement(QtCore.QSize(1, 1))
+        MapWidget.setBaseSize(QtCore.QSize(50, 50))
         MapWidget.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         MapWidget.setMouseTracking(True)
         self.layout = QtGui.QVBoxLayout(MapWidget)
@@ -55,7 +57,7 @@ class Ui_MapWidget(object):
         self.map.setFrameShape(QtGui.QFrame.StyledPanel)
         self.map.setFrameShadow(QtGui.QFrame.Sunken)
         self.map.setText(_fromUtf8(""))
-        self.map.setPixmap(QtGui.QPixmap(_fromUtf8(":/maps/maps/02.jpg")))
+        self.map.setPixmap(QtGui.QPixmap(_fromUtf8(":/02.png")))
         self.map.setScaledContents(True)
         self.map.setAlignment(QtCore.Qt.AlignCenter)
         self.map.setWordWrap(True)
@@ -69,4 +71,3 @@ class Ui_MapWidget(object):
     def retranslateUi(self, MapWidget):
         MapWidget.setWindowTitle(_translate("MapWidget", "Map", None))
 
-import resources_rc

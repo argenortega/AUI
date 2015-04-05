@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '../../ui/Camera.ui'
+# Form implementation generated from reading ui file '../ui/Camera.ui'
 #
-# Created: Tue Feb 24 17:09:28 2015
+# Created: Wed Mar 25 00:30:54 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -34,6 +34,7 @@ class Ui_Camera(object):
         Camera.setSizePolicy(sizePolicy)
         Camera.setMinimumSize(QtCore.QSize(100, 100))
         Camera.setMaximumSize(QtCore.QSize(300, 300))
+        Camera.setSizeIncrement(QtCore.QSize(3, 3))
         Camera.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         Camera.setMouseTracking(True)
         self.layout = QtGui.QVBoxLayout(Camera)

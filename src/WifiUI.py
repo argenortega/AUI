@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '../../ui/Wifi.ui'
+# Form implementation generated from reading ui file '../ui/Wifi.ui'
 #
-# Created: Tue Feb 24 18:11:18 2015
+# Created: Tue Mar 24 23:28:15 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_WifiStatus(object):
     def setupUi(self, WifiStatus):
         WifiStatus.setObjectName(_fromUtf8("WifiStatus"))
-        WifiStatus.resize(224, 102)
+        WifiStatus.resize(224, 103)
         self.horizontalLayout_2 = QtGui.QHBoxLayout(WifiStatus)
         self.horizontalLayout_2.setMargin(0)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
@@ -52,6 +52,7 @@ class Ui_WifiStatus(object):
         self.wifiBoxLevel.addWidget(self.p)
         self.wifiLayout.addLayout(self.wifiBoxLevel)
         self.repair = QtGui.QPushButton(self.wifiLevel)
+        self.repair.setMinimumSize(QtCore.QSize(0, 44))
         self.repair.setObjectName(_fromUtf8("repair"))
         self.wifiLayout.addWidget(self.repair)
         self.horizontalLayout_2.addWidget(self.wifiLevel)
