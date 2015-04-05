@@ -2,6 +2,7 @@ __author__ = 'Argen'
 
 
 from PyQt4.uic import compileUi
+
 import glob
 
 path ='../ui/'

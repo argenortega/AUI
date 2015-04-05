@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '../ui/Toolbar.ui'
 #
-# Created: Sun Apr  5 22:41:15 2015
+# Created: Mon Apr  6 00:03:05 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,14 +23,14 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(717, 63)
+class Ui_toolbarWidget(object):
+    def setupUi(self, toolbarWidget):
+        toolbarWidget.setObjectName(_fromUtf8("toolbarWidget"))
+        toolbarWidget.resize(717, 63)
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(toolbarWidget)
+        QtCore.QMetaObject.connectSlotsByName(toolbarWidget)
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
+    def retranslateUi(self, toolbarWidget):
+        toolbarWidget.setWindowTitle(_translate("toolbarWidget", "Form", None))
 

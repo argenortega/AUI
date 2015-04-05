@@ -46,8 +46,8 @@ class Map(QWidget, MapUI.Ui_MapWidget):
         '''
         #self.setMinimumSize(300,300)
         #self.resize(300,300)
-        self.map.clear()
-        self.map.setPixmap(QtGui.QPixmap(':/maps/02.png'))
+        #self.map.clear()
+        #self.map.setPixmap(QtGui.QPixmap(':/maps/02.png'))
         #self.setMinimumSize(self.minSize)
         #self.setMaximumSize(self.maxSize)
         #self.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
