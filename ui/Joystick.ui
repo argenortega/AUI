@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>100</width>
-    <height>117</height>
+    <height>100</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -59,8 +59,20 @@
       <string>Joystick</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <property name="margin">
-       <number>6</number>
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <property name="rightMargin">
+       <number>5</number>
+      </property>
+      <property name="bottomMargin">
+       <number>2</number>
+      </property>
+      <property name="spacing">
+       <number>0</number>
       </property>
       <item row="2" column="1">
        <widget class="QLabel" name="down">
