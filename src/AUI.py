@@ -20,7 +20,9 @@ import Wifi
 import Battery
 import Joystick
 import Parameters
-# import Views
+import StatusBar
+import Toolbar
+import Views
 
 
 class AUI(QWidget):
@@ -36,13 +38,14 @@ class AUI(QWidget):
         self.setGeometry(0, 0, 1280, 800)
         self.setWindowTitle("Adaptive TRADR OCU")
         self.setMouseTracking(True)
-
+        self.showMaximized()
         '''        
         Layout Definitions for the complete AUI
         '''
         # Global Layout for AUI Parameters + TRADR GUI
         self.globalLayout = QHBoxLayout()
         self.setLayout(self.globalLayout)
+        self.globalLayout.setMargin(0)
 
         self.MainLayout = QVBoxLayout()
         self.MainLayout.setObjectName("MainLayout")
@@ -50,6 +53,7 @@ class AUI(QWidget):
 
         self.GUILayout = QHBoxLayout()
         self.GUILayout.setObjectName("GUILayout")
+        self.GUILayout.setMargin(3)
 
         self.ViewsLayout = QVBoxLayout()
         self.ViewsLayout.setObjectName("ViewsLayout")
@@ -63,36 +67,40 @@ class AUI(QWidget):
         '''
         Widgets
         '''
+        self.statusBar = StatusBar.StatusBar(self)
+        self.MainLayout.addWidget(self.statusBar)
+
         self.mixedInitiative = MixedInitiative.MixedInitiative(self)
         self.MainLayout.addWidget(self.mixedInitiative)
 
         self.MainLayout.addLayout(self.GUILayout)
 
-        self.views = QtGui.QGroupBox("Available Views", self)
-        self.views.setMinimumSize(QtCore.QSize(550, 70))
-        self.views.setMaximumSize(QtCore.QSize(5000, 150))
-        self.views.setObjectName("views")
-        self.viewsGroupLayout = QtGui.QHBoxLayout(self.views)
-        self.viewsGroupLayout.setObjectName("viewsGroupLayout")
+        #self.views = QtGui.QGroupBox("Available Views", self)
+        #self.views.setMinimumSize(QtCore.QSize(550, 70))
+        #self.views.setMaximumSize(QtCore.QSize(5000, 150))
+        #self.views.setObjectName("views")
+        #self.viewsGroupLayout = QtGui.QHBoxLayout(self.views)
+        #self.viewsGroupLayout.setObjectName("viewsGroupLayout")
 
-
+        self.views = Views.Views(self)
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
         self.pointcloud = Pointcloud.Pointcloud(self)
-        self.viewsGroupLayout.addWidget(self.pointcloud)
+
+        self.views.viewsGroupLayout.addWidget(self.pointcloud)
 
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
         self.map = Map.Map(self)
-        self.viewsGroupLayout.addWidget(self.map)
+        self.views.viewsGroupLayout.addWidget(self.map)
 
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
         self.extra = NewView.NewView(self)
-        self.viewsGroupLayout.addWidget(self.extra)
+        self.views.viewsGroupLayout.addWidget(self.extra)
 
         self.MainViews = QtGui.QGridLayout()
         self.MainViews.setObjectName("MainViews")
@@ -102,7 +110,7 @@ class AUI(QWidget):
         # maxSize = QtCore.QSize(300, 300)
         # stretch = 3
         self.Camera1 = Camera.Camera(self, 1)
-        self.MainViews.addWidget(self.Camera1, 1, 2)
+        self.MainViews.addWidget(self.Camera1, 0, 0)
 
 
         # minSize = QtCore.QSize(100, 100)
@@ -110,7 +118,7 @@ class AUI(QWidget):
         # stretch = 1
         self.Camera2 = Camera.Camera(self, 2)
         self.Camera2.setMinimumSize(QtCore.QSize(80,80))
-        self.MainViews.addWidget(self.Camera2, 0, 0)
+        self.MainViews.addWidget(self.Camera2, 1, 2)
 
         self.ViewsLayout.addLayout(self.MainViews)
         self.ViewsLayout.addWidget(self.views)

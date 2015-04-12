@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/Battery.ui'
 #
-# Created: Mon Apr  6 01:22:41 2015
+# Created: Mon Apr 13 00:34:06 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,23 +26,39 @@ except AttributeError:
 class Ui_batteryStatus(object):
     def setupUi(self, batteryStatus):
         batteryStatus.setObjectName(_fromUtf8("batteryStatus"))
-        batteryStatus.resize(224, 113)
+        batteryStatus.resize(159, 100)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(batteryStatus.sizePolicy().hasHeightForWidth())
+        batteryStatus.setSizePolicy(sizePolicy)
         self.BatteryLayout = QtGui.QVBoxLayout(batteryStatus)
         self.BatteryLayout.setSpacing(1)
         self.BatteryLayout.setMargin(0)
         self.BatteryLayout.setObjectName(_fromUtf8("BatteryLayout"))
         self.batteryLevel = QtGui.QGroupBox(batteryStatus)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.batteryLevel.sizePolicy().hasHeightForWidth())
+        self.batteryLevel.setSizePolicy(sizePolicy)
         self.batteryLevel.setMouseTracking(True)
         self.batteryLevel.setInputMethodHints(QtCore.Qt.ImhNone)
         self.batteryLevel.setFlat(False)
         self.batteryLevel.setCheckable(False)
         self.batteryLevel.setObjectName(_fromUtf8("batteryLevel"))
         self.batteryBoxLayout = QtGui.QVBoxLayout(self.batteryLevel)
+        self.batteryBoxLayout.setContentsMargins(-1, 3, 3, 3)
         self.batteryBoxLayout.setObjectName(_fromUtf8("batteryBoxLayout"))
         self.batteryBoxLevel = QtGui.QHBoxLayout()
         self.batteryBoxLevel.setSpacing(1)
         self.batteryBoxLevel.setObjectName(_fromUtf8("batteryBoxLevel"))
         self.battery = QtGui.QProgressBar(self.batteryLevel)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.battery.sizePolicy().hasHeightForWidth())
+        self.battery.setSizePolicy(sizePolicy)
         self.battery.setProperty("value", 100)
         self.battery.setAlignment(QtCore.Qt.AlignCenter)
         self.battery.setInvertedAppearance(False)

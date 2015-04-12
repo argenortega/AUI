@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/MixedInitiative.ui'
 #
-# Created: Mon Apr  6 01:22:41 2015
+# Created: Mon Apr 13 00:34:06 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_mixedInitiative(object):
     def setupUi(self, mixedInitiative):
         mixedInitiative.setObjectName(_fromUtf8("mixedInitiative"))
-        mixedInitiative.resize(903, 122)
+        mixedInitiative.resize(1068, 50)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -35,9 +35,9 @@ class Ui_mixedInitiative(object):
         mixedInitiative.setMinimumSize(QtCore.QSize(0, 0))
         mixedInitiative.setMaximumSize(QtCore.QSize(16777215, 200))
         mixedInitiative.setBaseSize(QtCore.QSize(0, 100))
-        self.mixedInitiativeLayout = QtGui.QVBoxLayout(mixedInitiative)
-        self.mixedInitiativeLayout.setSpacing(2)
-        self.mixedInitiativeLayout.setMargin(12)
+        self.mixedInitiativeLayout = QtGui.QHBoxLayout(mixedInitiative)
+        self.mixedInitiativeLayout.setSpacing(18)
+        self.mixedInitiativeLayout.setMargin(0)
         self.mixedInitiativeLayout.setObjectName(_fromUtf8("mixedInitiativeLayout"))
         self.AUIMsgs = QtGui.QFrame(mixedInitiative)
         self.AUIMsgs.setMinimumSize(QtCore.QSize(0, 50))
@@ -48,13 +48,14 @@ class Ui_mixedInitiative(object):
         self.AUIMsgsLayout.setMargin(0)
         self.AUIMsgsLayout.setObjectName(_fromUtf8("AUIMsgsLayout"))
         self.textBrowserAUIMix = QtGui.QTextBrowser(self.AUIMsgs)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(1)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(5)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.textBrowserAUIMix.sizePolicy().hasHeightForWidth())
         self.textBrowserAUIMix.setSizePolicy(sizePolicy)
-        self.textBrowserAUIMix.setMinimumSize(QtCore.QSize(700, 30))
-        self.textBrowserAUIMix.setMaximumSize(QtCore.QSize(1200, 44))
+        self.textBrowserAUIMix.setMinimumSize(QtCore.QSize(650, 30))
+        self.textBrowserAUIMix.setMaximumSize(QtCore.QSize(16777215, 44))
+        self.textBrowserAUIMix.setSizeIncrement(QtCore.QSize(5, 0))
         self.textBrowserAUIMix.setMouseTracking(True)
         self.textBrowserAUIMix.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
         self.textBrowserAUIMix.setFrameShape(QtGui.QFrame.NoFrame)
@@ -78,14 +79,20 @@ class Ui_mixedInitiative(object):
         self.Reject.setObjectName(_fromUtf8("Reject"))
         self.AUIMsgsLayout.addWidget(self.Reject)
         self.mixedInitiativeLayout.addWidget(self.AUIMsgs)
+        spacerItem = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Minimum)
+        self.mixedInitiativeLayout.addItem(spacerItem)
         self.AUIStatus = QtGui.QWidget(mixedInitiative)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.AUIStatus.sizePolicy().hasHeightForWidth())
+        self.AUIStatus.setSizePolicy(sizePolicy)
+        self.AUIStatus.setMaximumSize(QtCore.QSize(16777215, 44))
         self.AUIStatus.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
         self.AUIStatus.setObjectName(_fromUtf8("AUIStatus"))
         self.AUIStatusLayout = QtGui.QHBoxLayout(self.AUIStatus)
         self.AUIStatusLayout.setMargin(6)
         self.AUIStatusLayout.setObjectName(_fromUtf8("AUIStatusLayout"))
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.AUIStatusLayout.addItem(spacerItem)
         self.AUIStatusLabel = QtGui.QLabel(self.AUIStatus)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -106,8 +113,8 @@ class Ui_mixedInitiative(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.AUItoggleButton.sizePolicy().hasHeightForWidth())
         self.AUItoggleButton.setSizePolicy(sizePolicy)
-        self.AUItoggleButton.setMinimumSize(QtCore.QSize(60, 44))
-        self.AUItoggleButton.setMaximumSize(QtCore.QSize(60, 44))
+        self.AUItoggleButton.setMinimumSize(QtCore.QSize(44, 44))
+        self.AUItoggleButton.setMaximumSize(QtCore.QSize(16777215, 44))
         self.AUItoggleButton.setMouseTracking(True)
         self.AUItoggleButton.setCheckable(True)
         self.AUItoggleButton.setChecked(False)

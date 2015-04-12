@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/Prob.ui'
 #
-# Created: Mon Apr  6 01:22:41 2015
+# Created: Mon Apr 13 00:34:06 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -294,7 +294,7 @@ class Ui_ProbabilityWidget(object):
         self.goalLabel.setBuddy(self.goalList)
 
         self.retranslateUi(ProbabilityWidget)
-        self.probabilityPlots.setCurrentIndex(0)
+        self.probabilityPlots.setCurrentIndex(1)
         QtCore.QObject.connect(self.goalList, QtCore.SIGNAL(_fromUtf8("activated(int)")), self.probabilityPlots.setCurrentIndex)
         QtCore.QMetaObject.connectSlotsByName(ProbabilityWidget)
 

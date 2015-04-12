@@ -1,12 +1,12 @@
 __author__ = 'Argen'
 
 
-from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QWidget, QSizePolicy, QLabel, QHBoxLayout, QFrame)
+from PyQt4 import QtGui
+from PyQt4.QtGui import QWidget
 import ViewsUI
 import sys
 
-class Views(QWidget, ViewsUI.Ui_views):
+class Views(QWidget, ViewsUI.Ui_viewsWidget):
     def __init__(self,parent):
         QWidget.__init__(self,parent)
         self.setupUi(self)

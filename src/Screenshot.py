@@ -66,10 +66,10 @@ class Screenshots(QWidget, ScreenshotUI.Ui_ScreenshotWidget):
         
     def press(self,toggled):
         if toggled:
-            self.showB.setText("Show")
+            self.showB.setText("+")
             self.scrollArea.setVisible(False)
         else:
-            self.showB.setText("Hide")
+            self.showB.setText("-")
             self.scrollArea.setVisible(True)
     
     def select_screenshot(self):

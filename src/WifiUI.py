@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/Wifi.ui'
 #
-# Created: Mon Apr  6 01:22:42 2015
+# Created: Mon Apr 13 00:34:06 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,19 +26,34 @@ except AttributeError:
 class Ui_WifiStatus(object):
     def setupUi(self, WifiStatus):
         WifiStatus.setObjectName(_fromUtf8("WifiStatus"))
-        WifiStatus.resize(224, 103)
+        WifiStatus.resize(147, 100)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(WifiStatus.sizePolicy().hasHeightForWidth())
+        WifiStatus.setSizePolicy(sizePolicy)
         self.horizontalLayout_2 = QtGui.QHBoxLayout(WifiStatus)
         self.horizontalLayout_2.setMargin(0)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.wifiLevel = QtGui.QGroupBox(WifiStatus)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.wifiLevel.sizePolicy().hasHeightForWidth())
+        self.wifiLevel.setSizePolicy(sizePolicy)
         self.wifiLevel.setObjectName(_fromUtf8("wifiLevel"))
         self.wifiLayout = QtGui.QVBoxLayout(self.wifiLevel)
-        self.wifiLayout.setMargin(6)
+        self.wifiLayout.setMargin(3)
         self.wifiLayout.setObjectName(_fromUtf8("wifiLayout"))
         self.wifiBoxLevel = QtGui.QHBoxLayout()
         self.wifiBoxLevel.setSpacing(1)
         self.wifiBoxLevel.setObjectName(_fromUtf8("wifiBoxLevel"))
         self.wifi = QtGui.QProgressBar(self.wifiLevel)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.wifi.sizePolicy().hasHeightForWidth())
+        self.wifi.setSizePolicy(sizePolicy)
         self.wifi.setProperty("value", 100)
         self.wifi.setAlignment(QtCore.Qt.AlignCenter)
         self.wifi.setInvertedAppearance(False)
