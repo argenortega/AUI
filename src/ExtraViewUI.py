@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/ExtraView.ui'
 #
-# Created: Mon Apr 13 20:12:44 2015
+# Created: Mon Apr 13 21:15:33 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -39,7 +39,7 @@ class Ui_NewView(object):
         self.layout = QtGui.QVBoxLayout(NewView)
         self.layout.setMargin(0)
         self.layout.setObjectName(_fromUtf8("layout"))
-        self.view = QtGui.QLabel(NewView)
+        self.view = ActLabel(NewView)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -65,5 +65,6 @@ class Ui_NewView(object):
 
     def retranslateUi(self, NewView):
         NewView.setWindowTitle(_translate("NewView", "3D Pointcloud", None))
-        self.view.setText(_translate("NewView", "Additional View", None))
+        self.view.setText(_translate("NewView", "Local Map", None))
 
+from ActiveLabel import ActLabel

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/Map.ui'
 #
-# Created: Mon Apr 13 20:12:44 2015
+# Created: Mon Apr 13 21:15:33 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -42,7 +42,7 @@ class Ui_MapWidget(object):
         self.layout = QtGui.QVBoxLayout(MapWidget)
         self.layout.setMargin(0)
         self.layout.setObjectName(_fromUtf8("layout"))
-        self.map = QtGui.QLabel(MapWidget)
+        self.map = ActLabel(MapWidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -50,14 +50,14 @@ class Ui_MapWidget(object):
         self.map.setSizePolicy(sizePolicy)
         self.map.setMaximumSize(QtCore.QSize(70, 70))
         font = QtGui.QFont()
-        font.setPointSize(28)
+        font.setPointSize(13)
         self.map.setFont(font)
         self.map.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.map.setMouseTracking(True)
+        self.map.setStyleSheet(_fromUtf8("image: url(:/maps/resources/maps/03.jpg);"))
         self.map.setFrameShape(QtGui.QFrame.StyledPanel)
         self.map.setFrameShadow(QtGui.QFrame.Sunken)
-        self.map.setText(_fromUtf8(""))
-        self.map.setPixmap(QtGui.QPixmap(_fromUtf8(":/maps/resources/maps/03.jpg")))
+        self.map.setTextFormat(QtCore.Qt.PlainText)
         self.map.setScaledContents(True)
         self.map.setAlignment(QtCore.Qt.AlignCenter)
         self.map.setWordWrap(True)
@@ -70,5 +70,6 @@ class Ui_MapWidget(object):
 
     def retranslateUi(self, MapWidget):
         MapWidget.setWindowTitle(_translate("MapWidget", "Map", None))
+        self.map.setText(_translate("MapWidget", "Global  Map", None))
 
-import resources_rc
+from ActiveLabel import ActLabel

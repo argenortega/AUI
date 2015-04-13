@@ -16,6 +16,7 @@ import NewView
 import Map
 import Pointcloud
 import Screenshot
+import Screenshots
 import Wifi
 import Battery
 import Joystick
