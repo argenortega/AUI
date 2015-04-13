@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/Wifi.ui'
 #
-# Created: Mon Apr 13 00:34:06 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Mon Apr 13 20:12:45 2015
+#      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -48,7 +48,7 @@ class Ui_WifiStatus(object):
         self.wifiBoxLevel = QtGui.QHBoxLayout()
         self.wifiBoxLevel.setSpacing(1)
         self.wifiBoxLevel.setObjectName(_fromUtf8("wifiBoxLevel"))
-        self.wifi = QtGui.QProgressBar(self.wifiLevel)
+        self.wifi = CProgressBar(self.wifiLevel)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -56,6 +56,7 @@ class Ui_WifiStatus(object):
         self.wifi.setSizePolicy(sizePolicy)
         self.wifi.setProperty("value", 100)
         self.wifi.setAlignment(QtCore.Qt.AlignCenter)
+        self.wifi.setTextVisible(False)
         self.wifi.setInvertedAppearance(False)
         self.wifi.setObjectName(_fromUtf8("wifi"))
         self.wifiBoxLevel.addWidget(self.wifi)
@@ -66,7 +67,7 @@ class Ui_WifiStatus(object):
         self.p.setObjectName(_fromUtf8("p"))
         self.wifiBoxLevel.addWidget(self.p)
         self.wifiLayout.addLayout(self.wifiBoxLevel)
-        self.repair = QtGui.QPushButton(self.wifiLevel)
+        self.repair = HButton(self.wifiLevel)
         self.repair.setMinimumSize(QtCore.QSize(0, 44))
         self.repair.setObjectName(_fromUtf8("repair"))
         self.wifiLayout.addWidget(self.repair)
@@ -84,3 +85,5 @@ class Ui_WifiStatus(object):
         self.p.setText(_translate("WifiStatus", "%", None))
         self.repair.setText(_translate("WifiStatus", "Repair", None))
 
+from HoverButtons import HButton
+from ColorProgressBar import CProgressBar

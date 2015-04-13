@@ -5,12 +5,25 @@ from PyQt4.QtGui import QWidget
 import StatusBarUI
 import sys
 
+
 class StatusBar(QWidget, StatusBarUI.Ui_statusBarWidget):
     def __init__(self, parent):
-        #print "Started"
         QWidget.__init__(self, parent)
         self.setupUi(self)
+        # self.batteryBar.setValue.connect(self.update_bar)
 
+    def update_bar(self, value, bar, to_add_number):
+        if value > 70:
+            self.change_color(bar,'green')
+        elif value <= 70 and value > 30:
+            self.change_color(bar, 'yellow')
+        elif value <= 30:
+            self.change_color(bar, 'red')
+
+    def change_color(self, bar, color):
+        template_css = """QProgressBar::chunk { background-color: %s; }"""
+        css = template_css % color
+        bar.setStyleSheet(css)
 
 
 def main():

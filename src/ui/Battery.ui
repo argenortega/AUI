@@ -65,7 +65,7 @@
          <number>1</number>
         </property>
         <item>
-         <widget class="QProgressBar" name="battery">
+         <widget class="CProgressBar" name="battery">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -77,6 +77,9 @@
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
           </property>
           <property name="invertedAppearance">
            <bool>false</bool>
@@ -100,7 +103,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="charge">
+       <widget class="HButton" name="charge">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -117,6 +120,18 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>HButton</class>
+   <extends>QPushButton</extends>
+   <header>HoverButtons</header>
+  </customwidget>
+  <customwidget>
+   <class>CProgressBar</class>
+   <extends>QProgressBar</extends>
+   <header>ColorProgressBar</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

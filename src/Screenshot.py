@@ -10,6 +10,7 @@ from PyQt4.QtGui import QWidget, QSizePolicy, QFrame
 from PyQt4.QtCore import QSize
 import sys
 import ScreenshotUI
+import ActiveLabel
 
 class Screenshots(QWidget, ScreenshotUI.Ui_ScreenshotWidget):
     def __init__(self,parent):
@@ -43,7 +44,9 @@ class Screenshots(QWidget, ScreenshotUI.Ui_ScreenshotWidget):
         
         
     def new_screenshot(self,num):
-        img = QtGui.QLabel("Image %d"%num, self.extraScreenGroup)
+        #img = QtGui.QLabel("Image %d"%num, self.extraScreenGroup)
+        img = ActiveLabel.ActLabel(self.extraScreenGroup)
+        img.setText("Screenshot %d"%num)
         img.setObjectName("img%d"%num)
         img.setAlignment(QtCore.Qt.AlignCenter)
         img.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
@@ -56,7 +59,7 @@ class Screenshots(QWidget, ScreenshotUI.Ui_ScreenshotWidget):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(True)
         img.setSizePolicy(sizePolicy)
-        #img.resize(self.minWidth/3,self.minWidth/3)
+        # img.resize(self.minWidth/3,self.minWidth/3)
         return img
     
     def add_new(self):

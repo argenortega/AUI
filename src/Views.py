@@ -10,9 +10,23 @@ class Views(QWidget, ViewsUI.Ui_viewsWidget):
     def __init__(self,parent):
         QWidget.__init__(self,parent)
         self.setupUi(self)
+        self.initUI()
 
     def initUI(self):
-        pass
+        self.pushButton.clicked[bool].connect(self.press)
+
+
+    def press(self,toggled):
+        if toggled:
+            self.pushButton.setText("+")
+            children = self.findChildren(QtGui.QLabel)
+            for child in children:
+                child.setVisible(False)
+        else:
+            self.pushButton.setText("-")
+            children = self.findChildren(QtGui.QLabel)
+            for child in children:
+                child.setVisible(True)
 
 
 def main():

@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/Parameters.ui'
 #
-# Created: Mon Apr 13 00:34:06 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Mon Apr 13 20:12:44 2015
+#      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,13 +26,13 @@ except AttributeError:
 class Ui_AUIParameters(object):
     def setupUi(self, AUIParameters):
         AUIParameters.setObjectName(_fromUtf8("AUIParameters"))
-        AUIParameters.resize(250, 569)
+        AUIParameters.resize(250, 593)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(AUIParameters.sizePolicy().hasHeightForWidth())
         AUIParameters.setSizePolicy(sizePolicy)
-        AUIParameters.setMinimumSize(QtCore.QSize(250, 569))
+        AUIParameters.setMinimumSize(QtCore.QSize(250, 593))
         AUIParameters.setMaximumSize(QtCore.QSize(250, 524287))
         AUIParameters.setBaseSize(QtCore.QSize(250, 0))
         AUIParameters.setFeatures(QtGui.QDockWidget.AllDockWidgetFeatures)
@@ -288,9 +288,10 @@ class Ui_AUIParameters(object):
         self.AUIbatteryLayout.setSpacing(0)
         self.AUIbatteryLayout.setMargin(1)
         self.AUIbatteryLayout.setObjectName(_fromUtf8("AUIbatteryLayout"))
-        self.AUIbattery = QtGui.QProgressBar(self.AUIbatteryLevel)
+        self.AUIbattery = CProgressBar(self.AUIbatteryLevel)
         self.AUIbattery.setMouseTracking(True)
         self.AUIbattery.setProperty("value", 100)
+        self.AUIbattery.setTextVisible(False)
         self.AUIbattery.setObjectName(_fromUtf8("AUIbattery"))
         self.AUIbatteryLayout.addWidget(self.AUIbattery)
         self.batterySlider = QtGui.QSlider(self.AUIbatteryLevel)
@@ -317,11 +318,11 @@ class Ui_AUIParameters(object):
         self.AUIwifiLayout.setSpacing(0)
         self.AUIwifiLayout.setMargin(1)
         self.AUIwifiLayout.setObjectName(_fromUtf8("AUIwifiLayout"))
-        self.AUIwifi = QtGui.QProgressBar(self.AUIwifiLevel)
+        self.AUIwifi = CProgressBar(self.AUIwifiLevel)
         self.AUIwifi.setMouseTracking(True)
         self.AUIwifi.setProperty("value", 100)
         self.AUIwifi.setAlignment(QtCore.Qt.AlignCenter)
-        self.AUIwifi.setTextVisible(True)
+        self.AUIwifi.setTextVisible(False)
         self.AUIwifi.setTextDirection(QtGui.QProgressBar.TopToBottom)
         self.AUIwifi.setObjectName(_fromUtf8("AUIwifi"))
         self.AUIwifiLayout.addWidget(self.AUIwifi)
@@ -371,3 +372,4 @@ class Ui_AUIParameters(object):
         self.AUIwifiLevel.setTitle(_translate("AUIParameters", "WiFi", None))
         self.contents.setTabText(self.contents.indexOf(self.Tab1), _translate("AUIParameters", "Control", None))
 
+from ColorProgressBar import CProgressBar

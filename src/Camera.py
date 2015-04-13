@@ -50,7 +50,7 @@ class Camera(QWidget, CameraUI.Ui_Camera):
         # self.setMaximumSize(self.maxSize)
         # self.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         # self.setMouseTracking(True)
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         # sizePolicy.setHorizontalStretch(self.stretch)
         # sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(True)
@@ -60,6 +60,12 @@ class Camera(QWidget, CameraUI.Ui_Camera):
 
     def heightForWidth(self, width):
         return width * 1
+
+    def enterEvent(self, QEvent):
+        self.setStyleSheet('border: 2px solid rgb(0, 128, 255);; color: rgb(0, 128, 255);')
+
+    def leaveEvent(self, QEvent):
+        self.setStyleSheet('color: black')
 
 
 def main():

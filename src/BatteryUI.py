@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/Battery.ui'
 #
-# Created: Mon Apr 13 00:34:06 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Mon Apr 13 20:12:44 2015
+#      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -53,7 +53,7 @@ class Ui_batteryStatus(object):
         self.batteryBoxLevel = QtGui.QHBoxLayout()
         self.batteryBoxLevel.setSpacing(1)
         self.batteryBoxLevel.setObjectName(_fromUtf8("batteryBoxLevel"))
-        self.battery = QtGui.QProgressBar(self.batteryLevel)
+        self.battery = CProgressBar(self.batteryLevel)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -61,6 +61,7 @@ class Ui_batteryStatus(object):
         self.battery.setSizePolicy(sizePolicy)
         self.battery.setProperty("value", 100)
         self.battery.setAlignment(QtCore.Qt.AlignCenter)
+        self.battery.setTextVisible(False)
         self.battery.setInvertedAppearance(False)
         self.battery.setObjectName(_fromUtf8("battery"))
         self.batteryBoxLevel.addWidget(self.battery)
@@ -71,7 +72,7 @@ class Ui_batteryStatus(object):
         self.p.setObjectName(_fromUtf8("p"))
         self.batteryBoxLevel.addWidget(self.p)
         self.batteryBoxLayout.addLayout(self.batteryBoxLevel)
-        self.charge = QtGui.QPushButton(self.batteryLevel)
+        self.charge = HButton(self.batteryLevel)
         self.charge.setMinimumSize(QtCore.QSize(0, 44))
         self.charge.setObjectName(_fromUtf8("charge"))
         self.batteryBoxLayout.addWidget(self.charge)
@@ -89,3 +90,5 @@ class Ui_batteryStatus(object):
         self.p.setText(_translate("batteryStatus", "%", None))
         self.charge.setText(_translate("batteryStatus", "Charge", None))
 
+from HoverButtons import HButton
+from ColorProgressBar import CProgressBar

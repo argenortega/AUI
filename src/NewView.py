@@ -58,7 +58,14 @@ class NewView(QWidget, ExtraViewUI.Ui_NewView):
         #sizePolicy.setHorizontalStretch(self.stretch)
         #sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(True)
-        self.setSizePolicy(sizePolicy)        
+        self.setSizePolicy(sizePolicy)
+
+    def enterEvent(self, QEvent):
+        self.setStyleSheet('border: 2px solid rgb(0, 128, 255);; color: rgb(0, 128, 255);')
+
+    def leaveEvent(self, QEvent):
+        self.setStyleSheet('color: black')
+
         
         
 def main():

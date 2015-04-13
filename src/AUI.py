@@ -7,7 +7,7 @@ Created on Sat Dec 27 02:57:21 2014
 """
 import sys
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QWidget, QHBoxLayout, QVBoxLayout)
+from PyQt4.QtGui import (QWidget, QHBoxLayout, QVBoxLayout, QApplication, QDesktopWidget)
 # from PyQt4.uic import loadUi
 
 import Camera
@@ -87,19 +87,21 @@ class AUI(QWidget):
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
         self.pointcloud = Pointcloud.Pointcloud(self)
-
+        self.pointcloud.setParent(self.views)
         self.views.viewsGroupLayout.addWidget(self.pointcloud)
 
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
         self.map = Map.Map(self)
+        self.map.setParent(self.views)
         self.views.viewsGroupLayout.addWidget(self.map)
 
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
         self.extra = NewView.NewView(self)
+        self.extra.setParent(self.views)
         self.views.viewsGroupLayout.addWidget(self.extra)
 
         self.MainViews = QtGui.QGridLayout()
@@ -118,7 +120,7 @@ class AUI(QWidget):
         # stretch = 1
         self.Camera2 = Camera.Camera(self, 2)
         self.Camera2.setMinimumSize(QtCore.QSize(80,80))
-        self.MainViews.addWidget(self.Camera2, 1, 2)
+        self.MainViews.addWidget(self.Camera2, 1, 0)
 
         self.ViewsLayout.addLayout(self.MainViews)
         self.ViewsLayout.addWidget(self.views)
@@ -163,6 +165,9 @@ class AUI(QWidget):
 
         self.battery.charge.clicked.connect(self.chargeBattery)
         self.wifi.repair.clicked.connect(self.repairWifi)
+        QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.statusBar.wifiBar.setValue)
+        QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"),
+                               self.statusBar.batteryBar.setValue)
 
         QtCore.QMetaObject.connectSlotsByName(self)
 
@@ -196,9 +201,12 @@ class AUI(QWidget):
         self.parameters.contents.setEnabled(enable)
 
     def mouseMoveEvent(self, e):
-        # print "Mouse moving"
-        # if self.mixedInitiative.AUItoggleButton.isChecked():
-        # self.Camera1.setFocus(True)
+        #hoveredWidget = QApplication.widgetAt(e.globalPos())
+        hoveredWidget = self.childAt(e.pos())
+        if not(hoveredWidget == None):
+            print hoveredWidget.objectName()
+            # hoveredWidget.setStyleSheet('border: 2px lightblue; color: blue')
+
         if self.Camera1.underMouse():
             # print "Camera 1"
             self.parameters.currentWidget.setText("Camera 1")

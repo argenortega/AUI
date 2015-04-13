@@ -44,7 +44,7 @@
          <number>1</number>
         </property>
         <item>
-         <widget class="QProgressBar" name="wifi">
+         <widget class="CProgressBar" name="wifi">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -56,6 +56,9 @@
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
           </property>
           <property name="invertedAppearance">
            <bool>false</bool>
@@ -79,7 +82,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="repair">
+       <widget class="HButton" name="repair">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -96,6 +99,18 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>HButton</class>
+   <extends>QPushButton</extends>
+   <header>HoverButtons</header>
+  </customwidget>
+  <customwidget>
+   <class>CProgressBar</class>
+   <extends>QProgressBar</extends>
+   <header>ColorProgressBar</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -121,12 +136,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>159</x>
-     <y>40</y>
+     <x>100</x>
+     <y>41</y>
     </hint>
     <hint type="destinationlabel">
-     <x>182</x>
-     <y>42</y>
+     <x>123</x>
+     <y>38</y>
     </hint>
    </hints>
   </connection>

@@ -6,14 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>306</width>
-    <height>427</height>
+    <width>300</width>
+    <height>514</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>0</width>
     <height>30</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>300</width>
+    <height>16777215</height>
    </size>
   </property>
   <property name="mouseTracking">
@@ -27,9 +33,9 @@
     <number>1</number>
    </property>
    <item>
-    <widget class="QLabel" name="currentScreenshot">
+    <widget class="ActLabel" name="currentScreenshot">
      <property name="enabled">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <property name="sizePolicy">
       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
@@ -74,7 +80,10 @@
       <enum>QFrame::Sunken</enum>
      </property>
      <property name="text">
-      <string>Image 1</string>
+      <string>Screenshot 1</string>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -103,7 +112,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="newS">
+      <widget class="HButton" name="newS">
        <property name="minimumSize">
         <size>
          <width>44</width>
@@ -112,6 +121,9 @@
        </property>
        <property name="mouseTracking">
         <bool>true</bool>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
        </property>
        <property name="text">
         <string>New</string>
@@ -158,6 +170,18 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>110</height>
+         </size>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
@@ -181,9 +205,18 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>239</width>
-           <height>76</height>
+           <width>241</width>
+           <height>110</height>
           </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>110</height>
+          </size>
+         </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
          </property>
          <layout class="QHBoxLayout" name="extraScreenshotLayout">
           <property name="margin">
@@ -194,8 +227,20 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="showB">
+       <widget class="HButton" name="showB">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
+         <size>
+          <width>44</width>
+          <height>44</height>
+         </size>
+        </property>
+        <property name="maximumSize">
          <size>
           <width>44</width>
           <height>44</height>
@@ -208,6 +253,9 @@
         </property>
         <property name="mouseTracking">
          <bool>true</bool>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="text">
          <string>-</string>
@@ -222,6 +270,18 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>HButton</class>
+   <extends>QPushButton</extends>
+   <header>HoverButtons</header>
+  </customwidget>
+  <customwidget>
+   <class>ActLabel</class>
+   <extends>QLabel</extends>
+   <header>ActiveLabel</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
