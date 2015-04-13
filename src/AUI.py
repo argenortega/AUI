@@ -168,6 +168,14 @@ class AUI(QWidget):
         QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.statusBar.wifiBar.setValue)
         QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"),
                                self.statusBar.batteryBar.setValue)
+        #QtCore.QObject.connect(self.Camera1.cam.inside,QtCore.pyqtSignal(),self.parameters.insideWidget)
+        self.Camera1.cam.inside.connect(self.parameters.insideWidget)
+        self.Camera2.cam.inside.connect(self.parameters.insideWidget)
+        self.map.map.inside.connect(self.parameters.insideWidget)
+        self.pointcloud.pointcloud.inside.connect(self.parameters.insideWidget)
+        self.extra.view.inside.connect(self.parameters.insideWidget)
+        self.CurrentScreenshot.currentScreenshot.inside.connect(self.parameters.insideWidget)
+
 
         QtCore.QMetaObject.connectSlotsByName(self)
 
@@ -203,17 +211,7 @@ class AUI(QWidget):
     def mouseMoveEvent(self, e):
         #hoveredWidget = QApplication.widgetAt(e.globalPos())
         hoveredWidget = self.childAt(e.pos())
-        if not(hoveredWidget == None):
-            print hoveredWidget.objectName()
-            # hoveredWidget.setStyleSheet('border: 2px lightblue; color: blue')
-
-        if self.Camera1.underMouse():
-            # print "Camera 1"
-            self.parameters.currentWidget.setText("Camera 1")
-        elif self.Camera2.underMouse():
-            # print "Camera 2"
-            self.parameters.currentWidget.setText("Camera 2")
-        else:
+        if hoveredWidget == None:
             self.parameters.currentWidget.setText("")
 
     def mouseReleaseEvent(self, e):

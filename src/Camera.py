@@ -61,12 +61,6 @@ class Camera(QWidget, CameraUI.Ui_Camera):
     def heightForWidth(self, width):
         return width * 1
 
-    def enterEvent(self, QEvent):
-        self.setStyleSheet('border: 2px solid rgb(0, 128, 255);; color: rgb(0, 128, 255);')
-
-    def leaveEvent(self, QEvent):
-        self.setStyleSheet('color: black')
-
 
 def main():
     app = QtGui.QApplication(sys.argv)

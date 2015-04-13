@@ -13,6 +13,7 @@ http://thecodeinn.blogspot.de/2013/08/pyqt-stopwatch-and-timer.html
 
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import QDockWidget
+from PyQt4.QtCore import pyqtSlot
 import sys
 
 import Utilities
@@ -92,6 +93,12 @@ class AUIParameters(QDockWidget, ParametersUI.Ui_AUIParameters):
  
         self.episodeTimer.setDigitCount(len(time))
         self.episodeTimer.display(time)
+
+    @pyqtSlot(str)
+    def insideWidget(self, text):
+        self.currentWidget.setText(text)
+
+
 
 
 

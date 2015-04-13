@@ -1,21 +1,27 @@
 __author__ = 'Argen'
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QWidget, QSizePolicy, QLabel, QVBoxLayout, QFrame,
+from PyQt4.QtGui import (QSizePolicy, QLabel, QVBoxLayout, QFrame,
                          QApplication, QGroupBox, QFont, QGridLayout,
                          QWidget)
-from PyQt4.QtCore import (QEvent, QString, QTimer, Qt)
+from PyQt4.QtCore import (pyqtSignal, QObject, QString, QTimer, Qt)
 import sys
 
 
-class ActLabel (QLabel):
+class ActLabel (QLabel, QObject):
+    inside = pyqtSignal(str)
+
     def __init__(self, parent):
         QLabel.__init__(self, parent)
+
+        self.outside = pyqtSignal(str)
         pass
 
     def enterEvent(self, QEvent):
         self.setStyleSheet('border: 2px solid rgb(0, 128, 255);; color: rgb(0, 128, 255);')
+        self.inside.emit(self.text())
 
     def leaveEvent(self, QEvent):
         self.setStyleSheet('color: black')
+
 
