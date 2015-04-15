@@ -58,11 +58,6 @@ class Pointcloud(QWidget, PointcloudUI.Ui_PointcloudWidget):
         #sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)        
-    def enterEvent(self, QEvent):
-        self.setStyleSheet('border: 2px solid rgb(0, 128, 255);; color: rgb(0, 128, 255);')
-
-    def leaveEvent(self, QEvent):
-        self.setStyleSheet('color: black')
 
         
 def main():

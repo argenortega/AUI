@@ -1,7 +1,7 @@
 __author__ = 'Argen'
 
 from PyQt4 import QtGui
-from PyQt4.QtGui import (QWidget, QSizePolicy)
+from PyQt4.QtGui import (QWidget, QSizePolicy, QDragEnterEvent, QDropEvent)
 import sys
 import ScreenshotUI
 
@@ -19,3 +19,12 @@ class Screenshot(QWidget, ScreenshotUI.Ui_ScreenshotWidget):
         sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)
+
+    def dragEnterEvent(self, e):
+        if e.mimeData().hasFormat("text/plain"):
+            e.accept()
+        else:
+            e.ignore()
+
+    def dropEvent(self, e):
+        self.setText(e.mimeData().text())

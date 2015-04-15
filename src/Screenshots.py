@@ -9,30 +9,21 @@ from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import QWidget, QSizePolicy, QFrame
 from PyQt4.QtCore import QSize
 import sys
-import ScreenshotUI
+import ScreenshotsUI
+import Screenshot
 import ActiveLabel
 
-class Screenshots(QWidget, ScreenshotUI.Ui_ScreenshotWidget):
+class Screenshots(QWidget, ScreenshotsUI.Ui_ScreenshotWidget):
     def __init__(self,parent):
         QWidget.__init__(self,parent)
         self.setupUi(self)
-        self.num = 3
+        self.num = 4
         self.initUI()
         
     def initUI(self):
         self.newS.clicked.connect(self.add_new)
 
         self.showB.clicked[bool].connect(self.press)
-
-        self.img1 = self.new_screenshot(1)
-        self.extraScreenshotLayout.addWidget(self.img1)
-        
-        self.img2 = self.new_screenshot(2)
-        self.extraScreenshotLayout.addWidget(self.img2)
-        
-        self.img3 = self.new_screenshot(3)
-        self.extraScreenshotLayout.addWidget(self.img3)
-        
 
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
         sizePolicy.setHeightForWidth(False)

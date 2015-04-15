@@ -131,9 +131,15 @@ class AUI(QWidget):
         # minSize = QtCore.QSize(150, 150)
         # maxSize = QtCore.QSize(200, 200)
         # stretch = 1
-        self.CurrentScreenshot = Screenshot.Screenshots(self)
+        self.Screenshots = Screenshots.Screenshots(self)
+        self.scr2 = Screenshot.Screenshot(self.Screenshots.extraScreenGroup,2)
+        self.scr3 = Screenshot.Screenshot(self.Screenshots.extraScreenGroup,3)
+        self.scr4 = Screenshot.Screenshot(self.Screenshots.extraScreenGroup,4)
+        self.Screenshots.extraScreenshotLayout.addWidget(self.scr2)
+        self.Screenshots.extraScreenshotLayout.addWidget(self.scr3)
+        self.Screenshots.extraScreenshotLayout.addWidget(self.scr4)
 
-        self.GUILayout.addWidget(self.CurrentScreenshot)
+        self.GUILayout.addWidget(self.Screenshots)
 
         # minSize = QtCore.QSize(80, 80)
         # maxSize = QtCore.QSize(120, 120)
@@ -175,21 +181,29 @@ class AUI(QWidget):
         self.map.map.inside.connect(self.parameters.insideWidget)
         self.pointcloud.pointcloud.inside.connect(self.parameters.insideWidget)
         self.extra.view.inside.connect(self.parameters.insideWidget)
-        self.CurrentScreenshot.currentScreenshot.inside.connect(self.parameters.insideWidget)
+        self.Screenshots.currentScreenshot.inside.connect(self.parameters.insideWidget)
+        self.scr2.screenshot.inside.connect(self.parameters.insideWidget)
+        self.scr3.screenshot.inside.connect(self.parameters.insideWidget)
+        self.scr4.screenshot.inside.connect(self.parameters.insideWidget)
 
 
         QtCore.QMetaObject.connectSlotsByName(self)
 
         '''
         State machine.
+        '''
         machine = QtCore.QStateMachine()
         state1 = QtCore.QState(machine)
         state2 = QtCore.QState(machine)
         state3 = QtCore.QState(machine)
         machine.setInitialState(state1)
-        '''
+
+        #State1
+        #state1 =
+
 
         self.show()
+
 
 
     def chargeBattery(self):

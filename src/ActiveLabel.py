@@ -10,16 +10,14 @@ import sys
 
 class ActLabel (QLabel, QObject):
     inside = pyqtSignal(str)
-
     def __init__(self, parent):
         QLabel.__init__(self, parent)
-
         self.outside = pyqtSignal(str)
-        pass
+        self.txt = self.text()
 
     def enterEvent(self, QEvent):
         self.setStyleSheet('border: 2px solid rgb(0, 128, 255);; color: rgb(0, 128, 255);')
-        self.inside.emit(self.text())
+        self.inside.emit(self.txt)
 
     def leaveEvent(self, QEvent):
         self.setStyleSheet('color: black')
