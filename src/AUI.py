@@ -7,7 +7,7 @@ Created on Sat Dec 27 02:57:21 2014
 """
 import sys
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QWidget, QHBoxLayout, QVBoxLayout, QApplication, QDesktopWidget)
+from PyQt4.QtGui import (QMainWindow, QHBoxLayout, QVBoxLayout, QApplication, QDesktopWidget)
 # from PyQt4.uic import loadUi
 
 import Camera
@@ -24,29 +24,33 @@ import Parameters
 import StatusBar
 import Toolbar
 import Views
+import AUIUI
 
-
-class AUI(QWidget):
+class AUI(QMainWindow,AUIUI.Ui_MainWin):
     """
     Adaptive User Interface for TRADR project
     """
 
     def __init__(self, parent=None):
         super(AUI, self).__init__()
+        self.setupUi(self)
         self.initUI()
 
     def initUI(self):
-        self.setGeometry(0, 0, 1280, 800)
+        #self.setGeometry(0, 0, 1280, 800)
         self.setWindowTitle("Adaptive TRADR OCU")
         self.setMouseTracking(True)
-        self.showMaximized()
-        '''        
+
+        self.label.setVisible(False)
+
+
+        '''
         Layout Definitions for the complete AUI
         '''
         # Global Layout for AUI Parameters + TRADR GUI
-        self.globalLayout = QHBoxLayout()
-        self.setLayout(self.globalLayout)
-        self.globalLayout.setMargin(0)
+        #self.globalLayout = QHBoxLayout()
+        #self.setLayout(self.globalLayout)
+        #self.globalLayout.setMargin(0)
 
         self.MainLayout = QVBoxLayout()
         self.MainLayout.setObjectName("MainLayout")
@@ -89,31 +93,32 @@ class AUI(QWidget):
         # stretch = 0
         self.pointcloud = Pointcloud.Pointcloud(self)
         self.pointcloud.setParent(self.views)
-        self.views.viewsGroupLayout.addWidget(self.pointcloud)
+        self.views.availableViewsLayout.addWidget(self.pointcloud)
 
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
         self.map = Map.Map(self)
         self.map.setParent(self.views)
-        self.views.viewsGroupLayout.addWidget(self.map)
+        self.views.availableViewsLayout.addWidget(self.map)
 
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
         self.extra = NewView.NewView(self)
         self.extra.setParent(self.views)
-        self.views.viewsGroupLayout.addWidget(self.extra)
+        self.views.availableViewsLayout.addWidget(self.extra)
 
-        self.MainViews = QtGui.QGridLayout()
-        self.MainViews.setObjectName("MainViews")
+        #self.MainViews = QtGui.QGridLayout()
+        #self.MainViews.setObjectName("MainViews")
 
 
         # minSize = QtCore.QSize(100, 100)
         # maxSize = QtCore.QSize(300, 300)
         # stretch = 3
         self.Camera1 = Camera.Camera(self, 1)
-        self.MainViews.addWidget(self.Camera1, 0, 0)
+        self.views.tleftLayout.addWidget(self.Camera1)
+        self.views.tleftLabel.setVisible(False)
 
 
         # minSize = QtCore.QSize(100, 100)
@@ -121,12 +126,14 @@ class AUI(QWidget):
         # stretch = 1
         self.Camera2 = Camera.Camera(self, 2)
         self.Camera2.setMinimumSize(QtCore.QSize(80,80))
-        self.MainViews.addWidget(self.Camera2, 1, 0)
+        self.views.bleftLayout.addWidget(self.Camera2)
+        self.views.bleftLabel.setVisible(False)
 
-        self.ViewsLayout.addLayout(self.MainViews)
-        self.ViewsLayout.addWidget(self.views)
 
-        self.GUILayout.addLayout(self.ViewsLayout)
+        #self.ViewsLayout.addLayout(self.MainViews)
+        #self.ViewsLayout.addWidget(self.views)
+
+        self.GUILayout.addWidget(self.views)
 
         # minSize = QtCore.QSize(150, 150)
         # maxSize = QtCore.QSize(200, 200)
@@ -156,7 +163,8 @@ class AUI(QWidget):
         self.GUILayout.addLayout(self.StatusLayout)
 
         self.parameters = Parameters.AUIParameters(self)
-        self.globalLayout.addWidget(self.parameters)
+        #self.globalLayout.addWidget(self.parameters)
+        self.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.parameters)
 
         '''
         Connect internal widgets
@@ -202,7 +210,7 @@ class AUI(QWidget):
         #state1 =
 
 
-        self.show()
+        self.showMaximized()
 
 
 

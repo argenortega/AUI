@@ -22,6 +22,8 @@ class NewView(QWidget, ExtraViewUI.Ui_NewView):
         self.initUI()
         
     def initUI(self):
+        self.currentmap = 'border-image: url(:/maps/local0003);'
+
         '''
         Size of the widget
         '''
@@ -31,6 +33,10 @@ class NewView(QWidget, ExtraViewUI.Ui_NewView):
 
     def enterEvent(self, QEvent):
         self.inside.emit('Local Map')
+
+    def leaveEvent(self, QEvent):
+        self.view.setStyleSheet(self.currentmap)
+
 
         
         

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/Map.ui'
 #
-# Created: Mon Apr 13 21:15:33 2015
+# Created: Fri Apr 24 22:39:22 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -54,7 +54,8 @@ class Ui_MapWidget(object):
         self.map.setFont(font)
         self.map.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.map.setMouseTracking(True)
-        self.map.setStyleSheet(_fromUtf8("image: url(:/maps/resources/maps/03.jpg);"))
+        self.map.setAutoFillBackground(False)
+        self.map.setStyleSheet(_fromUtf8("border-image: url(:/maps/global0003);"))
         self.map.setFrameShape(QtGui.QFrame.StyledPanel)
         self.map.setFrameShadow(QtGui.QFrame.Sunken)
         self.map.setTextFormat(QtCore.Qt.PlainText)
@@ -70,6 +71,6 @@ class Ui_MapWidget(object):
 
     def retranslateUi(self, MapWidget):
         MapWidget.setWindowTitle(_translate("MapWidget", "Map", None))
-        self.map.setText(_translate("MapWidget", "Global  Map", None))
+        self.map.setText(_translate("MapWidget", "Global Map", None))
 
 from ActiveLabel import ActLabel

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/Wifi.ui'
 #
-# Created: Mon Apr 13 21:15:33 2015
+# Created: Fri Apr 24 22:39:22 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!

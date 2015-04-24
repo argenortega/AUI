@@ -12,7 +12,7 @@ http://thecodeinn.blogspot.de/2013/08/pyqt-stopwatch-and-timer.html
 
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import QDockWidget
+from PyQt4.QtGui import QDockWidget, QDesktopWidget
 from PyQt4.QtCore import pyqtSlot
 import sys
 
@@ -52,6 +52,17 @@ class AUIParameters(QDockWidget, ParametersUI.Ui_AUIParameters):
         self.contents.addTab(self.tab2, "Utilities")
         self.contents.addTab(self.tab3, "Probabilities")
         self.setWidget(self.contents)
+
+        desktop = QDesktopWidget()
+        available = QtCore.QRect(desktop.screenGeometry())
+        win = QtCore.QRect(self.geometry())
+
+        win_size = 'Window: %d x %d'%(win.height(),win.width())
+        screen_size = 'Screen: %d x %d'%(available.height(),available.width())
+
+        self.info.setText(win_size+'\n'+screen_size)
+
+        #self.userInfo.setVisible(False)
 
 
     def Reset(self):

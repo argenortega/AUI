@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/Camera.ui'
 #
-# Created: Mon Apr 13 21:15:33 2015
+# Created: Fri Apr 24 22:39:22 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,9 +27,9 @@ class Ui_Camera(object):
     def setupUi(self, Camera):
         Camera.setObjectName(_fromUtf8("Camera"))
         Camera.resize(300, 300)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(1)
-        sizePolicy.setVerticalStretch(1)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(6)
+        sizePolicy.setVerticalStretch(6)
         sizePolicy.setHeightForWidth(Camera.sizePolicy().hasHeightForWidth())
         Camera.setSizePolicy(sizePolicy)
         Camera.setMinimumSize(QtCore.QSize(100, 100))

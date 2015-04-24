@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/Screenshot.ui'
+# Form implementation generated from reading ui file 'ui/Screenshots.ui'
 #
-# Created: Mon Apr 13 21:15:33 2015
+# Created: Fri Apr 24 22:39:22 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,18 +26,18 @@ except AttributeError:
 class Ui_ScreenshotWidget(object):
     def setupUi(self, ScreenshotWidget):
         ScreenshotWidget.setObjectName(_fromUtf8("ScreenshotWidget"))
-        ScreenshotWidget.resize(300, 514)
-        ScreenshotWidget.setMinimumSize(QtCore.QSize(0, 30))
-        ScreenshotWidget.setMaximumSize(QtCore.QSize(300, 16777215))
+        ScreenshotWidget.resize(252, 514)
+        ScreenshotWidget.setMinimumSize(QtCore.QSize(0, 0))
+        ScreenshotWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
         ScreenshotWidget.setMouseTracking(True)
         self.layout = QtGui.QVBoxLayout(ScreenshotWidget)
         self.layout.setMargin(1)
         self.layout.setObjectName(_fromUtf8("layout"))
         self.currentScreenshot = ActLabel(ScreenshotWidget)
         self.currentScreenshot.setEnabled(True)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
-        sizePolicy.setHorizontalStretch(1)
-        sizePolicy.setVerticalStretch(1)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.MinimumExpanding)
+        sizePolicy.setHorizontalStretch(4)
+        sizePolicy.setVerticalStretch(4)
         sizePolicy.setHeightForWidth(self.currentScreenshot.sizePolicy().hasHeightForWidth())
         self.currentScreenshot.setSizePolicy(sizePolicy)
         self.currentScreenshot.setMinimumSize(QtCore.QSize(250, 250))
@@ -46,6 +46,7 @@ class Ui_ScreenshotWidget(object):
         self.currentScreenshot.setBaseSize(QtCore.QSize(300, 300))
         self.currentScreenshot.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.currentScreenshot.setMouseTracking(True)
+        self.currentScreenshot.setAcceptDrops(True)
         self.currentScreenshot.setFrameShape(QtGui.QFrame.StyledPanel)
         self.currentScreenshot.setFrameShadow(QtGui.QFrame.Sunken)
         self.currentScreenshot.setScaledContents(True)
@@ -95,7 +96,7 @@ class Ui_ScreenshotWidget(object):
         self.scrollArea.setAlignment(QtCore.Qt.AlignCenter)
         self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
         self.extraScreenshots = QtGui.QWidget()
-        self.extraScreenshots.setGeometry(QtCore.QRect(0, 0, 241, 110))
+        self.extraScreenshots.setGeometry(QtCore.QRect(0, 0, 193, 110))
         self.extraScreenshots.setMinimumSize(QtCore.QSize(0, 110))
         self.extraScreenshots.setMouseTracking(True)
         self.extraScreenshots.setObjectName(_fromUtf8("extraScreenshots"))

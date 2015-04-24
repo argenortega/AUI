@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/AUI.ui'
 #
-# Created: Wed Apr 15 16:44:19 2015
+# Created: Fri Apr 24 22:39:22 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,22 +23,37 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_UI(object):
-    def setupUi(self, UI):
-        UI.setObjectName(_fromUtf8("UI"))
-        UI.resize(400, 300)
-        self.globalLayout = QtGui.QHBoxLayout(UI)
-        self.globalLayout.setSpacing(1)
-        self.globalLayout.setContentsMargins(6, 0, 6, 6)
+class Ui_MainWin(object):
+    def setupUi(self, MainWin):
+        MainWin.setObjectName(_fromUtf8("MainWin"))
+        MainWin.resize(800, 600)
+        MainWin.setAcceptDrops(True)
+        MainWin.setDockNestingEnabled(True)
+        MainWin.setUnifiedTitleAndToolBarOnMac(True)
+        self.AUIWidget = QtGui.QWidget(MainWin)
+        self.AUIWidget.setObjectName(_fromUtf8("AUIWidget"))
+        self.globalLayout = QtGui.QHBoxLayout(self.AUIWidget)
+        self.globalLayout.setMargin(0)
         self.globalLayout.setObjectName(_fromUtf8("globalLayout"))
-        self.label = QtGui.QLabel(UI)
+        self.label = QtGui.QLabel(self.AUIWidget)
         self.label.setObjectName(_fromUtf8("label"))
         self.globalLayout.addWidget(self.label)
+        MainWin.setCentralWidget(self.AUIWidget)
+        self.menubar = QtGui.QMenuBar(MainWin)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
+        self.menubar.setObjectName(_fromUtf8("menubar"))
+        MainWin.setMenuBar(self.menubar)
+        self.logbar = QtGui.QStatusBar(MainWin)
+        self.logbar.setObjectName(_fromUtf8("logbar"))
+        MainWin.setStatusBar(self.logbar)
+        self.actionHola = QtGui.QAction(MainWin)
+        self.actionHola.setObjectName(_fromUtf8("actionHola"))
 
-        self.retranslateUi(UI)
-        QtCore.QMetaObject.connectSlotsByName(UI)
+        self.retranslateUi(MainWin)
+        QtCore.QMetaObject.connectSlotsByName(MainWin)
 
-    def retranslateUi(self, UI):
-        UI.setWindowTitle(_translate("UI", "AUI - TRADR Proyect", None))
-        self.label.setText(_translate("UI", "TextLabel", None))
+    def retranslateUi(self, MainWin):
+        MainWin.setWindowTitle(_translate("MainWin", "Adaptive OCU", None))
+        self.label.setText(_translate("MainWin", "TextLabel", None))
+        self.actionHola.setText(_translate("MainWin", "Hola", None))
 

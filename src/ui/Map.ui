@@ -81,8 +81,11 @@
      <property name="mouseTracking">
       <bool>true</bool>
      </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/maps/resources/maps/03.jpg);</string>
+      <string notr="true">border-image: url(:/maps/global0003);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -91,13 +94,10 @@
       <enum>QFrame::Sunken</enum>
      </property>
      <property name="text">
-      <string/>
+      <string>Global Map</string>
      </property>
      <property name="textFormat">
       <enum>Qt::PlainText</enum>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="../resources.qrc">:/maps/resources/maps/03.jpg</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -122,8 +122,6 @@
    <header>ActiveLabel</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="../resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

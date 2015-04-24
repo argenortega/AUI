@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/ExtraView.ui'
 #
-# Created: Mon Apr 13 21:15:33 2015
+# Created: Fri Apr 24 22:39:22 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -51,6 +51,8 @@ class Ui_NewView(object):
         self.view.setFont(font)
         self.view.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.view.setMouseTracking(True)
+        self.view.setAutoFillBackground(True)
+        self.view.setStyleSheet(_fromUtf8("border-image: url(:/maps/local0003);"))
         self.view.setFrameShape(QtGui.QFrame.StyledPanel)
         self.view.setFrameShadow(QtGui.QFrame.Sunken)
         self.view.setScaledContents(True)

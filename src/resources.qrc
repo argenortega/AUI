@@ -1,10 +1,27 @@
 <RCC>
-  <qresource prefix="maps">
-    <file>resources/maps/02.png</file>
-    <file>resources/maps/08.jpg</file>
-    <file>resources/maps/06.jpg</file>
-    <file>resources/maps/05.jpg</file>
-    <file>resources/maps/04.jpg</file>
-    <file>resources/maps/03.jpg</file>
-  </qresource>
+    <qresource prefix="/maps">
+        <file alias="local05">resources/maps/08.jpg</file>
+        <file alias="local04">resources/maps/06.jpg</file>
+        <file alias="local03">resources/maps/05.jpg</file>
+        <file alias="local02">resources/maps/04.jpg</file>
+        <file alias="local01">resources/maps/03.jpg</file>
+        <file>resources/maps/001.png</file>
+        <file alias="local0001">resources/maps/0001.png</file>
+        <file>resources/maps/002.png</file>
+        <file alias="local0002">resources/maps/0002.png</file>
+        <file>resources/maps/003.png</file>
+        <file alias="local0003">resources/maps/0003.png</file>
+        <file>resources/maps/004.png</file>
+        <file alias="local0004">resources/maps/0004.png</file>
+        <file>resources/maps/005.png</file>
+        <file alias="local0005">resources/maps/0005.png</file>
+        <file>resources/maps/006.png</file>
+        <file alias="local0006">resources/maps/0006.png</file>
+        <file alias="global0001">resources/maps/0007.png</file>
+        <file alias="global0002">resources/maps/0008.png</file>
+        <file alias="global0003">resources/maps/0009.png</file>
+        <file alias="global0004">resources/maps/0010.png</file>
+        <file alias="global0005">resources/maps/0011.png</file>
+    </qresource>
+    <qresource prefix="/plots"/>
 </RCC>
