@@ -25,6 +25,8 @@ import StatusBar
 import Toolbar
 import Views
 import AUIUI
+import ActiveLabel
+
 
 class AUI(QMainWindow,AUIUI.Ui_MainWin):
     """
@@ -33,6 +35,7 @@ class AUI(QMainWindow,AUIUI.Ui_MainWin):
 
     def __init__(self, parent=None):
         super(AUI, self).__init__()
+        self.sc_num = 0
         self.setupUi(self)
         self.initUI()
 
@@ -190,9 +193,9 @@ class AUI(QMainWindow,AUIUI.Ui_MainWin):
         self.pointcloud.pointcloud.inside.connect(self.parameters.insideWidget)
         self.extra.view.inside.connect(self.parameters.insideWidget)
         self.Screenshots.currentScreenshot.inside.connect(self.parameters.insideWidget)
-        self.scr2.screenshot.inside.connect(self.parameters.insideWidget)
-        self.scr3.screenshot.inside.connect(self.parameters.insideWidget)
-        self.scr4.screenshot.inside.connect(self.parameters.insideWidget)
+        #self.scr2.screenshot.inside.connect(self.parameters.insideWidget)
+        #self.scr3.screenshot.inside.connect(self.parameters.insideWidget)
+        #self.scr4.screenshot.inside.connect(self.parameters.insideWidget)
 
 
         QtCore.QMetaObject.connectSlotsByName(self)
@@ -245,6 +248,12 @@ class AUI(QMainWindow,AUIUI.Ui_MainWin):
             # self.parameters.currentWidget.setText("Camera 1")
             pass
 
+    def new_screenshot(self,num):
+        ns = ActiveLabel.ActLabel(self.extraScreenGroup)
+        ns.setText("Screenshot %d"%num)
+        ns.setObjectName("img%d"%num)
+        self.extraScreenshotLayout.addWidget(ns)
+        self.sc_num = self.sc_num + 1
 
 def main():
     app = QtGui.QApplication(sys.argv)

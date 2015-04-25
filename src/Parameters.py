@@ -65,6 +65,10 @@ class AUIParameters(QDockWidget, ParametersUI.Ui_AUIParameters):
         #self.userInfo.setVisible(False)
 
 
+    @pyqtSlot(str, name='inside')
+    def update_context(self, s):
+        self.currentWidget.setText(s)
+
     def Reset(self):
         global s,m,h
  

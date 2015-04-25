@@ -21,7 +21,7 @@ class Screenshots(QWidget, ScreenshotsUI.Ui_ScreenshotWidget):
         self.initUI()
         
     def initUI(self):
-        self.newS.clicked.connect(self.add_new)
+        #self.newS.clicked.connect(self.add_new)
 
         self.showB.clicked[bool].connect(self.press)
 

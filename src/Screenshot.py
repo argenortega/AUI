@@ -20,11 +20,3 @@ class Screenshot(QWidget, ScreenshotUI.Ui_ScreenshotWidget):
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)
 
-    def dragEnterEvent(self, e):
-        if e.mimeData().hasFormat("text/plain"):
-            e.accept()
-        else:
-            e.ignore()
-
-    def dropEvent(self, e):
-        self.setText(e.mimeData().text())

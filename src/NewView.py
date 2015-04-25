@@ -27,7 +27,7 @@ class NewView(QWidget, ExtraViewUI.Ui_NewView):
         '''
         Size of the widget
         '''
-        sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)
 

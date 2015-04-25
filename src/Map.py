@@ -7,7 +7,7 @@ Created on Mon Dec 29 15:28:25 2014
 from PyQt4 import QtCore, QtGui
 
 from PyQt4.QtCore import pyqtSignal, Qt, QMimeData
-from PyQt4.QtGui import (QWidget, QSizePolicy, QApplication, QDrag)
+from PyQt4.QtGui import (QWidget, QSizePolicy, QApplication, QDrag, QPixmap)
 import sys
 import MapUI
 
@@ -19,10 +19,14 @@ class Map(QWidget, MapUI.Ui_MapWidget):
 
     def initUI(self):
         self.currentmap = 'border-image: url(:/maps/global0003);'
-        sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)
         self.labelText = self.map.text()
+        print self.heightForWidth(100)
+
+    def heightForWidth(self, p_int):
+        return p_int
 
 
     def enterEvent(self, QEvent):
@@ -44,6 +48,8 @@ class Map(QWidget, MapUI.Ui_MapWidget):
             < QApplication.startDragDistance()):
             return
         drag = QDrag(self)
+        pix = QPixmap.grabWidget(self)
+        drag.setPixmap(pix)
         mime_data = QMimeData()
         # Establecer el contenido del widget como dato
         mime_data.setText(self.map.text())

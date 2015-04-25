@@ -49,9 +49,6 @@
        <height>3</height>
       </size>
      </property>
-     <property name="acceptDrops">
-      <bool>false</bool>
-     </property>
      <layout class="QGridLayout" name="currentViewsLayout">
       <item row="0" column="0">
        <widget class="DView" name="tleft">
@@ -76,9 +73,6 @@
          </property>
          <item>
           <widget class="QLabel" name="tleftLabel">
-           <property name="acceptDrops">
-            <bool>false</bool>
-           </property>
            <property name="styleSheet">
             <string notr="true">color: rgb(102, 102, 102);</string>
            </property>
@@ -116,9 +110,6 @@
          </property>
          <item>
           <widget class="QLabel" name="bleftLabel">
-           <property name="acceptDrops">
-            <bool>false</bool>
-           </property>
            <property name="styleSheet">
             <string notr="true">color: rgb(102, 102, 102);</string>
            </property>
@@ -156,9 +147,6 @@
          </property>
          <item>
           <widget class="QLabel" name="brightLabel">
-           <property name="acceptDrops">
-            <bool>false</bool>
-           </property>
            <property name="styleSheet">
             <string notr="true">color: rgb(102, 102, 102);</string>
            </property>
@@ -196,9 +184,6 @@
          </property>
          <item>
           <widget class="QLabel" name="trightLabel">
-           <property name="acceptDrops">
-            <bool>false</bool>
-           </property>
            <property name="styleSheet">
             <string notr="true">color: rgb(102, 102, 102);</string>
            </property>

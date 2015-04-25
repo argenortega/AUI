@@ -9,7 +9,7 @@ import sys
 
 
 class ActLabel (QLabel, QObject):
-    inside = pyqtSignal(str)
+    inside = pyqtSignal(str, name= 'inside')
     def __init__(self, parent):
         QLabel.__init__(self, parent)
         self.outside = pyqtSignal(str)

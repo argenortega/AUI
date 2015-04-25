@@ -20,8 +20,32 @@ class DView(QFrame):
     def dropEvent(self, event):
         # Establecer el widget en una nueva posicion
         pos = event.pos()
-        self.label = event.source()
-        self.label.setParent(self)
-        self.label.setGeometry(pos.x(), pos.y(), 150, 20)
-        self.label.show()
+        self.wid = event.source()
+        self.wid.setParent(self)
+        #self.wid.setGeometry(pos.x(), pos.y(), 150, 20)
+        #self.wid.setGeometry()
+        self.layout().addWidget(self.wid)
         event.acceptProposedAction()
+
+        if self.parent().objectName() == 'currentViews':
+            print 'Current Views'
+            minSize = QtCore.QSize(100, 100)
+            maxSize = QtCore.QSize(16777215, 16777215)
+            #stretch = 1
+
+            self.wid.setMaximumSize(maxSize)
+            self.wid.setMinimumSize(minSize)
+            #self.wid.maximize()
+            self.wid.resize(16777215, 16777215)
+        elif self.parent().objectName() == 'viewsGroup':
+            print 'Available Views'
+            minSize = QtCore.QSize(50, 50)
+            maxSize = QtCore.QSize(70, 70)
+            self.wid.setMaximumSize(maxSize)
+            self.wid.setMinimumSize(minSize)
+            self.wid.resize(70, 70)
+
+        self.wid.show()
+
+        print self.objectName()
+        print self.children()
