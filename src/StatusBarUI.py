@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/StatusBar.ui'
 #
-# Created: Fri Apr 24 22:39:22 2015
+# Created: Sun Jun 28 22:26:29 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -156,4 +156,4 @@ class Ui_statusBarWidget(object):
         self.percent1.setText(_translate("statusBarWidget", "%", None))
         self.wifiStatus.setText(_translate("statusBarWidget", "WiFi", None))
 
-from ColorProgressBar import CProgressBar
+from utilities.ColorProgressBar import CProgressBar

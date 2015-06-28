@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/ExtraView.ui'
 #
-# Created: Fri Apr 24 22:39:22 2015
+# Created: Sun Jun 28 22:26:28 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,13 +27,14 @@ class Ui_NewView(object):
     def setupUi(self, NewView):
         NewView.setObjectName(_fromUtf8("NewView"))
         NewView.resize(70, 70)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(NewView.sizePolicy().hasHeightForWidth())
         NewView.setSizePolicy(sizePolicy)
         NewView.setMinimumSize(QtCore.QSize(50, 50))
         NewView.setMaximumSize(QtCore.QSize(70, 70))
+        NewView.setBaseSize(QtCore.QSize(50, 50))
         NewView.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         NewView.setMouseTracking(True)
         self.layout = QtGui.QVBoxLayout(NewView)
@@ -41,18 +42,19 @@ class Ui_NewView(object):
         self.layout.setObjectName(_fromUtf8("layout"))
         self.view = ActLabel(NewView)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.view.sizePolicy().hasHeightForWidth())
         self.view.setSizePolicy(sizePolicy)
+        self.view.setMinimumSize(QtCore.QSize(50, 50))
         self.view.setMaximumSize(QtCore.QSize(70, 70))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.view.setFont(font)
         self.view.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.view.setMouseTracking(True)
-        self.view.setAutoFillBackground(True)
-        self.view.setStyleSheet(_fromUtf8("border-image: url(:/maps/local0003);"))
+        self.view.setAutoFillBackground(False)
+        self.view.setStyleSheet(_fromUtf8("border-image: url(:/maps/LMap);"))
         self.view.setFrameShape(QtGui.QFrame.StyledPanel)
         self.view.setFrameShadow(QtGui.QFrame.Sunken)
         self.view.setScaledContents(True)
@@ -69,4 +71,4 @@ class Ui_NewView(object):
         NewView.setWindowTitle(_translate("NewView", "3D Pointcloud", None))
         self.view.setText(_translate("NewView", "Local Map", None))
 
-from ActiveLabel import ActLabel
+from utilities.ActiveLabel import ActLabel

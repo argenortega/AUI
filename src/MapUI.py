@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/Map.ui'
 #
-# Created: Fri Apr 24 22:39:22 2015
+# Created: Sun Jun 28 22:26:28 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -48,17 +48,16 @@ class Ui_MapWidget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.map.sizePolicy().hasHeightForWidth())
         self.map.setSizePolicy(sizePolicy)
-        self.map.setMaximumSize(QtCore.QSize(70, 70))
+        self.map.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.map.setFont(font)
         self.map.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.map.setMouseTracking(True)
         self.map.setAutoFillBackground(False)
-        self.map.setStyleSheet(_fromUtf8("border-image: url(:/maps/global0003);"))
+        self.map.setStyleSheet(_fromUtf8("border-image: url(:/maps/GMap);"))
         self.map.setFrameShape(QtGui.QFrame.StyledPanel)
         self.map.setFrameShadow(QtGui.QFrame.Sunken)
-        self.map.setTextFormat(QtCore.Qt.PlainText)
         self.map.setScaledContents(True)
         self.map.setAlignment(QtCore.Qt.AlignCenter)
         self.map.setWordWrap(True)
@@ -71,6 +70,6 @@ class Ui_MapWidget(object):
 
     def retranslateUi(self, MapWidget):
         MapWidget.setWindowTitle(_translate("MapWidget", "Map", None))
-        self.map.setText(_translate("MapWidget", "Global Map", None))
+        self.map.setText(_translate("MapWidget", "Global   Map", None))
 
-from ActiveLabel import ActLabel
+from utilities.ActiveLabel import ActLabel

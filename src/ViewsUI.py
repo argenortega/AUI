@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/Views.ui'
 #
-# Created: Fri Apr 24 22:39:22 2015
+# Created: Sun Jun 28 22:26:29 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -44,12 +44,11 @@ class Ui_viewsWidget(object):
         sizePolicy.setHeightForWidth(self.currentViews.sizePolicy().hasHeightForWidth())
         self.currentViews.setSizePolicy(sizePolicy)
         self.currentViews.setSizeIncrement(QtCore.QSize(3, 3))
-        self.currentViews.setAcceptDrops(False)
         self.currentViews.setObjectName(_fromUtf8("currentViews"))
         self.currentViewsLayout = QtGui.QGridLayout(self.currentViews)
         self.currentViewsLayout.setMargin(0)
         self.currentViewsLayout.setObjectName(_fromUtf8("currentViewsLayout"))
-        self.tleft = DView(self.currentViews)
+        self.tleft = DCurrentView(self.currentViews)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -63,13 +62,12 @@ class Ui_viewsWidget(object):
         self.tleftLayout.setMargin(0)
         self.tleftLayout.setObjectName(_fromUtf8("tleftLayout"))
         self.tleftLabel = QtGui.QLabel(self.tleft)
-        self.tleftLabel.setAcceptDrops(False)
         self.tleftLabel.setStyleSheet(_fromUtf8("color: rgb(102, 102, 102);"))
         self.tleftLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.tleftLabel.setObjectName(_fromUtf8("tleftLabel"))
         self.tleftLayout.addWidget(self.tleftLabel)
         self.currentViewsLayout.addWidget(self.tleft, 0, 0, 1, 1)
-        self.bleft = DView(self.currentViews)
+        self.bleft = DCurrentView(self.currentViews)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -83,13 +81,12 @@ class Ui_viewsWidget(object):
         self.bleftLayout.setMargin(0)
         self.bleftLayout.setObjectName(_fromUtf8("bleftLayout"))
         self.bleftLabel = QtGui.QLabel(self.bleft)
-        self.bleftLabel.setAcceptDrops(False)
         self.bleftLabel.setStyleSheet(_fromUtf8("color: rgb(102, 102, 102);"))
         self.bleftLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.bleftLabel.setObjectName(_fromUtf8("bleftLabel"))
         self.bleftLayout.addWidget(self.bleftLabel)
         self.currentViewsLayout.addWidget(self.bleft, 1, 0, 1, 1)
-        self.bright = DView(self.currentViews)
+        self.bright = DCurrentView(self.currentViews)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -103,13 +100,12 @@ class Ui_viewsWidget(object):
         self.brightLayout.setMargin(0)
         self.brightLayout.setObjectName(_fromUtf8("brightLayout"))
         self.brightLabel = QtGui.QLabel(self.bright)
-        self.brightLabel.setAcceptDrops(False)
         self.brightLabel.setStyleSheet(_fromUtf8("color: rgb(102, 102, 102);"))
         self.brightLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.brightLabel.setObjectName(_fromUtf8("brightLabel"))
         self.brightLayout.addWidget(self.brightLabel)
         self.currentViewsLayout.addWidget(self.bright, 1, 1, 1, 1)
-        self.tright = DView(self.currentViews)
+        self.tright = DCurrentView(self.currentViews)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -123,7 +119,6 @@ class Ui_viewsWidget(object):
         self.trightLayout.setMargin(0)
         self.trightLayout.setObjectName(_fromUtf8("trightLayout"))
         self.trightLabel = QtGui.QLabel(self.tright)
-        self.trightLabel.setAcceptDrops(False)
         self.trightLabel.setStyleSheet(_fromUtf8("color: rgb(102, 102, 102);"))
         self.trightLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.trightLabel.setObjectName(_fromUtf8("trightLabel"))
@@ -175,7 +170,7 @@ class Ui_viewsWidget(object):
         self.viewsGroupLayout = QtGui.QHBoxLayout(self.viewsGroup)
         self.viewsGroupLayout.setMargin(0)
         self.viewsGroupLayout.setObjectName(_fromUtf8("viewsGroupLayout"))
-        self.availableViews = DView(self.viewsGroup)
+        self.availableViews = DAvailableView(self.viewsGroup)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -216,5 +211,5 @@ class Ui_viewsWidget(object):
         self.viewsGroup.setTitle(_translate("viewsWidget", "Available Views", None))
         self.pushButton.setText(_translate("viewsWidget", "-", None))
 
-from DropView import DView
-from HoverButtons import HButton
+from utilities.DropView import DCurrentView, DAvailableView
+from utilities.HoverButtons import HButton

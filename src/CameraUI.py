@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/Camera.ui'
 #
-# Created: Fri Apr 24 22:39:22 2015
+# Created: Sun Jun 28 22:26:28 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -32,7 +32,7 @@ class Ui_Camera(object):
         sizePolicy.setVerticalStretch(6)
         sizePolicy.setHeightForWidth(Camera.sizePolicy().hasHeightForWidth())
         Camera.setSizePolicy(sizePolicy)
-        Camera.setMinimumSize(QtCore.QSize(100, 100))
+        Camera.setMinimumSize(QtCore.QSize(0, 0))
         Camera.setMaximumSize(QtCore.QSize(16777215, 16777215))
         Camera.setSizeIncrement(QtCore.QSize(3, 3))
         Camera.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
@@ -65,4 +65,4 @@ class Ui_Camera(object):
         Camera.setWindowTitle(_translate("Camera", "Camera", None))
         self.cam.setText(_translate("Camera", "Camera", None))
 
-from ActiveLabel import ActLabel
+from utilities.ActiveLabel import ActLabel

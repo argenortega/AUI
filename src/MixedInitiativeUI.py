@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/MixedInitiative.ui'
 #
-# Created: Fri Apr 24 22:39:22 2015
+# Created: Sun Jun 28 22:26:28 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_mixedInitiative(object):
     def setupUi(self, mixedInitiative):
         mixedInitiative.setObjectName(_fromUtf8("mixedInitiative"))
-        mixedInitiative.resize(1068, 50)
+        mixedInitiative.resize(1047, 50)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -127,6 +127,12 @@ class Ui_mixedInitiative(object):
 
     def retranslateUi(self, mixedInitiative):
         mixedInitiative.setWindowTitle(_translate("mixedInitiative", "Form", None))
+        self.textBrowserAUIMix.setHtml(_translate("mixedInitiative", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'.Helvetica Neue DeskInterface\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">[00:00]: Adaptive capabilities turned on.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; color:#0a5dff;\">[02:31]: Display recommended views for Navigation?</span></p></body></html>", None))
         self.Accept.setText(_translate("mixedInitiative", "Accept", None))
         self.Reject.setText(_translate("mixedInitiative", "Reject", None))
         self.AUIStatusLabel.setText(_translate("mixedInitiative", "AUI Status", None))

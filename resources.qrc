@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/maps">
+        <file alias="LMap">resources/maps/0001.png</file>
+        <file alias="GMap">resources/maps/0007.png</file>
+    </qresource>
+    <qresource prefix="/plots"/>
+    <qresource prefix="/"/>
+    <qresource prefix="/icon">
+        <file alias="user">resources/icons/user.png</file>
+    </qresource>
+</RCC>

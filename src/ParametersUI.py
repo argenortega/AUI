@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/Parameters.ui'
 #
-# Created: Fri Apr 24 22:39:22 2015
+# Created: Sun Jun 28 22:26:28 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -495,4 +495,4 @@ class Ui_AUIParameters(object):
         self.toolButton.setText(_translate("AUIParameters", "...", None))
         self.contents.setTabText(self.contents.indexOf(self.Tab1), _translate("AUIParameters", "Control", None))
 
-from ColorProgressBar import CProgressBar
+from utilities.ColorProgressBar import CProgressBar

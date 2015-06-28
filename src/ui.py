@@ -1,6 +1,7 @@
 __author__ = 'Argen'
 
 import sys
+
 from PyQt4 import QtGui, QtCore
 from PyQt4.Qt import QWidget, QDesktopWidget, QMainWindow
 
