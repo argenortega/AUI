@@ -10,10 +10,10 @@ import sys
 from PyQt4 import QtGui
 from PyQt4.QtGui import (QWidget)
 
-from GUI.StateSensors.Internal import BatteryUI
+from gui.robot.internal import ui_battery
 
 
-class Battery(QWidget, BatteryUI.Ui_batteryStatus):
+class Battery(QWidget, ui_battery.Ui_batteryStatus):
     '''
     Simulation of a Battery level widget
     '''

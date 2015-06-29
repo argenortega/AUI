@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/Battery.ui'
+# Form implementation generated from reading ui file 'ui/battery.ui'
 #
-# Created: Sun Jun 28 21:22:58 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 13:40:34 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -91,4 +91,14 @@ class Ui_batteryStatus(object):
         self.charge.setText(_translate("batteryStatus", "Charge", None))
 
 from HoverButtons import HButton
-from utilities.ColorProgressBar import CProgressBar
+from ColorProgressBar import CProgressBar
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    batteryStatus = QtGui.QWidget()
+    ui = Ui_batteryStatus()
+    ui.setupUi(batteryStatus)
+    batteryStatus.show()
+    sys.exit(app.exec_())
+

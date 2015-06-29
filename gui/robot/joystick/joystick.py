@@ -10,10 +10,10 @@ import sys
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QSizePolicy, QWidget)
 
-from GUI.StateSensors.Joystick import JoystickUI
+from gui.robot.joystick import ui_joystick
 
 
-class Joystick(QWidget, JoystickUI.Ui_joystickWidget):
+class Joystick(QWidget, ui_joystick.Ui_joystickWidget):
     '''
     Simulation of a Battery level widget
     '''
@@ -35,7 +35,7 @@ class Joystick(QWidget, JoystickUI.Ui_joystickWidget):
         self.layout.setMargin(1)
         self.layout.setObjectName("layout")
         
-        self.joystickControl = QGroupBox("Joystick",self)
+        self.joystickControl = QGroupBox("joystick",self)
         self.joystickControl.setObjectName("joystickControl")
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName("gridLayout")

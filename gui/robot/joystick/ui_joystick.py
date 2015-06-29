@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/Joystick.ui'
+# Form implementation generated from reading ui file 'ui/joystick.ui'
 #
-# Created: Sun Jun 28 21:22:58 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 13:40:35 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -161,4 +161,14 @@ class Ui_joystickWidget(object):
         self.right.setText(_translate("joystickWidget", "→", None))
         self.downleft.setText(_translate("joystickWidget", "↙︎", None))
         self.left.setText(_translate("joystickWidget", "←", None))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    joystickWidget = QtGui.QWidget()
+    ui = Ui_joystickWidget()
+    ui.setupUi(joystickWidget)
+    joystickWidget.show()
+    sys.exit(app.exec_())
 

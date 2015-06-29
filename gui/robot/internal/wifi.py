@@ -9,10 +9,10 @@ import sys
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QWidget, QSizePolicy, QLabel, QHBoxLayout)
 
-from GUI.StateSensors.Internal import WifiUI
+from gui.robot.internal import ui_wifi
 
 
-class Wifi(QWidget, WifiUI.Ui_WifiStatus):
+class Wifi(QWidget, ui_wifi.Ui_WifiStatus):
     '''
     Simulation of a Wifi level widget
     '''

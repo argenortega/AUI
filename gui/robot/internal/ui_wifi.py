@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/Wifi.ui'
+# Form implementation generated from reading ui file 'ui/wifi.ui'
 #
-# Created: Sun Jun 28 21:22:59 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 13:40:34 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -86,4 +86,14 @@ class Ui_WifiStatus(object):
         self.repair.setText(_translate("WifiStatus", "Repair", None))
 
 from HoverButtons import HButton
-from utilities.ColorProgressBar import CProgressBar
+from ColorProgressBar import CProgressBar
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    WifiStatus = QtGui.QWidget()
+    ui = Ui_WifiStatus()
+    ui.setupUi(WifiStatus)
+    WifiStatus.show()
+    sys.exit(app.exec_())
+
