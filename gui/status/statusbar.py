@@ -5,10 +5,10 @@ import sys
 from PyQt4 import QtGui
 from PyQt4.QtGui import QWidget
 
-from GUI.statusbar import StatusBarUI
+from gui.status import ui_statusbar
 
 
-class StatusBar(QWidget, StatusBarUI.Ui_statusBarWidget):
+class StatusBar(QWidget, ui_statusbar.Ui_statusBarWidget):
     def __init__(self, parent):
         QWidget.__init__(self, parent)
         self.setupUi(self)
