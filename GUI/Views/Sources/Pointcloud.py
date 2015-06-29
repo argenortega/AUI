@@ -10,10 +10,10 @@ import sys
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QWidget, QSizePolicy)
 
-from GUI.Views.Sources import PointcloudUI
+from gui.views.sources import ui_pointcloud
 
 
-class Pointcloud(QWidget, PointcloudUI.Ui_PointcloudWidget):
+class Pointcloud(QWidget, ui_pointcloud.Ui_PointcloudWidget):
     '''
     Simulation of a 3d pointcloud widget
     '''

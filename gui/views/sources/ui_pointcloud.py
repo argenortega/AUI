@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/Pointcloud.ui'
+# Form implementation generated from reading ui file 'ui/pointcloud.ui'
 #
-# Created: Sun Jun 28 21:22:58 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 13:40:06 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -68,3 +68,13 @@ class Ui_PointcloudWidget(object):
         self.pointcloud.setText(_translate("PointcloudWidget", "3D pointcloud", None))
 
 from ActiveLabel import ActLabel
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    PointcloudWidget = QtGui.QWidget()
+    ui = Ui_PointcloudWidget()
+    ui.setupUi(PointcloudWidget)
+    PointcloudWidget.show()
+    sys.exit(app.exec_())
+

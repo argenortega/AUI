@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/Map.ui'
+# Form implementation generated from reading ui file 'ui/gmap.ui'
 #
-# Created: Sun Jun 28 21:22:58 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 13:40:06 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -73,3 +73,13 @@ class Ui_MapWidget(object):
         self.map.setText(_translate("MapWidget", "Global   Map", None))
 
 from ActiveLabel import ActLabel
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    MapWidget = QtGui.QWidget()
+    ui = Ui_MapWidget()
+    ui.setupUi(MapWidget)
+    MapWidget.show()
+    sys.exit(app.exec_())
+

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/Views.ui'
+# Form implementation generated from reading ui file 'ui/views.ui'
 #
-# Created: Sun Jun 28 21:22:59 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 13:40:06 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -211,5 +211,15 @@ class Ui_viewsWidget(object):
         self.viewsGroup.setTitle(_translate("viewsWidget", "Available Views", None))
         self.pushButton.setText(_translate("viewsWidget", "-", None))
 
-from utilities.DropView import DCurrentView, DAvailableView
+from DropView import DCurrentView, DAvailableView
 from HoverButtons import HButton
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    viewsWidget = QtGui.QWidget()
+    ui = Ui_viewsWidget()
+    ui.setupUi(viewsWidget)
+    viewsWidget.show()
+    sys.exit(app.exec_())
+

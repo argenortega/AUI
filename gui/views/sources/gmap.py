@@ -10,10 +10,10 @@ import sys
 from PyQt4.QtCore import Qt, QMimeData
 from PyQt4.QtGui import (QWidget, QSizePolicy, QApplication, QDrag, QPixmap)
 
-from GUI.Views.Sources import MapUI
+from gui.views.sources import ui_gmap
 
 
-class Map(QWidget, MapUI.Ui_MapWidget):
+class GlobalMap(QWidget, ui_gmap.Ui_MapWidget):
     def __init__(self,parent):
         QWidget.__init__(self,parent)
         self.setupUi(self)
@@ -60,7 +60,7 @@ class Map(QWidget, MapUI.Ui_MapWidget):
 
 def main():
     app = QApplication(sys.argv)
-    main = Map(None)
+    main = GlobalMap(None)
     
     
     main.show()

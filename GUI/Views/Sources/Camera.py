@@ -10,10 +10,10 @@ from PyQt4 import QtGui
 from PyQt4.QtCore import QSettings, QVariant
 from PyQt4.QtGui import (QWidget, QSizePolicy)
 
-from GUI.Views.Sources import CameraUI
+from gui.views.sources import ui_camera
 
 
-class Camera(QWidget, CameraUI.Ui_Camera):
+class Camera(QWidget, ui_camera.Ui_Camera):
     """
     Simulation of a camera widget
     """

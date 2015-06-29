@@ -10,10 +10,10 @@ import sys
 from PyQt4.QtCore import pyqtSignal
 from PyQt4.QtGui import (QWidget, QSizePolicy, QApplication)
 
-from GUI.Views.Sources import ExtraViewUI
+from gui.views.sources import ui_lmap
 
 
-class NewView(QWidget, ExtraViewUI.Ui_NewView):
+class LocalMap(QWidget, ui_lmap.Ui_NewView):
     '''
     Simulation of an additional view widget
     '''
@@ -45,7 +45,7 @@ class NewView(QWidget, ExtraViewUI.Ui_NewView):
         
 def main():
     app = QApplication(sys.argv)
-    main = NewView(None)
+    main = LocalMap(None)
     main.show()
     sys.exit(app.exec_())
  

@@ -5,10 +5,10 @@ import sys
 from PyQt4 import QtGui
 from PyQt4.QtGui import QWidget
 
-from GUI.Views import ViewsUI
+from gui.views import ui_views
 
 
-class Views(QWidget, ViewsUI.Ui_viewsWidget):
+class Views(QWidget, ui_views.Ui_viewsWidget):
     def __init__(self,parent):
         QWidget.__init__(self,parent)
         self.setupUi(self)
