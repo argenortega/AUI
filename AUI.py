@@ -12,13 +12,14 @@ from PyQt4.QtGui import (QMainWindow, QHBoxLayout, QVBoxLayout)
 
 # from PyQt4.uic import loadUi
 
-from gui.views.sources import Camera, NewView, Map, Pointcloud
-from gui.views import views
-from gui.robot.internal import battery, wifi
-from gui.robot.joystick import joystick
-from gui.snapshots import snapshot, snapshots
-from gui.status import statusbar
-from mi import mixed_initative, parameters
+from aui.gui.views.sources import camera, lmap, gmap, pointcloud
+from aui.gui.robot.internal import battery, wifi
+from aui.gui.robot.joystick import joystick
+from aui.gui.snapshots import snapshot
+from aui.gui import snapshots, views
+from aui.gui.status import statusbar
+from aui.mi import mixed_initative
+from aui.mi import parameters
 
 import ui_aui
 
@@ -89,21 +90,21 @@ class AUI(QMainWindow,ui_aui.Ui_MainWin):
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
-        self.pointcloud = Pointcloud.Pointcloud(self)
+        self.pointcloud = pointcloud.Pointcloud(self)
         self.pointcloud.setParent(self.views)
         self.views.availableViewsLayout.addWidget(self.pointcloud)
 
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
-        self.map = Map.Map(self)
+        self.map = gmap.GlobalMap(self)
         self.map.setParent(self.views)
         self.views.availableViewsLayout.addWidget(self.map)
 
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
-        self.extra = NewView.NewView(self)
+        self.extra = lmap.LocalMap(self)
         self.extra.setParent(self.views)
         self.views.availableViewsLayout.addWidget(self.extra)
 
@@ -114,7 +115,7 @@ class AUI(QMainWindow,ui_aui.Ui_MainWin):
         # minSize = QtCore.QSize(100, 100)
         # maxSize = QtCore.QSize(300, 300)
         # stretch = 3
-        self.Camera1 = Camera.Camera(self, 1)
+        self.Camera1 = camera.Camera(self, 1)
         self.views.tleftLayout.addWidget(self.Camera1)
         self.views.tleftLabel.setVisible(False)
 
@@ -122,7 +123,7 @@ class AUI(QMainWindow,ui_aui.Ui_MainWin):
         # minSize = QtCore.QSize(100, 100)
         # maxSize = QtCore.QSize(300, 300)
         # stretch = 1
-        self.Camera2 = Camera.Camera(self, 2)
+        self.Camera2 = camera.Camera(self, 2)
         self.Camera2.setMinimumSize(QtCore.QSize(80,80))
         self.views.bleftLayout.addWidget(self.Camera2)
         self.views.bleftLabel.setVisible(False)
