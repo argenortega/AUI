@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/Utilities.ui'
+# Form implementation generated from reading ui file 'ui/utilities.ui'
 #
-# Created: Sun Jun 28 21:22:59 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 12:54:47 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -150,4 +150,14 @@ class Ui_utilities(object):
         self.goalList.setItemText(6, _translate("utilities", "Explore", None))
         self.saveButton.setText(_translate("utilities", "Save", None))
         self.updateButton.setText(_translate("utilities", "Update", None))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    utilities = QtGui.QWidget()
+    ui = Ui_utilities()
+    ui.setupUi(utilities)
+    utilities.show()
+    sys.exit(app.exec_())
 

@@ -14,10 +14,10 @@ from PyQt4.QtCore import QString
 import matplotlib.pyplot as plt
 import numpy as np
 
-from MI import UtilitiesUi
+from mi import ui_utilities
 
 
-class Utilities(QWidget, UtilitiesUi.Ui_utilities):
+class Utilities(QWidget, ui_utilities.Ui_utilities):
     def __init__(self, parent):
         QWidget.__init__(self, parent)
         self.setupUi(self)

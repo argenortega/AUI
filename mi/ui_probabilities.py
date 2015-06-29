@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/Probabilities.ui'
+# Form implementation generated from reading ui file 'ui/probabilities.ui'
 #
-# Created: Sun Jun 28 21:22:58 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 12:54:47 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -82,4 +82,14 @@ class Ui_probabilities(object):
         self.goalList.setItemText(5, _translate("probabilities", "Inspect current site", None))
         self.goalList.setItemText(6, _translate("probabilities", "Explore", None))
         self.updateButton.setText(_translate("probabilities", "Update", None))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    probabilities = QtGui.QWidget()
+    ui = Ui_probabilities()
+    ui.setupUi(probabilities)
+    probabilities.show()
+    sys.exit(app.exec_())
 

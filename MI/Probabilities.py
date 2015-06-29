@@ -15,10 +15,10 @@ from PyQt4.QtCore import QString
 import matplotlib.pyplot as plt
 import numpy as np
 
-from MI import ProbabilitiesUi
+from mi import ui_probabilities
 
 
-class Probabilities(QWidget, ProbabilitiesUi.Ui_probabilities):
+class Probabilities(QWidget, ui_probabilities.Ui_probabilities):
     def __init__(self, parent):
         QWidget.__init__(self, parent)
         self.setupUi(self)
