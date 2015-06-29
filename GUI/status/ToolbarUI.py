@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/frame.ui'
+# Form implementation generated from reading ui file 'ui/Toolbar.ui'
 #
-# Created: Sun Jun 28 22:26:28 2015
+# Created: Sun Jun 28 21:22:59 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,15 +23,14 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_Frame(object):
-    def setupUi(self, Frame):
-        Frame.setObjectName(_fromUtf8("Frame"))
-        Frame.setFrameShadow(QtGui.QFrame.Raised)
-        Frame.resize(400, 300)
-        Frame.setFrameShape(QtGui.QFrame.StyledPanel)
+class Ui_toolbarWidget(object):
+    def setupUi(self, toolbarWidget):
+        toolbarWidget.setObjectName(_fromUtf8("toolbarWidget"))
+        toolbarWidget.resize(717, 63)
 
-        self.retranslateUi(Frame)
+        self.retranslateUi(toolbarWidget)
+        QtCore.QMetaObject.connectSlotsByName(toolbarWidget)
 
-    def retranslateUi(self, Frame):
-        Frame.setWindowTitle(_translate("Frame", "Frame", None))
+    def retranslateUi(self, toolbarWidget):
+        toolbarWidget.setWindowTitle(_translate("toolbarWidget", "Form", None))
 
