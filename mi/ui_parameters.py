@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/Parameters.ui'
+# Form implementation generated from reading ui file 'ui/parameters.ui'
 #
-# Created: Sun Jun 28 21:22:58 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 12:54:47 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -495,4 +495,14 @@ class Ui_AUIParameters(object):
         self.toolButton.setText(_translate("AUIParameters", "...", None))
         self.contents.setTabText(self.contents.indexOf(self.Tab1), _translate("AUIParameters", "Control", None))
 
-from utilities.ColorProgressBar import CProgressBar
+from ColorProgressBar import CProgressBar
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    AUIParameters = QtGui.QDockWidget()
+    ui = Ui_AUIParameters()
+    ui.setupUi(AUIParameters)
+    AUIParameters.show()
+    sys.exit(app.exec_())
+

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/MixedInitiative.ui'
+# Form implementation generated from reading ui file 'ui/mixed_initiative.ui'
 #
-# Created: Sun Jun 28 21:22:58 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 12:54:47 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -137,4 +137,14 @@ class Ui_mixedInitiative(object):
         self.Reject.setText(_translate("mixedInitiative", "Reject", None))
         self.AUIStatusLabel.setText(_translate("mixedInitiative", "AUI Status", None))
         self.AUItoggleButton.setText(_translate("mixedInitiative", "Off", None))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    mixedInitiative = QtGui.QWidget()
+    ui = Ui_mixedInitiative()
+    ui.setupUi(mixedInitiative)
+    mixedInitiative.show()
+    sys.exit(app.exec_())
 

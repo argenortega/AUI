@@ -10,7 +10,7 @@ import sys
 from PyQt4 import QtGui
 from PyQt4.QtGui import (QWidget, QSizePolicy)
 
-from MI import MixedInitiativeUI as MixInitUI
+from mi import ui_mixed_initiative as MixInitUI
 
 
 class MixedInitiative(QWidget,MixInitUI.Ui_mixedInitiative):

@@ -16,16 +16,16 @@ from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import QDockWidget, QDesktopWidget
 from PyQt4.QtCore import pyqtSlot
 
-from MI import ParametersUI, Utilities, Probabilities
+from mi import ui_parameters, utilities, probabilities
 
 s = 0
 m = 0
 h = 0
 
 
-class AUIParameters(QDockWidget, ParametersUI.Ui_AUIParameters):
+class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
     '''
-    Parameters related to the GUI's adaptivity simulation. 
+    Parameters related to the gui's adaptivity simulation.
     '''
     def __init__(self,parent):
         QtGui.QWidget.__init__(self,parent)
@@ -43,9 +43,9 @@ class AUIParameters(QDockWidget, ParametersUI.Ui_AUIParameters):
         self.stopEpisodeButton.clicked.connect(lambda: self.timer.stop())
         self.resetEpisodeButton.clicked.connect(self.Reset)
 
-        self.tab2 = Utilities.Utilities(self)
+        self.tab2 = utilities.Utilities(self)
 
-        self.tab3 = Probabilities.Probabilities(self)
+        self.tab3 = probabilities.Probabilities(self)
 
         self.contents.addTab(self.tab2, "Utilities")
         self.contents.addTab(self.tab3, "Probabilities")
