@@ -3,10 +3,10 @@ from PyQt4.QtCore import pyqtSignal
 __author__ = 'Argen'
 
 from PyQt4.QtGui import (QWidget, QSizePolicy)
-from GUI.Snapshots import ScreenshotUI
+from gui.snapshots import ui_snapshot
 
 
-class Screenshot(QWidget, ScreenshotUI.Ui_ScreenshotWidget):
+class Screenshot(QWidget, ui_snapshot.Ui_ScreenshotWidget):
     chosen = pyqtSignal(str)
     def __init__(self, parent, num):
         QWidget.__init__(self, parent)

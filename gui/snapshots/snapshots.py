@@ -11,11 +11,11 @@ from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import QWidget, QSizePolicy, QFrame
 from PyQt4.QtCore import QSize, pyqtSlot
 
-import ScreenshotsUI
+from gui.snapshots import ui_snapshots
 import ActiveLabel
 
 
-class Screenshots(QWidget, ScreenshotsUI.Ui_ScreenshotWidget):
+class Screenshots(QWidget, ui_snapshots.Ui_ScreenshotWidget):
     def __init__(self,parent):
         QWidget.__init__(self,parent)
         self.setupUi(self)
