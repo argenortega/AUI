@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/aui.ui'
 #
-# Created: Mon Jun 29 12:30:39 2015
+# Created: Mon Jun 29 19:59:24 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,6 +27,9 @@ class Ui_MainWin(object):
     def setupUi(self, MainWin):
         MainWin.setObjectName(_fromUtf8("MainWin"))
         MainWin.resize(800, 600)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        MainWin.setFont(font)
         MainWin.setAcceptDrops(True)
         MainWin.setDockNestingEnabled(True)
         MainWin.setUnifiedTitleAndToolBarOnMac(True)

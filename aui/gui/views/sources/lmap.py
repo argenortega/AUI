@@ -25,7 +25,8 @@ class LocalMap(QWidget, ui_lmap.Ui_NewView):
         self.initUI()
         
     def initUI(self):
-        self.currentmap = 'border-image: url(:/maps/local0003);'
+        #self.currentmap = 'border-image: url(:/maps/local);'
+        self.currentmap = self.map.styleSheet()
 
         '''
         Size of the widget
@@ -38,7 +39,7 @@ class LocalMap(QWidget, ui_lmap.Ui_NewView):
         self.inside.emit('Local Map')
 
     def leaveEvent(self, QEvent):
-        self.view.setStyleSheet(self.currentmap)
+        self.map.setStyleSheet(self.currentmap)
 
 
         

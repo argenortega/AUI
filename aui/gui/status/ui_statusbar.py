@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/statusbar.ui'
 #
-# Created: Mon Jun 29 15:44:03 2015
+# Created: Mon Jun 29 19:59:27 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -51,7 +51,7 @@ class Ui_statusBarWidget(object):
         font.setPointSize(14)
         self.batteryStatus.setFont(font)
         self.batteryStatus.setMouseTracking(True)
-        self.batteryStatus.setStyleSheet(_fromUtf8("background-color: rgb(64, 128, 0);\n"
+        self.batteryStatus.setStyleSheet(_fromUtf8("background-color: rgb(76, 175, 80);\n"
 "color: rgb(255, 255, 255);"))
         self.batteryStatus.setFrameShape(QtGui.QFrame.Box)
         self.batteryStatus.setScaledContents(True)
@@ -101,7 +101,7 @@ class Ui_statusBarWidget(object):
         font.setPointSize(14)
         self.adaptiveStatus.setFont(font)
         self.adaptiveStatus.setMouseTracking(True)
-        self.adaptiveStatus.setStyleSheet(_fromUtf8("background-color: rgb(255, 0, 0);\n"
+        self.adaptiveStatus.setStyleSheet(_fromUtf8("background-color: rgb(244, 67, 54);\n"
 "color: rgb(255, 255, 255);"))
         self.adaptiveStatus.setFrameShape(QtGui.QFrame.Box)
         self.adaptiveStatus.setScaledContents(True)
@@ -150,7 +150,7 @@ class Ui_statusBarWidget(object):
         font.setPointSize(14)
         self.wifiStatus.setFont(font)
         self.wifiStatus.setMouseTracking(True)
-        self.wifiStatus.setStyleSheet(_fromUtf8("background-color: rgb(64, 128, 0);\n"
+        self.wifiStatus.setStyleSheet(_fromUtf8("background-color: rgb(76, 175, 80);\n"
 "color: rgb(255, 255, 255);"))
         self.wifiStatus.setFrameShape(QtGui.QFrame.Box)
         self.wifiStatus.setScaledContents(True)

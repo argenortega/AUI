@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/camera.ui'
 #
-# Created: Mon Jun 29 15:33:06 2015
+# Created: Mon Jun 29 20:04:51 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!

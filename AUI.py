@@ -15,8 +15,8 @@ from PyQt4.QtGui import (QMainWindow, QHBoxLayout, QVBoxLayout)
 from aui.gui.views.sources import camera, lmap, gmap, pointcloud
 from aui.gui.robot.internal import battery, wifi
 from aui.gui.robot.joystick import joystick
-from aui.gui.snapshots import snapshot
-from aui.gui import snapshots, views
+from aui.gui.snapshots import snapshot, image
+from aui.gui.views import mainviews
 from aui.gui.status import statusbar
 from aui.mi import mixed_initative
 from aui.mi import parameters
@@ -86,7 +86,7 @@ class AUI(QMainWindow,ui_aui.Ui_MainWin):
         #self.viewsGroupLayout = QtGui.QHBoxLayout(self.views)
         #self.viewsGroupLayout.setObjectName("viewsGroupLayout")
 
-        self.views = views.Views(self)
+        self.views = mainviews.MainViews(self)
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
@@ -137,7 +137,7 @@ class AUI(QMainWindow,ui_aui.Ui_MainWin):
         # minSize = QtCore.QSize(150, 150)
         # maxSize = QtCore.QSize(200, 200)
         # stretch = 1
-        self.Screenshots = snapshots.Screenshots(self)
+        self.Screenshots = snapshot.Screenshots(self)
 
 
         self.GUILayout.addWidget(self.Screenshots)
@@ -187,7 +187,7 @@ class AUI(QMainWindow,ui_aui.Ui_MainWin):
         self.Camera2.cam.inside.connect(self.parameters.insideWidget)
         self.map.map.inside.connect(self.parameters.insideWidget)
         self.pointcloud.pointcloud.inside.connect(self.parameters.insideWidget)
-        self.extra.view.inside.connect(self.parameters.insideWidget)
+        self.extra.map.inside.connect(self.parameters.insideWidget)
         self.Screenshots.currentScreenshot.inside.connect(self.parameters.insideWidget)
 
 
@@ -243,7 +243,7 @@ class AUI(QMainWindow,ui_aui.Ui_MainWin):
 
     def new_screenshot(self):
         self.sc_num = self.sc_num + 1
-        ns = snapshot.Screenshot(self.Screenshots.extraScreenGroup, self.sc_num)
+        ns = image.Screenshot(self.Screenshots.extraScreenGroup, self.sc_num)
         ns.screenshot.inside.connect(self.parameters.insideWidget)
         self.Screenshots.extraScreenshotLayout.addWidget(ns)
         ns.chosen.connect(self.Screenshots.setScreenshot)

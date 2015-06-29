@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/gmap.ui'
 #
-# Created: Mon Jun 29 15:33:06 2015
+# Created: Mon Jun 29 20:04:51 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,26 +43,7 @@ class Ui_MapWidget(object):
         self.layout.setMargin(0)
         self.layout.setObjectName(_fromUtf8("layout"))
         self.map = ActLabel(MapWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.map.sizePolicy().hasHeightForWidth())
-        self.map.setSizePolicy(sizePolicy)
-        self.map.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.map.setFont(font)
-        self.map.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
-        self.map.setMouseTracking(True)
-        self.map.setAutoFillBackground(False)
-        self.map.setStyleSheet(_fromUtf8("border-image: url(:/maps/GMap);\n"
-"background-image: url(:/maps/GMap);"))
-        self.map.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.map.setFrameShadow(QtGui.QFrame.Sunken)
-        self.map.setScaledContents(True)
-        self.map.setAlignment(QtCore.Qt.AlignCenter)
-        self.map.setWordWrap(True)
-        self.map.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
+        self.map.setStyleSheet(_fromUtf8("border-image: url(:/maps/global);"))
         self.map.setObjectName(_fromUtf8("map"))
         self.layout.addWidget(self.map)
 
@@ -71,7 +52,7 @@ class Ui_MapWidget(object):
 
     def retranslateUi(self, MapWidget):
         MapWidget.setWindowTitle(_translate("MapWidget", "Map", None))
-        self.map.setText(_translate("MapWidget", "Global   Map", None))
+        self.map.setText(_translate("MapWidget", "Global Map", None))
 
 from aui.utilities.ActiveLabel import ActLabel
 

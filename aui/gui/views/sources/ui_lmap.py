@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/lmap.ui'
 #
-# Created: Mon Jun 29 15:33:06 2015
+# Created: Mon Jun 29 20:04:52 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -40,36 +40,17 @@ class Ui_NewView(object):
         self.layout = QtGui.QVBoxLayout(NewView)
         self.layout.setMargin(0)
         self.layout.setObjectName(_fromUtf8("layout"))
-        self.view = ActLabel(NewView)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(1)
-        sizePolicy.setVerticalStretch(1)
-        sizePolicy.setHeightForWidth(self.view.sizePolicy().hasHeightForWidth())
-        self.view.setSizePolicy(sizePolicy)
-        self.view.setMinimumSize(QtCore.QSize(50, 50))
-        self.view.setMaximumSize(QtCore.QSize(70, 70))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.view.setFont(font)
-        self.view.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
-        self.view.setMouseTracking(True)
-        self.view.setAutoFillBackground(False)
-        self.view.setStyleSheet(_fromUtf8("border-image: url(:/maps/LMap);"))
-        self.view.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.view.setFrameShadow(QtGui.QFrame.Sunken)
-        self.view.setScaledContents(True)
-        self.view.setAlignment(QtCore.Qt.AlignCenter)
-        self.view.setWordWrap(True)
-        self.view.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
-        self.view.setObjectName(_fromUtf8("view"))
-        self.layout.addWidget(self.view)
+        self.map = ActLabel(NewView)
+        self.map.setStyleSheet(_fromUtf8("border-image: url(:/maps/local);"))
+        self.map.setObjectName(_fromUtf8("map"))
+        self.layout.addWidget(self.map)
 
         self.retranslateUi(NewView)
         QtCore.QMetaObject.connectSlotsByName(NewView)
 
     def retranslateUi(self, NewView):
         NewView.setWindowTitle(_translate("NewView", "3D Pointcloud", None))
-        self.view.setText(_translate("NewView", "Local Map", None))
+        self.map.setText(_translate("NewView", "Local Map", None))
 
 from aui.utilities.ActiveLabel import ActLabel
 
