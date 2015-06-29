@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/AUI.ui'
+# Form implementation generated from reading ui file 'ui/aui.ui'
 #
-# Created: Sun Jun 28 20:51:56 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 12:30:39 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -56,4 +56,14 @@ class Ui_MainWin(object):
         MainWin.setWindowTitle(_translate("MainWin", "Adaptive OCU", None))
         self.label.setText(_translate("MainWin", "TextLabel", None))
         self.actionHola.setText(_translate("MainWin", "Hola", None))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    MainWin = QtGui.QMainWindow()
+    ui = Ui_MainWin()
+    ui.setupUi(MainWin)
+    MainWin.show()
+    sys.exit(app.exec_())
 

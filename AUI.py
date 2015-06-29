@@ -12,18 +12,18 @@ from PyQt4.QtGui import (QMainWindow, QHBoxLayout, QVBoxLayout)
 
 # from PyQt4.uic import loadUi
 
-from GUI.Views.Sources import Camera, NewView, Map, Pointcloud
-from GUI.Views import Views
-from GUI.StateSensors.Internal import Battery, Wifi
-from GUI.StateSensors.Joystick import Joystick
-from GUI.Snapshots import Screenshot, Screenshots
-from GUI.statusbar import StatusBar
-from MI import MixedInitiative, Parameters
+from gui.views.sources import Camera, NewView, Map, Pointcloud
+from gui.views import views
+from gui.robot.internal import battery, wifi
+from gui.robot.joystick import joystick
+from gui.snapshots import snapshot, snapshots
+from gui.status import statusbar
+from mi import mixed_initative, parameters
 
-import AUIUI
+import ui_aui
 
 
-class AUI(QMainWindow,AUIUI.Ui_MainWin):
+class AUI(QMainWindow,ui_aui.Ui_MainWin):
     """
     Adaptive User Interface for TRADR project
     """
@@ -45,7 +45,7 @@ class AUI(QMainWindow,AUIUI.Ui_MainWin):
         '''
         Layout Definitions for the complete AUI
         '''
-        # Global Layout for AUI Parameters + TRADR GUI
+        # Global Layout for AUI Parameters + TRADR gui
         #self.globalLayout = QHBoxLayout()
         #self.setLayout(self.globalLayout)
         #self.globalLayout.setMargin(0)
@@ -70,22 +70,22 @@ class AUI(QMainWindow,AUIUI.Ui_MainWin):
         '''
         Widgets
         '''
-        self.statusBar = StatusBar.StatusBar(self)
+        self.statusBar = statusbar.StatusBar(self)
         self.MainLayout.addWidget(self.statusBar)
 
-        self.mixedInitiative = MixedInitiative.MixedInitiative(self)
+        self.mixedInitiative = mixed_initative.MixedInitiative(self)
         self.MainLayout.addWidget(self.mixedInitiative)
 
         self.MainLayout.addLayout(self.GUILayout)
 
-        #self.views = QtGui.QGroupBox("Available Views", self)
+        #self.views = QtGui.QGroupBox("Available views", self)
         #self.views.setMinimumSize(QtCore.QSize(550, 70))
         #self.views.setMaximumSize(QtCore.QSize(5000, 150))
         #self.views.setObjectName("views")
         #self.viewsGroupLayout = QtGui.QHBoxLayout(self.views)
         #self.viewsGroupLayout.setObjectName("viewsGroupLayout")
 
-        self.views = Views.Views(self)
+        self.views = views.Views(self)
         # minSize = QtCore.QSize(50, 50)
         # maxSize = QtCore.QSize(70, 70)
         # stretch = 0
@@ -136,17 +136,17 @@ class AUI(QMainWindow,AUIUI.Ui_MainWin):
         # minSize = QtCore.QSize(150, 150)
         # maxSize = QtCore.QSize(200, 200)
         # stretch = 1
-        self.Screenshots = Screenshots.Screenshots(self)
+        self.Screenshots = snapshots.Screenshots(self)
 
 
         self.GUILayout.addWidget(self.Screenshots)
 
         # minSize = QtCore.QSize(80, 80)
         # maxSize = QtCore.QSize(120, 120)
-        self.battery = Battery.Battery(self)
-        self.wifi = Wifi.Wifi(self)
+        self.battery = battery.Battery(self)
+        self.wifi = wifi.Wifi(self)
 
-        self.joystick = Joystick.Joystick(self)
+        self.joystick = joystick.Joystick(self)
 
         self.StatusLayout.addWidget(self.battery)
         self.StatusLayout.addWidget(self.wifi)
@@ -155,7 +155,7 @@ class AUI(QMainWindow,AUIUI.Ui_MainWin):
 
         self.GUILayout.addLayout(self.StatusLayout)
 
-        self.parameters = Parameters.AUIParameters(self)
+        self.parameters = parameters.AUIParameters(self)
         #self.globalLayout.addWidget(self.parameters)
         self.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.parameters)
 
@@ -242,7 +242,7 @@ class AUI(QMainWindow,AUIUI.Ui_MainWin):
 
     def new_screenshot(self):
         self.sc_num = self.sc_num + 1
-        ns = Screenshot.Screenshot(self.Screenshots.extraScreenGroup, self.sc_num)
+        ns = snapshot.Screenshot(self.Screenshots.extraScreenGroup, self.sc_num)
         ns.screenshot.inside.connect(self.parameters.insideWidget)
         self.Screenshots.extraScreenshotLayout.addWidget(ns)
         ns.chosen.connect(self.Screenshots.setScreenshot)
