@@ -3,7 +3,7 @@ __author__ = 'Argen'
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import (QFrame)
 
-from GUI.Views.Sources import Camera
+from gui.views.sources import camera
 
 
 class DView(QFrame):
@@ -24,14 +24,14 @@ class DView(QFrame):
         event.acceptProposedAction()
 
         if self.parent().objectName() == 'currentViews':
-            print 'Current Views'
+            print 'Current views'
             minSize = QtCore.QSize(100, 100)
             maxSize = QtCore.QSize(16777215, 16777215)
             self.wid.setMaximumSize(maxSize)
             self.wid.setMinimumSize(minSize)
             self.wid.resize(16777215, 16777215)
         elif self.parent().objectName() == 'viewsGroup':
-            print 'Available Views'
+            print 'Available views'
             minSize = QtCore.QSize(50, 50)
             maxSize = QtCore.QSize(70, 70)
             self.wid.setMaximumSize(maxSize)
@@ -61,7 +61,7 @@ class DCurrentView(QFrame):
         self.layout().addWidget(self.wid)
         event.acceptProposedAction()
 
-        children = self.findChildren(Camera.Camera)
+        children = self.findChildren(camera.Camera)
         if children != 0:
             print 'Cam!'
             for child in children:

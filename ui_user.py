@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/User.ui'
+# Form implementation generated from reading ui file 'ui/user.ui'
 #
-# Created: Sun Jun 28 22:26:29 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 12:30:39 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -89,3 +89,13 @@ class Ui_Form(object):
         self.toolButton.setText(_translate("Form", "Infield Responder", None))
 
 import resources_rc
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    Form = QtGui.QWidget()
+    ui = Ui_Form()
+    ui.setupUi(Form)
+    Form.show()
+    sys.exit(app.exec_())
+

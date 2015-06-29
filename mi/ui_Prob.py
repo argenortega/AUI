@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/Prob.ui'
 #
-# Created: Sun Jun 28 22:26:28 2015
-#      by: PyQt4 UI code generator 4.11.3
+# Created: Mon Jun 29 12:54:47 2015
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -319,4 +319,14 @@ class Ui_ProbabilityWidget(object):
         self.label_18.setText(_translate("ProbabilityWidget", "On Add View", None))
         self.label_13.setText(_translate("ProbabilityWidget", "On Extra Screenshot", None))
         self.updateButton.setText(_translate("ProbabilityWidget", "Update", None))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    ProbabilityWidget = QtGui.QWidget()
+    ui = Ui_ProbabilityWidget()
+    ui.setupUi(ProbabilityWidget)
+    ProbabilityWidget.show()
+    sys.exit(app.exec_())
 
