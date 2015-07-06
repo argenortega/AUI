@@ -11,6 +11,7 @@ from PyQt4.QtCore import QSettings, QVariant
 from PyQt4.QtGui import (QWidget, QSizePolicy)
 
 from aui.gui.views.sources import ui_camera
+from aui.utilities import DragWidget
 
 class Camera(QWidget, ui_camera.Ui_Camera):
     """

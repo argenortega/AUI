@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/snapshot.ui'
 #
-# Created: Mon Jun 29 19:59:26 2015
+# Created: Mon Jun 29 22:04:07 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,6 +27,11 @@ class Ui_ScreenshotWidget(object):
     def setupUi(self, ScreenshotWidget):
         ScreenshotWidget.setObjectName(_fromUtf8("ScreenshotWidget"))
         ScreenshotWidget.resize(252, 514)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHeightForWidth(ScreenshotWidget.sizePolicy().hasHeightForWidth())
+        ScreenshotWidget.setSizePolicy(sizePolicy)
         ScreenshotWidget.setMinimumSize(QtCore.QSize(0, 0))
         ScreenshotWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
         ScreenshotWidget.setMouseTracking(True)

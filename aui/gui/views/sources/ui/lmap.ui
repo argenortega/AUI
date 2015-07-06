@@ -43,6 +43,9 @@
   <property name="windowTitle">
    <string>3D Pointcloud</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">border-image: url(:/maps/local/local1);</string>
+  </property>
   <layout class="QVBoxLayout" name="layout">
    <property name="margin">
     <number>0</number>
@@ -54,6 +57,9 @@
      </property>
      <property name="text">
       <string>Local Map</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>159</width>
-    <height>100</height>
+    <height>107</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -50,13 +50,7 @@
       <bool>false</bool>
      </property>
      <layout class="QVBoxLayout" name="batteryBoxLayout">
-      <property name="topMargin">
-       <number>3</number>
-      </property>
-      <property name="rightMargin">
-       <number>3</number>
-      </property>
-      <property name="bottomMargin">
+      <property name="margin">
        <number>3</number>
       </property>
       <item>
@@ -125,8 +119,17 @@
           <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="text">
          <string>Charge</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -137,14 +140,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>CProgressBar</class>
-   <extends>QProgressBar</extends>
-   <header>aui.utilities.ColorProgressBar</header>
-  </customwidget>
-  <customwidget>
    <class>HButton</class>
    <extends>QPushButton</extends>
    <header>aui.utilities.HoverButtons</header>
+  </customwidget>
+  <customwidget>
+   <class>CProgressBar</class>
+   <extends>QProgressBar</extends>
+   <header>aui.utilities.ColorProgressBar</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/statusbar.ui'
 #
-# Created: Mon Jun 29 19:59:27 2015
+# Created: Thu Jul  2 13:42:16 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_statusBarWidget(object):
     def setupUi(self, statusBarWidget):
         statusBarWidget.setObjectName(_fromUtf8("statusBarWidget"))
-        statusBarWidget.resize(707, 35)
+        statusBarWidget.resize(556, 35)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -51,8 +51,10 @@ class Ui_statusBarWidget(object):
         font.setPointSize(14)
         self.batteryStatus.setFont(font)
         self.batteryStatus.setMouseTracking(True)
-        self.batteryStatus.setStyleSheet(_fromUtf8("background-color: rgb(76, 175, 80);\n"
-"color: rgb(255, 255, 255);"))
+        self.batteryStatus.setStyleSheet(_fromUtf8("border-color: rgb(244, 67, 54);\n"
+"background-color: rgb(244, 67, 54);\n"
+"color: rgb(255, 255, 255);\n"
+""))
         self.batteryStatus.setFrameShape(QtGui.QFrame.Box)
         self.batteryStatus.setScaledContents(True)
         self.batteryStatus.setAlignment(QtCore.Qt.AlignCenter)
@@ -69,7 +71,9 @@ class Ui_statusBarWidget(object):
         font = QtGui.QFont()
         font.setPointSize(14)
         self.batteryBar.setFont(font)
-        self.batteryBar.setProperty("value", 100)
+        self.batteryBar.setStyleSheet(_fromUtf8("color: rgb(244, 67, 54);\n"
+"background-color: rgb(244, 67, 54);"))
+        self.batteryBar.setProperty("value", 49)
         self.batteryBar.setAlignment(QtCore.Qt.AlignCenter)
         self.batteryBar.setTextVisible(False)
         self.batteryBar.setObjectName(_fromUtf8("batteryBar"))
@@ -101,7 +105,8 @@ class Ui_statusBarWidget(object):
         font.setPointSize(14)
         self.adaptiveStatus.setFont(font)
         self.adaptiveStatus.setMouseTracking(True)
-        self.adaptiveStatus.setStyleSheet(_fromUtf8("background-color: rgb(244, 67, 54);\n"
+        self.adaptiveStatus.setStyleSheet(_fromUtf8("border-color: rgb(76, 175, 80);\n"
+"background-color: rgb(76, 175, 80);\n"
 "color: rgb(255, 255, 255);"))
         self.adaptiveStatus.setFrameShape(QtGui.QFrame.Box)
         self.adaptiveStatus.setScaledContents(True)
@@ -121,7 +126,10 @@ class Ui_statusBarWidget(object):
         font = QtGui.QFont()
         font.setPointSize(14)
         self.wifiBar.setFont(font)
-        self.wifiBar.setProperty("value", 100)
+        self.wifiBar.setStyleSheet(_fromUtf8("background-color: rgb(255, 193, 7);\n"
+"selection-color: rgb(255, 193, 7);\n"
+"alternate-background-color: rgb(255, 193, 7);"))
+        self.wifiBar.setProperty("value", 63)
         self.wifiBar.setAlignment(QtCore.Qt.AlignCenter)
         self.wifiBar.setTextVisible(False)
         self.wifiBar.setObjectName(_fromUtf8("wifiBar"))
@@ -150,8 +158,8 @@ class Ui_statusBarWidget(object):
         font.setPointSize(14)
         self.wifiStatus.setFont(font)
         self.wifiStatus.setMouseTracking(True)
-        self.wifiStatus.setStyleSheet(_fromUtf8("background-color: rgb(76, 175, 80);\n"
-"color: rgb(255, 255, 255);"))
+        self.wifiStatus.setStyleSheet(_fromUtf8("background-color: rgb(255, 193, 7);\n"
+"color: rgb(0, 0, 0);"))
         self.wifiStatus.setFrameShape(QtGui.QFrame.Box)
         self.wifiStatus.setScaledContents(True)
         self.wifiStatus.setAlignment(QtCore.Qt.AlignCenter)
@@ -167,10 +175,10 @@ class Ui_statusBarWidget(object):
     def retranslateUi(self, statusBarWidget):
         statusBarWidget.setWindowTitle(_translate("statusBarWidget", "Frame", None))
         self.batteryStatus.setText(_translate("statusBarWidget", "Battery", None))
-        self.batteryValue.setText(_translate("statusBarWidget", "100", None))
+        self.batteryValue.setText(_translate("statusBarWidget", "49", None))
         self.percent2.setText(_translate("statusBarWidget", "%", None))
         self.adaptiveStatus.setText(_translate("statusBarWidget", "Adaptive", None))
-        self.wifiValue.setText(_translate("statusBarWidget", "100", None))
+        self.wifiValue.setText(_translate("statusBarWidget", "63", None))
         self.percent1.setText(_translate("statusBarWidget", "%", None))
         self.wifiStatus.setText(_translate("statusBarWidget", "WiFi", None))
 

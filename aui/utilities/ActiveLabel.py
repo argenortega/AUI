@@ -17,10 +17,11 @@ class ActLabel (QLabel, QObject):
 
 
     def enterEvent(self, QEvent):
-        self.setStyleSheet('border: 2px solid;')
+        self.setStyleSheet('border: 2px solid rgb(0, 0, 0);'+self.default_style)
         self.inside.emit(self.text())
 
     def leaveEvent(self, QEvent):
         self.setStyleSheet(self.default_style)
+        pass
 
 

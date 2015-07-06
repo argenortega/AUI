@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>707</width>
+    <width>556</width>
     <height>35</height>
    </rect>
   </property>
@@ -82,8 +82,10 @@
       <bool>true</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(76, 175, 80);
-color: rgb(255, 255, 255);</string>
+      <string notr="true">border-color: rgb(244, 67, 54);
+background-color: rgb(244, 67, 54);
+color: rgb(255, 255, 255);
+</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::Box</enum>
@@ -120,6 +122,10 @@ color: rgb(255, 255, 255);</string>
       <font>
        <pointsize>14</pointsize>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(244, 67, 54);
+background-color: rgb(244, 67, 54);</string>
      </property>
      <property name="value">
       <number>100</number>
@@ -206,7 +212,8 @@ color: rgb(255, 255, 255);</string>
       <bool>true</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(244, 67, 54);
+      <string notr="true">border-color: rgb(76, 175, 80);
+background-color: rgb(76, 175, 80);
 color: rgb(255, 255, 255);</string>
      </property>
      <property name="frameShape">
@@ -262,6 +269,11 @@ color: rgb(255, 255, 255);</string>
       <font>
        <pointsize>14</pointsize>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 193, 7);
+selection-color: rgb(255, 193, 7);
+alternate-background-color: rgb(255, 193, 7);</string>
      </property>
      <property name="value">
       <number>100</number>
@@ -327,8 +339,8 @@ color: rgb(255, 255, 255);</string>
       <bool>true</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(76, 175, 80);
-color: rgb(255, 255, 255);</string>
+      <string notr="true">background-color: rgb(255, 193, 7);
+color: rgb(0, 0, 0);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::Box</enum>

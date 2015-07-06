@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/user.ui'
 #
-# Created: Mon Jun 29 19:59:25 2015
+# Created: Mon Jun 29 22:04:06 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(451, 145)
+        Form.resize(451, 152)
         Form.setAutoFillBackground(True)
         self.horizontalLayout = QtGui.QHBoxLayout(Form)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
@@ -40,7 +40,7 @@ class Ui_Form(object):
         font.setPointSize(14)
         self.toolButton_3.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/icon/user")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/icons/user")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.toolButton_3.setIcon(icon)
         self.toolButton_3.setIconSize(QtCore.QSize(90, 100))
         self.toolButton_3.setToolButtonStyle(QtCore.Qt.ToolButtonTextUnderIcon)

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/views.ui'
 #
-# Created: Mon Jun 29 19:59:26 2015
+# Created: Mon Jun 29 22:04:07 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -28,8 +28,8 @@ class Ui_viewsWidget(object):
         viewsWidget.setObjectName(_fromUtf8("viewsWidget"))
         viewsWidget.resize(459, 487)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHorizontalStretch(2)
+        sizePolicy.setVerticalStretch(2)
         sizePolicy.setHeightForWidth(viewsWidget.sizePolicy().hasHeightForWidth())
         viewsWidget.setSizePolicy(sizePolicy)
         viewsWidget.setMinimumSize(QtCore.QSize(0, 0))

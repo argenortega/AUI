@@ -52,17 +52,28 @@
   <property name="windowTitle">
    <string>Map</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">border-image: url(:/maps/global/global2);</string>
+  </property>
   <layout class="QVBoxLayout" name="layout">
    <property name="margin">
     <number>0</number>
    </property>
    <item>
     <widget class="ActLabel" name="map">
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">border-image: url(:/maps/global);</string>
      </property>
      <property name="text">
       <string>Global Map</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>

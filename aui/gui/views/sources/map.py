@@ -11,7 +11,7 @@ from PyQt4.QtCore import Qt, QMimeData
 from PyQt4.QtGui import (QFrame, QSizePolicy, QApplication, QDrag, QPixmap)
 
 from aui.gui.views.sources import ui_map
-
+import resources_rc
 
 class GlobalMap(QFrame, ui_map.Ui_Map):
     def __init__(self,parent,type='global'):

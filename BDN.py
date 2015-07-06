@@ -4,6 +4,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import pymc
 
+from pymc.examples import disaster_model
+
 G = nx.Graph()
 nx.draw(G)
 plt.show()

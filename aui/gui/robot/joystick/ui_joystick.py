@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/joystick.ui'
 #
-# Created: Mon Jun 29 19:59:28 2015
+# Created: Mon Jun 29 20:31:27 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!

@@ -1,9 +1,17 @@
 <RCC>
-    <qresource prefix="/maps">
-        <file>resources/maps/0006.png</file>
-        <file>resources/maps/0007.png</file>
+    <qresource prefix="/global">
+        <file alias="global.png">resources/maps/0007.png</file>
+    </qresource>
+    <qresource prefix="/maps/local">
+        <file alias="local1">resources/maps/0005.png</file>
+        <file alias="local2">resources/maps/0006.png</file>
     </qresource>
     <qresource prefix="/icons">
         <file alias="user">resources/icons/user.png</file>
     </qresource>
+    <qresource prefix="/maps/global">
+        <file alias="global1">resources/maps/0008.png</file>
+        <file alias="global2">resources/maps/0011.png</file>
+    </qresource>
+    <qresource prefix="/"/>
 </RCC>

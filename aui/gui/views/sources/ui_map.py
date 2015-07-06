@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/map.ui'
 #
-# Created: Mon Jun 29 20:04:52 2015
+# Created: Mon Jun 29 22:04:08 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,32 +26,23 @@ except AttributeError:
 class Ui_Map(object):
     def setupUi(self, Map):
         Map.setObjectName(_fromUtf8("Map"))
-        Map.resize(276, 273)
+        Map.resize(207, 190)
+        Map.setStyleSheet(_fromUtf8("border-image: url(:/global/global.png);"))
         Map.setFrameShape(QtGui.QFrame.StyledPanel)
         Map.setFrameShadow(QtGui.QFrame.Raised)
         self.horizontalLayout = QtGui.QHBoxLayout(Map)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.frame = FocusedWidget(Map)
-        self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtGui.QFrame.Raised)
-        self.frame.setObjectName(_fromUtf8("frame"))
-        self.horizontalLayout_2 = QtGui.QHBoxLayout(self.frame)
-        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
-        self.label = QtGui.QLabel(self.frame)
-        self.label.setStyleSheet(_fromUtf8("border-image: url(:/maps/resources/maps/0007.png);"))
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName(_fromUtf8("label"))
-        self.horizontalLayout_2.addWidget(self.label)
-        self.horizontalLayout.addWidget(self.frame)
+        self.map = QtGui.QLabel(Map)
+        self.map.setObjectName(_fromUtf8("map"))
+        self.horizontalLayout.addWidget(self.map)
 
         self.retranslateUi(Map)
         QtCore.QMetaObject.connectSlotsByName(Map)
 
     def retranslateUi(self, Map):
         Map.setWindowTitle(_translate("Map", "Frame", None))
-        self.label.setText(_translate("Map", "Global Map", None))
+        self.map.setText(_translate("Map", "Global Map", None))
 
-from aui.utilities.focusedframe import FocusedWidget
 
 if __name__ == "__main__":
     import sys

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/battery.ui'
 #
-# Created: Mon Jun 29 19:59:28 2015
+# Created: Thu Jul  2 13:42:17 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_batteryStatus(object):
     def setupUi(self, batteryStatus):
         batteryStatus.setObjectName(_fromUtf8("batteryStatus"))
-        batteryStatus.resize(159, 100)
+        batteryStatus.resize(159, 107)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -48,7 +48,7 @@ class Ui_batteryStatus(object):
         self.batteryLevel.setCheckable(False)
         self.batteryLevel.setObjectName(_fromUtf8("batteryLevel"))
         self.batteryBoxLayout = QtGui.QVBoxLayout(self.batteryLevel)
-        self.batteryBoxLayout.setContentsMargins(-1, 3, 3, 3)
+        self.batteryBoxLayout.setMargin(3)
         self.batteryBoxLayout.setObjectName(_fromUtf8("batteryBoxLayout"))
         self.batteryBoxLevel = QtGui.QHBoxLayout()
         self.batteryBoxLevel.setSpacing(1)
@@ -80,9 +80,23 @@ class Ui_batteryStatus(object):
         self.batteryBoxLayout.addLayout(self.batteryBoxLevel)
         self.charge = HButton(self.batteryLevel)
         self.charge.setMinimumSize(QtCore.QSize(0, 44))
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(175, 175, 175))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(175, 175, 175))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
+        brush = QtGui.QBrush(QtGui.QColor(175, 175, 175))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
+        self.charge.setPalette(palette)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.charge.setFont(font)
+        self.charge.setAutoFillBackground(True)
+        self.charge.setStyleSheet(_fromUtf8(""))
+        self.charge.setFlat(True)
         self.charge.setObjectName(_fromUtf8("charge"))
         self.batteryBoxLayout.addWidget(self.charge)
         self.BatteryLayout.addWidget(self.batteryLevel)

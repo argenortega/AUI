@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/lmap.ui'
 #
-# Created: Mon Jun 29 20:04:52 2015
+# Created: Mon Jun 29 22:04:08 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,11 +37,13 @@ class Ui_NewView(object):
         NewView.setBaseSize(QtCore.QSize(50, 50))
         NewView.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         NewView.setMouseTracking(True)
+        NewView.setStyleSheet(_fromUtf8("border-image: url(:/maps/local/local1);"))
         self.layout = QtGui.QVBoxLayout(NewView)
         self.layout.setMargin(0)
         self.layout.setObjectName(_fromUtf8("layout"))
         self.map = ActLabel(NewView)
         self.map.setStyleSheet(_fromUtf8("border-image: url(:/maps/local);"))
+        self.map.setAlignment(QtCore.Qt.AlignCenter)
         self.map.setObjectName(_fromUtf8("map"))
         self.layout.addWidget(self.map)
 
