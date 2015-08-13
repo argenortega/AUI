@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network7" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="SoM">
+			<state id="State0" />
+			<state id="State1" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<decision id="Additional_Views">
+			<state id="minimize" />
+			<state id="maximize" />
+			<state id="reorder" />
+			<parents>SoM</parents>
+		</decision>
+		<cpt id="context">
+			<state id="Detection" />
+			<state id="Mapping" />
+			<state id="Navigation" />
+			<state id="Exploration" />
+			<state id="Inspection" />
+			<probabilities>0.05 0.2 0.3 0.4 0.05</probabilities>
+		</cpt>
+		<cpt id="Content_Score">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>context</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="SA_effect">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Additional_Views</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<utility id="U">
+			<parents>Content_Score context Additional_Views SoM SA_effect</parents>
+			<utilities>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="additional_views" faultnameformat="nodestate">
+			<node id="Additional_Views">
+				<name>Additional Views</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>329 204 423 230</position>
+			</node>
+			<node id="U">
+				<name>U</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>389 304 416 336</position>
+			</node>
+			<node id="SA_effect">
+				<name>SA effect</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>441 245 502 283</position>
+			</node>
+			<node id="context">
+				<name>Context</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>175 202 227 234</position>
+			</node>
+			<node id="SoM">
+				<name>SoM</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>198 150 239 175</position>
+			</node>
+			<node id="Content_Score">
+				<name>Content Score</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>184 269 264 319</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

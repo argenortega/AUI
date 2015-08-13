@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network6" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="context">
+			<state id="Detection" />
+			<state id="Mapping" />
+			<state id="Navigation" />
+			<state id="Exploration" />
+			<state id="Inspection" />
+			<probabilities>0.05 0.2 0.3 0.4 0.05</probabilities>
+		</cpt>
+		<cpt id="focus">
+			<state id="State0" />
+			<state id="State1" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Joystick">
+			<state id="Forward" />
+			<state id="Backwards" />
+			<state id="Turning" />
+			<probabilities>0.5 0.5 0</probabilities>
+		</cpt>
+		<cpt id="SoM">
+			<state id="State0" />
+			<state id="State1" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<decision id="priority">
+			<state id="Priority" />
+			<state id="Content" />
+			<parents>Joystick focus SoM</parents>
+		</decision>
+		<cpt id="SA_effect">
+			<state id="Improved" />
+			<state id="Maintain" />
+			<state id="Decrease" />
+			<parents>priority</parents>
+			<probabilities>0.5 0.5 0 0.5 0.5 0</probabilities>
+		</cpt>
+		<utility id="U">
+			<parents>context focus SA_effect priority SoM</parents>
+			<utilities>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="mv_priority" faultnameformat="nodestate">
+			<node id="context">
+				<name>Context</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>101 344 153 376</position>
+			</node>
+			<node id="U">
+				<name>U</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>291 370 318 402</position>
+			</node>
+			<node id="priority">
+				<name>Priority</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>209 234 279 260</position>
+			</node>
+			<node id="focus">
+				<name>Focus</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>389 184 435 212</position>
+			</node>
+			<node id="SA_effect">
+				<name>SA effect</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>279 291 340 329</position>
+			</node>
+			<node id="SoM">
+				<name>SoM</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>82 212 123 237</position>
+			</node>
+			<node id="Joystick">
+				<name>Joystick</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>157 160 211 193</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

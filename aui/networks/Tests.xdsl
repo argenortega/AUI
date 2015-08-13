@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network3" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Tampering">
+			<state id="T" />
+			<state id="F" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Fire">
+			<state id="yes" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Alarm">
+			<state id="T" />
+			<state id="F" />
+			<parents>Tampering Fire</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Leaving">
+			<state id="T" />
+			<state id="F" />
+			<parents>Alarm</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Report">
+			<state id="T" />
+			<state id="F" />
+			<parents>Leaving</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Smoke">
+			<state id="yes" />
+			<state id="no" />
+			<parents>Fire</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<decision id="Check_Smoke">
+			<state id="yes" />
+			<state id="no" />
+			<parents>Report</parents>
+		</decision>
+		<cpt id="See_Smoke">
+			<state id="yes" />
+			<state id="no" />
+			<parents>Smoke Check_Smoke</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<decision id="Call">
+			<state id="call" />
+			<state id="not_call" />
+			<parents>Report See_Smoke Check_Smoke</parents>
+		</decision>
+		<utility id="V">
+			<parents>Check_Smoke Fire Call</parents>
+			<utilities>-220 -5020 -220 -20 -200 -5000 -200 0</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="Sequential" faultnameformat="nodestate">
+			<node id="Tampering">
+				<name>Tampering</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>149 88 213 128</position>
+			</node>
+			<node id="Fire">
+				<name>Fire</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>294 103 334 128</position>
+			</node>
+			<node id="Alarm">
+				<name>Alarm</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>242 180 288 208</position>
+			</node>
+			<node id="Leaving">
+				<name>Leaving</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>256 256 310 289</position>
+			</node>
+			<node id="Report">
+				<name>Report</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>267 335 316 365</position>
+			</node>
+			<node id="Smoke">
+				<name>Smoke</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>401 198 450 228</position>
+			</node>
+			<node id="See_Smoke">
+				<name>See_Smoke</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>429 255 528 282</position>
+			</node>
+			<node id="Check_Smoke">
+				<name>Check_Smoke</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>342 296 422 322</position>
+			</node>
+			<node id="Call">
+				<name>Call</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>550 354 579 380</position>
+			</node>
+			<node id="V">
+				<name>V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>541 92 569 124</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

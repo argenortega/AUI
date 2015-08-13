@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network3" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="som">
+			<state id="Overwhelmed" />
+			<state id="Focused" />
+			<state id="Distracted" />
+			<probabilities>0.5 0.5 0</probabilities>
+		</cpt>
+		<deterministic id="Copy_2_of_Joystick">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>False</resultingstates>
+		</deterministic>
+		<deterministic id="MV_Quality">
+			<state id="Sufficient" />
+			<state id="Insufficient" />
+			<resultingstates>Insufficient</resultingstates>
+		</deterministic>
+		<cpt id="Copy_2_of_Context">
+			<state id="Detection" />
+			<state id="Mapping" />
+			<state id="Navigation" />
+			<state id="Exploration" />
+			<state id="Inspection" />
+			<parents>Copy_2_of_Joystick</parents>
+			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05 0.05 0.1499999999999999 0.4</probabilities>
+		</cpt>
+		<deterministic id="AV_Visible">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>True</resultingstates>
+		</deterministic>
+		<decision id="Views">
+			<state id="main_views" />
+			<state id="additional_views" />
+			<parents>MV_Quality Copy_2_of_Joystick som AV_Visible</parents>
+		</decision>
+		<utility id="U">
+			<parents>Copy_2_of_Context som MV_Quality AV_Visible Views</parents>
+			<utilities>0 1000 1000 0 1000 0 1000 0 1000 500 1000 500 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 1000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="views" faultnameformat="nodestate">
+			<node id="MV_Quality">
+				<name>MV Quality</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>329 132 414 165</position>
+			</node>
+			<node id="Views">
+				<name>Views</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>419 285 463 311</position>
+			</node>
+			<node id="U">
+				<name>U</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>339 437 366 469</position>
+			</node>
+			<node id="Copy_2_of_Joystick">
+				<name>Joystick</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>89 231 162 268</position>
+			</node>
+			<node id="Copy_2_of_Context">
+				<name>Context</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>155 364 207 396</position>
+			</node>
+			<node id="som">
+				<name>State of Mind</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>143 142 219 180</position>
+			</node>
+			<node id="AV_Visible">
+				<name>AV Visible</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>516 257 587 296</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

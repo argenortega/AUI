@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network4" numsamples="1000" discsamples="10000">
+	<nodes>
+		<deterministic id="Copy_2_of_Joystick">
+			<state id="Forward" />
+			<state id="LeftRight" />
+			<state id="Backwards" />
+			<resultingstates>Backwards</resultingstates>
+		</deterministic>
+		<deterministic id="focus">
+			<state id="C1" />
+			<state id="C2" />
+			<state id="LC" />
+			<state id="GM" />
+			<state id="PC" />
+			<resultingstates>C1</resultingstates>
+		</deterministic>
+		<cpt id="Copy_2_of_som">
+			<state id="Overwhelmed" />
+			<state id="Focused" />
+			<state id="Distracted" />
+			<probabilities>0.4 0.5 0.09999999999999998</probabilities>
+		</cpt>
+		<deterministic id="C1">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>True</resultingstates>
+		</deterministic>
+		<deterministic id="LM">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>True</resultingstates>
+		</deterministic>
+		<deterministic id="GM">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>True</resultingstates>
+		</deterministic>
+		<deterministic id="PC">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>True</resultingstates>
+		</deterministic>
+		<decision id="main_views">
+			<state id="Priority" />
+			<state id="Content" />
+			<parents>Copy_2_of_Joystick focus C1 LM GM PC</parents>
+		</decision>
+		<cpt id="Copy_2_of_Context">
+			<state id="Detection" />
+			<state id="Mapping" />
+			<state id="Navigation" />
+			<state id="Exploration" />
+			<state id="Inspection" />
+			<parents>Copy_2_of_Joystick</parents>
+			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05000000000000002 0.05000000000000002 0.1499999999999999 0.4000000000000001 0.2 0.2 0.2 0.2 0.2</probabilities>
+		</cpt>
+		<deterministic id="C2">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>False</resultingstates>
+		</deterministic>
+		<deterministic id="Add_Required">
+			<state id="True" />
+			<state id="False" />
+			<parents>Copy_2_of_Context LM Copy_2_of_Joystick C1 C2</parents>
+			<resultingstates>False False True True False True True True False True True True True True True True True True True True True True True True False False True True False True True True False True True True True True True True True True True True True True True True False False True True False True True True False True True True True True True True True True True True True True True True False False True True False True True True False True True True True True True True False True True True True True True True False False True True False True True True False True True True True True True True True True True True True True True True</resultingstates>
+		</deterministic>
+		<cpt id="Remove">
+			<state id="True" />
+			<state id="False" />
+			<parents>Copy_2_of_Context GM PC Copy_2_of_Joystick C2</parents>
+			<probabilities>1 0 0.9 0.09999999999999998 0.8 0.2 0.9 0.09999999999999998 0.8 0.2 0.8 0.2 0.9 0.09999999999999998 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0 1 0 1 0 1 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.2 0.8 0.8 0.2 0.2 0.8 0.8 0.2 0.2 0.8 0.8 0.2 0 1 0.8 0.2 0 1 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0 1 0 1 0 1 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.2 0.8 0.8 0.2 0.2 0.8 0.8 0.2 0.2 0.8 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.2 0.8 0 1 0.2 0.8 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0 1 0.8 0.2 0 1</probabilities>
+		</cpt>
+		<cpt id="Add_Helpful">
+			<state id="True" />
+			<state id="False" />
+			<parents>Copy_2_of_Context PC GM</parents>
+			<probabilities>0 1 0 1 0 1 0 1 0 1 0.6 0.4 0.9 0.09999999999999998 0.9 0.09999999999999998 0 1 0 1 0 1 0 1 0 1 0.9 0.09999999999999998 0 1 0.9 0.09999999999999998 0 1 0 1 0 1 0 1</probabilities>
+		</cpt>
+		<cpt id="Content">
+			<state id="True" />
+			<state id="False" />
+			<parents>Add_Required Remove Add_Helpful</parents>
+			<probabilities>1 0 1 0 1 0 1 0 0.5 0.5 0.5 0.5 0.5 0.5 0 1</probabilities>
+		</cpt>
+		<cpt id="Priority">
+			<state id="True" />
+			<state id="False" />
+			<parents>Copy_2_of_Context focus</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0 1 0 1 0 1 0 1 0 1 0.7 0.3 0.1 0.9 0.4 0.6 0.9 0.09999999999999998 0.9 0.09999999999999998 0 1 0 1 0 1 0 1 0 1 0.7 0.3 0.5 0.5 0 1 0.5 0.5 0.5 0.5 0 1 0 1 0 1</probabilities>
+		</cpt>
+		<utility id="U">
+			<parents>Copy_2_of_som Content Priority main_views</parents>
+			<utilities>300 1000 0 1000 1000 0 100 0 0 1000 0 1000 1000 0 100 0 0 1000 0 1000 1000 0 0 1000</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="main_views" faultnameformat="nodestate">
+			<node id="U">
+				<name>U</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>579 478 606 510</position>
+			</node>
+			<node id="main_views">
+				<name>Main Views</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>577 255 647 281</position>
+			</node>
+			<node id="focus">
+				<name>Focus</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>551 47 622 82</position>
+			</node>
+			<node id="Copy_2_of_Joystick">
+				<name>Joystick</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>419 47 492 84</position>
+			</node>
+			<node id="Copy_2_of_Context">
+				<name>Context</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>280 204 332 236</position>
+			</node>
+			<node id="Copy_2_of_som">
+				<name>State of Mind</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>766 308 842 346</position>
+			</node>
+			<node id="Content">
+				<name>Content</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>420 392 494 433</position>
+			</node>
+			<node id="C1">
+				<name>C1</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>331 47 374 76</position>
+			</node>
+			<node id="C2">
+				<name>C2</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>220 47 263 76</position>
+			</node>
+			<node id="PC">
+				<name>PC</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>69 47 112 76</position>
+			</node>
+			<node id="GM">
+				<name>GM</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>125 47 170 77</position>
+			</node>
+			<node id="LM">
+				<name>LM</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>277 47 321 77</position>
+			</node>
+			<node id="Add_Required">
+				<name>Add Required</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>361 296 442 343</position>
+			</node>
+			<node id="Add_Helpful">
+				<name>Add Helpful</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>117 292 176 332</position>
+			</node>
+			<node id="Remove">
+				<name>Remove</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>258 306 327 345</position>
+			</node>
+			<textbox>
+				<caption>Notes:\nContext\nNavigation: Cameras\nMapping: Pointcloud\nInspect: Snapshots\nExploring: Maps\n\n\nNodes:\n\n</caption>
+				<font color="000000" name="Arial" size="8" />
+				<position>784 39 883 179</position>
+			</textbox>
+			<node id="Priority">
+				<name>Priority</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>496 347 545 377</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

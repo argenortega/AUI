@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network12" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Visible">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Battery_Level">
+			<state id="State0" />
+			<state id="State1" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<decision id="Battery">
+			<state id="Show" />
+			<state id="Hide" />
+			<parents>Visible Battery_Level</parents>
+		</decision>
+		<cpt id="SA_Effect">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Battery</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="SoM">
+			<state id="Overwhelmed" />
+			<state id="Focused" />
+			<state id="Distracted" />
+			<probabilities>0.5 0.5 0</probabilities>
+		</cpt>
+		<utility id="U">
+			<parents>Battery SA_Effect SoM</parents>
+			<utilities>0 0 0 0 0 0 0 0 0 0 0 0</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="battery" faultnameformat="nodestate">
+			<node id="Battery">
+				<name>Battery</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>288 136 356 162</position>
+			</node>
+			<node id="U">
+				<name>U</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>315 247 342 279</position>
+			</node>
+			<node id="SA_Effect">
+				<name>SA Effect</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>247 194 308 232</position>
+			</node>
+			<node id="SoM">
+				<name>SoM</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>366 201 407 226</position>
+			</node>
+			<node id="Visible">
+				<name>Visible</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>164 64 240 111</position>
+			</node>
+			<node id="Battery_Level">
+				<name>Battery Level</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>324 74 385 112</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

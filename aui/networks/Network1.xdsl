@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Weather">
+			<state id="no_rain" />
+			<state id="rain" />
+			<probabilities>0.7 0.3</probabilities>
+		</cpt>
+		<cpt id="Forecast">
+			<state id="sunny" />
+			<state id="cloudy" />
+			<state id="rainy" />
+			<parents>Weather</parents>
+			<probabilities>0.7 0.2 0.1 0.15 0.25 0.6</probabilities>
+		</cpt>
+		<decision id="Umbrella">
+			<state id="take_it" />
+			<state id="leave_it" />
+			<parents>Forecast</parents>
+		</decision>
+		<utility id="V">
+			<parents>Weather Umbrella</parents>
+			<utilities>20 100 70 0</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="Weather" faultnameformat="nodestate">
+			<node id="Weather">
+				<name>Weather</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>268 155 345 194</position>
+			</node>
+			<node id="Forecast">
+				<name>Forecast</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>172 213 244 249</position>
+			</node>
+			<node id="Umbrella">
+				<name>Umbrella</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>286 261 345 291</position>
+			</node>
+			<node id="V">
+				<name>V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>429 219 480 251</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

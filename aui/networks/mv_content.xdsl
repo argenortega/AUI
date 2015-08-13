@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network5" numsamples="1000" discsamples="10000">
+	<nodes>
+		<deterministic id="Copy_2_of_Joystick">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>False</resultingstates>
+		</deterministic>
+		<cpt id="Copy_2_of_Context">
+			<state id="Detection" />
+			<state id="Mapping" />
+			<state id="Navigation" />
+			<state id="Exploration" />
+			<state id="Inspection" />
+			<parents>Copy_2_of_Joystick</parents>
+			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05 0.05 0.1499999999999999 0.4</probabilities>
+		</cpt>
+		<cpt id="SoM">
+			<state id="State0" />
+			<state id="State1" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<decision id="main_views">
+			<state id="ask" />
+			<state id="config" />
+			<parents>SoM Copy_2_of_Joystick</parents>
+		</decision>
+		<deterministic id="GM">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>True</resultingstates>
+		</deterministic>
+		<deterministic id="LM">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>True</resultingstates>
+		</deterministic>
+		<cpt id="Maps">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>GM LM Copy_2_of_Context</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<deterministic id="C1">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>True</resultingstates>
+		</deterministic>
+		<deterministic id="C2">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>True</resultingstates>
+		</deterministic>
+		<cpt id="Cameras">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>C1 C2 Copy_2_of_Joystick Copy_2_of_Context</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<utility id="U">
+			<parents>main_views SoM Copy_2_of_Context</parents>
+			<utilities>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</utilities>
+		</utility>
+		<deterministic id="PC">
+			<state id="True" />
+			<state id="False" />
+			<resultingstates>True</resultingstates>
+		</deterministic>
+		<cpt id="Additional">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>PC Copy_2_of_Context</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="mv_content" faultnameformat="nodestate">
+			<node id="U">
+				<name>U</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>290 397 317 429</position>
+			</node>
+			<node id="main_views">
+				<name>Content</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>252 210 322 236</position>
+			</node>
+			<node id="SoM">
+				<name>SoM</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>146 137 187 162</position>
+			</node>
+			<node id="C1">
+				<name>C1</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>474 180 517 209</position>
+			</node>
+			<node id="C2">
+				<name>C2</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>547 181 590 210</position>
+			</node>
+			<node id="PC">
+				<name>PC</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>889 199 932 228</position>
+			</node>
+			<node id="GM">
+				<name>GM</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>675 69 720 99</position>
+			</node>
+			<node id="LM">
+				<name>LM</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>732 69 776 99</position>
+			</node>
+			<node id="Copy_2_of_Joystick">
+				<name>Joystick</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>324 85 397 122</position>
+			</node>
+			<node id="Copy_2_of_Context">
+				<name>Context</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>343 236 395 268</position>
+			</node>
+			<node id="Cameras">
+				<name>Cameras</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>452 318 509 353</position>
+			</node>
+			<node id="Maps">
+				<name>Maps</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>620 327 665 355</position>
+			</node>
+			<node id="Additional">
+				<name>Additional</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>748 349 809 387</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

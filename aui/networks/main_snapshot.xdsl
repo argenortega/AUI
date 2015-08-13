@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network8" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="SoM">
+			<state id="Overwhelmed" />
+			<state id="Focused" />
+			<state id="Distracted" />
+			<probabilities>0.5 0.5 0</probabilities>
+		</cpt>
+		<cpt id="Focus">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<decision id="Main_Snapshot">
+			<state id="Choice0" />
+			<state id="Choice1" />
+			<parents>SoM Focus</parents>
+		</decision>
+		<cpt id="SA_Effect">
+			<state id="State0" />
+			<state id="State1" />
+			<parents>Main_Snapshot</parents>
+			<probabilities>0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="context">
+			<state id="Detection" />
+			<state id="Mapping" />
+			<state id="Navigation" />
+			<state id="Exploration" />
+			<state id="Inspection" />
+			<probabilities>0.05 0.2 0.3 0.4 0.05</probabilities>
+		</cpt>
+		<utility id="U">
+			<parents>Main_Snapshot context SA_Effect SoM Focus</parents>
+			<utilities>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="main_snapshots" faultnameformat="nodestate">
+			<node id="Main_Snapshot">
+				<name>Main Snapshot</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>431 209 514 235</position>
+			</node>
+			<node id="SA_Effect">
+				<name>SA Effect</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>528 245 589 283</position>
+			</node>
+			<node id="Focus">
+				<name>Focus</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>649 209 697 239</position>
+			</node>
+			<node id="SoM">
+				<name>SoM</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>360 139 401 164</position>
+			</node>
+			<node id="U">
+				<name>U</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>495 312 522 344</position>
+			</node>
+			<node id="context">
+				<name>Context</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>350 296 402 328</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>
