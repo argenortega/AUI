@@ -2,13 +2,16 @@ __author__ = 'Argen'
 
 import networkx as nx
 import matplotlib.pyplot as plt
-import pymc
+import pylab as pl
+import pymc as mc
 
 from pymc.examples import disaster_model
 
 G = nx.Graph()
 nx.draw(G)
 plt.show()
+
+
 '''
 G.add_nodes_from([2,3])
 H=nx.path_graph(10)
@@ -20,6 +23,7 @@ G.add_edge(*e)# unpack edge tuple*
 G.add_edges_from([(1,2),(1,3)])
 '''
 
+'''
 nodename = pymc.Bernoulli('nodename', 0.2)
 probNodeName = mc.Lambda('probNodeName', lambda conditionalNode = conditionalNode: pylab.where(conditionalNode, 0.01, 0.4))
 nodename = mc.Bernoulli('nodename', probNodeName)
@@ -27,9 +31,7 @@ value=[1.0], observed=True
 
 
 # sprinkler.py
-import pylab as pl
-import pymc as mc
-
+'''
 G_obs = [1.]
 print G
 N = len(G_obs)
