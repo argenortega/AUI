@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/toolbar.ui'
 #
-# Created: Thu Jul  2 13:42:17 2015
+# Created: Fri Aug 14 20:20:53 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!

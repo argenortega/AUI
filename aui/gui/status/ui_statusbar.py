@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/statusbar.ui'
 #
-# Created: Thu Jul  2 13:42:16 2015
+# Created: Fri Aug 14 20:20:53 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -67,30 +67,15 @@ class Ui_statusBarWidget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.batteryBar.sizePolicy().hasHeightForWidth())
         self.batteryBar.setSizePolicy(sizePolicy)
-        self.batteryBar.setMaximumSize(QtCore.QSize(50, 6))
+        self.batteryBar.setMinimumSize(QtCore.QSize(0, 25))
+        self.batteryBar.setMaximumSize(QtCore.QSize(50, 25))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.batteryBar.setFont(font)
-        self.batteryBar.setStyleSheet(_fromUtf8("color: rgb(244, 67, 54);\n"
-"background-color: rgb(244, 67, 54);"))
-        self.batteryBar.setProperty("value", 49)
+        self.batteryBar.setProperty("value", 100)
         self.batteryBar.setAlignment(QtCore.Qt.AlignCenter)
-        self.batteryBar.setTextVisible(False)
         self.batteryBar.setObjectName(_fromUtf8("batteryBar"))
         self.statusBarLayout.addWidget(self.batteryBar)
-        self.batteryValue = QtGui.QLabel(statusBarWidget)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.batteryValue.setFont(font)
-        self.batteryValue.setObjectName(_fromUtf8("batteryValue"))
-        self.statusBarLayout.addWidget(self.batteryValue)
-        self.percent2 = QtGui.QLabel(statusBarWidget)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.percent2.setFont(font)
-        self.percent2.setIndent(0)
-        self.percent2.setObjectName(_fromUtf8("percent2"))
-        self.statusBarLayout.addWidget(self.percent2)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.statusBarLayout.addItem(spacerItem)
         self.adaptiveStatus = QtGui.QLabel(statusBarWidget)
@@ -122,30 +107,15 @@ class Ui_statusBarWidget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.wifiBar.sizePolicy().hasHeightForWidth())
         self.wifiBar.setSizePolicy(sizePolicy)
-        self.wifiBar.setMaximumSize(QtCore.QSize(50, 6))
+        self.wifiBar.setMinimumSize(QtCore.QSize(0, 25))
+        self.wifiBar.setMaximumSize(QtCore.QSize(50, 25))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.wifiBar.setFont(font)
-        self.wifiBar.setStyleSheet(_fromUtf8("background-color: rgb(255, 193, 7);\n"
-"selection-color: rgb(255, 193, 7);\n"
-"alternate-background-color: rgb(255, 193, 7);"))
-        self.wifiBar.setProperty("value", 63)
+        self.wifiBar.setProperty("value", 100)
         self.wifiBar.setAlignment(QtCore.Qt.AlignCenter)
-        self.wifiBar.setTextVisible(False)
         self.wifiBar.setObjectName(_fromUtf8("wifiBar"))
         self.statusBarLayout.addWidget(self.wifiBar)
-        self.wifiValue = QtGui.QLabel(statusBarWidget)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.wifiValue.setFont(font)
-        self.wifiValue.setObjectName(_fromUtf8("wifiValue"))
-        self.statusBarLayout.addWidget(self.wifiValue)
-        self.percent1 = QtGui.QLabel(statusBarWidget)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.percent1.setFont(font)
-        self.percent1.setObjectName(_fromUtf8("percent1"))
-        self.statusBarLayout.addWidget(self.percent1)
         self.wifiStatus = QtGui.QLabel(statusBarWidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -168,18 +138,12 @@ class Ui_statusBarWidget(object):
         self.statusBarLayout.addWidget(self.wifiStatus)
 
         self.retranslateUi(statusBarWidget)
-        QtCore.QObject.connect(self.batteryBar, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.batteryValue.setNum)
-        QtCore.QObject.connect(self.wifiBar, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.wifiValue.setNum)
         QtCore.QMetaObject.connectSlotsByName(statusBarWidget)
 
     def retranslateUi(self, statusBarWidget):
         statusBarWidget.setWindowTitle(_translate("statusBarWidget", "Frame", None))
         self.batteryStatus.setText(_translate("statusBarWidget", "Battery", None))
-        self.batteryValue.setText(_translate("statusBarWidget", "49", None))
-        self.percent2.setText(_translate("statusBarWidget", "%", None))
         self.adaptiveStatus.setText(_translate("statusBarWidget", "Adaptive", None))
-        self.wifiValue.setText(_translate("statusBarWidget", "63", None))
-        self.percent1.setText(_translate("statusBarWidget", "%", None))
         self.wifiStatus.setText(_translate("statusBarWidget", "WiFi", None))
 
 from aui.utilities.ColorProgressBar import CProgressBar
