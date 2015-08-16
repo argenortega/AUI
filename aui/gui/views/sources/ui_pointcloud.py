@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/pointcloud.ui'
 #
-# Created: Mon Jun 29 22:04:08 2015
+# Created: Sun Aug 16 01:02:33 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -65,6 +65,8 @@ class Ui_PointcloudWidget(object):
 
     def retranslateUi(self, PointcloudWidget):
         PointcloudWidget.setWindowTitle(_translate("PointcloudWidget", "3D Pointcloud", None))
+        PointcloudWidget.setAccessibleName(_translate("PointcloudWidget", "PC", None))
+        self.pointcloud.setAccessibleName(_translate("PointcloudWidget", "PC", None))
         self.pointcloud.setText(_translate("PointcloudWidget", "3D pointcloud", None))
 
 from aui.utilities.ActiveLabel import ActLabel

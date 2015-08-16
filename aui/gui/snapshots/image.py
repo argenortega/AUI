@@ -8,6 +8,7 @@ from aui.gui.snapshots import ui_image
 
 class Screenshot(QWidget, ui_image.Ui_ScreenshotWidget):
     chosen = pyqtSignal(str)
+
     def __init__(self, parent, num):
         QWidget.__init__(self, parent)
         self.setupUi(self)
@@ -15,8 +16,8 @@ class Screenshot(QWidget, ui_image.Ui_ScreenshotWidget):
         self.initui()
 
     def initui(self):
-        self.setObjectName("Screenshot%d" % self.num)
-        self.screenshot.setText("Screenshot %d" % self.num)
+        self.setObjectName("Snapshot%d" % self.num)
+        self.screenshot.setText("Snapshot %d" % self.num)
         sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)

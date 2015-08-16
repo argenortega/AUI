@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/snapshot.ui'
 #
-# Created: Mon Jun 29 22:04:07 2015
+# Created: Sun Aug 16 14:17:49 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -86,6 +86,8 @@ class Ui_ScreenshotWidget(object):
         self.extraScreenGroup.setMinimumSize(QtCore.QSize(0, 0))
         self.extraScreenGroup.setBaseSize(QtCore.QSize(0, 0))
         self.extraScreenGroup.setMouseTracking(True)
+        self.extraScreenGroup.setFlat(True)
+        self.extraScreenGroup.setCheckable(True)
         self.extraScreenGroup.setObjectName(_fromUtf8("extraScreenGroup"))
         self.horizontalLayout = QtGui.QHBoxLayout(self.extraScreenGroup)
         self.horizontalLayout.setMargin(3)
@@ -110,7 +112,7 @@ class Ui_ScreenshotWidget(object):
         self.scrollArea.setAlignment(QtCore.Qt.AlignCenter)
         self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
         self.extraScreenshots = QtGui.QWidget()
-        self.extraScreenshots.setGeometry(QtCore.QRect(0, 0, 193, 110))
+        self.extraScreenshots.setGeometry(QtCore.QRect(0, 0, 244, 110))
         self.extraScreenshots.setMinimumSize(QtCore.QSize(0, 110))
         self.extraScreenshots.setMouseTracking(True)
         self.extraScreenshots.setObjectName(_fromUtf8("extraScreenshots"))
@@ -119,33 +121,18 @@ class Ui_ScreenshotWidget(object):
         self.extraScreenshotLayout.setObjectName(_fromUtf8("extraScreenshotLayout"))
         self.scrollArea.setWidget(self.extraScreenshots)
         self.horizontalLayout.addWidget(self.scrollArea)
-        self.showB = HButton(self.extraScreenGroup)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.showB.sizePolicy().hasHeightForWidth())
-        self.showB.setSizePolicy(sizePolicy)
-        self.showB.setMinimumSize(QtCore.QSize(44, 44))
-        self.showB.setMaximumSize(QtCore.QSize(44, 44))
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        self.showB.setFont(font)
-        self.showB.setMouseTracking(True)
-        self.showB.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.showB.setCheckable(True)
-        self.showB.setObjectName(_fromUtf8("showB"))
-        self.horizontalLayout.addWidget(self.showB)
         self.layout.addWidget(self.extraScreenGroup)
 
         self.retranslateUi(ScreenshotWidget)
+        QtCore.QObject.connect(self.extraScreenGroup, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.scrollArea.setVisible)
         QtCore.QMetaObject.connectSlotsByName(ScreenshotWidget)
 
     def retranslateUi(self, ScreenshotWidget):
         ScreenshotWidget.setWindowTitle(_translate("ScreenshotWidget", "Form", None))
+        self.currentScreenshot.setAccessibleName(_translate("ScreenshotWidget", "S", None))
         self.currentScreenshot.setText(_translate("ScreenshotWidget", "Select a snapshot", None))
         self.newS.setText(_translate("ScreenshotWidget", "New", None))
         self.extraScreenGroup.setTitle(_translate("ScreenshotWidget", "Screenshots", None))
-        self.showB.setText(_translate("ScreenshotWidget", "-", None))
 
 from aui.utilities.HoverButtons import HButton
 from aui.utilities.ActiveLabel import ActLabel

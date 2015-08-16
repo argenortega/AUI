@@ -11,7 +11,7 @@ from PyQt4.QtCore import pyqtSignal, Qt, QMimeData
 from PyQt4.QtGui import (QWidget, QSizePolicy, QApplication, QDrag, QPixmap)
 
 from aui.gui.views.sources import ui_lmap
-
+#from aui.utilities.DragWidget import DView
 
 class LocalMap(QWidget, ui_lmap.Ui_NewView):
     '''
@@ -23,8 +23,9 @@ class LocalMap(QWidget, ui_lmap.Ui_NewView):
         QWidget.__init__(self, parent)
         self.setupUi(self)
         self.initUI()
-        
+
     def initUI(self):
+        self.setObjectName("LM")
         self.currentmap = 'border-image: url(:/maps/local/local1);'
         self.map.setStyleSheet(self.currentmap)
 
@@ -35,9 +36,6 @@ class LocalMap(QWidget, ui_lmap.Ui_NewView):
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)
 
-    def enterEvent(self, QEvent):
-        self.inside.emit('Local Map')
-
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             self.drag_start_position = event.pos()
@@ -47,7 +45,7 @@ class LocalMap(QWidget, ui_lmap.Ui_NewView):
             return
 
         if ((event.pos() - self.drag_start_position).manhattanLength()
-            < QApplication.startDragDistance()):
+                < QApplication.startDragDistance()):
             return
 
         drag = QDrag(self)
@@ -55,17 +53,18 @@ class LocalMap(QWidget, ui_lmap.Ui_NewView):
         drag.setPixmap(pix)
         mime_data = QMimeData()
         mime_data.setText(self.map.text())
-        mime_data.setImageData(self.currentmap)
+        #mime_data.setImageData(self.currentmap)
         drag.setMimeData(mime_data)
 
         self.drop_action = drag.exec_(Qt.CopyAction | Qt.MoveAction)
-        
-        
+
+
 def main():
     app = QApplication(sys.argv)
     main = LocalMap(None)
     main.show()
     sys.exit(app.exec_())
- 
+
+
 if __name__ == "__main__":
     main()

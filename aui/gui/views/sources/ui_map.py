@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/map.ui'
 #
-# Created: Mon Jun 29 22:04:08 2015
+# Created: Sun Aug 16 01:02:32 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -31,8 +31,11 @@ class Ui_Map(object):
         Map.setFrameShape(QtGui.QFrame.StyledPanel)
         Map.setFrameShadow(QtGui.QFrame.Raised)
         self.horizontalLayout = QtGui.QHBoxLayout(Map)
+        self.horizontalLayout.setMargin(0)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.map = QtGui.QLabel(Map)
+        self.map.setAutoFillBackground(False)
+        self.map.setAlignment(QtCore.Qt.AlignCenter)
         self.map.setObjectName(_fromUtf8("map"))
         self.horizontalLayout.addWidget(self.map)
 

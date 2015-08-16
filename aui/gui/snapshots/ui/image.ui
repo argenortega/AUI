@@ -72,6 +72,9 @@
      <property name="mouseTracking">
       <bool>true</bool>
      </property>
+     <property name="accessibleName">
+      <string>AS</string>
+     </property>
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
@@ -82,7 +85,7 @@
       <enum>QFrame::Sunken</enum>
      </property>
      <property name="text">
-      <string>Screenshot 1</string>
+      <string>Snapshot 1</string>
      </property>
      <property name="scaledContents">
       <bool>true</bool>

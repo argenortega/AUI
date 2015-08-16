@@ -8,6 +8,7 @@ import sys
 
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QWidget, QSizePolicy, QLabel, QHBoxLayout)
+from PyQt4.QtCore import pyqtSignal, pyqtSlot
 
 from aui.gui.robot.internal import ui_wifi
 
@@ -16,50 +17,37 @@ class Wifi(QWidget, ui_wifi.Ui_WifiStatus):
     '''
     Simulation of a Wifi level widget
     '''
+    lev = pyqtSignal(str, str, name='wifi_level')
+    vis = pyqtSignal(str, str, name='wifi_visible')
+
     def __init__(self,parent):
         QWidget.__init__(self,parent)
         self.setupUi(self)
-        #self.minSize = minSize
-        #self.maxSize = maxSize
-        #self.initUI()
-        
+        self.initUI()
+
     def initUI(self):
-        self.setObjectName("wifi_status")
-        self.layout = QtGui.QVBoxLayout(self)
-        self.layout.setMargin(0)
-        self.layout.setObjectName("WifiLayout")
-        self.setLayout(self.layout)
-        self.wifiLevel = QtGui.QGroupBox("Wifi",self)
-        self.wifiLevel.setObjectName("wifiLevel")
-        
-        self.wifiBoxLevel = QHBoxLayout(self.wifiLevel)
-        self.wifiBoxLevel.setObjectName("wifiBoxLevel")
-        
-        self.wifi = QtGui.QProgressBar(self.wifiLevel)
-        self.wifi.setProperty("value", 100)
-        self.wifi.setAlignment(QtCore.Qt.AlignCenter)
-        self.wifi.setInvertedAppearance(False)
-        self.wifi.setObjectName("wifi")
-        
-        self.wifiBoxLevel.addWidget(self.wifi)
-        
-        self.value = QtGui.QLabel(self.wifiLevel)
-        self.value.setText("%d"%self.wifi.value())        
-        self.wifiBoxLevel.addWidget(self.value)
-        
-        self.p = QLabel("%",self.wifiLevel)
-        self.wifiBoxLevel.addWidget(self.p)
-        self.layout.addWidget(self.wifiLevel)
-        
-        
-        self.setMinimumSize(self.minSize)
-        #self.setMaximumSize(self.maxSize)        
-        
-        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(False)
-        self.setSizePolicy(sizePolicy)
+        self.wifi.valueChanged[int].connect(self.send_level)
+        self.wifiLevel.clicked[bool].connect(self.send_visible)
+
+    @pyqtSlot(int)
+    def send_level(self, value):
+        if value > 70:
+            self.lev.emit('wifi_level', 'Ok')
+            # self.change_color('rgb(76, 175, 80)')
+        elif 70 >= value > 50:
+            self.lev.emit('wifi_level', 'Warn')
+            # self.change_color('rgb(255, 193, 7)')
+        elif value <= 50:
+            self.lev.emit('wifi_level', 'Critical')
+            # self.change_color('rgb(244, 67, 54)')
+
+    @pyqtSlot(bool)
+    def send_visible(self, checked):
+        if checked:
+            self.vis.emit('wifi_visible', 'True')
+        else:
+            self.vis.emit('wifi_visible', 'False')
+
         
 
 def main():

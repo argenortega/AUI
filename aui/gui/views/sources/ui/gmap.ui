@@ -52,6 +52,9 @@
   <property name="windowTitle">
    <string>Map</string>
   </property>
+  <property name="accessibleName">
+   <string>GM</string>
+  </property>
   <property name="styleSheet">
    <string notr="true">border-image: url(:/maps/global/global2);</string>
   </property>
@@ -65,6 +68,9 @@
       <font>
        <pointsize>14</pointsize>
       </font>
+     </property>
+     <property name="accessibleName">
+      <string>GM</string>
      </property>
      <property name="styleSheet">
       <string notr="true">border-image: url(:/maps/global);</string>

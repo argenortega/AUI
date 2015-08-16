@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/image.ui'
 #
-# Created: Mon Jun 29 22:04:06 2015
+# Created: Sun Aug 16 14:17:49 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -67,7 +67,8 @@ class Ui_ScreenshotWidget(object):
 
     def retranslateUi(self, ScreenshotWidget):
         ScreenshotWidget.setWindowTitle(_translate("ScreenshotWidget", "3D Pointcloud", None))
-        self.screenshot.setText(_translate("ScreenshotWidget", "Screenshot 1", None))
+        self.screenshot.setAccessibleName(_translate("ScreenshotWidget", "AS", None))
+        self.screenshot.setText(_translate("ScreenshotWidget", "Snapshot 1", None))
 
 from aui.utilities.ActiveLabel import ActLabel
 

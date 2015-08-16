@@ -43,6 +43,9 @@
   <property name="windowTitle">
    <string>3D Pointcloud</string>
   </property>
+  <property name="accessibleName">
+   <string>LM</string>
+  </property>
   <property name="styleSheet">
    <string notr="true">border-image: url(:/maps/local/local1);</string>
   </property>
@@ -52,6 +55,9 @@
    </property>
    <item>
     <widget class="ActLabel" name="map">
+     <property name="accessibleName">
+      <string>LM</string>
+     </property>
      <property name="styleSheet">
       <string notr="true">border-image: url(:/maps/local);</string>
      </property>

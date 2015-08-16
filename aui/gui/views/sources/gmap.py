@@ -20,20 +20,15 @@ class GlobalMap(QWidget, ui_gmap.Ui_MapWidget):
         self.initUI()
 
     def initUI(self):
+        self.setObjectName("GM")
         self.currentmap = 'border-image: url(:/maps/global/global2);'
         self.map.setStyleSheet(self.currentmap)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)
-        #self.labelText = self.map.text()
-        #print self.heightForWidth(100)
 
     def heightForWidth(self, p_int):
         return p_int
-
-    def enterEvent(self, QEvent):
-        self.map.inside.emit('Global Map')
-
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
@@ -52,7 +47,7 @@ class GlobalMap(QWidget, ui_gmap.Ui_MapWidget):
         drag.setPixmap(pix)
         mime_data = QMimeData()
         mime_data.setText(self.map.text())
-        mime_data.setImageData(self.currentmap)
+        #mime_data.setImageData(self.currentmap)
         drag.setMimeData(mime_data)
 
         self.drop_action = drag.exec_(Qt.CopyAction | Qt.MoveAction)

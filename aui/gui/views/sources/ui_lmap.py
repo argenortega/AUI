@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/lmap.ui'
 #
-# Created: Mon Jun 29 22:04:08 2015
+# Created: Sun Aug 16 01:02:32 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -52,6 +52,8 @@ class Ui_NewView(object):
 
     def retranslateUi(self, NewView):
         NewView.setWindowTitle(_translate("NewView", "3D Pointcloud", None))
+        NewView.setAccessibleName(_translate("NewView", "LM", None))
+        self.map.setAccessibleName(_translate("NewView", "LM", None))
         self.map.setText(_translate("NewView", "Local Map", None))
 
 from aui.utilities.ActiveLabel import ActLabel

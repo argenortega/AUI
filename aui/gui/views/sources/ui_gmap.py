@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/gmap.ui'
 #
-# Created: Mon Jun 29 22:04:07 2015
+# Created: Sun Aug 16 01:02:32 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -57,6 +57,8 @@ class Ui_MapWidget(object):
 
     def retranslateUi(self, MapWidget):
         MapWidget.setWindowTitle(_translate("MapWidget", "Map", None))
+        MapWidget.setAccessibleName(_translate("MapWidget", "GM", None))
+        self.map.setAccessibleName(_translate("MapWidget", "GM", None))
         self.map.setText(_translate("MapWidget", "Global Map", None))
 
 from aui.utilities.ActiveLabel import ActLabel

@@ -8,7 +8,8 @@ Created on Mon Dec 29 15:28:42 2014
 import sys
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QWidget, QSizePolicy)
+from PyQt4.QtCore import QMimeData, Qt
+from PyQt4.QtGui import (QWidget, QSizePolicy, QDrag, QPixmap, QApplication)
 
 from aui.gui.views.sources import ui_pointcloud
 
@@ -20,47 +21,36 @@ class Pointcloud(QWidget, ui_pointcloud.Ui_PointcloudWidget):
     def __init__(self,parent):
         QWidget.__init__(self,parent)
         self.setupUi(self)
-        #self.minSize = minSize
-        #self.maxSize = maxSize
-        #self.stretch = stretch
         self.initUI()
         
     def initUI(self):
-        '''
-        self.setObjectName("Pointcloud")
-        self.layout = QVBoxLayout()
-        self.layout.setMargin(0)
-        self.setLayout(self.layout)
-        
-        self.pointcloud = QLabel("3D pointcloud",self)  
-        self.pointcloud.setAlignment(QtCore.Qt.AlignCenter)
-        self.pointcloud.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
-        self.pointcloud.setWordWrap(True)
-        self.pointcloud.setScaledContents(True)
-        #pointcloud.sizeHint(300,300)        
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.pointcloud.setFont(font)
-        #self.pointcloud.setObjectName("pointcloud1Label")
-        self.layout.addWidget(self.pointcloud)
-        '''
-        '''
-        Size of the widget
-        '''
-        #self.setMinimumSize(300,300)
-        #self.resize(300,300)        
-
-        #self.setMinimumSize(self.minSize)
-        #self.setMaximumSize(self.maxSize)
-        #self.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
-        #self.setMouseTracking(True)
-
-        
+        self.setObjectName("PC")
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        #sizePolicy.setHorizontalStretch(self.stretch)
-        #sizePolicy.setVerticalStretch(self.stretch)
         sizePolicy.setHeightForWidth(True)
-        self.setSizePolicy(sizePolicy)        
+        self.setSizePolicy(sizePolicy)
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.drag_start_position = event.pos()
+
+    def mouseMoveEvent(self, event):
+        if not (event.buttons() and Qt.LeftButton):
+            return
+
+        if ((event.pos() - self.drag_start_position).manhattanLength()
+            < QApplication.startDragDistance()):
+            return
+
+        drag = QDrag(self)
+        pix = QPixmap.grabWidget(self)
+        drag.setPixmap(pix)
+        mime_data = QMimeData()
+        mime_data.setText(self.pointcloud.text())
+        # mime_data.setImageData(self.currentmap)
+        drag.setMimeData(mime_data)
+
+        self.drop_action = drag.exec_(Qt.CopyAction | Qt.MoveAction)
+
 
         
 def main():

@@ -9,13 +9,15 @@ import sys
 
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import QWidget, QSizePolicy, QFrame
-from PyQt4.QtCore import QSize, pyqtSlot
+from PyQt4.QtCore import QSize, pyqtSignal, pyqtSlot
 
 from aui.gui.snapshots import ui_snapshot
 #import ActiveLabel
 
 
 class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
+    vis = pyqtSignal(str, str, name='AS_visible')
+
     def __init__(self,parent):
         QWidget.__init__(self,parent)
         self.setupUi(self)
@@ -23,9 +25,9 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
         self.initUI()
         
     def initUI(self):
-        #self.newS.clicked.connect(self.add_new)
+        # self.newS.clicked.connect(self.add_new)
 
-        self.showB.clicked[bool].connect(self.press)
+        # self.showB.clicked[bool].connect(self.press)
 
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
         sizePolicy.setHeightForWidth(False)
@@ -34,46 +36,20 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHeightForWidth(False)
         self.setSizePolicy(sizePolicy)
-        
-        
-    def new_screenshot(self,num):
-        #img = QtGui.QLabel("Image %d"%num, self.extraScreenGroup)
-        img = ActiveLabel.ActLabel(self.extraScreenGroup)
-        img.setText("Screenshot %d"%num)
-        img.setObjectName("img%d"%num)
-        img.setAlignment(QtCore.Qt.AlignCenter)
-        img.setFrameStyle(QFrame.Sunken | QFrame.StyledPanel)
-        img.setMinimumSize(QSize(85,85))
-        img.setMaximumSize(QSize(100,100))
-        img.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
-        img.setMouseTracking(True)
-        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(True)
-        img.setSizePolicy(sizePolicy)
-        # img.resize(self.minWidth/3,self.minWidth/3)
-        return img
-    
-    def add_new(self):
-        self.num = self.num + 1
-        ns = self.new_screenshot(self.num)
-        self.extraScreenshotLayout.addWidget(ns)
-        
-    def press(self,toggled):
-        if toggled:
-            self.showB.setText("+")
-            self.scrollArea.setVisible(False)
-        else:
-            self.showB.setText("-")
-            self.scrollArea.setVisible(True)
-    
-    def select_screenshot(self):
-        pass
+
+        self.extraScreenGroup.clicked[bool].connect(self.send_visible)
+
 
     @pyqtSlot(str)
     def setScreenshot(self,s):
         self.currentScreenshot.setText(s)
+
+    @pyqtSlot(bool)
+    def send_visible(self, checked):
+        if checked:
+            self.vis.emit('AS_visible', 'True')
+        else:
+            self.vis.emit('AS_visible', 'False')
         
         
     

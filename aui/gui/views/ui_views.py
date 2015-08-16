@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/views.ui'
 #
-# Created: Mon Jun 29 22:04:07 2015
+# Created: Sun Aug 16 16:27:45 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,7 +43,7 @@ class Ui_viewsWidget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.currentViews.sizePolicy().hasHeightForWidth())
         self.currentViews.setSizePolicy(sizePolicy)
-        self.currentViews.setSizeIncrement(QtCore.QSize(3, 3))
+        self.currentViews.setSizeIncrement(QtCore.QSize(4, 4))
         self.currentViews.setObjectName(_fromUtf8("currentViews"))
         self.currentViewsLayout = QtGui.QGridLayout(self.currentViews)
         self.currentViewsLayout.setMargin(0)
@@ -61,7 +61,7 @@ class Ui_viewsWidget(object):
         self.tleftLayout = QtGui.QHBoxLayout(self.tleft)
         self.tleftLayout.setMargin(0)
         self.tleftLayout.setObjectName(_fromUtf8("tleftLayout"))
-        self.tleftLabel = QtGui.QLabel(self.tleft)
+        self.tleftLabel = Marker(self.tleft)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.tleftLabel.setFont(font)
@@ -83,7 +83,7 @@ class Ui_viewsWidget(object):
         self.bleftLayout = QtGui.QHBoxLayout(self.bleft)
         self.bleftLayout.setMargin(0)
         self.bleftLayout.setObjectName(_fromUtf8("bleftLayout"))
-        self.bleftLabel = QtGui.QLabel(self.bleft)
+        self.bleftLabel = Marker(self.bleft)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.bleftLabel.setFont(font)
@@ -105,7 +105,7 @@ class Ui_viewsWidget(object):
         self.brightLayout = QtGui.QHBoxLayout(self.bright)
         self.brightLayout.setMargin(0)
         self.brightLayout.setObjectName(_fromUtf8("brightLayout"))
-        self.brightLabel = QtGui.QLabel(self.bright)
+        self.brightLabel = Marker(self.bright)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.brightLabel.setFont(font)
@@ -127,7 +127,7 @@ class Ui_viewsWidget(object):
         self.trightLayout = QtGui.QHBoxLayout(self.tright)
         self.trightLayout.setMargin(0)
         self.trightLayout.setObjectName(_fromUtf8("trightLayout"))
-        self.trightLabel = QtGui.QLabel(self.tright)
+        self.trightLabel = Marker(self.tright)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.trightLabel.setFont(font)
@@ -168,18 +168,20 @@ class Ui_viewsWidget(object):
         self.buttonViews.addItem(spacerItem3)
         self.verticalLayout.addLayout(self.buttonViews)
         self.viewsGroup = QtGui.QGroupBox(viewsWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.MinimumExpanding)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.viewsGroup.sizePolicy().hasHeightForWidth())
         self.viewsGroup.setSizePolicy(sizePolicy)
-        self.viewsGroup.setMinimumSize(QtCore.QSize(0, 92))
+        self.viewsGroup.setMinimumSize(QtCore.QSize(0, 0))
         self.viewsGroup.setMaximumSize(QtCore.QSize(16777215, 110))
         self.viewsGroup.setSizeIncrement(QtCore.QSize(1, 1))
         self.viewsGroup.setBaseSize(QtCore.QSize(0, 0))
-        self.viewsGroup.setFlat(False)
+        self.viewsGroup.setFlat(True)
+        self.viewsGroup.setCheckable(True)
         self.viewsGroup.setObjectName(_fromUtf8("viewsGroup"))
         self.viewsGroupLayout = QtGui.QHBoxLayout(self.viewsGroup)
+        self.viewsGroupLayout.setSpacing(0)
         self.viewsGroupLayout.setMargin(0)
         self.viewsGroupLayout.setObjectName(_fromUtf8("viewsGroupLayout"))
         self.availableViews = DAvailableView(self.viewsGroup)
@@ -188,30 +190,20 @@ class Ui_viewsWidget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.availableViews.sizePolicy().hasHeightForWidth())
         self.availableViews.setSizePolicy(sizePolicy)
-        self.availableViews.setMinimumSize(QtCore.QSize(0, 90))
+        self.availableViews.setMinimumSize(QtCore.QSize(0, 0))
         self.availableViews.setMaximumSize(QtCore.QSize(16777215, 110))
         self.availableViews.setMouseTracking(False)
         self.availableViews.setAcceptDrops(True)
         self.availableViews.setFrameShape(QtGui.QFrame.NoFrame)
         self.availableViews.setObjectName(_fromUtf8("availableViews"))
         self.availableViewsLayout = QtGui.QHBoxLayout(self.availableViews)
-        self.availableViewsLayout.setMargin(3)
+        self.availableViewsLayout.setMargin(1)
         self.availableViewsLayout.setObjectName(_fromUtf8("availableViewsLayout"))
         self.viewsGroupLayout.addWidget(self.availableViews)
-        self.pushButton = HButton(self.viewsGroup)
-        self.pushButton.setMinimumSize(QtCore.QSize(44, 44))
-        self.pushButton.setMaximumSize(QtCore.QSize(44, 44))
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        self.pushButton.setFont(font)
-        self.pushButton.setMouseTracking(True)
-        self.pushButton.setCheckable(True)
-        self.pushButton.setDefault(False)
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.viewsGroupLayout.addWidget(self.pushButton)
         self.verticalLayout.addWidget(self.viewsGroup)
 
         self.retranslateUi(viewsWidget)
+        QtCore.QObject.connect(self.viewsGroup, QtCore.SIGNAL(_fromUtf8("clicked(bool)")), self.availableViews.setVisible)
         QtCore.QMetaObject.connectSlotsByName(viewsWidget)
 
     def retranslateUi(self, viewsWidget):
@@ -224,10 +216,8 @@ class Ui_viewsWidget(object):
         self.vert.setText(_translate("viewsWidget", "│", None))
         self.hor.setText(_translate("viewsWidget", "─", None))
         self.viewsGroup.setTitle(_translate("viewsWidget", "Available Views", None))
-        self.pushButton.setText(_translate("viewsWidget", "-", None))
 
-from aui.utilities.HoverButtons import HButton
-from aui.utilities.DropView import DCurrentView, DAvailableView
+from aui.utilities.DropView import DCurrentView, Marker, DAvailableView
 
 if __name__ == "__main__":
     import sys

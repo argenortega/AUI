@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/camera.ui'
 #
-# Created: Mon Jun 29 22:04:07 2015
+# Created: Sun Aug 16 01:02:31 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -63,6 +63,8 @@ class Ui_Camera(object):
 
     def retranslateUi(self, Camera):
         Camera.setWindowTitle(_translate("Camera", "Camera", None))
+        Camera.setAccessibleName(_translate("Camera", "C", None))
+        self.cam.setAccessibleName(_translate("Camera", "C", None))
         self.cam.setText(_translate("Camera", "Camera", None))
 
 from aui.utilities.ActiveLabel import ActLabel
