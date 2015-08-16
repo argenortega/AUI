@@ -43,12 +43,12 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
         self.stopEpisodeButton.clicked.connect(lambda: self.timer.stop())
         self.resetEpisodeButton.clicked.connect(self.Reset)
 
-        self.tab2 = utilities.Utilities(self)
+        #self.tab2 = utilities.Utilities(self)
 
-        self.tab3 = probabilities.Probabilities(self)
+        #self.tab3 = probabilities.Probabilities(self)
 
-        self.contents.addTab(self.tab2, "Utilities")
-        self.contents.addTab(self.tab3, "Probabilities")
+        #self.contents.addTab(self.tab2, "Utilities")
+        #self.contents.addTab(self.tab3, "Probabilities")
         self.setWidget(self.contents)
 
         desktop = QDesktopWidget()
@@ -102,15 +102,10 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
         self.episodeTimer.setDigitCount(len(time))
         self.episodeTimer.display(time)
 
-    @pyqtSlot(str)
-    def insideWidget(self, text):
+    @pyqtSlot(str, str)
+    def insideWidget(self, key, text):
         self.currentWidget.setText(text)
 
-
-
-
-
-        
 def main():
     app = QtGui.QApplication(sys.argv)
     main = AUIParameters(None)
