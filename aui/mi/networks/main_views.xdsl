@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <smile version="1.0" id="Network4" numsamples="1000" discsamples="10000">
 	<nodes>
-		<cpt id="Copy_2_of_Joystick">
+		<cpt id="joystick_direction">
 			<state id="Forward" />
 			<state id="LeftRight" />
 			<state id="Backwards" />
-			<probabilities>0.333 0.333 0.334</probabilities>
+			<state id="False" />
+			<probabilities>0.25 0.25 0.25 0.25</probabilities>
 		</cpt>
 		<cpt id="focus">
 			<state id="C1" />
 			<state id="C2" />
-			<state id="LC" />
+			<state id="LM" />
 			<state id="GM" />
 			<state id="PC" />
-			<probabilities>0.2 0.2 0.2 0.2 0.2</probabilities>
+			<state id="S" />
+			<state id="AS" />
+			<probabilities>0.1428571428571429 0.1428571428571429 0.1428571428571429 0.1428571428571429 0.1428571428571429 0.1428571428571429 0.142857142857143</probabilities>
 		</cpt>
 		<cpt id="Copy_2_of_som">
 			<state id="Overwhelmed" />
@@ -22,60 +25,61 @@
 			<probabilities>0.4 0.5 0.09999999999999998</probabilities>
 		</cpt>
 		<cpt id="C1">
-			<state id="True" />
-			<state id="False" />
+			<state id="MV" />
+			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
 		<cpt id="LM">
-			<state id="True" />
-			<state id="False" />
+			<state id="MV" />
+			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
 		<cpt id="GM">
-			<state id="True" />
-			<state id="False" />
+			<state id="MV" />
+			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
 		<cpt id="PC">
-			<state id="True" />
-			<state id="False" />
+			<state id="MV" />
+			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
 		<decision id="decision">
-			<state id="Priority" />
-			<state id="Content" />
-			<parents>Copy_2_of_Joystick focus C1 LM GM PC</parents>
+			<state id="priority" />
+			<state id="content" />
+			<parents>joystick_direction focus C1 LM GM PC</parents>
 		</decision>
-		<cpt id="Joystick_Input">
+		<deterministic id="joystick_input">
 			<state id="True" />
 			<state id="False" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
+			<parents>joystick_direction</parents>
+			<resultingstates>True True True False</resultingstates>
+		</deterministic>
 		<cpt id="Context">
 			<state id="Detection" />
 			<state id="Mapping" />
 			<state id="Navigation" />
 			<state id="Exploration" />
 			<state id="Inspection" />
-			<parents>Joystick_Input</parents>
+			<parents>joystick_input</parents>
 			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05 0.05 0.1499999999999999 0.4</probabilities>
 		</cpt>
 		<cpt id="C2">
-			<state id="True" />
-			<state id="False" />
+			<state id="MV" />
+			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
 		<deterministic id="Add_Required">
 			<state id="True" />
 			<state id="False" />
-			<parents>Context LM Copy_2_of_Joystick C1 C2</parents>
-			<resultingstates>False False True True False True True True False True True True True True True True True True True True True True True True False False True True False True True True False True True True True True True True True True True True True True True True False False True True False True True True False True True True True True True True True True True True True True True True False False True True False True True True False True True True True True True True False True True True True True True True False False True True False True True True False True True True True True True True True True True True True True True True</resultingstates>
+			<parents>Context LM joystick_direction C1 C2</parents>
+			<resultingstates>False False True True False True True True False True True True False False False False True True True True True True True True True True True True False False False False False False True True False True True True False True True True False False False False True True True True True True True True True True True True False False False False False False True True False True True True False True True True False False False False True True True True True True True True True True True True False False False False False False True True False True True True False True True True False False False False True True True True False True True True True True True True False False False False False False True True False True True True False True True True False False False False True True True True True True True True True True True True False False False False</resultingstates>
 		</deterministic>
 		<cpt id="Remove">
 			<state id="True" />
 			<state id="False" />
-			<parents>Context GM PC Copy_2_of_Joystick C2</parents>
-			<probabilities>1 0 0.9 0.09999999999999998 0.8 0.2 0.9 0.09999999999999998 0.8 0.2 0.8 0.2 0.9 0.09999999999999998 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0 1 0 1 0 1 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.2 0.8 0.8 0.2 0.2 0.8 0.8 0.2 0.2 0.8 0.8 0.2 0 1 0.8 0.2 0 1 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0 1 0 1 0 1 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.2 0.8 0.8 0.2 0.2 0.8 0.8 0.2 0.2 0.8 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.2 0.8 0 1 0.2 0.8 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0 1 0.8 0.2 0 1</probabilities>
+			<parents>Context joystick_direction C2 GM PC</parents>
+			<probabilities>1 0 0.9 0.09999999999999998 0.8 0.2 0.6 0.4 0.9 0.09999999999999998 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.9 0.09999999999999998 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.6 0.4 0.8 0.2 0.8 0.2 0.2 0.8 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.1 0.9 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.1 0.9 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.8 0.2 0.1 0.9 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.1 0.9 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.6 0.4 0.8 0.2 0.2 0.8 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.2 0.8 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.2 0.8 0.8 0.2 0 1 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0.6 0.4 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.8 0.2 0.8 0.2 0.8 0.2 0 1 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0.9 0.09999999999999998 0 1</probabilities>
 		</cpt>
 		<cpt id="Add_Helpful">
 			<state id="True" />
@@ -93,7 +97,7 @@
 			<state id="True" />
 			<state id="False" />
 			<parents>Context focus</parents>
-			<probabilities>0.5 0.5 0.5 0.5 0 1 0 1 0 1 0 1 0 1 0.7 0.3 0.1 0.9 0.4 0.6 0.9 0.09999999999999998 0.9 0.09999999999999998 0 1 0 1 0 1 0 1 0 1 0.7 0.3 0.5 0.5 0 1 0.5 0.5 0.5 0.5 0 1 0 1 0 1</probabilities>
+			<probabilities>0.5 0.5 0.5 0.5 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0.7 0.3 0.1 0.9 0.4 0.6 0 1 0 1 0.9 0.09999999999999998 0.9 0.09999999999999998 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0.7 0.3 0.5 0.5 0 1 0 1 0 1 0.5 0.5 0.5 0.5 0 1 0 1 0 1 0 1 0 1</probabilities>
 		</cpt>
 		<utility id="U">
 			<parents>Copy_2_of_som Content Priority decision</parents>
@@ -107,7 +111,7 @@
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>579 478 606 510</position>
+				<position>555 585 582 617</position>
 			</node>
 			<node id="decision">
 				<name>Main Views</name>
@@ -123,19 +127,19 @@
 				<font color="000000" name="Arial" size="8" bold="true" />
 				<position>551 47 622 82</position>
 			</node>
-			<node id="Copy_2_of_Joystick">
+			<node id="joystick_direction">
 				<name>Joystick Direction</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>383 186 483 223</position>
+				<position>404 50 504 87</position>
 			</node>
 			<node id="Context">
 				<name>Context</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>207 170 259 202</position>
+				<position>179 189 231 221</position>
 			</node>
 			<node id="Copy_2_of_som">
 				<name>State of Mind</name>
@@ -149,21 +153,21 @@
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>420 392 494 433</position>
+				<position>344 455 418 496</position>
 			</node>
 			<node id="C1">
 				<name>C1</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>299 47 342 76</position>
+				<position>329 47 372 76</position>
 			</node>
 			<node id="C2">
 				<name>C2</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>188 47 231 76</position>
+				<position>213 48 256 77</position>
 			</node>
 			<node id="PC">
 				<name>PC</name>
@@ -184,28 +188,28 @@
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>245 47 289 77</position>
+				<position>271 47 315 77</position>
 			</node>
 			<node id="Add_Required">
 				<name>Add Required</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>361 296 442 343</position>
+				<position>346 339 427 386</position>
 			</node>
 			<node id="Add_Helpful">
 				<name>Add Helpful</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>117 292 176 332</position>
+				<position>105 342 164 382</position>
 			</node>
 			<node id="Remove">
 				<name>Remove</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>258 306 327 345</position>
+				<position>219 344 288 383</position>
 			</node>
 			<textbox>
 				<caption>Notes:\nContext\nNavigation: Cameras\nMapping: Pointcloud\nInspect: Snapshots\nExploring: Maps\n\n\nNodes:\n\n</caption>
@@ -219,12 +223,12 @@
 				<font color="000000" name="Arial" size="8" />
 				<position>496 347 545 377</position>
 			</node>
-			<node id="Joystick_Input">
+			<node id="joystick_input">
 				<name>Joystick Input</name>
-				<interior color="c0c0c0" />
+				<interior color="e5f6f7" />
 				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>392 56 474 95</position>
+				<font color="000000" name="Arial" size="8" />
+				<position>154 118 238 160</position>
 			</node>
 		</genie>
 	</extensions>

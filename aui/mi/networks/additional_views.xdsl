@@ -7,16 +7,17 @@
 			<state id="Distracted" />
 			<probabilities>0.4 0.5 0.09999999999999998</probabilities>
 		</cpt>
-		<cpt id="AV_Visible">
+		<cpt id="AV_visible">
 			<state id="True" />
 			<state id="False" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
-		<cpt id="joystick">
+		<cpt id="joystick_direction">
 			<state id="Forward" />
 			<state id="LeftRight" />
 			<state id="Backwards" />
-			<probabilities>0.333 0.333 0.334</probabilities>
+			<state id="False" />
+			<probabilities>0.25 0.25 0.25 0.25</probabilities>
 		</cpt>
 		<cpt id="C1">
 			<state id="AV" />
@@ -44,22 +45,23 @@
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
 		<decision id="decision">
-			<state id="hide" />
-			<state id="show" />
-			<parents>AV_Visible joystick C1 LM C2 GM PC</parents>
+			<state id="hide_AV" />
+			<state id="show_AV" />
+			<parents>AV_visible joystick_direction C1 LM C2 GM PC</parents>
 		</decision>
-		<cpt id="Joystick_Input">
+		<deterministic id="joystick_input">
 			<state id="True" />
 			<state id="False" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
+			<parents>joystick_direction</parents>
+			<resultingstates>True True True False</resultingstates>
+		</deterministic>
 		<cpt id="context">
 			<state id="Detection" />
 			<state id="Mapping" />
 			<state id="Navigation" />
 			<state id="Exploration" />
 			<state id="Inspection" />
-			<parents>Joystick_Input</parents>
+			<parents>joystick_input</parents>
 			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05 0.05 0.1499999999999999 0.4</probabilities>
 		</cpt>
 		<cpt id="Helpful">
@@ -71,11 +73,11 @@
 		<deterministic id="Required">
 			<state id="True" />
 			<state id="False" />
-			<parents>context LM joystick C1 C2</parents>
-			<resultingstates>True True True True True True True True True True True True True True False False True True True False True True True False True True True True True True True True True True True True True True False False True True True False True True True False True True True True True True True True True True True True True True False False True True True False True True True False True True True True False False False False True True True True True True False False True True True False True True True False True True True True True True True True True True True True True True False False True True True False True True True False</resultingstates>
+			<parents>context LM joystick_direction C1 C2</parents>
+			<resultingstates>True True True True True True True True True True True True False False False False True True False False True True True False True True True False False False False False True True True True True True True True True True True True False False False False True True False False True True True False True True True False False False False False True True True True True True True True True True True True False False False False True True False False True True True False True True True False False False False False True True True True False False False False True True True True False False False False True True False False True True True False True True True False False False False False True True True True True True True True True True True True False False False False True True False False True True True False True True True False False False False False</resultingstates>
 		</deterministic>
 		<utility id="U">
-			<parents>som AV_Visible Required Helpful decision</parents>
+			<parents>som AV_visible Required Helpful decision</parents>
 			<utilities>100 50 100 50 100 0 100 0 100 0 100 0 100 0 100 0 0 100 0 100 0 100 100 0 0 100 0 100 0 100 100 0 0 100 0 100 100 0 100 0 0 100 0 100 100 0 100 0</utilities>
 		</utility>
 	</nodes>
@@ -101,28 +103,28 @@
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>133 162 185 194</position>
+				<position>134 215 186 247</position>
 			</node>
 			<node id="Helpful">
 				<name>Helpful</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>42 244 109 279</position>
+				<position>39 277 106 312</position>
 			</node>
-			<node id="AV_Visible">
+			<node id="AV_visible">
 				<name>AV Visible</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
 				<position>526 114 597 153</position>
 			</node>
-			<node id="joystick">
+			<node id="joystick_direction">
 				<name>Joystick Direction</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>322 103 419 140</position>
+				<position>360 43 457 80</position>
 			</node>
 			<submodel id="Content">
 				<name>Content</name>
@@ -171,14 +173,14 @@
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>215 229 285 264</position>
+				<position>212 277 282 312</position>
 			</node>
-			<node id="Joystick_Input">
+			<node id="joystick_input">
 				<name>Joystick Input</name>
-				<interior color="c0c0c0" />
+				<interior color="e5f6f7" />
 				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>356 42 438 81</position>
+				<font color="000000" name="Arial" size="8" />
+				<position>115 141 199 184</position>
 			</node>
 			<node id="som">
 				<name>State of Mind</name>

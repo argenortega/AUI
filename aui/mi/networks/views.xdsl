@@ -7,50 +7,74 @@
 			<state id="Distracted" />
 			<probabilities>0.32 0.3599999999999999 0.32</probabilities>
 		</cpt>
-		<cpt id="Joystick_Input">
+		<cpt id="joystick_direction">
+			<state id="Forward" />
+			<state id="LeftRight" />
+			<state id="Backwards" />
+			<state id="False" />
+			<probabilities>0.25 0.25 0.25 0.25</probabilities>
+		</cpt>
+		<deterministic id="joystick_input">
 			<state id="True" />
 			<state id="False" />
+			<parents>joystick_direction</parents>
+			<resultingstates>True True True False</resultingstates>
+		</deterministic>
+		<cpt id="C1">
+			<state id="MV" />
+			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
-		<cpt id="MV_Quality">
+		<cpt id="LM">
+			<state id="MV" />
+			<state id="AV" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="C2">
+			<state id="MV" />
+			<state id="AV" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<deterministic id="MV_quality">
 			<state id="Sufficient" />
 			<state id="Insufficient" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
+			<parents>joystick_direction C1 LM C2</parents>
+			<resultingstates>Sufficient Sufficient Insufficient Insufficient Insufficient Insufficient Insufficient Insufficient Sufficient Insufficient Insufficient Insufficient Insufficient Insufficient Insufficient Insufficient Sufficient Insufficient Insufficient Insufficient Sufficient Insufficient Insufficient Insufficient Insufficient Insufficient Insufficient Insufficient Insufficient Insufficient Insufficient Insufficient</resultingstates>
+		</deterministic>
 		<cpt id="Context">
 			<state id="Detection" />
 			<state id="Mapping" />
 			<state id="Navigation" />
 			<state id="Exploration" />
 			<state id="Inspection" />
-			<parents>Joystick_Input</parents>
+			<parents>joystick_input</parents>
 			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05 0.05 0.1499999999999999 0.4</probabilities>
 		</cpt>
-		<cpt id="AV_Visible">
+		<cpt id="AV_visible">
 			<state id="True" />
 			<state id="False" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
-		<decision id="Views">
+		<decision id="decision">
 			<state id="main_views" />
 			<state id="additional_views" />
-			<parents>MV_Quality Joystick_Input som AV_Visible</parents>
+			<parents>AV_visible C1 LM C2 joystick_direction</parents>
 		</decision>
 		<utility id="U">
-			<parents>som Context MV_Quality AV_Visible Views</parents>
-			<utilities>0 1000 1000 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 1000 0 0 0 0 1000 500 1000 500 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 0 0 0 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 0 0 0 0</utilities>
+			<parents>Context som AV_visible MV_quality decision</parents>
+			<utilities>0 100 0 100 100 0 100 0 100 50 50 100 100 50 50 100 100 0 100 0 100 0 100 0 0 100 0 100 100 0 100 0 100 50 50 100 100 50 50 100 100 0 100 0 100 0 100 0 0 100 0 100 100 0 100 0 100 0 100 0 100 0 100 0 100 0 100 0 100 0 100 0 0 100 0 100 100 0 100 0 100 50 50 100 100 50 50 100 100 0 100 0 100 0 100 0 0 100 0 100 100 0 100 0 100 50 50 100 100 50 50 100 100 0 100 0 100 0 100 0</utilities>
 		</utility>
 	</nodes>
 	<extensions>
 		<genie version="1.0" app="GeNIe 2.0.5590.0" name="views" faultnameformat="nodestate">
-			<node id="MV_Quality">
+			<node id="MV_quality">
 				<name>MV Quality</name>
-				<interior color="c0c0c0" />
+				<interior color="e5f6f7" />
 				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>329 132 414 165</position>
+				<font color="000000" name="Arial" size="8" />
+				<position>84 253 169 286</position>
 			</node>
-			<node id="Views">
+			<node id="decision">
 				<name>Views</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
@@ -64,33 +88,61 @@
 				<font color="000000" name="Arial" size="8" />
 				<position>339 437 366 469</position>
 			</node>
-			<node id="Joystick_Input">
+			<node id="joystick_input">
 				<name>Joystick Input</name>
-				<interior color="c0c0c0" />
+				<interior color="e5f6f7" />
 				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>89 231 171 270</position>
+				<font color="000000" name="Arial" size="8" />
+				<position>236 257 318 301</position>
 			</node>
 			<node id="Context">
 				<name>Context</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>155 364 207 396</position>
+				<position>311 335 363 367</position>
 			</node>
 			<node id="som">
 				<name>State of Mind</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>143 142 219 180</position>
+				<position>536 357 612 395</position>
 			</node>
-			<node id="AV_Visible">
+			<node id="AV_visible">
 				<name>AV Visible</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
 				<position>516 257 587 296</position>
+			</node>
+			<node id="C1">
+				<name>C1</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>134 138 177 167</position>
+			</node>
+			<node id="C2">
+				<name>C2</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>15 138 58 167</position>
+			</node>
+			<node id="LM">
+				<name>LM</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>72 138 116 168</position>
+			</node>
+			<node id="joystick_direction">
+				<name>Joystick Direction</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>212 145 312 182</position>
 			</node>
 		</genie>
 	</extensions>

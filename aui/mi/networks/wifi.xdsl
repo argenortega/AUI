@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <smile version="1.0" id="Network13" numsamples="1000" discsamples="10000">
 	<nodes>
-		<cpt id="Visible">
+		<cpt id="wifi_visible">
 			<state id="True" />
 			<state id="False" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
-		<cpt id="Wifi_Level">
+		<cpt id="wifi_level">
 			<state id="Ok" />
 			<state id="Warn" />
 			<state id="Critical" />
@@ -25,14 +25,14 @@
 			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
 		</cpt>
 		<decision id="decision">
-			<state id="Show" />
-			<state id="Hide" />
-			<parents>Visible Wifi_Level</parents>
+			<state id="show_wifi" />
+			<state id="hide_wifi" />
+			<parents>wifi_visible wifi_level</parents>
 		</decision>
 		<deterministic id="Critical_State">
 			<state id="True" />
 			<state id="False" />
-			<parents>Visible Wifi_Level</parents>
+			<parents>wifi_visible wifi_level</parents>
 			<resultingstates>False False False False True True</resultingstates>
 		</deterministic>
 		<utility id="U">
@@ -63,14 +63,14 @@
 				<font color="000000" name="Arial" size="8" />
 				<position>531 204 605 251</position>
 			</node>
-			<node id="Visible">
-				<name>Visible</name>
+			<node id="wifi_visible">
+				<name>Wifi Visible</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>268 53 328 83</position>
+				<position>268 53 332 89</position>
 			</node>
-			<node id="Wifi_Level">
+			<node id="wifi_level">
 				<name>Wifi Level</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
