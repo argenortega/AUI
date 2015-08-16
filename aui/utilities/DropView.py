@@ -91,7 +91,7 @@ class DCurrentView(QFrame):
         self.wid.show()
 
         #print 'Drop Current View', self.wid.objectName()
-        self.content.emit(self.wid.objectName(), 'MV')
+        self.content.emit(str(self.wid.objectName()), 'MV')
 
     def dragLeaveEvent(self, event):
         marker = self.findChildren(Marker)
@@ -155,7 +155,7 @@ class DAvailableView(QFrame):
 
         self.wid.show()
         #print 'Drop Available View', self.wid.objectName()
-        self.av_wid.emit(self.wid.objectName(), 'AV')
+        self.av_wid.emit(str(self.wid.objectName()), 'AV')
 
     def dragLeaveEvent(self, event):
         pass

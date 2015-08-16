@@ -45,6 +45,10 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         # self.make_decision('gui','yes')
         print self.parent()
 
+    def initial_evidence(self, ev):
+        self.evidence.update(ev)
+        print self.evidence
+
     def press(self, toggled):
         if toggled:
             self.AUItoggleButton.setText("On")
@@ -70,7 +74,14 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
     @pyqtSlot(str, str)
     def update_evidence(self, key, value):
         sender = self.sender()
-        print 'Key:', key, 'Value:', value
+        k = str(key)
+        v = str(value)
+        if self.evidence.has_key(k):
+            if not self.evidence.get(k) == v:
+                self.evidence[k] = v
+        else:
+            'Error: %s is not yet in evidence.'%key
+
 
 
 def main():
