@@ -7,75 +7,89 @@
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
 		<cpt id="Battery_Level">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+			<state id="Ok" />
+			<state id="Warn" />
+			<state id="Critical" />
+			<probabilities>0.333 0.333 0.334</probabilities>
 		</cpt>
-		<decision id="Battery">
+		<decision id="decision">
 			<state id="Show" />
 			<state id="Hide" />
 			<parents>Visible Battery_Level</parents>
 		</decision>
-		<cpt id="SA_Effect">
-			<state id="State0" />
-			<state id="State1" />
-			<parents>Battery</parents>
-			<probabilities>0.5 0.5 0.5 0.5</probabilities>
-		</cpt>
 		<cpt id="SoM">
 			<state id="Overwhelmed" />
 			<state id="Focused" />
 			<state id="Distracted" />
-			<probabilities>0.5 0.5 0</probabilities>
+			<probabilities>0.35 0.6 0.05000000000000004</probabilities>
 		</cpt>
+		<deterministic id="Critical_State">
+			<state id="True" />
+			<state id="False" />
+			<parents>Visible Battery_Level</parents>
+			<resultingstates>False False False False True True</resultingstates>
+		</deterministic>
 		<utility id="U">
-			<parents>Battery SA_Effect SoM</parents>
-			<utilities>0 0 0 0 0 0 0 0 0 0 0 0</utilities>
+			<parents>SoM Critical_State decision</parents>
+			<utilities>100 0 0 100 100 0 0 100 100 0 100 0</utilities>
 		</utility>
+		<cpt id="User_needs">
+			<state id="Show" />
+			<state id="Hide" />
+			<parents>SoM</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
 	</nodes>
 	<extensions>
 		<genie version="1.0" app="GeNIe 2.0.5590.0" name="battery" faultnameformat="nodestate">
-			<node id="Battery">
+			<node id="decision">
 				<name>Battery</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>288 136 356 162</position>
+				<position>338 214 406 249</position>
 			</node>
 			<node id="U">
 				<name>U</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>315 247 342 279</position>
-			</node>
-			<node id="SA_Effect">
-				<name>SA Effect</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>247 194 308 232</position>
+				<position>362 432 389 464</position>
 			</node>
 			<node id="SoM">
 				<name>SoM</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>366 201 407 226</position>
+				<position>531 204 605 251</position>
 			</node>
 			<node id="Visible">
 				<name>Visible</name>
-				<interior color="e5f6f7" />
+				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>164 64 240 111</position>
+				<position>268 53 328 83</position>
 			</node>
 			<node id="Battery_Level">
 				<name>Battery Level</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>125 57 198 94</position>
+			</node>
+			<node id="User_needs">
+				<name>User needs</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>324 74 385 112</position>
+				<position>534 426 603 469</position>
+			</node>
+			<node id="Critical_State">
+				<name>Critical State</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>240 307 309 353</position>
 			</node>
 		</genie>
 	</extensions>

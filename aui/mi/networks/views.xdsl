@@ -5,49 +5,49 @@
 			<state id="Overwhelmed" />
 			<state id="Focused" />
 			<state id="Distracted" />
-			<probabilities>0.5 0.5 0</probabilities>
+			<probabilities>0.32 0.3599999999999999 0.32</probabilities>
 		</cpt>
-		<deterministic id="Copy_2_of_Joystick">
+		<cpt id="Joystick_Input">
 			<state id="True" />
 			<state id="False" />
-			<resultingstates>False</resultingstates>
-		</deterministic>
-		<deterministic id="MV_Quality">
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="MV_Quality">
 			<state id="Sufficient" />
 			<state id="Insufficient" />
-			<resultingstates>Insufficient</resultingstates>
-		</deterministic>
-		<cpt id="Copy_2_of_Context">
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Context">
 			<state id="Detection" />
 			<state id="Mapping" />
 			<state id="Navigation" />
 			<state id="Exploration" />
 			<state id="Inspection" />
-			<parents>Copy_2_of_Joystick</parents>
+			<parents>Joystick_Input</parents>
 			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05 0.05 0.1499999999999999 0.4</probabilities>
 		</cpt>
-		<deterministic id="AV_Visible">
+		<cpt id="AV_Visible">
 			<state id="True" />
 			<state id="False" />
-			<resultingstates>True</resultingstates>
-		</deterministic>
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
 		<decision id="Views">
 			<state id="main_views" />
 			<state id="additional_views" />
-			<parents>MV_Quality Copy_2_of_Joystick som AV_Visible</parents>
+			<parents>MV_Quality Joystick_Input som AV_Visible</parents>
 		</decision>
 		<utility id="U">
-			<parents>Copy_2_of_Context som MV_Quality AV_Visible Views</parents>
-			<utilities>0 1000 1000 0 1000 0 1000 0 1000 500 1000 500 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 1000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</utilities>
+			<parents>som Context MV_Quality AV_Visible Views</parents>
+			<utilities>0 1000 1000 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 1000 0 0 0 0 1000 500 1000 500 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 0 0 0 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 1000 0 1000 0 0 0 0 0 0 0 0 0</utilities>
 		</utility>
 	</nodes>
 	<extensions>
 		<genie version="1.0" app="GeNIe 2.0.5590.0" name="views" faultnameformat="nodestate">
 			<node id="MV_Quality">
 				<name>MV Quality</name>
-				<interior color="e5f6f7" />
+				<interior color="c0c0c0" />
 				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
+				<font color="000000" name="Arial" size="8" bold="true" />
 				<position>329 132 414 165</position>
 			</node>
 			<node id="Views">
@@ -64,14 +64,14 @@
 				<font color="000000" name="Arial" size="8" />
 				<position>339 437 366 469</position>
 			</node>
-			<node id="Copy_2_of_Joystick">
-				<name>Joystick</name>
-				<interior color="e5f6f7" />
+			<node id="Joystick_Input">
+				<name>Joystick Input</name>
+				<interior color="c0c0c0" />
 				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>89 231 162 268</position>
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>89 231 171 270</position>
 			</node>
-			<node id="Copy_2_of_Context">
+			<node id="Context">
 				<name>Context</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
@@ -87,9 +87,9 @@
 			</node>
 			<node id="AV_Visible">
 				<name>AV Visible</name>
-				<interior color="e5f6f7" />
+				<interior color="c0c0c0" />
 				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
+				<font color="000000" name="Arial" size="8" bold="true" />
 				<position>516 257 587 296</position>
 			</node>
 		</genie>

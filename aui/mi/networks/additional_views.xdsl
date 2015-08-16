@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network7" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="som">
+			<state id="Overwhelmed" />
+			<state id="Focused" />
+			<state id="Distracted" />
+			<probabilities>0.4 0.5 0.09999999999999998</probabilities>
+		</cpt>
+		<cpt id="AV_Visible">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="joystick">
+			<state id="Forward" />
+			<state id="LeftRight" />
+			<state id="Backwards" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
+		<cpt id="C1">
+			<state id="AV" />
+			<state id="MV" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="LM">
+			<state id="AV" />
+			<state id="MV" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="C2">
+			<state id="AV" />
+			<state id="MV" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="GM">
+			<state id="AV" />
+			<state id="MV" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="PC">
+			<state id="AV" />
+			<state id="MV" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<decision id="decision">
+			<state id="hide" />
+			<state id="show" />
+			<parents>AV_Visible joystick C1 LM C2 GM PC</parents>
+		</decision>
+		<cpt id="Joystick_Input">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="context">
+			<state id="Detection" />
+			<state id="Mapping" />
+			<state id="Navigation" />
+			<state id="Exploration" />
+			<state id="Inspection" />
+			<parents>Joystick_Input</parents>
+			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05 0.05 0.1499999999999999 0.4</probabilities>
+		</cpt>
+		<cpt id="Helpful">
+			<state id="True" />
+			<state id="False" />
+			<parents>context GM PC</parents>
+			<probabilities>0.05 0.95 0.05 0.95 0.05 0.95 0 1 0.95 0.05000000000000004 0.05 0.95 0.95 0.05000000000000004 0 1 0.05 0.95 0.05 0.95 0.05 0.95 0.05 0.95 0.95 0.05000000000000004 0.95 0.05000000000000004 0.05 0.95 0 1 0.05 0.95 0.05 0.95 0.05 0.95 0.05 0.95</probabilities>
+		</cpt>
+		<deterministic id="Required">
+			<state id="True" />
+			<state id="False" />
+			<parents>context LM joystick C1 C2</parents>
+			<resultingstates>True True True True True True True True True True True True True True False False True True True False True True True False True True True True True True True True True True True True True True False False True True True False True True True False True True True True True True True True True True True True True True False False True True True False True True True False True True True True False False False False True True True True True True False False True True True False True True True False True True True True True True True True True True True True True True False False True True True False True True True False</resultingstates>
+		</deterministic>
+		<utility id="U">
+			<parents>som AV_Visible Required Helpful decision</parents>
+			<utilities>100 50 100 50 100 0 100 0 100 0 100 0 100 0 100 0 0 100 0 100 0 100 100 0 0 100 0 100 0 100 100 0 0 100 0 100 100 0 100 0 0 100 0 100 100 0 100 0</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="additional_views" faultnameformat="nodestate">
+			<node id="decision">
+				<name>Additional Views</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>329 204 402 239</position>
+			</node>
+			<node id="U">
+				<name>U</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>295 408 322 440</position>
+				<comment>If there is any required view in AV, it will make it visible, even when overwhelmed. \n</comment>
+			</node>
+			<node id="context">
+				<name>Context</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>133 162 185 194</position>
+			</node>
+			<node id="Helpful">
+				<name>Helpful</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>42 244 109 279</position>
+			</node>
+			<node id="AV_Visible">
+				<name>AV Visible</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>526 114 597 153</position>
+			</node>
+			<node id="joystick">
+				<name>Joystick Direction</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>322 103 419 140</position>
+			</node>
+			<submodel id="Content">
+				<name>Content</name>
+				<interior color="ccffff" />
+				<outline color="000080" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>674 73 726 102</position>
+			</submodel>
+			<node id="C1">
+				<name>C1</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>292 44 335 73</position>
+			</node>
+			<node id="C2">
+				<name>C2</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>181 44 224 73</position>
+			</node>
+			<node id="PC">
+				<name>PC</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>30 44 73 73</position>
+			</node>
+			<node id="GM">
+				<name>GM</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>86 44 131 74</position>
+			</node>
+			<node id="LM">
+				<name>LM</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>238 44 282 74</position>
+			</node>
+			<node id="Required">
+				<name>Required</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>215 229 285 264</position>
+			</node>
+			<node id="Joystick_Input">
+				<name>Joystick Input</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>356 42 438 81</position>
+			</node>
+			<node id="som">
+				<name>State of Mind</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>554 272 630 310</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>
