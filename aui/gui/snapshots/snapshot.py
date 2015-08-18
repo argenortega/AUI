@@ -50,8 +50,31 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
             self.vis.emit('AS_visible', 'True')
         else:
             self.vis.emit('AS_visible', 'False')
-        
-        
+
+    @pyqtSlot(str)
+    def atomic_decision(self, decision):
+        if decision == 'hide_AS':
+            print 'Snapshot atomic decision'
+            self.extraScreenGroup.setChecked(False)
+            self.scrollArea.setVisible(False)
+        elif decision == 'show_AS':
+            print 'Snapshot atomic decision'
+            self.extraScreenGroup.setChecked(True)
+            self.scrollArea.setVisible(True)
+        elif decision == 'increase':
+            print 'Snapshot atomic decision'
+            sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+            sizePolicy.setHeightForWidth(True)
+            sizePolicy.setHorizontalStretch(10)
+            sizePolicy.setVerticalStretch(10)
+            self.currentScreenshot.setSizePolicy(sizePolicy)
+        elif decision == 'decrease':
+            print 'Snapshot atomic decision'
+            sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+            sizePolicy.setHeightForWidth(True)
+            sizePolicy.setHorizontalStretch(1)
+            sizePolicy.setVerticalStretch(1)
+            self.currentScreenshot.setSizePolicy(sizePolicy)
     
 def main():
     app = QtGui.QApplication(sys.argv)

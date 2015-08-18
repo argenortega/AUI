@@ -17,7 +17,7 @@
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
 		<decision id="decision">
-			<state id="main_spanshots" />
+			<state id="main_snapshot" />
 			<state id="additional_snapshots" />
 			<parents>AS_visible focus</parents>
 		</decision>

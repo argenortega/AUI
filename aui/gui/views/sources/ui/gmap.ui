@@ -66,20 +66,21 @@
     <widget class="ActLabel" name="map">
      <property name="font">
       <font>
-       <pointsize>14</pointsize>
+       <pointsize>11</pointsize>
       </font>
      </property>
      <property name="accessibleName">
       <string>GM</string>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/maps/global);</string>
+      <string notr="true">border-image: url(:/maps/global);
+</string>
      </property>
      <property name="text">
       <string>Global Map</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignCenter</set>
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
     </widget>
    </item>

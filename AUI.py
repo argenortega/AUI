@@ -6,8 +6,10 @@ Created on Sat Dec 27 02:57:21 2014
 @version: 0.0.2
 """
 import sys
+import os
 
 from PyQt4 import QtGui, QtCore
+from PyQt4.QtCore import pyqtSignal
 from PyQt4.QtGui import (QMainWindow, QHBoxLayout, QVBoxLayout)
 
 from aui.gui.views.sources import camera, lmap, gmap, pointcloud
@@ -27,15 +29,15 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
     """
     Adaptive User Interface for TRADR project
     """
+    closing = pyqtSignal()
 
     def __init__(self, parent=None):
         super(AUI, self).__init__()
         self.sc_num = 0
         self.evidence = {}
         self.setupUi(self)
-
         self.initUI()
-
+        self.closing.connect(self.mixedInitiative.close)
 
     def initUI(self):
         # self.setGeometry(0, 0, 1280, 800)
@@ -124,6 +126,7 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         Connect internal widgets
         '''
         self.mixedInitiative.AUItoggleButton.clicked[bool].connect(self.AUIupdate)
+        self.statusBar.adaptiveStatus.clicked[bool].connect(self.AUIupdate)
         self.AUIupdate()
         # QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.value.setNum)
         # QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"),
@@ -146,6 +149,12 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         self.pointcloud.pointcloud.inside.connect(self.parameters.insideWidget)
         self.extra.map.inside.connect(self.parameters.insideWidget)
         self.Screenshots.currentScreenshot.inside.connect(self.parameters.insideWidget)
+        self.joystick.joystick_direction.connect(self.parameters.jdirection)
+        QtCore.QObject.connect(self.parameters.joystickButtonGroup, QtCore.SIGNAL('buttonClicked(int)'),self.joystick.stackedWidget.setCurrentIndex )
+        # self.parameters.joystickButtonGroup.connect(self.joystick.stackedWidget.setCurrentIndex, QtCore.SIGNAL('buttonPressed(int)'))
+        self.mixedInitiative.AUItoggleButton.clicked.connect(self.statusBar.adaptiveStatus.setChecked)
+        self.statusBar.adaptiveStatus.clicked.connect(self.mixedInitiative.AUItoggleButton.setChecked)
+        self.statusBar.adaptiveStatus.clicked.connect(self.mixedInitiative.adaptive)
 
         QtCore.QMetaObject.connectSlotsByName(self)
 
@@ -171,15 +180,23 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         self.views.tright.content.connect(self.mixedInitiative.update_evidence)
         self.views.availableViews.av_wid.connect(self.mixedInitiative.update_evidence)
 
+        # Evidence initialization (manual)
+        # TODO find a way to initialize evidence automatically
         self.evidence.update({'C1':'MV', 'C2':'AV', 'PC':'AV','LM':'AV','GM':'AV'})
         self.evidence.update({'battery_level': 'Ok', 'battery_visible':str(self.battery.batteryLevel.isChecked())})
         self.evidence.update({'wifi_level': 'Ok', 'wifi_visible':str(self.wifi.wifiLevel.isChecked())})
         self.evidence.update({'AV_visible':str(self.views.viewsGroup.isChecked())})
         self.evidence.update({'AS_visible':str(self.Screenshots.extraScreenGroup.isChecked())})
         self.evidence.update({'joystick_direction':'False'})
-        self.evidence.update({'Focus':'C1'})
+        self.evidence.update({'focus':'C1'})
 
         self.mixedInitiative.initial_evidence(self.evidence)
+
+        # Atomic action connections
+        self.mixedInitiative.decision.connect(self.battery.atomic_decision)
+        self.mixedInitiative.decision.connect(self.wifi.atomic_decision)
+        self.mixedInitiative.decision.connect(self.Screenshots.atomic_decision)
+        self.mixedInitiative.decision.connect(self.views.atomic_decision)
 
         '''
         State machine.
@@ -232,6 +249,10 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         ns.screenshot.inside.connect(self.parameters.insideWidget)
         self.Screenshots.extraScreenshotLayout.addWidget(ns)
         ns.chosen.connect(self.Screenshots.setScreenshot)
+        ns.screenshot.inside.connect(self.mixedInitiative.update_evidence)
+
+    def closeEvent(self, event):
+        self.closing.emit()
 
 
 def main():

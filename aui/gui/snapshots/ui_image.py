@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/image.ui'
 #
-# Created: Sun Aug 16 14:17:49 2015
+# Created: Tue Aug 18 00:21:33 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -53,6 +53,12 @@ class Ui_ScreenshotWidget(object):
         self.screenshot.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.screenshot.setMouseTracking(True)
         self.screenshot.setAutoFillBackground(False)
+        self.screenshot.setStyleSheet(_fromUtf8("QLabel{\n"
+"border-color: rgb(154, 154, 154); \n"
+"border-style: solid; \n"
+"border-width: 2px; \n"
+"border-radius: 6px;\n"
+"}"))
         self.screenshot.setFrameShape(QtGui.QFrame.StyledPanel)
         self.screenshot.setFrameShadow(QtGui.QFrame.Sunken)
         self.screenshot.setScaledContents(True)

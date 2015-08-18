@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/statusbar.ui'
 #
-# Created: Fri Aug 14 20:20:53 2015
+# Created: Tue Aug 18 00:07:26 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -34,31 +34,18 @@ class Ui_statusBarWidget(object):
         statusBarWidget.setSizePolicy(sizePolicy)
         statusBarWidget.setMinimumSize(QtCore.QSize(0, 35))
         statusBarWidget.setMaximumSize(QtCore.QSize(16777215, 35))
+        statusBarWidget.setStyleSheet(_fromUtf8("background-color: rgb(154, 154, 154);"))
         self.statusBarLayout = QtGui.QHBoxLayout(statusBarWidget)
         self.statusBarLayout.setSpacing(2)
         self.statusBarLayout.setContentsMargins(5, 4, 5, 4)
         self.statusBarLayout.setObjectName(_fromUtf8("statusBarLayout"))
-        self.batteryStatus = QtGui.QLabel(statusBarWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.batteryStatus.sizePolicy().hasHeightForWidth())
-        self.batteryStatus.setSizePolicy(sizePolicy)
+        self.batteryStatus = CButton(statusBarWidget)
         self.batteryStatus.setMinimumSize(QtCore.QSize(60, 25))
         self.batteryStatus.setMaximumSize(QtCore.QSize(16777215, 25))
-        self.batteryStatus.setBaseSize(QtCore.QSize(30, 20))
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.batteryStatus.setFont(font)
-        self.batteryStatus.setMouseTracking(True)
-        self.batteryStatus.setStyleSheet(_fromUtf8("border-color: rgb(244, 67, 54);\n"
-"background-color: rgb(244, 67, 54);\n"
-"color: rgb(255, 255, 255);\n"
-""))
-        self.batteryStatus.setFrameShape(QtGui.QFrame.Box)
-        self.batteryStatus.setScaledContents(True)
-        self.batteryStatus.setAlignment(QtCore.Qt.AlignCenter)
-        self.batteryStatus.setMargin(2)
+        self.batteryStatus.setFlat(True)
         self.batteryStatus.setObjectName(_fromUtf8("batteryStatus"))
         self.statusBarLayout.addWidget(self.batteryStatus)
         self.batteryBar = CProgressBar(statusBarWidget)
@@ -70,7 +57,7 @@ class Ui_statusBarWidget(object):
         self.batteryBar.setMinimumSize(QtCore.QSize(0, 25))
         self.batteryBar.setMaximumSize(QtCore.QSize(50, 25))
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.batteryBar.setFont(font)
         self.batteryBar.setProperty("value", 100)
         self.batteryBar.setAlignment(QtCore.Qt.AlignCenter)
@@ -78,25 +65,28 @@ class Ui_statusBarWidget(object):
         self.statusBarLayout.addWidget(self.batteryBar)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.statusBarLayout.addItem(spacerItem)
-        self.adaptiveStatus = QtGui.QLabel(statusBarWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.adaptiveStatus.sizePolicy().hasHeightForWidth())
-        self.adaptiveStatus.setSizePolicy(sizePolicy)
+        self.adaptiveStatus = QtGui.QPushButton(statusBarWidget)
         self.adaptiveStatus.setMinimumSize(QtCore.QSize(60, 25))
         self.adaptiveStatus.setMaximumSize(QtCore.QSize(16777215, 25))
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.adaptiveStatus.setFont(font)
-        self.adaptiveStatus.setMouseTracking(True)
-        self.adaptiveStatus.setStyleSheet(_fromUtf8("border-color: rgb(76, 175, 80);\n"
-"background-color: rgb(76, 175, 80);\n"
-"color: rgb(255, 255, 255);"))
-        self.adaptiveStatus.setFrameShape(QtGui.QFrame.Box)
-        self.adaptiveStatus.setScaledContents(True)
-        self.adaptiveStatus.setAlignment(QtCore.Qt.AlignCenter)
-        self.adaptiveStatus.setMargin(2)
+        self.adaptiveStatus.setStyleSheet(_fromUtf8("QPushButton{\n"
+"            border-style: transparent;\n"
+"            border-width: 1px;\n"
+"            border-radius: 6px;\n"
+"            background-color: rgb(244, 67, 54);\n"
+"            color: rgb(255, 255, 255);\n"
+"            }\n"
+"QPushButton:checked {\n"
+"            border-style: solid;\n"
+"            border-width: 1px;\n"
+"            border-radius: 6px;\n"
+"            background-color: rgb(76, 175, 80);\n"
+"            color: rgb(255, 255, 255);\n"
+"            }"))
+        self.adaptiveStatus.setCheckable(True)
+        self.adaptiveStatus.setFlat(True)
         self.adaptiveStatus.setObjectName(_fromUtf8("adaptiveStatus"))
         self.statusBarLayout.addWidget(self.adaptiveStatus)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -110,30 +100,19 @@ class Ui_statusBarWidget(object):
         self.wifiBar.setMinimumSize(QtCore.QSize(0, 25))
         self.wifiBar.setMaximumSize(QtCore.QSize(50, 25))
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.wifiBar.setFont(font)
         self.wifiBar.setProperty("value", 100)
         self.wifiBar.setAlignment(QtCore.Qt.AlignCenter)
         self.wifiBar.setObjectName(_fromUtf8("wifiBar"))
         self.statusBarLayout.addWidget(self.wifiBar)
-        self.wifiStatus = QtGui.QLabel(statusBarWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.wifiStatus.sizePolicy().hasHeightForWidth())
-        self.wifiStatus.setSizePolicy(sizePolicy)
+        self.wifiStatus = CButton(statusBarWidget)
         self.wifiStatus.setMinimumSize(QtCore.QSize(60, 25))
         self.wifiStatus.setMaximumSize(QtCore.QSize(16777215, 25))
         font = QtGui.QFont()
-        font.setPointSize(14)
+        font.setPointSize(12)
         self.wifiStatus.setFont(font)
-        self.wifiStatus.setMouseTracking(True)
-        self.wifiStatus.setStyleSheet(_fromUtf8("background-color: rgb(255, 193, 7);\n"
-"color: rgb(0, 0, 0);"))
-        self.wifiStatus.setFrameShape(QtGui.QFrame.Box)
-        self.wifiStatus.setScaledContents(True)
-        self.wifiStatus.setAlignment(QtCore.Qt.AlignCenter)
-        self.wifiStatus.setMargin(2)
+        self.wifiStatus.setFlat(True)
         self.wifiStatus.setObjectName(_fromUtf8("wifiStatus"))
         self.statusBarLayout.addWidget(self.wifiStatus)
 
@@ -144,9 +123,9 @@ class Ui_statusBarWidget(object):
         statusBarWidget.setWindowTitle(_translate("statusBarWidget", "Frame", None))
         self.batteryStatus.setText(_translate("statusBarWidget", "Battery", None))
         self.adaptiveStatus.setText(_translate("statusBarWidget", "Adaptive", None))
-        self.wifiStatus.setText(_translate("statusBarWidget", "WiFi", None))
+        self.wifiStatus.setText(_translate("statusBarWidget", "Wifi", None))
 
-from aui.utilities.ColorProgressBar import CProgressBar
+from aui.mi.visual import CButton, CProgressBar
 
 if __name__ == "__main__":
     import sys

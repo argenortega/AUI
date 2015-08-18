@@ -28,11 +28,11 @@ class CProgressBar(QProgressBar):
     def setValue(self, p_int):
         QProgressBar.setValue(self, p_int)
         if p_int > 70:
-            self.change_color('rgb(76, 175, 80)')
+            self.change_color('rgb(76, 175, 80)') # Green
         elif 70 >= p_int > 50:
-            self.change_color('rgb(255, 193, 7)')
+            self.change_color('rgb(255, 193, 7)') # Yellow
         elif p_int <= 50:
-            self.change_color('rgb(244, 67, 54)')
+            self.change_color('rgb(244, 67, 54)') # Red
 
     def change_color(self, color):
         template_css = """

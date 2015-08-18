@@ -26,16 +26,12 @@ evidence = {'joystick_input':('gui','views','main_views','additional_views'),
             'battery_level':('gui','robot_state','battery'),
             'wifi_level':('gui','robot_state','wifi')}
 
-#{'gui':['critical_state', 'joystick_input'],
-#            'views':['joystick_input','AV_Visible','MV_Quality'],
-#            'main_views'}
-
 hid.add_nodes_from([('gui', {'evidence':['joystick_direction','battery_level','battery_visible', 'wifi_visible', 'wifi_level']}),
                     ('views',{'evidence':['joystick_direction', 'AV_visible', 'C1', 'C2', 'LM']}),
                     ('snapshots',{'evidence':['AS_visible', 'focus']}),
                     ('robot_state',{'evidence':['battery_level', 'battery_visible', 'wifi_level', 'wifi_visible']}),
                     ('nothing',{}),
-                    ('main_views',{'evidence':['Focus', 'joystick_direction','PC','GM','LM','C1','C2']}),
+                    ('main_views',{'evidence':['focus', 'joystick_direction','PC','GM','LM','C1','C2']}),
                     ('priority',{}),
                     ('content',{}),
                     ('additional_views',{'evidence':['AV_visible','joystick_direction','PC','GM','LM','C1','C2']}),
@@ -68,10 +64,19 @@ hid.add_edges_from([('gui','views'),('gui','snapshots'),('gui','robot_state'),('
 
 nx.write_gpickle(hid, 'networks/hid.gpickle')
 
-#anc = nx.ancestors(hid, 'show_wifi')
-#print nx.topological_sort(hid, list(anc))
-#print nx.shortest_path(hid, 'gui','gui')
-#pos = nx.graphviz_layout(hid, prog='dot')
+# pos = nx.graphviz_layout(hid, prog='dot')
 # nx.draw_graphviz(hid, prog='dot')
-#nx.draw_networkx(hid, pos=pos)
-#plt.show()
+# nx.draw_networkx(hid, pos=pos)
+# plt.show()
+
+evidence = {'battery_level': 'Ok', 'wifi_level': 'Ok', 'LM': 'AV', 'focus': 'S', 'PC': 'AV',
+            'AS_visible': 'True', 'wifi_visible': 'True', 'battery_visible': 'True',
+            'C2': 'AV', 'C1': 'MV', 'AV_visible': 'True', 'GM': 'AV', 'joystick_direction': 'Forward'}
+
+path = nx.shortest_path(hid, 'gui','show_wifi')
+
+for p in path:
+    if hid.successors(p):
+        observed = hid.node[p]['evidence']
+        b = {k:v for k,v in evidence.iteritems() if k in observed}
+        print b

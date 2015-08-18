@@ -11,9 +11,9 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-    <horstretch>1</horstretch>
-    <verstretch>1</verstretch>
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>3</horstretch>
+    <verstretch>3</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
@@ -41,7 +41,7 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string>3D Pointcloud</string>
+   <string>Local Map</string>
   </property>
   <property name="accessibleName">
    <string>LM</string>
@@ -50,22 +50,31 @@
    <string notr="true">border-image: url(:/maps/local/local1);</string>
   </property>
   <layout class="QVBoxLayout" name="layout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <property name="margin">
     <number>0</number>
    </property>
    <item>
     <widget class="ActLabel" name="map">
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
      <property name="accessibleName">
       <string>LM</string>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/maps/local);</string>
+      <string notr="true">border-image: url(:/maps/local);
+</string>
      </property>
      <property name="text">
       <string>Local Map</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignCenter</set>
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
     </widget>
    </item>

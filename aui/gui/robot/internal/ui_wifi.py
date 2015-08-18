@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/wifi.ui'
 #
-# Created: Sun Aug 16 14:17:50 2015
+# Created: Tue Aug 18 00:21:34 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,13 +26,15 @@ except AttributeError:
 class Ui_WifiStatus(object):
     def setupUi(self, WifiStatus):
         WifiStatus.setObjectName(_fromUtf8("WifiStatus"))
-        WifiStatus.resize(138, 98)
+        WifiStatus.resize(109, 100)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(WifiStatus.sizePolicy().hasHeightForWidth())
         WifiStatus.setSizePolicy(sizePolicy)
+        WifiStatus.setMinimumSize(QtCore.QSize(100, 0))
         self.horizontalLayout_2 = QtGui.QHBoxLayout(WifiStatus)
+        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setMargin(0)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.wifiLevel = QtGui.QGroupBox(WifiStatus)
@@ -41,10 +43,14 @@ class Ui_WifiStatus(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.wifiLevel.sizePolicy().hasHeightForWidth())
         self.wifiLevel.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.wifiLevel.setFont(font)
         self.wifiLevel.setCheckable(True)
         self.wifiLevel.setObjectName(_fromUtf8("wifiLevel"))
         self.wifiLayout = QtGui.QVBoxLayout(self.wifiLevel)
-        self.wifiLayout.setMargin(3)
+        self.wifiLayout.setSpacing(0)
+        self.wifiLayout.setMargin(0)
         self.wifiLayout.setObjectName(_fromUtf8("wifiLayout"))
         self.frame = QtGui.QFrame(self.wifiLevel)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
@@ -56,12 +62,9 @@ class Ui_WifiStatus(object):
         self.frame.setFrameShadow(QtGui.QFrame.Plain)
         self.frame.setObjectName(_fromUtf8("frame"))
         self.verticalLayout = QtGui.QVBoxLayout(self.frame)
-        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setSpacing(15)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.wifiBoxLevel = QtGui.QHBoxLayout()
-        self.wifiBoxLevel.setSpacing(-1)
-        self.wifiBoxLevel.setObjectName(_fromUtf8("wifiBoxLevel"))
         self.wifi = CProgressBar(self.frame)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -72,11 +75,33 @@ class Ui_WifiStatus(object):
         self.wifi.setProperty("value", 100)
         self.wifi.setAlignment(QtCore.Qt.AlignCenter)
         self.wifi.setObjectName(_fromUtf8("wifi"))
-        self.wifiBoxLevel.addWidget(self.wifi)
-        self.verticalLayout.addLayout(self.wifiBoxLevel)
-        self.repair = HButton(self.frame)
-        self.repair.setMinimumSize(QtCore.QSize(0, 44))
-        self.repair.setStyleSheet(_fromUtf8(""))
+        self.verticalLayout.addWidget(self.wifi)
+        self.repair = QtGui.QPushButton(self.frame)
+        self.repair.setMinimumSize(QtCore.QSize(44, 44))
+        self.repair.setStyleSheet(_fromUtf8("QPushButton{    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    border-color: rgb(193, 193, 193);\n"
+"    border-style: solid;\n"
+"    padding: 6px;\n"
+"    \n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    border-style: solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    background-color: rgb(48, 131, 251);\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    border-color: rgb(164, 205, 255);\n"
+"    border-radius: 6px;\n"
+"    border-width: 3px;\n"
+"    border-style: solid;\n"
+"}"))
         self.repair.setObjectName(_fromUtf8("repair"))
         self.verticalLayout.addWidget(self.repair)
         self.wifiLayout.addWidget(self.frame)
@@ -91,8 +116,7 @@ class Ui_WifiStatus(object):
         self.wifiLevel.setTitle(_translate("WifiStatus", "WiFi", None))
         self.repair.setText(_translate("WifiStatus", "Repair", None))
 
-from aui.utilities.ColorProgressBar import CProgressBar
-from aui.utilities.HoverButtons import HButton
+from aui.mi.visual import CProgressBar
 
 if __name__ == "__main__":
     import sys

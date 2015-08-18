@@ -11,15 +11,15 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-    <horstretch>6</horstretch>
-    <verstretch>6</verstretch>
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>3</horstretch>
+    <verstretch>3</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>0</width>
-    <height>0</height>
+    <width>200</width>
+    <height>200</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -30,8 +30,8 @@
   </property>
   <property name="sizeIncrement">
    <size>
-    <width>3</width>
-    <height>3</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="cursor">
@@ -46,7 +46,7 @@
   <property name="accessibleName">
    <string>C</string>
   </property>
-  <layout class="QVBoxLayout" name="layout" stretch="0">
+  <layout class="QVBoxLayout" name="layout">
    <property name="margin">
     <number>0</number>
    </property>
@@ -60,7 +60,7 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>28</pointsize>
+       <pointsize>11</pointsize>
       </font>
      </property>
      <property name="cursor">
@@ -82,7 +82,7 @@
       <string>Camera</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignCenter</set>
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
      <property name="textInteractionFlags">
       <set>Qt::NoTextInteraction</set>

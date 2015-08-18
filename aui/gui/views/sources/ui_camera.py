@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/camera.ui'
 #
-# Created: Sun Aug 16 01:02:31 2015
+# Created: Tue Aug 18 11:15:11 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,14 +27,14 @@ class Ui_Camera(object):
     def setupUi(self, Camera):
         Camera.setObjectName(_fromUtf8("Camera"))
         Camera.resize(300, 300)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(6)
-        sizePolicy.setVerticalStretch(6)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
+        sizePolicy.setHorizontalStretch(3)
+        sizePolicy.setVerticalStretch(3)
         sizePolicy.setHeightForWidth(Camera.sizePolicy().hasHeightForWidth())
         Camera.setSizePolicy(sizePolicy)
-        Camera.setMinimumSize(QtCore.QSize(0, 0))
+        Camera.setMinimumSize(QtCore.QSize(200, 200))
         Camera.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        Camera.setSizeIncrement(QtCore.QSize(3, 3))
+        Camera.setSizeIncrement(QtCore.QSize(0, 0))
         Camera.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         Camera.setMouseTracking(True)
         self.layout = QtGui.QVBoxLayout(Camera)
@@ -47,13 +47,13 @@ class Ui_Camera(object):
         sizePolicy.setHeightForWidth(self.cam.sizePolicy().hasHeightForWidth())
         self.cam.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setPointSize(28)
+        font.setPointSize(11)
         self.cam.setFont(font)
         self.cam.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.cam.setMouseTracking(True)
         self.cam.setFrameShape(QtGui.QFrame.StyledPanel)
         self.cam.setFrameShadow(QtGui.QFrame.Sunken)
-        self.cam.setAlignment(QtCore.Qt.AlignCenter)
+        self.cam.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.cam.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.cam.setObjectName(_fromUtf8("cam"))
         self.layout.addWidget(self.cam)

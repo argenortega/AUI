@@ -7,7 +7,7 @@ Created on Tue Dec  2 00:48:21 2014
 import sys
 
 from PyQt4 import QtGui
-from PyQt4.QtCore import QSettings, QVariant, QMimeData, Qt
+from PyQt4.QtCore import QSettings, QVariant, QMimeData, Qt, QSize
 from PyQt4.QtGui import (QWidget, QSizePolicy, QApplication, QDrag, QPixmap)
 
 from aui.gui.views.sources import ui_camera
@@ -29,15 +29,25 @@ class Camera(QWidget, ui_camera.Ui_Camera):
         self.setObjectName("C%d" % self.num)
         self.setAccessibleName("C%d" % self.num)
 
-        self.cam.setText("Camera %d" % self.num)
         self.cam.setAccessibleName("C%d" % self.num)
+
+        if self.num == 1:
+            self.cam.setText("Front Camera")
+        elif self.num == 2:
+            self.cam.setText("Back Camera")
+        else:
+            self.cam.setText("Bird's Eye Camera")
+
 
         '''
         Size of the widget
         '''
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)
+
+    def sizeHint(self):
+        return QSize(300,300)
 
     def heightForWidth(self, width):
         return width * 1

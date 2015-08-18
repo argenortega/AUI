@@ -48,6 +48,18 @@ class Wifi(QWidget, ui_wifi.Ui_WifiStatus):
         else:
             self.vis.emit('wifi_visible', 'False')
 
+    @pyqtSlot(str)
+    def atomic_decision(self, decision):
+        if decision == 'hide_wifi':
+            print 'Wifi atomic decision'
+            self.wifiLevel.setChecked(False)
+            self.frame.setVisible(False)
+        elif decision == 'show_wifi':
+            print 'Wifi atomic decision'
+            self.wifiLevel.setChecked(True)
+            self.frame.setVisible(True)
+
+
         
 
 def main():

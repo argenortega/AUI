@@ -119,6 +119,9 @@
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="AUIWidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+   </property>
    <layout class="QHBoxLayout" name="globalLayout">
     <property name="margin">
      <number>0</number>

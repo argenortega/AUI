@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/pointcloud.ui'
 #
-# Created: Sun Aug 16 01:02:33 2015
+# Created: Tue Aug 18 11:15:12 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -47,14 +47,14 @@ class Ui_PointcloudWidget(object):
         self.pointcloud.setSizePolicy(sizePolicy)
         self.pointcloud.setMaximumSize(QtCore.QSize(70, 70))
         font = QtGui.QFont()
-        font.setPointSize(12)
+        font.setPointSize(11)
         self.pointcloud.setFont(font)
         self.pointcloud.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.pointcloud.setMouseTracking(True)
         self.pointcloud.setFrameShape(QtGui.QFrame.StyledPanel)
         self.pointcloud.setFrameShadow(QtGui.QFrame.Sunken)
         self.pointcloud.setScaledContents(True)
-        self.pointcloud.setAlignment(QtCore.Qt.AlignCenter)
+        self.pointcloud.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.pointcloud.setWordWrap(True)
         self.pointcloud.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
         self.pointcloud.setObjectName(_fromUtf8("pointcloud"))

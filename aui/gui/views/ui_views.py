@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/views.ui'
 #
-# Created: Sun Aug 16 16:27:45 2015
+# Created: Tue Aug 18 00:12:24 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,9 +27,9 @@ class Ui_viewsWidget(object):
     def setupUi(self, viewsWidget):
         viewsWidget.setObjectName(_fromUtf8("viewsWidget"))
         viewsWidget.resize(459, 487)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(2)
-        sizePolicy.setVerticalStretch(2)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(viewsWidget.sizePolicy().hasHeightForWidth())
         viewsWidget.setSizePolicy(sizePolicy)
         viewsWidget.setMinimumSize(QtCore.QSize(0, 0))
@@ -38,7 +38,7 @@ class Ui_viewsWidget(object):
         self.verticalLayout.setMargin(6)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.currentViews = QtGui.QWidget(viewsWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Expanding)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.currentViews.sizePolicy().hasHeightForWidth())
@@ -84,10 +84,12 @@ class Ui_viewsWidget(object):
         self.bleftLayout.setMargin(0)
         self.bleftLayout.setObjectName(_fromUtf8("bleftLayout"))
         self.bleftLabel = Marker(self.bleft)
+        self.bleftLabel.setSizeIncrement(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.bleftLabel.setFont(font)
-        self.bleftLabel.setStyleSheet(_fromUtf8("color: rgb(102, 102, 102);"))
+        self.bleftLabel.setStyleSheet(_fromUtf8("color: rgb(102, 102, 102);\n"
+""))
         self.bleftLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.bleftLabel.setObjectName(_fromUtf8("bleftLabel"))
         self.bleftLayout.addWidget(self.bleftLabel)
@@ -128,6 +130,11 @@ class Ui_viewsWidget(object):
         self.trightLayout.setMargin(0)
         self.trightLayout.setObjectName(_fromUtf8("trightLayout"))
         self.trightLabel = Marker(self.tright)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.trightLabel.sizePolicy().hasHeightForWidth())
+        self.trightLabel.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.trightLabel.setFont(font)
@@ -143,6 +150,30 @@ class Ui_viewsWidget(object):
         self.buttonViews.addItem(spacerItem)
         self.four = QtGui.QPushButton(viewsWidget)
         self.four.setMinimumSize(QtCore.QSize(44, 44))
+        self.four.setStyleSheet(_fromUtf8("QPushButton{    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    border-color: rgb(193, 193, 193);\n"
+"    border-style: solid;\n"
+"    padding: 6px;\n"
+"    \n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    border-style: solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    background-color: rgb(48, 131, 251);\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    border-color: rgb(164, 205, 255);\n"
+"    border-radius: 6px;\n"
+"    border-width: 3px;\n"
+"    border-style: solid;\n"
+"}"))
         self.four.setCheckable(True)
         self.four.setAutoExclusive(True)
         self.four.setObjectName(_fromUtf8("four"))
@@ -151,6 +182,30 @@ class Ui_viewsWidget(object):
         self.buttonViews.addItem(spacerItem1)
         self.vert = QtGui.QPushButton(viewsWidget)
         self.vert.setMinimumSize(QtCore.QSize(44, 44))
+        self.vert.setStyleSheet(_fromUtf8("QPushButton{    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    border-color: rgb(193, 193, 193);\n"
+"    border-style: solid;\n"
+"    padding: 6px;\n"
+"    \n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    border-style: solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    background-color: rgb(48, 131, 251);\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    border-color: rgb(164, 205, 255);\n"
+"    border-radius: 6px;\n"
+"    border-width: 3px;\n"
+"    border-style: solid;\n"
+"}"))
         self.vert.setCheckable(True)
         self.vert.setAutoExclusive(True)
         self.vert.setObjectName(_fromUtf8("vert"))
@@ -159,6 +214,30 @@ class Ui_viewsWidget(object):
         self.buttonViews.addItem(spacerItem2)
         self.hor = QtGui.QPushButton(viewsWidget)
         self.hor.setMinimumSize(QtCore.QSize(44, 44))
+        self.hor.setStyleSheet(_fromUtf8("QPushButton{    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    border-color: rgb(193, 193, 193);\n"
+"    border-style: solid;\n"
+"    padding: 6px;\n"
+"    \n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    border-style: solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    background-color: rgb(48, 131, 251);\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    border-color: rgb(164, 205, 255);\n"
+"    border-radius: 6px;\n"
+"    border-width: 3px;\n"
+"    border-style: solid;\n"
+"}"))
         self.hor.setCheckable(True)
         self.hor.setChecked(True)
         self.hor.setAutoExclusive(True)

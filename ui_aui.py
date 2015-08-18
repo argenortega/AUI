@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/aui.ui'
 #
-# Created: Mon Jun 29 22:04:06 2015
+# Created: Mon Aug 17 20:42:26 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -63,6 +63,7 @@ class Ui_MainWin(object):
         MainWin.setDockNestingEnabled(True)
         MainWin.setUnifiedTitleAndToolBarOnMac(True)
         self.AUIWidget = QtGui.QWidget(MainWin)
+        self.AUIWidget.setStyleSheet(_fromUtf8("background-color: rgba(0, 0, 0, 0);"))
         self.AUIWidget.setObjectName(_fromUtf8("AUIWidget"))
         self.globalLayout = QtGui.QHBoxLayout(self.AUIWidget)
         self.globalLayout.setMargin(0)

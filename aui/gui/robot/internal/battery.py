@@ -49,6 +49,17 @@ class Battery(QWidget, ui_battery.Ui_batteryStatus):
         else:
             self.vis.emit('battery_visible', 'False')
 
+    @pyqtSlot(str)
+    def atomic_decision(self, decision):
+        if decision == 'hide_battery':
+            print 'Battery atomic decision'
+            self.batteryLevel.setChecked(False)
+            self.frame.setVisible(False)
+        elif decision == 'show_battery':
+            print 'Battery atomic decision'
+            self.batteryLevel.setChecked(True)
+            self.frame.setVisible(True)
+
 
 def main():
     app = QtGui.QApplication(sys.argv)

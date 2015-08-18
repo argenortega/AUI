@@ -3,7 +3,7 @@ __author__ = 'Argen'
 import sys
 
 from PyQt4 import QtGui
-from PyQt4.QtGui import QWidget
+from PyQt4.QtGui import QWidget, QSizePolicy
 from PyQt4.QtCore import  pyqtSignal, pyqtSlot
 
 from aui.gui.views import ui_views
@@ -65,7 +65,32 @@ class MainViews(QWidget, ui_views.Ui_viewsWidget):
         else:
             self.vis.emit('AV_visible', 'False')
 
+    @pyqtSlot(str)
+    def atomic_decision(self, decision):
 
+        if decision == 'hide_AV':
+            print 'Views atomic decision'
+            self.viewsGroup.setChecked(False)
+            self.availableViews.setVisible(False)
+        elif decision == 'show_AV':
+            print 'Views atomic decision'
+            self.viewsGroup.setChecked(True)
+            self.availableViews.setVisible(True)
+        elif decision == 'content':
+            sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+            sizePolicy.setHeightForWidth(True)
+            sizePolicy.setHorizontalStretch(4)
+            sizePolicy.setVerticalStretch(4)
+            print 'Suggested content'
+            #self.currentScreenshot.setSizePolicy(sizePolicy)
+        elif decision == 'priority':
+            sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+            sizePolicy.setHeightForWidth(True)
+            sizePolicy.setHorizontalStretch(4)
+            sizePolicy.setVerticalStretch(4)
+            style = 'border-color: rgb(51, 94, 242);border-radius: 6px; border-width: 3px; border-style: solid;'
+            #self.currentScreenshot.setSizePolicy(sizePolicy)
+            print 'Prioritize content'
 
 def main():
     app = QtGui.QApplication(sys.argv)

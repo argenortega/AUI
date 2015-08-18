@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/snapshot.ui'
 #
-# Created: Sun Aug 16 14:17:49 2015
+# Created: Tue Aug 18 00:21:34 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -28,8 +28,8 @@ class Ui_ScreenshotWidget(object):
         ScreenshotWidget.setObjectName(_fromUtf8("ScreenshotWidget"))
         ScreenshotWidget.resize(252, 514)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(1)
-        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(ScreenshotWidget.sizePolicy().hasHeightForWidth())
         ScreenshotWidget.setSizePolicy(sizePolicy)
         ScreenshotWidget.setMinimumSize(QtCore.QSize(0, 0))
@@ -40,14 +40,14 @@ class Ui_ScreenshotWidget(object):
         self.layout.setObjectName(_fromUtf8("layout"))
         self.currentScreenshot = ActLabel(ScreenshotWidget)
         self.currentScreenshot.setEnabled(True)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.MinimumExpanding)
-        sizePolicy.setHorizontalStretch(4)
-        sizePolicy.setVerticalStretch(4)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.currentScreenshot.sizePolicy().hasHeightForWidth())
         self.currentScreenshot.setSizePolicy(sizePolicy)
         self.currentScreenshot.setMinimumSize(QtCore.QSize(250, 250))
         self.currentScreenshot.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.currentScreenshot.setSizeIncrement(QtCore.QSize(1, 1))
+        self.currentScreenshot.setSizeIncrement(QtCore.QSize(0, 0))
         self.currentScreenshot.setBaseSize(QtCore.QSize(300, 300))
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -55,6 +55,12 @@ class Ui_ScreenshotWidget(object):
         self.currentScreenshot.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.currentScreenshot.setMouseTracking(True)
         self.currentScreenshot.setAcceptDrops(True)
+        self.currentScreenshot.setStyleSheet(_fromUtf8("QLabel{\n"
+"border-color: rgb(154, 154, 154); \n"
+"border-style: solid; \n"
+"border-width: 2px; \n"
+"border-radius: 6px;\n"
+"}"))
         self.currentScreenshot.setFrameShape(QtGui.QFrame.StyledPanel)
         self.currentScreenshot.setFrameShadow(QtGui.QFrame.Sunken)
         self.currentScreenshot.setScaledContents(True)
@@ -67,13 +73,37 @@ class Ui_ScreenshotWidget(object):
         self.buttonLayout.setObjectName(_fromUtf8("buttonLayout"))
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.buttonLayout.addItem(spacerItem)
-        self.newS = HButton(ScreenshotWidget)
+        self.newS = QtGui.QPushButton(ScreenshotWidget)
         self.newS.setMinimumSize(QtCore.QSize(44, 44))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.newS.setFont(font)
         self.newS.setMouseTracking(True)
         self.newS.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.newS.setStyleSheet(_fromUtf8("QPushButton{    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    border-color: rgb(193, 193, 193);\n"
+"    border-style: solid;\n"
+"    padding: 6px;\n"
+"    \n"
+"}\n"
+"QPushButton:pressed {    \n"
+"    border-style: solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    background-color: rgb(48, 131, 251);\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    border-color: rgb(164, 205, 255);\n"
+"    border-radius: 6px;\n"
+"    border-width: 3px;\n"
+"    border-style: solid;\n"
+"}"))
         self.newS.setObjectName(_fromUtf8("newS"))
         self.buttonLayout.addWidget(self.newS)
         self.layout.addLayout(self.buttonLayout)
@@ -134,7 +164,6 @@ class Ui_ScreenshotWidget(object):
         self.newS.setText(_translate("ScreenshotWidget", "New", None))
         self.extraScreenGroup.setTitle(_translate("ScreenshotWidget", "Screenshots", None))
 
-from aui.utilities.HoverButtons import HButton
 from aui.utilities.ActiveLabel import ActLabel
 
 if __name__ == "__main__":
