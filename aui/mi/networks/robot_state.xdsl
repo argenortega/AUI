@@ -91,7 +91,7 @@
 		</cpt>
 		<utility id="U">
 			<parents>Battery Wifi decision</parents>
-			<utilities>75 100 0 100 100 0 100 100</utilities>
+			<utilities>100 100 0 100 100 0 100 100</utilities>
 		</utility>
 	</nodes>
 	<extensions>

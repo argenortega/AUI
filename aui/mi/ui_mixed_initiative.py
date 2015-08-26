@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mixed_initiative.ui'
 #
-# Created: Wed Aug 26 18:53:57 2015
+# Created: Wed Aug 26 20:41:32 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -296,12 +296,6 @@ class Ui_mixedInitiative(object):
         self.button2.setText(_translate("mixedInitiative", "Reject", None))
         self.button4.setText(_translate("mixedInitiative", "PushButton", None))
         self.button3.setText(_translate("mixedInitiative", "PushButton", None))
-        self.messages.setHtml(_translate("mixedInitiative", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'.Helvetica Neue DeskInterface\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">[00:00]: Adaptive capabilities turned on.</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#0a5dff;\">[02:31]: Display recommended views for Navigation?</span></p></body></html>", None))
         self.AUIStatusLabel.setText(_translate("mixedInitiative", "AUI Status", None))
         self.AUItoggleButton.setText(_translate("mixedInitiative", "Off", None))
 

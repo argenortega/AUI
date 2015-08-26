@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/wifi.ui'
 #
-# Created: Sat Aug 22 13:51:02 2015
+# Created: Wed Aug 26 20:25:56 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -38,11 +38,6 @@ class Ui_WifiStatus(object):
         self.horizontalLayout_2.setMargin(0)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.wifiLevel = QtGui.QGroupBox(WifiStatus)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.wifiLevel.sizePolicy().hasHeightForWidth())
-        self.wifiLevel.setSizePolicy(sizePolicy)
         self.wifiLevel.setMinimumSize(QtCore.QSize(0, 30))
         font = QtGui.QFont()
         font.setPointSize(11)

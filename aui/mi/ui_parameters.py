@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/parameters.ui'
 #
-# Created: Wed Aug 26 18:53:57 2015
+# Created: Wed Aug 26 20:41:32 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -272,7 +272,7 @@ class Ui_AUIParameters(object):
         self.costSlider.setProperty("value", 0)
         self.costSlider.setOrientation(QtCore.Qt.Horizontal)
         self.costSlider.setTickPosition(QtGui.QSlider.TicksBelow)
-        self.costSlider.setTickInterval(25)
+        self.costSlider.setTickInterval(5)
         self.costSlider.setObjectName(_fromUtf8("costSlider"))
         self.gridLayout_13.addWidget(self.costSlider, 0, 0, 1, 5)
         self.userLayout.addWidget(self.groupBox_6)
@@ -917,7 +917,7 @@ class Ui_AUIParameters(object):
         self.toggle.setText(_translate("AUIParameters", "Toggle", None))
         self.sustained.setText(_translate("AUIParameters", "Sustained", None))
         self.context.setTitle(_translate("AUIParameters", "Context", None))
-        self.exploring.setText(_translate("AUIParameters", "Exploring", None))
+        self.exploring.setText(_translate("AUIParameters", "Exploration", None))
         self.navigation.setText(_translate("AUIParameters", "Navigation", None))
         self.mapping.setText(_translate("AUIParameters", "Mapping", None))
         self.inspection.setText(_translate("AUIParameters", "Inspection", None))

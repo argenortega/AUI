@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/battery.ui'
 #
-# Created: Sat Aug 22 13:51:02 2015
+# Created: Wed Aug 26 20:25:56 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -38,7 +38,7 @@ class Ui_batteryStatus(object):
         self.BatteryLayout.setMargin(0)
         self.BatteryLayout.setObjectName(_fromUtf8("BatteryLayout"))
         self.batteryLevel = QtGui.QGroupBox(batteryStatus)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.batteryLevel.sizePolicy().hasHeightForWidth())

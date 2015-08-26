@@ -79,21 +79,6 @@
 			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
-		<deterministic id="Complete">
-			<state id="complete" />
-			<state id="incomplete" />
-			<state id="extra" />
-			<state id="minimum" />
-			<parents>C1 LM C2 joystick_direction Context GM PC</parents>
-			<resultingstates>extra extra extra extra extra extra extra extra extra extra extra complete extra extra extra extra extra extra extra extra extra extra extra minimum extra extra complete minimum extra extra extra minimum extra complete extra minimum extra extra extra minimum extra extra extra minimum extra extra complete minimum extra extra extra minimum extra complete extra minimum extra extra extra minimum extra extra extra complete extra extra extra extra extra extra extra complete extra extra extra extra extra extra extra extra extra extra extra minimum extra extra complete minimum extra extra extra minimum extra complete extra minimum extra extra extra minimum incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete incomplete</resultingstates>
-		</deterministic>
-		<cpt id="Content">
-			<state id="add" />
-			<state id="remove" />
-			<state id="False" />
-			<parents>som Complete</parents>
-			<probabilities>0 1 0 1 0 0 0 1 0 0 0 1 0 0 1 1 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 1 0 0 0 1</probabilities>
-		</cpt>
 		<cpt id="PC_Action">
 			<state id="move" />
 			<state id="keep" />
@@ -276,20 +261,6 @@
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
 				<position>342 81 387 111</position>
-			</node>
-			<node id="Complete">
-				<name>Complete</name>
-				<interior color="ffffff" />
-				<outline color="000000" />
-				<font color="000000" name="Arial" size="8" />
-				<position>475 513 547 549</position>
-			</node>
-			<node id="Content">
-				<name>Content</name>
-				<interior color="ffffff" />
-				<outline color="000000" />
-				<font color="000000" name="Arial" size="8" />
-				<position>103 417 155 449</position>
 			</node>
 			<node id="PC_Action">
 				<name>PC Action</name>

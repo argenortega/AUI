@@ -11,12 +11,13 @@ from jpype import JClass, shutdownJVM, JavaException
 import os.path
 import networkx as nx
 import glob
+from time import strftime, localtime
 
 from PyQt4 import QtGui
-from PyQt4.QtGui import (QWidget, QSizePolicy, QDialog, QHBoxLayout, QPushButton, QApplication)
-from PyQt4.QtCore import pyqtSlot, pyqtSignal, QTimer, QThread
+from PyQt4.QtGui import (QWidget, QSizePolicy, QDialog, QHBoxLayout, QPushButton, QApplication, QTextCharFormat)
+from PyQt4.QtCore import pyqtSlot, pyqtSignal, QTimer, QThread, Qt
 from PyQt4.uic import loadUi
-from numpy import argmax
+from numpy import argmax, isclose
 
 from aui.mi import ui_mixed_initiative as MixInitUI
 
@@ -32,17 +33,32 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         self.hsm_node = None
         self.d = os.path.dirname(sys.modules['aui.mi'].__file__)
         self.hid = nx.read_gpickle(os.path.join(self.d, 'networks/hid.gpickle'))
+
         self.hsm = nx.get_node_attributes(self.hid, 'HSM')
         self.hsm_evidence = {}
         self.question = None
+
         self.answerTimer = QTimer()
         self.answerTimer.setSingleShot(True)
-        # self.evidence = {}
+
+        self.decisionFormat = QTextCharFormat()
+        self.decisionFormat.setForeground(QtGui.QColor(76, 175, 80))
+        self.decisionFormat.setFontWeight(QtGui.QFont.Normal)
+
+        self.questionFormat = QTextCharFormat()
+        self.questionFormat.setForeground(QtGui.QColor(48, 131, 251))
+        self.questionFormat.setFontWeight(QtGui.QFont.Bold)
+
+        self.infoFormat = QTextCharFormat()
+        self.infoFormat.setFontWeight(QtGui.QFont.Normal)
+        self.infoFormat.setForeground(Qt.black)
+
         self.evidence = {'battery_level': 'Ok', 'wifi_level': 'Ok', 'LM': 'MV', 'focus': 'S', 'PC': 'AV',
                          'AS_visible': 'True', 'wifi_visible': 'True', 'battery_visible': 'True',
                          'C2': 'MV', 'C1': 'MV', 'AV_visible': 'True', 'GM': 'AV', 'joystick_direction': 'Backwards',
                          'SA': 'L2', 'SL': 'medium', 'CL': 'medium',
                          'Context': 'Exploration'}
+        self.evidence = {}
 
         self.decision_path = []
         jvmPath = jpype.getDefaultJVMPath()
@@ -66,7 +82,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
 
         self.setSizePolicy(self.sizePolicy)
 
-        self.messages.setText('[00:00]: Adaptive capabilities turned on.\n')
+        #self.messages.setText('[00:00]: Adaptive capabilities turned on.\n')
         self.messages.setReadOnly(True)
 
         self.AUIStatus.setVisible(False)
@@ -95,23 +111,32 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
     def voi_cost(self, value):
         self.cost = value
 
+    def timestamp(self):
+        return strftime('%H:%M:%S', localtime())
+
     def press(self, toggled):
         if toggled:
             self.AUItoggleButton.setText("On")
             self.setSizePolicy(self.sizePolicy)
+            self.messages.setCurrentCharFormat(self.infoFormat)
+            self.messages.append('[%s] Adaptive Capabilities Turned On'%self.timestamp())
             self.node = self.hid_decision(self.node)
         else:
             self.AUItoggleButton.setText("Off")
             self.setSizePolicy(self.sizePolicy)
             self.node = 'gui'
+            self.hide_buttons()
 
     def adaptive(self, toggled):
         if toggled:
-            self.node = self.hid_decision(self.node)
             self.AUIMsgs.setVisible(True)
+            self.messages.setCurrentCharFormat(self.infoFormat)
+            self.messages.append('[%s] Adaptive Capabilities Turned On'%self.timestamp())
+            self.node = self.hid_decision(self.node)
         else:
             self.node = 'gui'
             self.AUIMsgs.setVisible(False)
+            self.hide_buttons()
 
     def make_decision(self, node):
         if self.hid.successors(node):
@@ -129,8 +154,6 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
 
             n.updateBeliefs()
 
-            result = n.getOutcomeId('decision', argmax(n.getNodeValue('decision')))
-            print 'Decision: ', result
 
             if hsm_nodes is not None:
                 question = []
@@ -148,7 +171,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
                 # print question
                 if question:
                     voi = max(question)
-                    if voi - self.cost > 0:
+                    if voi - self.cost > 0 and not isclose(voi,0):
                         ask = hsm_nodes[argmax(question)]
                         ask = ask.replace('HSM_', '')
                         n.updateBeliefs()
@@ -159,6 +182,11 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
 
                         for k, v in self.hsm_evidence.iteritems():
                             n.setEvidence(k, v)
+
+            n.updateBeliefs()
+            result = n.getOutcomeId('decision', argmax(n.getNodeValue('decision')))
+            print 'Decision: ', result
+
 
             return result
         else:
@@ -175,7 +203,8 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
                 return self.hid_decision(result)
             else:
                 self.decision.emit(result)
-                self.messages.append('Automated decision: %s'%result)
+                self.messages.setCurrentCharFormat(self.decisionFormat)
+                self.messages.append('[%s] Decision: %s'%(self.timestamp(),result))
                 return result
         else:
             return 'User input required'
@@ -221,6 +250,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
 
     def closeEvent(self, event):
         # print 'MI shutdown'
+        self.answerTimer.stop()
         shutdownJVM()
 
     def hide_buttons(self):
@@ -242,35 +272,36 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
 
         b = 0
         for k, v in sorted(options.iteritems(), key= options.get):
-            if v != 0:
+            if isclose(v,0):
                 self.buttonGroup.button(b).setVisible(True)
                 self.buttonGroup.button(b).setText(k)
                 b += 1
 
-        message = ''
+        message = '[%s] '%self.timestamp()
+        self.messages.setCurrentCharFormat(self.questionFormat)
 
         if question == 'C1_View':
-            message = 'Add Camera 1?'
+            message = message + 'Add Camera 1?'
         if question == 'C2_View':
-            message = 'Add Camera 2?'
+            message = message + 'Add Camera 2?'
         if question == 'LM_View':
-            message = 'Add Local Map?'
+            message = message + 'Add Local Map?'
         if question == 'GM_View':
-            message = 'Add Global Map?'
+            message = message + 'Add Global Map?'
         if question == 'PC_View':
-            message = 'Add Point Cloud?'
+            message = message + 'Add Point Cloud?'
         if question == 'AV':
-            message = 'Visibility of Additional Views?'
+            message = message + 'Visibility of Additional Views?'
         if question == 'View_Content':
-            message = 'Display views appropriate context?'
+            message = message + 'Display views appropriate context?'
         if question == 'Snapshot':
-            message = 'Resize Snapshot?'
+            message = message + 'Resize Snapshot?'
         if question == 'AS':
-            message = 'Visibility of Additional Snapshots?'
+            message = message + 'Visibility of Additional Snapshots?'
         if question == 'Battery':
-            message = 'Visibility of Battery information?'
+            message = message + 'Visibility of Battery information?'
         if question == 'Wifi':
-            message = 'Visibility of Wifi information?'
+            message = message + 'Visibility of Wifi information?'
 
         self.messages.append(message)
 
@@ -287,7 +318,9 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         self.hsm_evidence[self.question] = str(button.text())
         self.answerTimer.stop()
         self.hide_buttons()
-
+        message = '[%s] User input: %s'%(self.timestamp(), button.text())
+        self.messages.setCurrentCharFormat(self.questionFormat)
+        self.messages.append(message)
         # print self.hsm_node, self.question, self.hsm_evidence
         # self.hid_decision(self.hsm_node)
 
@@ -295,7 +328,7 @@ def main():
     app = QtGui.QApplication(sys.argv)
     mi = MixedInitiative(None)
     mi.show()
-    mi.check_files()
+    # mi.check_files()
     sys.exit(app.exec_())
 
 

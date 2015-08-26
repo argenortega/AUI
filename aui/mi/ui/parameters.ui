@@ -537,7 +537,7 @@
                  <enum>QSlider::TicksBelow</enum>
                 </property>
                 <property name="tickInterval">
-                 <number>25</number>
+                 <number>5</number>
                 </property>
                </widget>
               </item>
@@ -684,7 +684,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Exploring</string>
+                 <string>Exploration</string>
                 </property>
                 <attribute name="buttonGroup">
                  <string notr="true">contextButtonGroup</string>

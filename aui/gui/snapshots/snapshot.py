@@ -82,6 +82,14 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
             self.setSizePolicy(sizePolicy)
             #self.currentScreenshot.resize(0,0)
             self.updateGeometry()
+        elif decision in ['main_views', 'widget_content', 'additional_views']:
+            sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
+            sizePolicy.setHeightForWidth(True)
+            sizePolicy.setHorizontalStretch(1)
+            sizePolicy.setVerticalStretch(1)
+            self.setSizePolicy(sizePolicy)
+            self.updateGeometry()
+
     
 def main():
     app = QtGui.QApplication(sys.argv)
