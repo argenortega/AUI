@@ -1,7 +1,7 @@
 __author__ = 'Argen'
 
 from PyQt4.QtGui import (QLabel)
-from PyQt4.QtCore import (pyqtSignal, QObject)
+from PyQt4.QtCore import (pyqtSignal, QObject, QTimer)
 
 
 class ActLabel(QLabel, QObject):
@@ -17,8 +17,13 @@ class ActLabel(QLabel, QObject):
     def enterEvent(self, QEvent):
         self.setStyleSheet(
             'border-color: rgb(164, 205, 255); border-radius: 6px; border-width: 3px; border-style: solid;')  # + self.default_style)
-        self.inside.emit('focus', str(self.accessibleName()))
+        QTimer.singleShot(5000,self.focusing)
 
     def leaveEvent(self, QEvent):
         self.setStyleSheet(self.default_style)
+
+    def focusing(self):
+        if self.underMouse():
+            #print 'Focus ', self.accessibleName()
+            self.inside.emit('focus', str(self.accessibleName()))
 

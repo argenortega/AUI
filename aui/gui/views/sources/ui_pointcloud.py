@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/pointcloud.ui'
 #
-# Created: Tue Aug 18 11:15:12 2015
+# Created: Sat Aug 22 15:47:08 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -32,7 +32,7 @@ class Ui_PointcloudWidget(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(PointcloudWidget.sizePolicy().hasHeightForWidth())
         PointcloudWidget.setSizePolicy(sizePolicy)
-        PointcloudWidget.setMinimumSize(QtCore.QSize(50, 50))
+        PointcloudWidget.setMinimumSize(QtCore.QSize(70, 70))
         PointcloudWidget.setMaximumSize(QtCore.QSize(70, 70))
         PointcloudWidget.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         PointcloudWidget.setMouseTracking(True)
@@ -45,7 +45,6 @@ class Ui_PointcloudWidget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pointcloud.sizePolicy().hasHeightForWidth())
         self.pointcloud.setSizePolicy(sizePolicy)
-        self.pointcloud.setMaximumSize(QtCore.QSize(70, 70))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.pointcloud.setFont(font)

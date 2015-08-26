@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<smile version="1.0" id="Network9" numsamples="1000" discsamples="10000">
+<smile version="1.0" id="snapshots" numsamples="1000" discsamples="10000">
 	<nodes>
 		<cpt id="focus">
 			<state id="C1" />
@@ -9,7 +9,8 @@
 			<state id="PC" />
 			<state id="S" />
 			<state id="AS" />
-			<probabilities>0.1428571428571429 0.1428571428571429 0.1428571428571429 0.1428571428571429 0.1428571428571429 0.1428571428571429 0.142857142857143</probabilities>
+			<state id="AV" />
+			<probabilities>0.125 0.125 0.125 0.125 0.125 0.125 0.125 0.125</probabilities>
 		</cpt>
 		<cpt id="AS_visible">
 			<state id="True" />
@@ -21,22 +22,47 @@
 			<state id="additional_snapshots" />
 			<parents>AS_visible focus</parents>
 		</decision>
+		<cpt id="CL">
+			<state id="high" />
+			<state id="medium" />
+			<state id="low" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
+		<cpt id="SL">
+			<state id="high" />
+			<state id="medium" />
+			<state id="low" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
+		<cpt id="SA">
+			<state id="L1" />
+			<state id="L2" />
+			<state id="L3" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
 		<cpt id="som">
 			<state id="Overwhelmed" />
 			<state id="Focused" />
 			<state id="Distracted" />
-			<probabilities>0.32 0.3599999999999999 0.32</probabilities>
+			<parents>CL SL SA</parents>
+			<probabilities>1 0 0 0.9 0.07000000000000001 0.03 0.8 0.15 0.05 0.9 0.07000000000000001 0.03 0.8 0.15 0.05 0.7 0.25 0.05 0.8 0.15 0.05 0.7 0.25 0.05 0.6 0.3 0.1 0.15 0.8 0.04999999999999993 0.1 0.85 0.05000000000000004 0.07000000000000001 0.9 0.03 0.04999999999999998 0.9 0.05 0.03 0.95 0.02000000000000002 0.01 0.99 0 0.15 0.8 0.05 0.1 0.8 0.09999999999999998 0 1 0 0 0.2 0.8 0 0.65 0.35 0 0.95 0.05000000000000004 0 0.2 0.8 0 0.65 0.35 0 0.95 0.05000000000000004 0 0 1 0 0.8 0.2 0 0.95 0.05</probabilities>
 		</cpt>
 		<deterministic id="Priority">
 			<state id="S" />
 			<state id="AS" />
 			<state id="False" />
 			<parents>focus</parents>
-			<resultingstates>False False False False False S AS</resultingstates>
+			<resultingstates>False False False False False S AS False</resultingstates>
 		</deterministic>
+		<cpt id="AS_Attention">
+			<state id="True" />
+			<state id="False" />
+			<parents>som AS_visible Priority</parents>
+			<probabilities>1 0 1 0 1 0 0 1 1 0 0 1 0 1 0 1 0 1 0 1 1 0 0 1 0 1 0 1 0 1 0 1 1 0 0 1</probabilities>
+		</cpt>
 		<utility id="U">
-			<parents>som AS_visible Priority decision</parents>
-			<utilities>0 100 100 0 0 100 100 0 100 50 100 0 100 0 100 0 100 0 100 0 0 100 100 0 100 0 100 0 100 0 100 0 100 0 100 0</utilities>
+			<parents>AS_Attention decision</parents>
+			<utilities>0 100 100 0</utilities>
 		</utility>
 	</nodes>
 	<extensions>
@@ -60,28 +86,56 @@
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>549 159 620 198</position>
+				<position>514 139 585 178</position>
 			</node>
 			<node id="som">
 				<name>State of Mind</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>504 296 580 334</position>
+				<position>590 202 666 240</position>
 			</node>
 			<node id="focus">
 				<name>Focus</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>185 119 256 154</position>
+				<position>427 45 498 80</position>
 			</node>
 			<node id="Priority">
 				<name>Priority</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>179 280 248 310</position>
+				<position>413 236 482 266</position>
+			</node>
+			<node id="AS_Attention">
+				<name>AS Attention</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>429 306 496 350</position>
+			</node>
+			<node id="SL">
+				<name>SL</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>655 148 704 178</position>
+			</node>
+			<node id="CL">
+				<name>CL</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>718 148 771 180</position>
+			</node>
+			<node id="SA">
+				<name>SA</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>593 146 642 177</position>
 			</node>
 		</genie>
 	</extensions>

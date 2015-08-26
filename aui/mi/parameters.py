@@ -14,9 +14,9 @@ import sys
 
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import QDockWidget, QDesktopWidget
-from PyQt4.QtCore import pyqtSlot
+from PyQt4.QtCore import pyqtSlot, pyqtSignal
 
-from aui.mi import probabilities, utilities, ui_parameters
+from aui.mi import ui_parameters
 
 s = 0
 m = 0
@@ -27,6 +27,11 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
     '''
     Parameters related to the gui's adaptivity simulation.
     '''
+    sa_level = pyqtSignal(str, str, name='sa_level')
+    sl_level = pyqtSignal(str, str, name='sl_level')
+    cl_level = pyqtSignal(str, str, name='cl_level')
+    context_signal = pyqtSignal(str, str, name='context')
+
 
     def __init__(self, parent):
         QtGui.QWidget.__init__(self, parent)
@@ -43,6 +48,8 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
         self.startEpisodeButton.clicked.connect(self.Start)
         self.stopEpisodeButton.clicked.connect(lambda: self.timer.stop())
         self.resetEpisodeButton.clicked.connect(self.Reset)
+
+        # self.focusWidgetButtons.setVisible(False)
 
         # self.tab2 = utilities.Utilities(self)
 
@@ -77,10 +84,13 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
         self.focusButtonGroup.setId(self.focus_S, 5)
         self.focusButtonGroup.setId(self.focus_AS, 6)
 
-        self.joystickButtonGroup.buttonClicked.connect(self.context_slot)
+        # self.joystickButtonGroup.buttonClicked.connect(self.context_slot)
         self.contextButtonGroup.buttonClicked.connect(self.context_slot)
         self.focusButtonGroup.buttonClicked.connect(self.focus_slot)
 
+        QtCore.QObject.connect(self.saSlider, QtCore.SIGNAL("valueChanged(int)"), self.situation_awareness)
+        QtCore.QObject.connect(self.stressSlider, QtCore.SIGNAL("valueChanged(int)"), self.stress_level)
+        QtCore.QObject.connect(self.cognitiveLoadSlider, QtCore.SIGNAL("valueChanged(int)"), self.cognitive_load)
         # print self.contextButtonGroup.buttonClicked()
 
         # self.userInfo.setVisible(False)
@@ -134,13 +144,38 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
         self.direction.setText(text)
 
     def context_slot(self, button):
-        print button.text()
+        self.context_signal.emit('Context', button.text())
 
     def som_slot(self, button):
         print button.text()
 
     def focus_slot(self, button):
         print button.text()
+
+    def situation_awareness(self, value):
+        if value == 1:
+            self.sa_level.emit('SA', 'L1')
+        elif value == 2:
+            self.sa_level.emit('SA','L2')
+        elif value == 3:
+            self.sa_level.emit('SA', 'L3')
+
+    def stress_level(self, value):
+        if value == 1:
+            self.sl_level.emit('SL', 'low')
+        elif value == 2:
+            self.sl_level.emit('SL', 'medium')
+        elif value == 3:
+            self.sl_level.emit('SL', 'high')
+
+    def cognitive_load(self, value):
+        if value == 1:
+            self.cl_level.emit('CL', 'low')
+        elif value == 2:
+            self.cl_level.emit('CL', 'medium')
+        elif value == 3:
+            self.cl_level.emit('CL', 'high')
+
 
 
 def main():

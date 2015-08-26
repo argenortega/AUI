@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/wifi.ui'
 #
-# Created: Tue Aug 18 00:21:34 2015
+# Created: Sat Aug 22 13:51:02 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,7 +27,7 @@ class Ui_WifiStatus(object):
     def setupUi(self, WifiStatus):
         WifiStatus.setObjectName(_fromUtf8("WifiStatus"))
         WifiStatus.resize(109, 100)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Preferred)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(WifiStatus.sizePolicy().hasHeightForWidth())
@@ -38,11 +38,12 @@ class Ui_WifiStatus(object):
         self.horizontalLayout_2.setMargin(0)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.wifiLevel = QtGui.QGroupBox(WifiStatus)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Preferred)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.wifiLevel.sizePolicy().hasHeightForWidth())
         self.wifiLevel.setSizePolicy(sizePolicy)
+        self.wifiLevel.setMinimumSize(QtCore.QSize(0, 30))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.wifiLevel.setFont(font)
@@ -53,7 +54,7 @@ class Ui_WifiStatus(object):
         self.wifiLayout.setMargin(0)
         self.wifiLayout.setObjectName(_fromUtf8("wifiLayout"))
         self.frame = QtGui.QFrame(self.wifiLevel)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())

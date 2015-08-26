@@ -4,7 +4,7 @@ import sys
 from PyQt4 import QtGui
 
 from PyQt4.QtGui import QProgressBar, QPushButton, QGroupBox
-from PyQt4.QtCore import pyqtSlot
+from PyQt4.QtCore import pyqtSlot, QTimer, pyqtSignal
 
 DEFAULT_STYLE = """
 QProgressBar{
@@ -109,7 +109,7 @@ class ColorGroupBox(QGroupBox):
         """
 
     def __init__(self, parent):
-        QPushButton.__init__(self, parent)
+        QGroupBox.__init__(self, parent)
         self.setStyleSheet(self.template_css % (self.green, self.white))
 
     @pyqtSlot(int)
@@ -124,6 +124,25 @@ class ColorGroupBox(QGroupBox):
     def change_color(self, color, text):
         css = self.template_css % (color, text)
         self.setStyleSheet(css)
+
+
+class FocusGroupBox(QGroupBox):
+    inside = pyqtSignal(str, str, name='inside')
+
+    def __init__(self, parent):
+        QGroupBox.__init__(self, parent)
+
+    def enterEvent(self, QEvent):
+        QTimer.singleShot(3000, self.focusing)
+        # print 'Enter'
+
+    def focusing(self):
+        if self.underMouse():
+            print 'Focus ', self.accessibleName()
+            # self.inside.emit('focus', str(self.accessibleName()))
+
+    def leaveEvent(self, QEvent):
+        pass
 
 
 def main():

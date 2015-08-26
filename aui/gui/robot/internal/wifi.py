@@ -54,10 +54,12 @@ class Wifi(QWidget, ui_wifi.Ui_WifiStatus):
             print 'Wifi atomic decision'
             self.wifiLevel.setChecked(False)
             self.frame.setVisible(False)
+            self.send_visible(False)
         elif decision == 'show_wifi':
             print 'Wifi atomic decision'
             self.wifiLevel.setChecked(True)
             self.frame.setVisible(True)
+            self.send_visible(True)
 
 
         

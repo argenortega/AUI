@@ -54,27 +54,34 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
     @pyqtSlot(str)
     def atomic_decision(self, decision):
         if decision == 'hide_AS':
-            print 'Snapshot atomic decision'
+            print 'Atomic decision: %s' % decision
             self.extraScreenGroup.setChecked(False)
             self.scrollArea.setVisible(False)
+            self.send_visible(False)
         elif decision == 'show_AS':
-            print 'Snapshot atomic decision'
+            print 'Atomic decision: %s' % decision
             self.extraScreenGroup.setChecked(True)
             self.scrollArea.setVisible(True)
+            self.send_visible(True)
         elif decision == 'increase':
-            print 'Snapshot atomic decision'
-            sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+            print 'Atomic decision: %s' % decision
+            sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
             sizePolicy.setHeightForWidth(True)
-            sizePolicy.setHorizontalStretch(10)
-            sizePolicy.setVerticalStretch(10)
-            self.currentScreenshot.setSizePolicy(sizePolicy)
+            sizePolicy.setHorizontalStretch(4)
+            sizePolicy.setVerticalStretch(4)
+            self.setSizePolicy(sizePolicy)
+            #self.currentScreenshot.resize(16777215, 16777215)
+            self.updateGeometry()
+            print 'Expanding'
         elif decision == 'decrease':
-            print 'Snapshot atomic decision'
-            sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+            print 'Atomic decision: %s' % decision
+            sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
             sizePolicy.setHeightForWidth(True)
             sizePolicy.setHorizontalStretch(1)
             sizePolicy.setVerticalStretch(1)
-            self.currentScreenshot.setSizePolicy(sizePolicy)
+            self.setSizePolicy(sizePolicy)
+            #self.currentScreenshot.resize(0,0)
+            self.updateGeometry()
     
 def main():
     app = QtGui.QApplication(sys.argv)

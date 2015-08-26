@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<smile version="1.0" id="Network13" numsamples="1000" discsamples="10000">
+<smile version="1.0" id="wifi" numsamples="1000" discsamples="10000">
 	<nodes>
 		<cpt id="wifi_visible">
 			<state id="True" />
@@ -12,33 +12,52 @@
 			<state id="Critical" />
 			<probabilities>0.333 0.333 0.334</probabilities>
 		</cpt>
+		<cpt id="CL">
+			<state id="high" />
+			<state id="medium" />
+			<state id="low" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
+		<cpt id="SL">
+			<state id="high" />
+			<state id="medium" />
+			<state id="low" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
+		<cpt id="SA">
+			<state id="L1" />
+			<state id="L2" />
+			<state id="L3" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
 		<cpt id="SoM">
 			<state id="Overwhelmed" />
 			<state id="Focused" />
 			<state id="Distracted" />
-			<probabilities>0.35 0.6 0.05000000000000004</probabilities>
+			<parents>CL SL SA</parents>
+			<probabilities>1 0 0 0.9 0.07000000000000001 0.03 0.8 0.15 0.05 0.9 0.07000000000000001 0.03 0.8 0.15 0.05 0.7 0.25 0.05 0.8 0.15 0.05 0.7 0.25 0.05 0.6 0.3 0.1 0.15 0.8 0.04999999999999993 0.1 0.85 0.05000000000000004 0.07000000000000001 0.9 0.03 0.04999999999999998 0.9 0.05 0.03 0.95 0.02000000000000002 0.01 0.99 0 0.15 0.8 0.05 0.1 0.8 0.09999999999999998 0 1 0 0 0.2 0.8 0 0.65 0.35 0 0.95 0.05000000000000004 0 0.2 0.8 0 0.65 0.35 0 0.95 0.05000000000000004 0 0 1 0 0.8 0.2 0 0.95 0.05</probabilities>
 		</cpt>
-		<cpt id="User_needs">
+		<cpt id="Wifi">
 			<state id="Show" />
 			<state id="Hide" />
-			<parents>SoM</parents>
-			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+			<parents>SoM wifi_visible wifi_level</parents>
+			<probabilities>0 1 1 0 1 0 0 1 1 0 1 0 1 0 1 0 1 0 0 1 0 1 1 0 0 1 1 0 1 0 0 1 1 0 1 0</probabilities>
 		</cpt>
 		<decision id="decision">
 			<state id="show_wifi" />
 			<state id="hide_wifi" />
 			<parents>wifi_visible wifi_level</parents>
 		</decision>
-		<deterministic id="Critical_State">
-			<state id="True" />
-			<state id="False" />
-			<parents>wifi_visible wifi_level</parents>
-			<resultingstates>False False False False True True</resultingstates>
-		</deterministic>
 		<utility id="U">
-			<parents>SoM Critical_State decision</parents>
-			<utilities>100 0 0 100 100 0 0 100 100 0 100 0</utilities>
+			<parents>decision Wifi</parents>
+			<utilities>100 0 0 100</utilities>
 		</utility>
+		<cpt id="HSM_Wifi">
+			<state id="Show" />
+			<state id="Hide" />
+			<parents>SoM Wifi</parents>
+			<probabilities>0.6 0.4 0.4 0.6 0.9 0.1 0.1 0.9 0.75 0.25 0.25 0.75</probabilities>
+		</cpt>
 	</nodes>
 	<extensions>
 		<genie version="1.0" app="GeNIe 2.0.5590.0" name="wifi" faultnameformat="nodestate">
@@ -61,7 +80,7 @@
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>531 204 605 251</position>
+				<position>93 292 167 339</position>
 			</node>
 			<node id="wifi_visible">
 				<name>Wifi Visible</name>
@@ -77,19 +96,40 @@
 				<font color="000000" name="Arial" size="8" />
 				<position>141 57 198 94</position>
 			</node>
-			<node id="User_needs">
-				<name>User needs</name>
+			<node id="Wifi">
+				<name>Wifi</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>534 426 603 469</position>
+				<position>217 338 286 381</position>
 			</node>
-			<node id="Critical_State">
-				<name>Critical State</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
+			<node id="HSM_Wifi">
+				<name>HSM Wifi</name>
+				<interior color="ffffff" />
+				<outline color="000000" />
 				<font color="000000" name="Arial" size="8" />
-				<position>240 307 309 353</position>
+				<position>141 465 211 491</position>
+			</node>
+			<node id="SL">
+				<name>SL</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>84 223 133 253</position>
+			</node>
+			<node id="CL">
+				<name>CL</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>147 223 200 255</position>
+			</node>
+			<node id="SA">
+				<name>SA</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>22 221 71 252</position>
 			</node>
 		</genie>
 	</extensions>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="cost" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="SL">
+			<state id="Low" />
+			<state id="Normal" />
+			<state id="High" />
+			<probabilities>0.2999999999999999 0.3 0.4</probabilities>
+		</cpt>
+		<utility id="SL_Cost">
+			<parents>SL</parents>
+			<utilities>20 40 60</utilities>
+		</utility>
+		<cpt id="CL">
+			<state id="High" />
+			<state id="Normal" />
+			<state id="Low" />
+			<probabilities>0.4 0.5 0.1</probabilities>
+		</cpt>
+		<utility id="CL_Cost">
+			<parents>CL</parents>
+			<utilities>80 40 10</utilities>
+		</utility>
+		<cpt id="SA">
+			<state id="Lv1" />
+			<state id="Lv2" />
+			<state id="Lv3" />
+			<probabilities>0.3 0.3 0.4</probabilities>
+		</cpt>
+		<utility id="SA_Cost">
+			<parents>SA</parents>
+			<utilities>60 40 20</utilities>
+		</utility>
+		<mau id="Cost">
+			<parents>SL_Cost CL_Cost SA_Cost</parents>
+			<weights>0.15 0.3 0.55</weights>
+		</mau>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="cost" faultnameformat="nodestate">
+			<node id="Cost">
+				<name>Cost</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>340 360 382 392</position>
+			</node>
+			<node id="SL_Cost">
+				<name>SL Cost</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>240 305 304 337</position>
+			</node>
+			<node id="CL_Cost">
+				<name>CL Cost</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>330 305 399 337</position>
+			</node>
+			<node id="SA_Cost">
+				<name>SA Cost</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>428 305 497 337</position>
+			</node>
+			<node id="SA">
+				<name>SA</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>454 235 491 258</position>
+			</node>
+			<node id="CL">
+				<name>CL</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>344 228 380 250</position>
+			</node>
+			<node id="SL">
+				<name>SL</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>257 231 293 253</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

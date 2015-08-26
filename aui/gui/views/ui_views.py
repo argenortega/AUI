@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/views.ui'
 #
-# Created: Tue Aug 18 00:12:24 2015
+# Created: Sat Aug 22 12:44:48 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_viewsWidget(object):
     def setupUi(self, viewsWidget):
         viewsWidget.setObjectName(_fromUtf8("viewsWidget"))
-        viewsWidget.resize(459, 487)
+        viewsWidget.resize(459, 457)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -38,12 +38,6 @@ class Ui_viewsWidget(object):
         self.verticalLayout.setMargin(6)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.currentViews = QtGui.QWidget(viewsWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.currentViews.sizePolicy().hasHeightForWidth())
-        self.currentViews.setSizePolicy(sizePolicy)
-        self.currentViews.setSizeIncrement(QtCore.QSize(4, 4))
         self.currentViews.setObjectName(_fromUtf8("currentViews"))
         self.currentViewsLayout = QtGui.QGridLayout(self.currentViews)
         self.currentViewsLayout.setMargin(0)
@@ -246,17 +240,16 @@ class Ui_viewsWidget(object):
         spacerItem3 = QtGui.QSpacerItem(40, 10, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.buttonViews.addItem(spacerItem3)
         self.verticalLayout.addLayout(self.buttonViews)
-        self.viewsGroup = QtGui.QGroupBox(viewsWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
+        self.viewsGroup = FocusGroupBox(viewsWidget)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.viewsGroup.sizePolicy().hasHeightForWidth())
         self.viewsGroup.setSizePolicy(sizePolicy)
-        self.viewsGroup.setMinimumSize(QtCore.QSize(0, 0))
-        self.viewsGroup.setMaximumSize(QtCore.QSize(16777215, 110))
-        self.viewsGroup.setSizeIncrement(QtCore.QSize(1, 1))
-        self.viewsGroup.setBaseSize(QtCore.QSize(0, 0))
-        self.viewsGroup.setFlat(True)
+        self.viewsGroup.setMinimumSize(QtCore.QSize(0, 30))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.viewsGroup.setFont(font)
         self.viewsGroup.setCheckable(True)
         self.viewsGroup.setObjectName(_fromUtf8("viewsGroup"))
         self.viewsGroupLayout = QtGui.QHBoxLayout(self.viewsGroup)
@@ -269,9 +262,6 @@ class Ui_viewsWidget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.availableViews.sizePolicy().hasHeightForWidth())
         self.availableViews.setSizePolicy(sizePolicy)
-        self.availableViews.setMinimumSize(QtCore.QSize(0, 0))
-        self.availableViews.setMaximumSize(QtCore.QSize(16777215, 110))
-        self.availableViews.setMouseTracking(False)
         self.availableViews.setAcceptDrops(True)
         self.availableViews.setFrameShape(QtGui.QFrame.NoFrame)
         self.availableViews.setObjectName(_fromUtf8("availableViews"))
@@ -294,8 +284,10 @@ class Ui_viewsWidget(object):
         self.four.setText(_translate("viewsWidget", "┼", None))
         self.vert.setText(_translate("viewsWidget", "│", None))
         self.hor.setText(_translate("viewsWidget", "─", None))
+        self.viewsGroup.setAccessibleName(_translate("viewsWidget", "AV", None))
         self.viewsGroup.setTitle(_translate("viewsWidget", "Available Views", None))
 
+from aui.mi.visual import FocusGroupBox
 from aui.utilities.DropView import DCurrentView, Marker, DAvailableView
 
 if __name__ == "__main__":

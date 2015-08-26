@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<smile version="1.0" id="Network2" numsamples="1000" discsamples="10000">
+<smile version="1.0" id="gui" numsamples="1000" discsamples="10000">
 	<nodes>
-		<cpt id="Copy_2_of_som">
+		<cpt id="SA">
+			<state id="L1" />
+			<state id="L2" />
+			<state id="L3" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
+		<cpt id="SL">
+			<state id="high" />
+			<state id="medium" />
+			<state id="low" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
+		<cpt id="CL">
+			<state id="high" />
+			<state id="medium" />
+			<state id="low" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
+		<cpt id="som">
 			<state id="Overwhelmed" />
 			<state id="Focused" />
 			<state id="Distracted" />
-			<probabilities>0.5 0.5 0</probabilities>
+			<parents>CL SL SA</parents>
+			<probabilities>1 0 0 0.9 0.07000000000000001 0.03 0.8 0.15 0.05 0.9 0.07000000000000001 0.03 0.8 0.15 0.05 0.7 0.25 0.05 0.8 0.15 0.05 0.7 0.25 0.05 0.6 0.3 0.1 0.15 0.8 0.04999999999999993 0.1 0.85 0.05000000000000004 0.07000000000000001 0.9 0.03 0.04999999999999998 0.9 0.05 0.03 0.95 0.02000000000000002 0.01 0.99 0 0.15 0.8 0.05 0.1 0.8 0.09999999999999998 0 1 0 0 0.2 0.8 0 0.65 0.35 0 0.95 0.05000000000000004 0 0.2 0.8 0 0.65 0.35 0 0.95 0.05000000000000004 0 0 1 0 0.8 0.2 0 0.95 0.05</probabilities>
 		</cpt>
 		<cpt id="joystick_direction">
 			<state id="Forward" />
@@ -30,10 +49,10 @@
 			<parents>joystick_input</parents>
 			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05 0.05 0.1499999999999999 0.4</probabilities>
 		</cpt>
-		<cpt id="Copy_of_Assist">
+		<cpt id="Assist">
 			<state id="True" />
 			<state id="False" />
-			<parents>Copy_2_of_som</parents>
+			<parents>som</parents>
 			<probabilities>0.9 0.1 0.4 0.6 0.7 0.3</probabilities>
 		</cpt>
 		<cpt id="battery_visible">
@@ -71,96 +90,232 @@
 			<state id="nothing" />
 			<parents>battery_level battery_visible wifi_level wifi_visible joystick_direction</parents>
 		</decision>
+		<deterministic id="Visible">
+			<state id="True" />
+			<state id="False" />
+			<parents>battery_visible wifi_visible</parents>
+			<resultingstates>True True True False</resultingstates>
+		</deterministic>
+		<cpt id="Minimize_RS">
+			<state id="True" />
+			<state id="False" />
+			<parents>som Visible</parents>
+			<probabilities>1 0 0 1 0.2 0.8 0 1 0.8 0.2 0 1</probabilities>
+		</cpt>
+		<cpt id="Robot_State">
+			<state id="True" />
+			<state id="False" />
+			<parents>critical_state Minimize_RS</parents>
+			<probabilities>1 0 1 0 1 0 0 1</probabilities>
+		</cpt>
+		<cpt id="AS_visible">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Minimize_AS">
+			<state id="True" />
+			<state id="False" />
+			<parents>som AS_visible</parents>
+			<probabilities>1 0 0 1 0.2 0.8 0 1 0.8 0.2 0 1</probabilities>
+		</cpt>
+		<cpt id="Snapshots">
+			<state id="True" />
+			<state id="False" />
+			<parents>Minimize_AS Context</parents>
+			<probabilities>1 0 1 0 1 0 1 0 1 0 0.95 0.05000000000000004 0.05 0.95 0.05 0.95 0.05 0.95 0.95 0.05000000000000004</probabilities>
+		</cpt>
+		<cpt id="AV_visible">
+			<state id="True" />
+			<state id="False" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Minimize_AV">
+			<state id="True" />
+			<state id="False" />
+			<parents>som AV_visible</parents>
+			<probabilities>1 0 0 1 0.2 0.8 0 1 0.8 0.2 0 1</probabilities>
+		</cpt>
+		<cpt id="Views">
+			<state id="True" />
+			<state id="False" />
+			<parents>Minimize_AV Context</parents>
+			<probabilities>1 0 1 0 1 0 1 0 1 0 0.05 0.95 0.95 0.05000000000000004 0.95 0.05000000000000004 0.95 0.05000000000000004 0.05 0.95</probabilities>
+		</cpt>
 		<utility id="U">
-			<parents>Context Copy_of_Assist critical_state decision</parents>
-			<utilities>0 0 1000 0 0 1000 0 0 0 0 1000 0 0 0 0 1000 0 0 1000 0 1000 0 0 0 0 0 1000 0 0 0 0 1000 0 0 1000 0 1000 0 0 0 0 0 1000 0 0 0 0 1000 0 0 1000 0 1000 0 0 0 0 0 1000 0 0 0 0 1000 0 0 1000 0 0 1000 0 0 0 0 1000 0 0 0 0 1000</utilities>
+			<parents>Robot_State Views Snapshots decision</parents>
+			<utilities>50 25 100 0 50 0 100 0 0 50 100 0 0 0 100 0 100 50 0 0 100 0 0 0 0 100 0 0 0 0 0 100</utilities>
 		</utility>
 	</nodes>
 	<extensions>
 		<genie version="1.0" app="GeNIe 2.0.5590.0" name="gui" faultnameformat="nodestate">
-			<node id="Copy_2_of_som">
+			<node id="som">
 				<name>State of Mind</name>
-				<interior color="e5f6f7" />
+				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>671 216 747 254</position>
+				<position>768 242 844 280</position>
 			</node>
 			<node id="joystick_input">
 				<name>Joystick Input</name>
-				<interior color="e5f6f7" />
+				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>62 237 140 283</position>
+				<position>248 265 326 311</position>
 			</node>
 			<node id="U">
 				<name>U</name>
-				<interior color="e5f6f7" />
+				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>366 538 393 570</position>
+				<position>464 638 491 670</position>
 			</node>
 			<node id="decision">
 				<name>GUI</name>
-				<interior color="e5f6f7" />
+				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>239 332 283 365</position>
+				<position>376 359 420 392</position>
 			</node>
 			<node id="Context">
 				<name>Context</name>
-				<interior color="e5f6f7" />
+				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>123 332 175 364</position>
+				<position>299 403 351 435</position>
 			</node>
-			<node id="Copy_of_Assist">
+			<node id="Assist">
 				<name>Assist</name>
-				<interior color="e5f6f7" />
+				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>685 444 733 474</position>
+				<position>822 471 870 501</position>
 			</node>
 			<node id="critical_state">
 				<name>Critical State</name>
-				<interior color="e5f6f7" />
+				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>410 317 487 359</position>
+				<position>547 344 624 386</position>
 			</node>
 			<node id="battery_visible">
 				<name>Battery Visible</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>357 63 439 100</position>
+				<position>494 90 576 127</position>
 			</node>
 			<node id="battery_level">
 				<name>Battery Level</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>249 62 331 99</position>
+				<position>386 89 468 126</position>
 			</node>
 			<node id="wifi_visible">
 				<name>Wifi Visible</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>551 63 621 106</position>
+				<position>688 90 758 133</position>
 			</node>
 			<node id="wifi_level">
 				<name>Wifi Level</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>458 63 522 102</position>
+				<position>595 90 659 129</position>
 			</node>
 			<node id="joystick_direction">
 				<name>Joystick Direction</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>81 65 181 102</position>
+				<position>237 92 337 129</position>
+			</node>
+			<node id="Visible">
+				<name>Visible</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>652 334 716 365</position>
+			</node>
+			<node id="Minimize_RS">
+				<name>Minimize RS</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>702 397 770 437</position>
+			</node>
+			<node id="Robot_State">
+				<name>Robot State</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>609 445 671 481</position>
+			</node>
+			<node id="Views">
+				<name>Views</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>224 547 273 577</position>
+			</node>
+			<node id="Snapshots">
+				<name>Snapshots</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>337 481 403 522</position>
+			</node>
+			<node id="AV_visible">
+				<name>AV Visible</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>22 181 93 220</position>
+			</node>
+			<node id="Minimize_AV">
+				<name>Minimize AV</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>20 383 88 427</position>
+			</node>
+			<node id="AS_visible">
+				<name>AS Visible</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>129 252 200 291</position>
+			</node>
+			<node id="Minimize_AS">
+				<name>Minimize AS</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>157 380 224 424</position>
+			</node>
+			<node id="SL">
+				<name>SL</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>940 170 989 200</position>
+			</node>
+			<node id="CL">
+				<name>CL</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>944 242 1003 278</position>
+			</node>
+			<node id="SA">
+				<name>SA</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>851 119 922 157</position>
 			</node>
 		</genie>
 	</extensions>

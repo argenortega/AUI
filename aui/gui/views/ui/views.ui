@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>459</width>
-    <height>487</height>
+    <height>457</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -37,18 +37,6 @@
    </property>
    <item>
     <widget class="QWidget" name="currentViews" native="true">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="sizeIncrement">
-      <size>
-       <width>4</width>
-       <height>4</height>
-      </size>
-     </property>
      <layout class="QGridLayout" name="currentViewsLayout">
       <property name="margin">
        <number>0</number>
@@ -432,9 +420,9 @@ QPushButton:hover{
     </layout>
    </item>
    <item>
-    <widget class="QGroupBox" name="viewsGroup">
+    <widget class="FocusGroupBox" name="viewsGroup">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -442,32 +430,19 @@ QPushButton:hover{
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>0</height>
+       <height>30</height>
       </size>
      </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>110</height>
-      </size>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
      </property>
-     <property name="sizeIncrement">
-      <size>
-       <width>1</width>
-       <height>1</height>
-      </size>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
+     <property name="accessibleName">
+      <string>AV</string>
      </property>
      <property name="title">
       <string>Available Views</string>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -486,21 +461,6 @@ QPushButton:hover{
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>110</height>
-         </size>
-        </property>
-        <property name="mouseTracking">
-         <bool>false</bool>
         </property>
         <property name="acceptDrops">
          <bool>true</bool>
@@ -537,6 +497,12 @@ QPushButton:hover{
    <class>Marker</class>
    <extends>QLabel</extends>
    <header>aui.utilities.DropView</header>
+  </customwidget>
+  <customwidget>
+   <class>FocusGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>aui.mi.visual</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

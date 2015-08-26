@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="pc" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="joystick_direction">
+			<state id="Forward" />
+			<state id="LeftRight" />
+			<state id="Backwards" />
+			<state id="False" />
+			<probabilities>0.25 0.25 0.25 0.25</probabilities>
+		</cpt>
+		<deterministic id="joystick_input">
+			<state id="True" />
+			<state id="False" />
+			<parents>joystick_direction</parents>
+			<resultingstates>True True True False</resultingstates>
+		</deterministic>
+		<cpt id="Context">
+			<state id="Detection" />
+			<state id="Mapping" />
+			<state id="Navigation" />
+			<state id="Exploration" />
+			<state id="Inspection" />
+			<parents>joystick_input</parents>
+			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05 0.05 0.1499999999999999 0.4</probabilities>
+		</cpt>
+		<cpt id="Widget_Relevance">
+			<state id="True" />
+			<state id="False" />
+			<parents>Context</parents>
+			<probabilities>0.05 0.95 1 0 0.05 0.95 0.1 0.9 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="focus">
+			<state id="C1" />
+			<state id="C2" />
+			<state id="LM" />
+			<state id="GM" />
+			<state id="PC" />
+			<state id="S" />
+			<state id="AS" />
+			<state id="AV" />
+			<probabilities>0.125 0.125 0.125 0.125 0.125 0.125 0.125 0.125</probabilities>
+		</cpt>
+		<deterministic id="Focus_on_Widget">
+			<state id="True" />
+			<state id="False" />
+			<parents>focus</parents>
+			<resultingstates>True False False False False False False False</resultingstates>
+		</deterministic>
+		<cpt id="PC">
+			<state id="MV" />
+			<state id="AV" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="som">
+			<state id="Overwhelmed" />
+			<state id="Focused" />
+			<state id="Distracted" />
+			<probabilities>0.32 0.3599999999999999 0.32</probabilities>
+		</cpt>
+		<cpt id="PC_Content">
+			<state id="increase" />
+			<state id="highlight" />
+			<state id="decrease" />
+			<parents>Widget_Relevance Focus_on_Widget PC som</parents>
+			<probabilities>1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 1 0 0 0 1 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1</probabilities>
+		</cpt>
+		<decision id="decision">
+			<state id="highlight" />
+			<state id="resize" />
+			<state id="normal" />
+		</decision>
+		<utility id="U">
+			<parents>PC_Content decision</parents>
+			<utilities>0 100 0 100 0 0 0 0 100</utilities>
+		</utility>
+		<cpt id="HSM_Content">
+			<state id="increase" />
+			<state id="highlight" />
+			<state id="decrease" />
+			<parents>som PC_Content</parents>
+			<probabilities>0.6 0.05 0.35 0.05 0.6 0.35 0.05 0.35 0.6 0.9 0.05 0.05 0.05 0.9 0.05 0.05 0.05 0.9 0.75 0.2 0.05 0.2 0.75 0.05 0.05 0.2 0.75</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="pc" faultnameformat="nodestate">
+			<node id="U">
+				<name>U</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>281 364 308 396</position>
+			</node>
+			<node id="PC">
+				<name>PC</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>148 151 191 180</position>
+			</node>
+			<node id="decision">
+				<name>PC</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>276 476 312 508</position>
+			</node>
+			<node id="focus">
+				<name>Focus</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>297 55 368 90</position>
+			</node>
+			<node id="Focus_on_Widget">
+				<name>Focus on Widget</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>269 159 355 205</position>
+			</node>
+			<node id="PC_Content">
+				<name>PC Content</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>212 288 276 328</position>
+			</node>
+			<node id="som">
+				<name>State of Mind</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>30 151 106 189</position>
+			</node>
+			<node id="joystick_input">
+				<name>Joystick Input</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>643 170 725 214</position>
+			</node>
+			<node id="Context">
+				<name>Context</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>450 291 502 323</position>
+			</node>
+			<node id="joystick_direction">
+				<name>Joystick Direction</name>
+				<interior color="c0c0c0" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" bold="true" />
+				<position>634 56 734 93</position>
+			</node>
+			<node id="Widget_Relevance">
+				<name>Widget Relevance</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>324 285 405 329</position>
+			</node>
+			<node id="HSM_Content">
+				<name>HSM Content</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>163 361 227 403</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

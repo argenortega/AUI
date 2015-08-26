@@ -20,6 +20,7 @@ jpype.java.lang.System.out.println("hello!")
 
 #Trying to create a network
 net = JClass("smile.Network")
+voi = JClass("smile.ValueOfInfo")
 n = net()
 #print net
 #n.addNode(18,'Success')

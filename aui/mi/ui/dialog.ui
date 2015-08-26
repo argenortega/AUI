@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>77</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton{	
+	background-color: rgb(255, 255, 255);
+    border-style: outset;
+    border-width: 1px;
+    border-radius: 6px;
+	border-color: rgb(193, 193, 193);
+	border-style: solid;
+	padding: 6px;
+	
+}
+QPushButton:pressed {	
+    border-style: solid;
+	border-width: 1px;
+    border-radius: 6px;
+	background-color: rgb(48, 131, 251);
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:hover{
+	border-color: rgb(164, 205, 255);
+    border-radius: 6px;
+	border-width: 3px;
+	border-style: solid;
+}</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

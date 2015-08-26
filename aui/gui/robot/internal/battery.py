@@ -55,10 +55,12 @@ class Battery(QWidget, ui_battery.Ui_batteryStatus):
             print 'Battery atomic decision'
             self.batteryLevel.setChecked(False)
             self.frame.setVisible(False)
+            self.send_visible(False)
         elif decision == 'show_battery':
             print 'Battery atomic decision'
             self.batteryLevel.setChecked(True)
             self.frame.setVisible(True)
+            self.send_visible(True)
 
 
 def main():

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/lmap.ui'
 #
-# Created: Tue Aug 18 11:15:12 2015
+# Created: Sat Aug 22 15:47:07 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -28,13 +28,12 @@ class Ui_NewView(object):
         NewView.setObjectName(_fromUtf8("NewView"))
         NewView.resize(70, 70)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
-        sizePolicy.setHorizontalStretch(3)
-        sizePolicy.setVerticalStretch(3)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(NewView.sizePolicy().hasHeightForWidth())
         NewView.setSizePolicy(sizePolicy)
-        NewView.setMinimumSize(QtCore.QSize(50, 50))
+        NewView.setMinimumSize(QtCore.QSize(70, 70))
         NewView.setMaximumSize(QtCore.QSize(70, 70))
-        NewView.setBaseSize(QtCore.QSize(50, 50))
         NewView.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         NewView.setMouseTracking(True)
         NewView.setStyleSheet(_fromUtf8("border-image: url(:/maps/local/local1);"))

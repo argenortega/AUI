@@ -69,13 +69,15 @@ class MainViews(QWidget, ui_views.Ui_viewsWidget):
     def atomic_decision(self, decision):
 
         if decision == 'hide_AV':
-            print 'Views atomic decision'
+            print 'Atomic action: %s'%decision
             self.viewsGroup.setChecked(False)
             self.availableViews.setVisible(False)
+            self.send_visible(False)
         elif decision == 'show_AV':
-            print 'Views atomic decision'
+            print 'Atomic action: %s'%decision
             self.viewsGroup.setChecked(True)
             self.availableViews.setVisible(True)
+            self.send_visible(True)
         elif decision == 'content':
             sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
             sizePolicy.setHeightForWidth(True)
@@ -91,6 +93,8 @@ class MainViews(QWidget, ui_views.Ui_viewsWidget):
             style = 'border-color: rgb(51, 94, 242);border-radius: 6px; border-width: 3px; border-style: solid;'
             #self.currentScreenshot.setSizePolicy(sizePolicy)
             print 'Prioritize content'
+        elif decision == 'widget_content':
+            print 'Atomic action: %s'%decision
 
 def main():
     app = QtGui.QApplication(sys.argv)

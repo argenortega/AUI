@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mixed_initiative.ui'
 #
-# Created: Tue Aug 18 03:02:53 2015
+# Created: Wed Aug 26 18:53:57 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -39,49 +39,52 @@ class Ui_mixedInitiative(object):
         self.mixedInitiativeLayout.setSpacing(18)
         self.mixedInitiativeLayout.setContentsMargins(6, 0, 6, 0)
         self.mixedInitiativeLayout.setObjectName(_fromUtf8("mixedInitiativeLayout"))
-        self.AUIMsgs = QtGui.QFrame(mixedInitiative)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.AUIMsgs.sizePolicy().hasHeightForWidth())
-        self.AUIMsgs.setSizePolicy(sizePolicy)
-        self.AUIMsgs.setMinimumSize(QtCore.QSize(0, 50))
-        self.AUIMsgs.setFrameShape(QtGui.QFrame.NoFrame)
-        self.AUIMsgs.setFrameShadow(QtGui.QFrame.Plain)
-        self.AUIMsgs.setObjectName(_fromUtf8("AUIMsgs"))
-        self.AUIMsgsLayout = QtGui.QHBoxLayout(self.AUIMsgs)
-        self.AUIMsgsLayout.setMargin(0)
-        self.AUIMsgsLayout.setObjectName(_fromUtf8("AUIMsgsLayout"))
-        self.textBrowserAUIMix = QtGui.QTextBrowser(self.AUIMsgs)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(5)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.textBrowserAUIMix.sizePolicy().hasHeightForWidth())
-        self.textBrowserAUIMix.setSizePolicy(sizePolicy)
-        self.textBrowserAUIMix.setMinimumSize(QtCore.QSize(650, 30))
-        self.textBrowserAUIMix.setMaximumSize(QtCore.QSize(16777215, 44))
-        self.textBrowserAUIMix.setSizeIncrement(QtCore.QSize(5, 0))
+        self.hsmWidget = QtGui.QWidget(mixedInitiative)
+        self.hsmWidget.setStyleSheet(_fromUtf8("QPushButton{    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-style: outset;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    border-color: rgb(193, 193, 193);\n"
+"    border-style: solid;\n"
+"    padding: 2px;\n"
+"    \n"
+"}\n"
+"QPushButton:default{    \n"
+"    background-color: rgb(48, 131, 251);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    border-color: rgb(193, 193, 193);\n"
+"    border-style: solid;\n"
+"    padding: 2px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {    \n"
+"    border-style: solid;\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    background-color: rgb(48, 131, 251);\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    border-color: rgb(164, 205, 255);\n"
+"    border-radius: 6px;\n"
+"    border-width: 3px;\n"
+"    border-style: solid;\n"
+"}"))
+        self.hsmWidget.setObjectName(_fromUtf8("hsmWidget"))
+        self.hsmLayout = QtGui.QHBoxLayout(self.hsmWidget)
+        self.hsmLayout.setMargin(0)
+        self.hsmLayout.setObjectName(_fromUtf8("hsmLayout"))
+        self.defaultButton = QtGui.QPushButton(self.hsmWidget)
+        self.defaultButton.setMinimumSize(QtCore.QSize(60, 44))
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.textBrowserAUIMix.setFont(font)
-        self.textBrowserAUIMix.setMouseTracking(True)
-        self.textBrowserAUIMix.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
-        self.textBrowserAUIMix.setFrameShape(QtGui.QFrame.NoFrame)
-        self.textBrowserAUIMix.setFrameShadow(QtGui.QFrame.Plain)
-        self.textBrowserAUIMix.setLineWidth(1)
-        self.textBrowserAUIMix.setMidLineWidth(0)
-        self.textBrowserAUIMix.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.textBrowserAUIMix.setObjectName(_fromUtf8("textBrowserAUIMix"))
-        self.horizontalLayout = QtGui.QHBoxLayout(self.textBrowserAUIMix)
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.AUIMsgsLayout.addWidget(self.textBrowserAUIMix)
-        self.Accept = QtGui.QPushButton(self.AUIMsgs)
-        self.Accept.setMinimumSize(QtCore.QSize(60, 44))
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.Accept.setFont(font)
-        self.Accept.setMouseTracking(True)
-        self.Accept.setStyleSheet(_fromUtf8("QPushButton{    \n"
+        self.defaultButton.setFont(font)
+        self.defaultButton.setMouseTracking(True)
+        self.defaultButton.setStyleSheet(_fromUtf8("QPushButton{    \n"
 "    background-color: rgb(48, 131, 251);\n"
 "    color: rgb(255, 255, 255);\n"
 "    border-width: 1px;\n"
@@ -105,18 +108,20 @@ class Ui_mixedInitiative(object):
 "    border-width: 3px;\n"
 "    border-style: solid;\n"
 "}"))
-        self.Accept.setDefault(True)
-        self.Accept.setFlat(False)
-        self.Accept.setObjectName(_fromUtf8("Accept"))
-        self.AUIMsgsLayout.addWidget(self.Accept)
-        spacerItem = QtGui.QSpacerItem(5, 0, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.AUIMsgsLayout.addItem(spacerItem)
-        self.Reject = QtGui.QPushButton(self.AUIMsgs)
-        self.Reject.setMinimumSize(QtCore.QSize(60, 44))
+        self.defaultButton.setAutoExclusive(True)
+        self.defaultButton.setDefault(True)
+        self.defaultButton.setFlat(False)
+        self.defaultButton.setObjectName(_fromUtf8("defaultButton"))
+        self.buttonGroup = QtGui.QButtonGroup(mixedInitiative)
+        self.buttonGroup.setObjectName(_fromUtf8("buttonGroup"))
+        self.buttonGroup.addButton(self.defaultButton)
+        self.hsmLayout.addWidget(self.defaultButton)
+        self.button2 = QtGui.QPushButton(self.hsmWidget)
+        self.button2.setMinimumSize(QtCore.QSize(60, 44))
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.Reject.setFont(font)
-        self.Reject.setStyleSheet(_fromUtf8("QPushButton{    \n"
+        self.button2.setFont(font)
+        self.button2.setStyleSheet(_fromUtf8("QPushButton{    \n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border-style: outset;\n"
 "    border-width: 1px;\n"
@@ -140,11 +145,67 @@ class Ui_mixedInitiative(object):
 "    border-width: 3px;\n"
 "    border-style: solid;\n"
 "}"))
-        self.Reject.setObjectName(_fromUtf8("Reject"))
-        self.AUIMsgsLayout.addWidget(self.Reject)
+        self.button2.setAutoExclusive(True)
+        self.button2.setObjectName(_fromUtf8("button2"))
+        self.buttonGroup.addButton(self.button2)
+        self.hsmLayout.addWidget(self.button2)
+        self.button4 = QtGui.QPushButton(self.hsmWidget)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.button4.sizePolicy().hasHeightForWidth())
+        self.button4.setSizePolicy(sizePolicy)
+        self.button4.setMinimumSize(QtCore.QSize(44, 44))
+        self.button4.setAutoExclusive(True)
+        self.button4.setObjectName(_fromUtf8("button4"))
+        self.buttonGroup.addButton(self.button4)
+        self.hsmLayout.addWidget(self.button4)
+        self.button3 = QtGui.QPushButton(self.hsmWidget)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.button3.sizePolicy().hasHeightForWidth())
+        self.button3.setSizePolicy(sizePolicy)
+        self.button3.setMinimumSize(QtCore.QSize(44, 44))
+        self.button3.setAutoExclusive(True)
+        self.button3.setObjectName(_fromUtf8("button3"))
+        self.buttonGroup.addButton(self.button3)
+        self.hsmLayout.addWidget(self.button3)
+        self.mixedInitiativeLayout.addWidget(self.hsmWidget)
+        self.AUIMsgs = QtGui.QFrame(mixedInitiative)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.AUIMsgs.sizePolicy().hasHeightForWidth())
+        self.AUIMsgs.setSizePolicy(sizePolicy)
+        self.AUIMsgs.setMinimumSize(QtCore.QSize(0, 50))
+        self.AUIMsgs.setFrameShape(QtGui.QFrame.NoFrame)
+        self.AUIMsgs.setFrameShadow(QtGui.QFrame.Plain)
+        self.AUIMsgs.setObjectName(_fromUtf8("AUIMsgs"))
+        self.AUIMsgsLayout = QtGui.QHBoxLayout(self.AUIMsgs)
+        self.AUIMsgsLayout.setMargin(0)
+        self.AUIMsgsLayout.setObjectName(_fromUtf8("AUIMsgsLayout"))
+        self.messages = QtGui.QTextEdit(self.AUIMsgs)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.messages.sizePolicy().hasHeightForWidth())
+        self.messages.setSizePolicy(sizePolicy)
+        self.messages.setMinimumSize(QtCore.QSize(650, 30))
+        self.messages.setMaximumSize(QtCore.QSize(16777215, 44))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.messages.setFont(font)
+        self.messages.setMouseTracking(True)
+        self.messages.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);"))
+        self.messages.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
+        self.messages.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.messages.setTextInteractionFlags(QtCore.Qt.TextSelectableByKeyboard|QtCore.Qt.TextSelectableByMouse)
+        self.messages.setObjectName(_fromUtf8("messages"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.messages)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.AUIMsgsLayout.addWidget(self.messages)
         self.mixedInitiativeLayout.addWidget(self.AUIMsgs)
-        spacerItem1 = QtGui.QSpacerItem(5, 0, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.mixedInitiativeLayout.addItem(spacerItem1)
         self.AUIStatus = QtGui.QWidget(mixedInitiative)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
@@ -231,14 +292,16 @@ class Ui_mixedInitiative(object):
 
     def retranslateUi(self, mixedInitiative):
         mixedInitiative.setWindowTitle(_translate("mixedInitiative", "Form", None))
-        self.textBrowserAUIMix.setHtml(_translate("mixedInitiative", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.defaultButton.setText(_translate("mixedInitiative", "Accept", None))
+        self.button2.setText(_translate("mixedInitiative", "Reject", None))
+        self.button4.setText(_translate("mixedInitiative", "PushButton", None))
+        self.button3.setText(_translate("mixedInitiative", "PushButton", None))
+        self.messages.setHtml(_translate("mixedInitiative", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'.Helvetica Neue DeskInterface\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">[00:00]: Adaptive capabilities turned on.</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#0a5dff;\">[02:31]: Display recommended views for Navigation?</span></p></body></html>", None))
-        self.Accept.setText(_translate("mixedInitiative", "Accept", None))
-        self.Reject.setText(_translate("mixedInitiative", "Reject", None))
         self.AUIStatusLabel.setText(_translate("mixedInitiative", "AUI Status", None))
         self.AUItoggleButton.setText(_translate("mixedInitiative", "Off", None))
 

@@ -1,10 +1,21 @@
 Äcnetworkx.classes.digraph
 DiGraph
-q)Åq}q(Unodeq}q(Ubatteryq}qUevidenceq]q	(Ubattery_levelq
-Ubattery_visibleqesU	snapshotsq}qh]q(U
-AS_visibleqUfocusqesUmain_snapshotq}qh]qhasUdecreaseq}Ushow_AVq}Ushow_ASq}Upriorityq}U	show_wifiq}Ucontentq}Uviewsq}qh]q(Ujoystick_directionqU
-AV_visibleqUC1qUC2q ULMq!esUrobot_stateq"}q#h]q$(h
-hU
-wifi_levelq%Uwifi_visibleq&esUadditional_snapshotsq'}q(h]q)hasU
-main_viewsq*}q+h]q,(UFocusq-hUPCq.UGMq/h!hh esUnothingq0}Ushow_batteryq1}Uhide_ASq2}Uadditional_viewsq3}q4h]q5(hhh.h/h!hh esUhide_AVq6}U	hide_wifiq7}Uguiq8}q9h]q:(hh
-hh&h%esUwifiq;}q<h]q=(h%h&esUincreaseq>}Uhide_batteryq?}uUgraphq@}UsuccqA}qB(h}qC(h1}qDh?}qEuh}qF(h}qGh'}qHuh}qI(h>}qJh}qKuh}h}h}h}h}h}h}qL(h3}qMh*}qNuh"}qO(h}qPh;}qQuh'}qR(h2}qSh}qTuh*}qU(h}qVh}qWuh0}h1}h2}h3}qX(h}qYh6}qZuh6}h7}h8}q[(h0}q\h"}q]h}q^h}q_uh;}q`(h7}qah}qbuh>}h?}uUedgeqchBUpredqd}qe(h}qfh"hPsh}qgh8h^sh}qhhhGsh}qihhKsh}qjh3hYsh}qkh'hTsh}qlh*hVsh}qmh;hbsh}qnh*hWsh}qoh8h_sh"}qph8h]sh'}qqhhHsh*}qrhhNsh0}qsh8h\sh1}qthhDsh2}quh'hSsh3}qvhhMsh6}qwh3hZsh7}qxh;hash8}h;}qyh"hQsh>}qzhhJsh?}q{hhEsuUadjq|hBub.
+q)Åq}q(Unodeq}q(Uhide_ASq}U	exploringq}Ubatteryq}q	(Uevidenceq
+]q(Ubattery_levelqUbattery_visibleqUSAqUSLqUCLqeUHSMq]qUHSM_BatteryqauU	snapshotsq}qh
+]q(U
+AS_visibleqUfocusqhhhesUminimumq}Uwidget_contentq}q(h
+]q(Ujoystick_directionqhhhUContextqeh]qUHSM_View_Contentq auUadd_PCq!}Ushow_AVq"}U	remove_C2q#}Ushow_ASq$}Uadd_GMq%}Unavigation_C2q&}U	show_wifiq'}Uincreaseq(}Unavigation_C1C2q)}U
+mapping_C2q*}Uadd_C2q+}Uadd_C1q,}U
+minimum_C2q-}Uviewsq.}q/h
+]q0(hU
+AV_visibleq1UC1q2UC2q3ULMq4UPCq5UGMq6hhhhesUrobot_stateq7}q8h
+]q9(hhU
+wifi_levelq:Uwifi_visibleq;hhhesUmappingq<}U
+main_viewsq=}q>(h
+]q?(hh5h6h4h2h3hhhheh]q@(UHSM_C1_ViewqAUHSM_C2_ViewqBUHSM_LM_ViewqCUHSM_GM_ViewqDUHSM_PC_ViewqEeuUadditional_snapshotsqF}qG(h
+]qH(hhhhheh]qIUHSM_ASqJauU	remove_GMqK}Ushow_batteryqL}UnothingqM}Uhide_AVqN}Umain_snapshotqO}qP(h
+]qQ(hhhheh]qRUHSM_SnapshotqSauUadditional_viewsqT}qU(h
+]qV(h1hhh5h6h4h2h3hhhheh]qWUHSM_AVqXauU	remove_PCqY}Uexploring_C2qZ}Uguiq[}q\h
+]q](hhhh;h:h1hhhhhesUwifiq^}q_(h
+]q`(h:h;hhheh]qaUHSM_WifiqbauUadd_LMqc}U	hide_wifiqd}Udecreaseqe}U
+navigationqf}Uhide_batteryqg}uUgraphqh}Usuccqi}qj(h}h}h}qk(hL}qlhg}qmuh}qn(hO}qohF}qpuh}h}qq(h}qrh&}qsh-}qthZ}quUmappingqv}qwh)}qxh}qyh*}qzhf}q{uh!}h"}h#}h$}h%}h&}h'}h(}h)}h*}h+}h,}h-}h.}q|(h}q}hT}q~h=}quh7}qÄ(h}qÅh^}qÇuh<}h=}qÉ(h+}qÑh,}qÖhY}qÜh%}qáhK}qàhc}qâh!}qäh#}qãuhF}qå(h}qçh$}qéuhK}hL}hM}hN}hO}qè(h(}qêhe}qëuhT}qí(h"}qìhN}qîuhY}hZ}h[}qï(hM}qñh7}qóh}qòh.}qôuh^}qö(hd}qõh'}qúuhc}hd}he}hf}hg}uUedgeqùhjUpredqû}qü(h}q†hFhçsh}q°hhrsh}q¢h7hÅsh}q£h[hòsh}q§hhysh}q•h.h}sh!}q¶h=häsh"}qßhThìsh#}q®h=hãsh$}q©hFhésh%}q™h=hásh&}q´hhssh'}q¨h^húsh(}q≠hOhêsh)}qÆhhxsh*}qØhhzsh+}q∞h=hÑsh,}q±h=hÖsh-}q≤hhtsh.}q≥h[hôsh7}q¥h[hósh<}qµhhwsh=}q∂h.hshF}q∑hhpshK}q∏h=hàshL}qπhhlshM}q∫h[hñshN}qªhThîshO}qºhhoshT}qΩh.h~shY}qæh=hÜshZ}qøhhush[}h^}q¿h7hÇshc}q¡h=hâshd}q¬h^hõshe}q√hOhëshf}qƒhh{shg}q≈hhmsuUadjq∆hjub.

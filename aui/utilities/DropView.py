@@ -34,6 +34,7 @@ class DView(QFrame):
             self.wid.setMaximumSize(maxSize)
             self.wid.setMinimumSize(minSize)
             self.wid.resize(16777215, 16777215)
+            self.wid.updateGeometry()
         elif self.parent().objectName() == 'viewsGroup':
             print 'Available views'
             minSize = QtCore.QSize(50, 50)
@@ -41,6 +42,7 @@ class DView(QFrame):
             self.wid.setMaximumSize(maxSize)
             self.wid.setMinimumSize(minSize)
             self.wid.resize(70, 70)
+            self.wid.updateGeometry()
 
         self.wid.show()
 
@@ -87,6 +89,7 @@ class DCurrentView(QFrame):
         self.wid.setMaximumSize(maxSize)
         self.wid.setMinimumSize(minSize)
         self.wid.resize(16777215, 16777215)
+        self.wid.updateGeometry()
 
         self.wid.show()
 
@@ -147,12 +150,12 @@ class DAvailableView(QFrame):
         # print event.source()
 
         # if self.parent().objectName() == 'viewsGroup':
-        minSize = QtCore.QSize(50, 50)
+        minSize = QtCore.QSize(70, 70)
         maxSize = QtCore.QSize(70, 70)
         self.wid.setMaximumSize(maxSize)
         self.wid.setMinimumSize(minSize)
         self.wid.resize(70, 70)
-
+        self.wid.updateGeometry()
         self.wid.show()
         #print 'Drop Available View', self.wid.objectName()
         self.av_wid.emit(str(self.wid.objectName()), 'AV')

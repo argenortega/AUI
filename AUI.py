@@ -23,6 +23,7 @@ from aui.mi import parameters
 
 import ui_aui
 
+
 # from PyQt4.uic import loadUi
 
 class AUI(QMainWindow, ui_aui.Ui_MainWin):
@@ -125,12 +126,12 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         '''
         Connect internal widgets
         '''
-        self.mixedInitiative.AUItoggleButton.clicked[bool].connect(self.AUIupdate)
-        self.statusBar.adaptiveStatus.clicked[bool].connect(self.AUIupdate)
-        self.AUIupdate()
+        # self.mixedInitiative.AUItoggleButton.clicked[bool].connect(self.AUIupdate)
+        # self.statusBar.adaptiveStatus.clicked[bool].connect(self.AUIupdate)
+        # self.AUIupdate()
         # QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.value.setNum)
         # QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"),
-                               #self.battery.value.setNum)
+        # self.battery.value.setNum)
         QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"),
                                self.battery.battery.setValue)
         QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.wifi.setValue)
@@ -150,11 +151,14 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         self.extra.map.inside.connect(self.parameters.insideWidget)
         self.Screenshots.currentScreenshot.inside.connect(self.parameters.insideWidget)
         self.joystick.joystick_direction.connect(self.parameters.jdirection)
-        QtCore.QObject.connect(self.parameters.joystickButtonGroup, QtCore.SIGNAL('buttonClicked(int)'),self.joystick.stackedWidget.setCurrentIndex )
+        QtCore.QObject.connect(self.parameters.joystickButtonGroup, QtCore.SIGNAL('buttonClicked(int)'),
+                               self.joystick.stackedWidget.setCurrentIndex)
         # self.parameters.joystickButtonGroup.connect(self.joystick.stackedWidget.setCurrentIndex, QtCore.SIGNAL('buttonPressed(int)'))
         self.mixedInitiative.AUItoggleButton.clicked.connect(self.statusBar.adaptiveStatus.setChecked)
         self.statusBar.adaptiveStatus.clicked.connect(self.mixedInitiative.AUItoggleButton.setChecked)
         self.statusBar.adaptiveStatus.clicked.connect(self.mixedInitiative.adaptive)
+        QtCore.QObject.connect(self.parameters.costSlider, QtCore.SIGNAL("valueChanged(int)"),
+                               self.mixedInitiative.voi_cost)
 
         QtCore.QMetaObject.connectSlotsByName(self)
 
@@ -180,15 +184,22 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         self.views.tright.content.connect(self.mixedInitiative.update_evidence)
         self.views.availableViews.av_wid.connect(self.mixedInitiative.update_evidence)
 
+        self.parameters.cl_level.connect(self.mixedInitiative.update_evidence)
+        self.parameters.sa_level.connect(self.mixedInitiative.update_evidence)
+        self.parameters.sl_level.connect(self.mixedInitiative.update_evidence)
+        self.parameters.context_signal.connect(self.mixedInitiative.update_evidence)
+
         # Evidence initialization (manual)
         # TODO find a way to initialize evidence automatically
-        self.evidence.update({'C1':'MV', 'C2':'AV', 'PC':'AV','LM':'AV','GM':'AV'})
-        self.evidence.update({'battery_level': 'Ok', 'battery_visible':str(self.battery.batteryLevel.isChecked())})
-        self.evidence.update({'wifi_level': 'Ok', 'wifi_visible':str(self.wifi.wifiLevel.isChecked())})
-        self.evidence.update({'AV_visible':str(self.views.viewsGroup.isChecked())})
-        self.evidence.update({'AS_visible':str(self.Screenshots.extraScreenGroup.isChecked())})
-        self.evidence.update({'joystick_direction':'False'})
-        self.evidence.update({'focus':'C1'})
+        self.evidence.update({'C1': 'MV', 'C2': 'AV', 'PC': 'AV', 'LM': 'AV', 'GM': 'AV'})
+        self.evidence.update({'battery_level': 'Ok', 'battery_visible': str(self.battery.batteryLevel.isChecked())})
+        self.evidence.update({'wifi_level': 'Ok', 'wifi_visible': str(self.wifi.wifiLevel.isChecked())})
+        self.evidence.update({'AV_visible': str(self.views.viewsGroup.isChecked())})
+        self.evidence.update({'AS_visible': str(self.Screenshots.extraScreenGroup.isChecked())})
+        self.evidence.update({'joystick_direction': 'False'})
+        self.evidence.update({'focus': 'C1'})
+        self.evidence.update({'SA': 'L2', 'SL': 'low', 'CL': 'low'})
+        self.evidence.update({'Context': 'Navigation'})
 
         self.mixedInitiative.initial_evidence(self.evidence)
 
@@ -197,17 +208,6 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         self.mixedInitiative.decision.connect(self.wifi.atomic_decision)
         self.mixedInitiative.decision.connect(self.Screenshots.atomic_decision)
         self.mixedInitiative.decision.connect(self.views.atomic_decision)
-
-        '''
-        State machine.
-        '''
-        machine = QtCore.QStateMachine()
-        state1 = QtCore.QState(machine)
-        state2 = QtCore.QState(machine)
-        state3 = QtCore.QState(machine)
-        machine.setInitialState(state1)
-        # State1
-        # state1 =
 
         self.showMaximized()
 

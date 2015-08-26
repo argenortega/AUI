@@ -12,8 +12,8 @@
   </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-    <horstretch>3</horstretch>
-    <verstretch>3</verstretch>
+    <horstretch>1</horstretch>
+    <verstretch>1</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
@@ -26,12 +26,6 @@
    <size>
     <width>16777215</width>
     <height>16777215</height>
-   </size>
-  </property>
-  <property name="sizeIncrement">
-   <size>
-    <width>0</width>
-    <height>0</height>
    </size>
   </property>
   <property name="cursor">

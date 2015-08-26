@@ -21,26 +21,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>50</width>
-    <height>50</height>
+    <width>70</width>
+    <height>70</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>70</width>
     <height>70</height>
-   </size>
-  </property>
-  <property name="sizeIncrement">
-   <size>
-    <width>1</width>
-    <height>1</height>
-   </size>
-  </property>
-  <property name="baseSize">
-   <size>
-    <width>50</width>
-    <height>50</height>
    </size>
   </property>
   <property name="cursor">
@@ -64,6 +52,12 @@
    </property>
    <item>
     <widget class="ActLabel" name="map">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="font">
       <font>
        <pointsize>11</pointsize>

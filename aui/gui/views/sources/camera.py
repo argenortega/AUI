@@ -46,11 +46,11 @@ class Camera(QWidget, ui_camera.Ui_Camera):
         sizePolicy.setHeightForWidth(True)
         self.setSizePolicy(sizePolicy)
 
-    def sizeHint(self):
-        return QSize(300,300)
+    # def sizeHint(self):
+    #    return QSize(300,300)
 
-    def heightForWidth(self, width):
-        return width * 1
+    # def heightForWidth(self, width):
+    #    return width * 1
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
@@ -81,8 +81,15 @@ def main():
     #app.setOrganizationDomain("UGV OCU")
     app.setApplicationName("UGV OCU")
     cam = Camera(None, 1)
-    
     cam.show()
+    sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+    sizePolicy.setHeightForWidth(True)
+    sizePolicy.setHorizontalStretch(10)
+    sizePolicy.setVerticalStretch(10)
+    cam.cam.setSizePolicy(sizePolicy)
+    cam.cam.resize(700, 700)
+    cam.cam.updateGeometry()
+
  
     sys.exit(app.exec_())
  

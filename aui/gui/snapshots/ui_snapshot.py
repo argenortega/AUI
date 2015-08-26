@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/snapshot.ui'
 #
-# Created: Tue Aug 18 00:21:34 2015
+# Created: Sat Aug 22 15:47:07 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -32,29 +32,23 @@ class Ui_ScreenshotWidget(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(ScreenshotWidget.sizePolicy().hasHeightForWidth())
         ScreenshotWidget.setSizePolicy(sizePolicy)
-        ScreenshotWidget.setMinimumSize(QtCore.QSize(0, 0))
-        ScreenshotWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
         ScreenshotWidget.setMouseTracking(True)
         self.layout = QtGui.QVBoxLayout(ScreenshotWidget)
         self.layout.setMargin(1)
         self.layout.setObjectName(_fromUtf8("layout"))
         self.currentScreenshot = ActLabel(ScreenshotWidget)
         self.currentScreenshot.setEnabled(True)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(1)
-        sizePolicy.setVerticalStretch(1)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
+        sizePolicy.setHorizontalStretch(10)
+        sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.currentScreenshot.sizePolicy().hasHeightForWidth())
         self.currentScreenshot.setSizePolicy(sizePolicy)
         self.currentScreenshot.setMinimumSize(QtCore.QSize(250, 250))
-        self.currentScreenshot.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.currentScreenshot.setSizeIncrement(QtCore.QSize(0, 0))
-        self.currentScreenshot.setBaseSize(QtCore.QSize(300, 300))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.currentScreenshot.setFont(font)
         self.currentScreenshot.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.currentScreenshot.setMouseTracking(True)
-        self.currentScreenshot.setAcceptDrops(True)
         self.currentScreenshot.setStyleSheet(_fromUtf8("QLabel{\n"
 "border-color: rgb(154, 154, 154); \n"
 "border-style: solid; \n"
@@ -107,16 +101,17 @@ class Ui_ScreenshotWidget(object):
         self.newS.setObjectName(_fromUtf8("newS"))
         self.buttonLayout.addWidget(self.newS)
         self.layout.addLayout(self.buttonLayout)
-        self.extraScreenGroup = QtGui.QGroupBox(ScreenshotWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Minimum)
+        self.extraScreenGroup = FocusGroupBox(ScreenshotWidget)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.extraScreenGroup.sizePolicy().hasHeightForWidth())
         self.extraScreenGroup.setSizePolicy(sizePolicy)
-        self.extraScreenGroup.setMinimumSize(QtCore.QSize(0, 0))
-        self.extraScreenGroup.setBaseSize(QtCore.QSize(0, 0))
+        self.extraScreenGroup.setMinimumSize(QtCore.QSize(0, 30))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.extraScreenGroup.setFont(font)
         self.extraScreenGroup.setMouseTracking(True)
-        self.extraScreenGroup.setFlat(True)
         self.extraScreenGroup.setCheckable(True)
         self.extraScreenGroup.setObjectName(_fromUtf8("extraScreenGroup"))
         self.horizontalLayout = QtGui.QHBoxLayout(self.extraScreenGroup)
@@ -142,7 +137,7 @@ class Ui_ScreenshotWidget(object):
         self.scrollArea.setAlignment(QtCore.Qt.AlignCenter)
         self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
         self.extraScreenshots = QtGui.QWidget()
-        self.extraScreenshots.setGeometry(QtCore.QRect(0, 0, 244, 110))
+        self.extraScreenshots.setGeometry(QtCore.QRect(0, 0, 238, 110))
         self.extraScreenshots.setMinimumSize(QtCore.QSize(0, 110))
         self.extraScreenshots.setMouseTracking(True)
         self.extraScreenshots.setObjectName(_fromUtf8("extraScreenshots"))
@@ -162,8 +157,10 @@ class Ui_ScreenshotWidget(object):
         self.currentScreenshot.setAccessibleName(_translate("ScreenshotWidget", "S", None))
         self.currentScreenshot.setText(_translate("ScreenshotWidget", "Select a snapshot", None))
         self.newS.setText(_translate("ScreenshotWidget", "New", None))
+        self.extraScreenGroup.setAccessibleName(_translate("ScreenshotWidget", "AS", None))
         self.extraScreenGroup.setTitle(_translate("ScreenshotWidget", "Screenshots", None))
 
+from aui.mi.visual import FocusGroupBox
 from aui.utilities.ActiveLabel import ActLabel
 
 if __name__ == "__main__":

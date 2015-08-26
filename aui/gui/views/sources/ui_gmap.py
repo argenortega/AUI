@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/gmap.ui'
 #
-# Created: Tue Aug 18 11:15:11 2015
+# Created: Sat Aug 22 15:47:07 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,10 +33,8 @@ class Ui_MapWidget(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(MapWidget.sizePolicy().hasHeightForWidth())
         MapWidget.setSizePolicy(sizePolicy)
-        MapWidget.setMinimumSize(QtCore.QSize(50, 50))
+        MapWidget.setMinimumSize(QtCore.QSize(70, 70))
         MapWidget.setMaximumSize(QtCore.QSize(70, 70))
-        MapWidget.setSizeIncrement(QtCore.QSize(1, 1))
-        MapWidget.setBaseSize(QtCore.QSize(50, 50))
         MapWidget.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         MapWidget.setMouseTracking(True)
         MapWidget.setStyleSheet(_fromUtf8("border-image: url(:/maps/global/global2);"))
@@ -44,6 +42,11 @@ class Ui_MapWidget(object):
         self.layout.setMargin(0)
         self.layout.setObjectName(_fromUtf8("layout"))
         self.map = ActLabel(MapWidget)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.map.sizePolicy().hasHeightForWidth())
+        self.map.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(11)
         self.map.setFont(font)

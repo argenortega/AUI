@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<smile version="1.0" id="Network11" numsamples="1000" discsamples="10000">
+<smile version="1.0" id="robot_state" numsamples="1000" discsamples="10000">
 	<nodes>
 		<cpt id="wifi_visible">
 			<state id="True" />
@@ -18,11 +18,30 @@
 			<parents>wifi_visible wifi_level</parents>
 			<resultingstates>False False False False True True</resultingstates>
 		</deterministic>
+		<cpt id="CL">
+			<state id="high" />
+			<state id="medium" />
+			<state id="low" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
+		<cpt id="SL">
+			<state id="high" />
+			<state id="medium" />
+			<state id="low" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
+		<cpt id="SA">
+			<state id="L1" />
+			<state id="L2" />
+			<state id="L3" />
+			<probabilities>0.333 0.333 0.334</probabilities>
+		</cpt>
 		<cpt id="State_of_Mind">
 			<state id="Overwhelmed" />
 			<state id="Focused" />
 			<state id="Distracted" />
-			<probabilities>0.5 0.5 0</probabilities>
+			<parents>CL SL SA</parents>
+			<probabilities>1 0 0 0.9 0.07000000000000001 0.03 0.8 0.15 0.05 0.9 0.07000000000000001 0.03 0.8 0.15 0.05 0.7 0.25 0.05 0.8 0.15 0.05 0.7 0.25 0.05 0.6 0.3 0.1 0.15 0.8 0.04999999999999993 0.1 0.85 0.05000000000000004 0.07000000000000001 0.9 0.03 0.04999999999999998 0.9 0.05 0.03 0.95 0.02000000000000002 0.01 0.99 0 0.15 0.8 0.05 0.1 0.8 0.09999999999999998 0 1 0 0 0.2 0.8 0 0.65 0.35 0 0.95 0.05000000000000004 0 0.2 0.8 0 0.65 0.35 0 0.95 0.05000000000000004 0 0 1 0 0.8 0.2 0 0.95 0.05</probabilities>
 		</cpt>
 		<cpt id="battery_level">
 			<state id="Ok" />
@@ -46,9 +65,33 @@
 			<parents>battery_visible battery_level</parents>
 			<resultingstates>False False False False True True</resultingstates>
 		</deterministic>
+		<cpt id="Minimize_Battery">
+			<state id="True" />
+			<state id="False" />
+			<parents>State_of_Mind battery_visible</parents>
+			<probabilities>1 0 0 1 0.2 0.8 0 1 0.8 0.2 0 1</probabilities>
+		</cpt>
+		<cpt id="Battery">
+			<state id="True" />
+			<state id="False" />
+			<parents>critical_state_battery Minimize_Battery</parents>
+			<probabilities>1 0 1 0 1 0 0 1</probabilities>
+		</cpt>
+		<cpt id="Minimize_Wifi">
+			<state id="True" />
+			<state id="False" />
+			<parents>State_of_Mind wifi_visible</parents>
+			<probabilities>1 0 0 1 0.2 0.8 0 1 0.8 0.2 0 1</probabilities>
+		</cpt>
+		<cpt id="Wifi">
+			<state id="True" />
+			<state id="False" />
+			<parents>critical_state_wifi Minimize_Wifi</parents>
+			<probabilities>1 0 1 0 1 0 0 1</probabilities>
+		</cpt>
 		<utility id="U">
-			<parents>State_of_Mind critical_state_battery critical_state_wifi decision</parents>
-			<utilities>100 100 0 100 100 0 0 0 100 100 0 100 100 0 0 0 100 100 0 100 100 0 0 0</utilities>
+			<parents>Battery Wifi decision</parents>
+			<utilities>75 100 0 100 100 0 100 100</utilities>
 		</utility>
 	</nodes>
 	<extensions>
@@ -58,28 +101,29 @@
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>438 272 498 311</position>
+				<position>374 308 434 347</position>
 			</node>
 			<node id="U">
 				<name>U</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>457 435 484 467</position>
+				<position>431 569 458 601</position>
+				<defcomment row="0" col="8">This can never happen, right?</defcomment>
 			</node>
 			<node id="State_of_Mind">
 				<name>State of Mind</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>623 223 685 267</position>
+				<position>584 109 646 153</position>
 			</node>
 			<node id="critical_state_battery">
 				<name>Critical State Battery</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>161 282 255 333</position>
+				<position>195 350 289 401</position>
 			</node>
 			<node id="battery_visible">
 				<name>Battery Visible</name>
@@ -100,7 +144,7 @@
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>293 273 370 324</position>
+				<position>480 339 557 390</position>
 			</node>
 			<node id="wifi_visible">
 				<name>Wifi Visible</name>
@@ -115,6 +159,55 @@
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
 				<position>339 46 403 85</position>
+			</node>
+			<node id="Minimize_Wifi">
+				<name>Minimize Wifi</name>
+				<interior color="ffffff" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>616 353 684 393</position>
+			</node>
+			<node id="Minimize_Battery">
+				<name>Minimize Battery</name>
+				<interior color="ffffff" />
+				<outline color="000000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>88 310 162 353</position>
+			</node>
+			<node id="Battery">
+				<name>Battery</name>
+				<interior color="ffffff" />
+				<outline color="000000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>140 439 197 474</position>
+			</node>
+			<node id="Wifi">
+				<name>Wifi</name>
+				<interior color="ffffff" />
+				<outline color="000000" />
+				<font color="000000" name="Arial" size="8" />
+				<position>565 431 605 456</position>
+			</node>
+			<node id="SL">
+				<name>SL</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>604 57 653 87</position>
+			</node>
+			<node id="CL">
+				<name>CL</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>667 57 720 89</position>
+			</node>
+			<node id="SA">
+				<name>SA</name>
+				<interior color="ffffff" />
+				<outline color="ff0000" width="2" />
+				<font color="000000" name="Arial" size="8" />
+				<position>542 55 591 86</position>
 			</node>
 		</genie>
 	</extensions>
