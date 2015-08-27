@@ -67,8 +67,8 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
             print 'Atomic decision: %s' % decision
             sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
             sizePolicy.setHeightForWidth(True)
-            sizePolicy.setHorizontalStretch(4)
-            sizePolicy.setVerticalStretch(4)
+            sizePolicy.setHorizontalStretch(2)
+            sizePolicy.setVerticalStretch(2)
             self.setSizePolicy(sizePolicy)
             #self.currentScreenshot.resize(16777215, 16777215)
             self.updateGeometry()

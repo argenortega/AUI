@@ -60,41 +60,33 @@ class DCurrentView(QFrame):
         self.setAcceptDrops(True)  # Aceptar objetos
         self.setStyleSheet("background-color: #E6E6E6;")
 
+    def add_widget(self, widget):
+        widget.setParent(self)
+        self.layout().addWidget(widget)
+
+        children = self.findChildren(Marker)
+        for child in children:
+            child.setVisible(False)
+
+        minSize = QtCore.QSize(100, 100)
+        maxSize = QtCore.QSize(16777215, 16777215)
+        widget.setMaximumSize(maxSize)
+        widget.setMinimumSize(minSize)
+        widget.resize(16777215, 16777215)
+        widget.updateGeometry()
+        widget.show()
+
+        self.content.emit(str(widget.objectName()), 'MV')
+
     def dragEnterEvent(self, event):
         if event.mimeData().hasText():
             event.acceptProposedAction()
 
     def dropEvent(self, event):
-        pos = event.pos()
-        self.wid = event.source()
-        avViews = self.wid.parent()
-        self.wid.setParent(self)
-        self.layout().addWidget(self.wid)
+        widget = event.source()
         event.acceptProposedAction()
 
-        # children = self.findChildren(camera.Camera)
-        # if children != 0:
-        #    print 'DCurrentView!'
-        #    for child in children:
-        #        avViews.layout().addWidget(child)
-
-        children = self.findChildren(Marker)
-        for child in children:
-            #if child.objectName() in self.viewnames:
-            child.setVisible(False)
-
-        # if self.parent().objectName() == 'currentViews':
-        minSize = QtCore.QSize(100, 100)
-        maxSize = QtCore.QSize(16777215, 16777215)
-        self.wid.setMaximumSize(maxSize)
-        self.wid.setMinimumSize(minSize)
-        self.wid.resize(16777215, 16777215)
-        self.wid.updateGeometry()
-
-        self.wid.show()
-
-        #print 'Drop Current View', self.wid.objectName()
-        self.content.emit(str(self.wid.objectName()), 'MV')
+        self.add_widget(widget)
 
     def dragLeaveEvent(self, event):
         marker = self.findChildren(Marker)
@@ -102,15 +94,6 @@ class DCurrentView(QFrame):
         if len(children) == 3:
             for mark in marker:
                 mark.setVisible(True)
-        #for child in children:
-        #    #if child.objectName() in self.viewnames:
-        #    child.setVisible(True)
-
-
-        # for child in children:
-        #    if child.objectName() in self.viewnames:
-        #        child.setVisible(True)
-        #        event.source.setVisible(False)
 
 
 class Marker(QLabel):
@@ -127,45 +110,34 @@ class DAvailableView(QFrame):
         self.setAcceptDrops(True)  # Aceptar objetos
         self.setStyleSheet("background-color: #E6E6E6;")
 
+    def add_widget(self, widget):
+        widget.setParent(self)
+        self.layout().addWidget(widget)
+
+        children = self.findChildren(Marker)
+        for child in children:
+            child.setVisible(False)
+
+        minSize = QtCore.QSize(70, 70)
+        maxSize = QtCore.QSize(70, 70)
+        widget.setMaximumSize(maxSize)
+        widget.setMinimumSize(minSize)
+        widget.resize(70, 70)
+        widget.updateGeometry()
+        widget.show()
+
+        self.av_wid.emit(str(widget.objectName()), 'AV')
+
+
     def dragEnterEvent(self, event):
         if event.mimeData().hasText():
             event.acceptProposedAction()
 
     def dropEvent(self, event):
-        pos = event.pos()
-        self.wid = event.source()
-        prevView = self.wid.parent()
-        # self.layout().addWidget(self.wid)
-        # event.acceptProposedAction()
-
-
-        # children = prevView.findChildren(QtGui.QLabel)
-        # for child in children:
-        #    if child.objectName() in self.viewnames:
-        #        child.setVisible(True)
-
-        self.wid.setParent(self)
-        self.layout().addWidget(self.wid)
+        widget = event.source()
         event.acceptProposedAction()
-        # print event.source()
 
-        # if self.parent().objectName() == 'viewsGroup':
-        minSize = QtCore.QSize(70, 70)
-        maxSize = QtCore.QSize(70, 70)
-        self.wid.setMaximumSize(maxSize)
-        self.wid.setMinimumSize(minSize)
-        self.wid.resize(70, 70)
-        self.wid.updateGeometry()
-        self.wid.show()
-        #print 'Drop Available View', self.wid.objectName()
-        self.av_wid.emit(str(self.wid.objectName()), 'AV')
+        self.add_widget(widget)
 
     def dragLeaveEvent(self, event):
         pass
-        #children = self.findChildren(Marker)
-        #children = self.children()
-        #print 'Leaving AV views', children
-        # for child in children:
-        #    if child.objectName() in self.viewnames:
-        #        child.setVisible(True)
-        #        event.source.setVisible(False)

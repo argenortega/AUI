@@ -41,6 +41,8 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         self.answerTimer = QTimer()
         self.answerTimer.setSingleShot(True)
 
+        self.small_pause = QTimer()
+
         self.decisionFormat = QTextCharFormat()
         self.decisionFormat.setForeground(QtGui.QColor(76, 175, 80))
         self.decisionFormat.setFontWeight(QtGui.QFont.Normal)
@@ -133,6 +135,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
             self.messages.setCurrentCharFormat(self.infoFormat)
             self.messages.append('[%s] Adaptive Capabilities Turned On'%self.timestamp())
             self.node = self.hid_decision(self.node)
+            self.decision.emit(self.node)
         else:
             self.node = 'gui'
             self.AUIMsgs.setVisible(False)
@@ -151,9 +154,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
             for k, v in observed_evidence.iteritems():
                 n.setEvidence(k, v)
 
-
             n.updateBeliefs()
-
 
             if hsm_nodes is not None:
                 question = []
@@ -177,7 +178,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
                         n.updateBeliefs()
                         options = dict(zip(n.getOutcomeIds(ask), n.getNodeValue(ask)))
                         self.hsm_dialogue(node, ask, options)
-                        self.answerTimer.start(30000)
+                        self.answerTimer.start(15000)
                         self.answer()
 
                         for k, v in self.hsm_evidence.iteritems():
@@ -202,7 +203,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
                 # self.decision.emit(result)
                 return self.hid_decision(result)
             else:
-                self.decision.emit(result)
+                # self.decision.emit(result)
                 self.messages.setCurrentCharFormat(self.decisionFormat)
                 self.messages.append('[%s] Decision: %s'%(self.timestamp(),result))
                 return result
@@ -223,7 +224,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         print 'Key: %s Value: %s' % (key, value)
         k = str(key)
         v = str(value)
-
+        self.key = k
         #TODO Check if there is a better place to do this
         self.hide_buttons()
         self.hsm_node = None
@@ -231,22 +232,40 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         self.hsm_evidence = {}
         self.answerTimer.stop()
 
+        if not self.small_pause.isActive():
+            self.small_pause.singleShot(5000, self.update_decision)
+
         if self.evidence.has_key(k):
             if not self.evidence.get(k) == v:
                 self.evidence[k] = v
-                if self.AUItoggleButton.isChecked():
-                    # print 'Updating decision'
-                    path = nx.shortest_path(self.hid, 'gui', self.node)
-                    parent = path.pop()
-                    path.reverse()
-                    for p in path:
-                        if k in self.hid.node[p]['evidence']:
-                            parent = p
+                #if self.AUItoggleButton.isChecked():
+                #    # print 'Updating decision'
+                #    path = nx.shortest_path(self.hid, 'gui', self.node)
+                #    parent = path.pop()
+                #    path.reverse()
+                #    for p in path:
+                #        if k in self.hid.node[p]['evidence']:
+                #            parent = p
 
-                    self.node = self.hid_decision(parent)
-                    #self.hid_decision(parent)
+                #    self.node = self.hid_decision(parent)
+                #    self.decision.emit(self.node)
+
+                #    # self.hid_decision(parent)
         else:
             'Error: %s is not yet in evidence.' % key
+
+    def update_decision(self):
+        print self.evidence
+        if self.AUItoggleButton.isChecked():
+            path = nx.shortest_path(self.hid, 'gui', self.node)
+            parent = path.pop()
+            path.reverse()
+            for p in path:
+                if self.key in self.hid.node[p]['evidence']:
+                    parent = p
+
+            self.node = self.hid_decision(parent)
+            self.decision.emit(self.node)
 
     def closeEvent(self, event):
         # print 'MI shutdown'
@@ -310,7 +329,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         while self.answerTimer.isActive():
             QApplication.processEvents()
 
-        print self.hsm_evidence
+        # print self.hsm_evidence
 
     def atomic_decision(self, button):
         # self.decision.emit(button.text())

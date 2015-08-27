@@ -80,27 +80,6 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         self.MainLayout.addLayout(self.GUILayout)
 
         self.views = mainviews.MainViews(self)
-        self.pointcloud = pointcloud.Pointcloud(self)
-        self.pointcloud.setParent(self.views)
-        self.views.availableViewsLayout.addWidget(self.pointcloud)
-
-        self.map = gmap.GlobalMap(self)
-        self.map.setParent(self.views)
-        self.views.availableViewsLayout.addWidget(self.map)
-
-        self.extra = lmap.LocalMap(self)
-        self.extra.setParent(self.views)
-        self.views.availableViewsLayout.addWidget(self.extra)
-
-        self.Camera1 = camera.Camera(self, 1)
-        self.views.tleftLayout.addWidget(self.Camera1)
-        self.views.tleftLabel.setVisible(False)
-
-        self.Camera2 = camera.Camera(self, 2)
-        self.Camera2.setMinimumSize(QtCore.QSize(80, 80))
-        self.views.bleftLayout.addWidget(self.Camera2)
-        self.views.bleftLabel.setVisible(False)
-
         self.GUILayout.addWidget(self.views)
 
         self.Screenshots = snapshot.Screenshots(self)
@@ -144,11 +123,11 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
                                self.statusBar.wifiBar.setValue)
         QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"),
                                self.statusBar.batteryBar.setValue)
-        self.Camera1.cam.inside.connect(self.parameters.insideWidget)
-        self.Camera2.cam.inside.connect(self.parameters.insideWidget)
-        self.map.map.inside.connect(self.parameters.insideWidget)
-        self.pointcloud.pointcloud.inside.connect(self.parameters.insideWidget)
-        self.extra.map.inside.connect(self.parameters.insideWidget)
+        self.views.camera1.cam.inside.connect(self.parameters.insideWidget)
+        self.views.camera2.cam.inside.connect(self.parameters.insideWidget)
+        self.views.localmap.map.inside.connect(self.parameters.insideWidget)
+        self.views.pointcloud.pointcloud.inside.connect(self.parameters.insideWidget)
+        self.views.globalmap.map.inside.connect(self.parameters.insideWidget)
         self.Screenshots.currentScreenshot.inside.connect(self.parameters.insideWidget)
         self.joystick.joystick_direction.connect(self.parameters.jdirection)
         QtCore.QObject.connect(self.parameters.joystickButtonGroup, QtCore.SIGNAL('buttonClicked(int)'),
@@ -163,11 +142,11 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         QtCore.QMetaObject.connectSlotsByName(self)
 
         # Evidence connections
-        self.Camera1.cam.inside.connect(self.mixedInitiative.update_evidence)
-        self.Camera2.cam.inside.connect(self.mixedInitiative.update_evidence)
-        self.map.map.inside.connect(self.mixedInitiative.update_evidence)
-        self.pointcloud.pointcloud.inside.connect(self.mixedInitiative.update_evidence)
-        self.extra.map.inside.connect(self.mixedInitiative.update_evidence)
+        self.views.camera1.cam.inside.connect(self.mixedInitiative.update_evidence)
+        self.views.camera2.cam.inside.connect(self.mixedInitiative.update_evidence)
+        self.views.localmap.map.inside.connect(self.mixedInitiative.update_evidence)
+        self.views.pointcloud.pointcloud.inside.connect(self.mixedInitiative.update_evidence)
+        self.views.globalmap.map.inside.connect(self.mixedInitiative.update_evidence)
         self.Screenshots.currentScreenshot.inside.connect(self.mixedInitiative.update_evidence)
 
         self.joystick.joystick_direction.connect(self.mixedInitiative.update_evidence)
@@ -228,20 +207,6 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
     def AUIupdate(self):
         enable = self.mixedInitiative.AUItoggleButton.isChecked()
         self.parameters.contents.setEnabled(enable)
-
-    def mouseMoveEvent(self, e):
-        # hoveredWidget = QApplication.widgetAt(e.globalPos())
-        hoveredWidget = self.childAt(e.pos())
-        if hoveredWidget == None:
-            self.parameters.currentWidget.setText("")
-
-    def mouseReleaseEvent(self, e):
-        # print "Mouse entered"
-        if self.Camera1.underMouse():
-            # print "Camera 1"
-            # self.parameters.currentWidget.clear()
-            # self.parameters.currentWidget.setText("Camera 1")
-            pass
 
     def new_screenshot(self):
         self.sc_num = self.sc_num + 1

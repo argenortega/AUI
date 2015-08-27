@@ -6,7 +6,7 @@ from PyQt4.QtCore import (pyqtSignal, QObject, QTimer)
 
 class ActLabel(QLabel, QObject):
     inside = pyqtSignal(str, str, name='inside')
-
+    focus = False
     def __init__(self, parent):
         QLabel.__init__(self, parent)
         self.outside = pyqtSignal(str)
@@ -21,9 +21,21 @@ class ActLabel(QLabel, QObject):
 
     def leaveEvent(self, QEvent):
         self.setStyleSheet(self.default_style)
+        self.focus = False
 
     def focusing(self):
         if self.underMouse():
             #print 'Focus ', self.accessibleName()
             self.inside.emit('focus', str(self.accessibleName()))
+            self.setStyleSheet(
+            'border-color: rgb(51, 94, 242); border-radius: 6px; border-width: 3px; border-style: solid;')  # + self.default_style)
+            self.focus = True
+
+    def attention(self):
+        self.setStyleSheet(
+            'border-color: rgb(48, 131, 251); border-radius: 6px; border-width: 3px; border-style: solid;')  # + self.default_style)
+
+    def focused(self):
+        return self.focus
+
 
