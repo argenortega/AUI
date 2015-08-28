@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/parameters.ui'
 #
-# Created: Wed Aug 26 20:41:32 2015
+# Created: Thu Aug 27 21:32:41 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,13 +26,13 @@ except AttributeError:
 class Ui_AUIParameters(object):
     def setupUi(self, AUIParameters):
         AUIParameters.setObjectName(_fromUtf8("AUIParameters"))
-        AUIParameters.resize(244, 790)
+        AUIParameters.resize(241, 802)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(AUIParameters.sizePolicy().hasHeightForWidth())
         AUIParameters.setSizePolicy(sizePolicy)
-        AUIParameters.setBaseSize(QtCore.QSize(250, 800))
+        AUIParameters.setMaximumSize(QtCore.QSize(250, 524287))
         AUIParameters.setFloating(False)
         AUIParameters.setFeatures(QtGui.QDockWidget.AllDockWidgetFeatures)
         self.AUIParams = QtGui.QWidget()

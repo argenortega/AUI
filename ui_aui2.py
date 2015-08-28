@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/aui.ui'
+# Form implementation generated from reading ui file 'ui/aui2.ui'
 #
-# Created: Thu Aug 27 22:30:04 2015
+# Created: Thu Aug 27 22:30:05 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -68,9 +68,6 @@ class Ui_MainWin(object):
         self.globalLayout = QtGui.QHBoxLayout(self.AUIWidget)
         self.globalLayout.setMargin(0)
         self.globalLayout.setObjectName(_fromUtf8("globalLayout"))
-        self.label = QtGui.QLabel(self.AUIWidget)
-        self.label.setObjectName(_fromUtf8("label"))
-        self.globalLayout.addWidget(self.label)
         MainWin.setCentralWidget(self.AUIWidget)
         self.menubar = QtGui.QMenuBar(MainWin)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
@@ -87,7 +84,6 @@ class Ui_MainWin(object):
 
     def retranslateUi(self, MainWin):
         MainWin.setWindowTitle(_translate("MainWin", "Adaptive OCU", None))
-        self.label.setText(_translate("MainWin", "TextLabel", None))
         self.actionHola.setText(_translate("MainWin", "Hola", None))
 
 

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/gmap.ui'
 #
-# Created: Sat Aug 22 15:47:07 2015
+# Created: Thu Aug 27 22:39:01 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -42,16 +42,10 @@ class Ui_MapWidget(object):
         self.layout.setMargin(0)
         self.layout.setObjectName(_fromUtf8("layout"))
         self.map = ActLabel(MapWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.map.sizePolicy().hasHeightForWidth())
-        self.map.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(11)
         self.map.setFont(font)
-        self.map.setStyleSheet(_fromUtf8("border-image: url(:/maps/global);\n"
-""))
+        self.map.setFrameShape(QtGui.QFrame.StyledPanel)
         self.map.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.map.setObjectName(_fromUtf8("map"))
         self.layout.addWidget(self.map)

@@ -65,6 +65,8 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
 
         win_size = 'Window: %d x %d' % (win.height(), win.width())
         screen_size = 'Screen: %d x %d' % (available.height(), available.width())
+        print win_size
+        print screen_size
 
         self.info.setText(win_size + '\n' + screen_size)
 

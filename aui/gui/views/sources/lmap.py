@@ -27,14 +27,14 @@ class LocalMap(QWidget, ui_lmap.Ui_NewView):
     def initUI(self):
         self.setObjectName("LM")
         self.currentmap = 'border-image: url(:/maps/local/local1);'
-        self.map.setStyleSheet(self.currentmap)
+        #self.map.setStyleSheet(self.currentmap)
 
         '''
         Size of the widget
         '''
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy.setHeightForWidth(True)
-        self.setSizePolicy(sizePolicy)
+        #sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        #sizePolicy.setHeightForWidth(True)
+        #self.setSizePolicy(sizePolicy)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:

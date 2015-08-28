@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
     <horstretch>1</horstretch>
     <verstretch>1</verstretch>
    </sizepolicy>
@@ -26,12 +26,6 @@
    <size>
     <width>150</width>
     <height>155</height>
-   </size>
-  </property>
-  <property name="sizeIncrement">
-   <size>
-    <width>1</width>
-    <height>1</height>
    </size>
   </property>
   <property name="font">

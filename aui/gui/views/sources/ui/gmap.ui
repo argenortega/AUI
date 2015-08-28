@@ -52,12 +52,6 @@
    </property>
    <item>
     <widget class="ActLabel" name="map">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
      <property name="font">
       <font>
        <pointsize>11</pointsize>
@@ -66,9 +60,8 @@
      <property name="accessibleName">
       <string>GM</string>
      </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/maps/global);
-</string>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="text">
       <string>Global Map</string>

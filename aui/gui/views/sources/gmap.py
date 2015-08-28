@@ -22,10 +22,10 @@ class GlobalMap(QWidget, ui_gmap.Ui_MapWidget):
     def initUI(self):
         self.setObjectName("GM")
         self.currentmap = 'border-image: url(:/maps/global/global2);'
-        self.map.setStyleSheet(self.currentmap)
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHeightForWidth(True)
-        self.setSizePolicy(sizePolicy)
+        #self.map.setStyleSheet(self.currentmap)
+        #sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        #sizePolicy.setHeightForWidth(True)
+        #self.setSizePolicy(sizePolicy)
 
     def heightForWidth(self, p_int):
         return p_int

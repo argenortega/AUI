@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/joystick.ui'
 #
-# Created: Sat Aug 22 13:51:02 2015
+# Created: Thu Aug 27 23:00:15 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,14 +27,13 @@ class Ui_joystickWidget(object):
     def setupUi(self, joystickWidget):
         joystickWidget.setObjectName(_fromUtf8("joystickWidget"))
         joystickWidget.resize(150, 150)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(joystickWidget.sizePolicy().hasHeightForWidth())
         joystickWidget.setSizePolicy(sizePolicy)
         joystickWidget.setMinimumSize(QtCore.QSize(100, 100))
         joystickWidget.setMaximumSize(QtCore.QSize(150, 155))
-        joystickWidget.setSizeIncrement(QtCore.QSize(1, 1))
         font = QtGui.QFont()
         font.setPointSize(12)
         joystickWidget.setFont(font)

@@ -24,7 +24,7 @@ from aui.mi import parameters
 import ui_aui
 
 
-# from PyQt4.uic import loadUi
+from PyQt4.uic import loadUi
 
 class AUI(QMainWindow, ui_aui.Ui_MainWin):
     """
@@ -91,6 +91,7 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
 
         self.StatusLayout.addWidget(self.battery)
         self.StatusLayout.addWidget(self.wifi)
+        self.StatusLayout.addStretch()
         self.StatusLayout.addStretch()
         self.StatusLayout.addWidget(self.joystick)
 

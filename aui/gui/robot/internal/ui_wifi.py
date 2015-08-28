@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/wifi.ui'
 #
-# Created: Wed Aug 26 20:25:56 2015
+# Created: Thu Aug 27 21:54:00 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,19 +26,26 @@ except AttributeError:
 class Ui_WifiStatus(object):
     def setupUi(self, WifiStatus):
         WifiStatus.setObjectName(_fromUtf8("WifiStatus"))
-        WifiStatus.resize(109, 100)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        WifiStatus.resize(105, 108)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(WifiStatus.sizePolicy().hasHeightForWidth())
         WifiStatus.setSizePolicy(sizePolicy)
         WifiStatus.setMinimumSize(QtCore.QSize(100, 0))
+        WifiStatus.setMaximumSize(QtCore.QSize(150, 16777215))
         self.horizontalLayout_2 = QtGui.QHBoxLayout(WifiStatus)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setMargin(0)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.wifiLevel = QtGui.QGroupBox(WifiStatus)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.wifiLevel.sizePolicy().hasHeightForWidth())
+        self.wifiLevel.setSizePolicy(sizePolicy)
         self.wifiLevel.setMinimumSize(QtCore.QSize(0, 30))
+        self.wifiLevel.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.wifiLevel.setFont(font)
@@ -49,16 +56,11 @@ class Ui_WifiStatus(object):
         self.wifiLayout.setMargin(0)
         self.wifiLayout.setObjectName(_fromUtf8("wifiLayout"))
         self.frame = QtGui.QFrame(self.wifiLevel)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy)
         self.frame.setFrameShape(QtGui.QFrame.NoFrame)
         self.frame.setFrameShadow(QtGui.QFrame.Plain)
         self.frame.setObjectName(_fromUtf8("frame"))
         self.verticalLayout = QtGui.QVBoxLayout(self.frame)
-        self.verticalLayout.setSpacing(15)
+        self.verticalLayout.setSpacing(25)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.wifi = CProgressBar(self.frame)

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/pointcloud.ui'
 #
-# Created: Sat Aug 22 15:47:08 2015
+# Created: Thu Aug 27 22:39:01 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -40,11 +40,6 @@ class Ui_PointcloudWidget(object):
         self.layout.setMargin(0)
         self.layout.setObjectName(_fromUtf8("layout"))
         self.pointcloud = ActLabel(PointcloudWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pointcloud.sizePolicy().hasHeightForWidth())
-        self.pointcloud.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(11)
         self.pointcloud.setFont(font)

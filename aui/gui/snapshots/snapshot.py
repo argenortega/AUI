@@ -20,6 +20,9 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
 
     def __init__(self,parent):
         QWidget.__init__(self,parent)
+        self.normal_stretch = 4
+        self.priority_stretch = 8
+
         self.setupUi(self)
         self.num = 4
         self.initUI()
@@ -28,15 +31,6 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
         # self.newS.clicked.connect(self.add_new)
 
         # self.showB.clicked[bool].connect(self.press)
-
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
-        sizePolicy.setHeightForWidth(False)
-        self.scrollArea.setSizePolicy(sizePolicy)
-        
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHeightForWidth(False)
-        self.setSizePolicy(sizePolicy)
-
         self.extraScreenGroup.clicked[bool].connect(self.send_visible)
 
 
@@ -67,8 +61,8 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
             print 'Atomic decision: %s' % decision
             sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
             sizePolicy.setHeightForWidth(True)
-            sizePolicy.setHorizontalStretch(2)
-            sizePolicy.setVerticalStretch(2)
+            sizePolicy.setHorizontalStretch(self.priority_stretch)
+            sizePolicy.setVerticalStretch(self.priority_stretch)
             self.setSizePolicy(sizePolicy)
             #self.currentScreenshot.resize(16777215, 16777215)
             self.updateGeometry()
@@ -77,16 +71,17 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
             print 'Atomic decision: %s' % decision
             sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
             sizePolicy.setHeightForWidth(True)
-            sizePolicy.setHorizontalStretch(1)
-            sizePolicy.setVerticalStretch(1)
+            sizePolicy.setHorizontalStretch(self.normal_stretch)
+            sizePolicy.setVerticalStretch(self.normal_stretch)
             self.setSizePolicy(sizePolicy)
             #self.currentScreenshot.resize(0,0)
             self.updateGeometry()
-        elif decision in ['main_views', 'widget_content', 'additional_views']:
+        elif decision in ['minimum', 'mapping', 'navigation', 'exploring', 'minimum_C2', 'navigation_C2',
+                          'mapping_C2', 'exploring_C2', 'minimum_C2', 'navigation_C1C2' ]:
             sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
             sizePolicy.setHeightForWidth(True)
-            sizePolicy.setHorizontalStretch(1)
-            sizePolicy.setVerticalStretch(1)
+            sizePolicy.setHorizontalStretch(self.normal_stretch)
+            sizePolicy.setVerticalStretch(self.normal_stretch)
             self.setSizePolicy(sizePolicy)
             self.updateGeometry()
 

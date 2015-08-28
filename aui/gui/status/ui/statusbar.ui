@@ -152,8 +152,8 @@
             border-style: transparent;
             border-width: 1px;
             border-radius: 6px;
-            background-color: rgb(244, 67, 54);
-            color: rgb(255, 255, 255);
+            background-color: rgb(255, 255, 255);
+	        color: rgb(0, 0, 0);
             }
 QPushButton:checked {
             border-style: solid;

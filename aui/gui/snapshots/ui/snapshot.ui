@@ -6,15 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>252</width>
-    <height>514</height>
+    <width>342</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
+   <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+    <horstretch>4</horstretch>
+    <verstretch>4</verstretch>
    </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>340</width>
+    <height>700</height>
+   </size>
   </property>
   <property name="mouseTracking">
    <bool>true</bool>
@@ -32,15 +38,15 @@
       <bool>true</bool>
      </property>
      <property name="sizePolicy">
-      <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-       <horstretch>10</horstretch>
-       <verstretch>10</verstretch>
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>3</horstretch>
+       <verstretch>3</verstretch>
       </sizepolicy>
      </property>
      <property name="minimumSize">
       <size>
-       <width>250</width>
-       <height>250</height>
+       <width>300</width>
+       <height>0</height>
       </size>
      </property>
      <property name="font">
@@ -94,6 +100,9 @@ border-radius: 6px;
       <spacer name="bSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::MinimumExpanding</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -158,8 +167,8 @@ QPushButton:hover{
    <item>
     <widget class="FocusGroupBox" name="extraScreenGroup">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-       <horstretch>0</horstretch>
+      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+       <horstretch>8</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
@@ -215,17 +224,8 @@ QPushButton:hover{
         <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
         <property name="verticalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOff</enum>
-        </property>
-        <property name="horizontalScrollBarPolicy">
-         <enum>Qt::ScrollBarAsNeeded</enum>
         </property>
         <property name="widgetResizable">
          <bool>true</bool>
@@ -238,7 +238,7 @@ QPushButton:hover{
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>238</width>
+           <width>326</width>
            <height>110</height>
           </rect>
          </property>
@@ -266,15 +266,15 @@ QPushButton:hover{
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ActLabel</class>
-   <extends>QLabel</extends>
-   <header>aui.utilities.ActiveLabel</header>
-  </customwidget>
-  <customwidget>
    <class>FocusGroupBox</class>
    <extends>QGroupBox</extends>
    <header>aui.mi.visual</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ActLabel</class>
+   <extends>QLabel</extends>
+   <header>aui.utilities.ActiveLabel</header>
   </customwidget>
  </customwidgets>
  <resources/>

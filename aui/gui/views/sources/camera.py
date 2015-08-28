@@ -42,9 +42,9 @@ class Camera(QWidget, ui_camera.Ui_Camera):
         '''
         Size of the widget
         '''
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHeightForWidth(True)
-        self.setSizePolicy(sizePolicy)
+        #sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
+        #sizePolicy.setHeightForWidth(True)
+        #self.setSizePolicy(sizePolicy)
 
     # def sizeHint(self):
     #    return QSize(300,300)

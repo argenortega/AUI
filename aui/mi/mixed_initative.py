@@ -232,7 +232,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         self.hsm_evidence = {}
         self.answerTimer.stop()
 
-        if not self.small_pause.isActive():
+        if not self.small_pause.isActive() and self.AUItoggleButton.isChecked():
             self.small_pause.singleShot(5000, self.update_decision)
 
         if self.evidence.has_key(k):

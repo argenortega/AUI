@@ -60,9 +60,11 @@
      <property name="accessibleName">
       <string>LM</string>
      </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/maps/local);
-</string>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
      </property>
      <property name="text">
       <string>Local Map</string>

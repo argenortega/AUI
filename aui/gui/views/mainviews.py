@@ -15,6 +15,8 @@ class MainViews(QWidget, ui_views.Ui_viewsWidget):
 
     def __init__(self,parent):
         QWidget.__init__(self,parent)
+        self.normal_stretch = 6
+        self.priority_stretch = 8
         self.setupUi(self)
         self.initUI()
 
@@ -85,14 +87,14 @@ class MainViews(QWidget, ui_views.Ui_viewsWidget):
     @pyqtSlot(str)
     def atomic_decision(self, decision):
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(1)
-        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHorizontalStretch(self.normal_stretch)
+        sizePolicy.setVerticalStretch(self.normal_stretch)
         self.setSizePolicy(sizePolicy)
 
         viewPolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
         viewPolicy.setHeightForWidth(True)
-        viewPolicy.setHorizontalStretch(1)
-        viewPolicy.setVerticalStretch(1)
+        viewPolicy.setHorizontalStretch(self.normal_stretch)
+        viewPolicy.setVerticalStretch(self.normal_stretch)
         self.camera1.setSizePolicy(viewPolicy)
         self.camera2.setSizePolicy(viewPolicy)
         self.globalmap.setSizePolicy(viewPolicy)
@@ -147,40 +149,40 @@ class MainViews(QWidget, ui_views.Ui_viewsWidget):
             self.camera1.cam.attention()
             self.localmap.map.attention()
         elif decision == 'mapping':
-            sizePolicy.setHorizontalStretch(2)
-            sizePolicy.setVerticalStretch(2)
+            sizePolicy.setHorizontalStretch(self.priority_stretch)
+            sizePolicy.setVerticalStretch(self.priority_stretch)
             self.setSizePolicy(sizePolicy)
 
             self.camera1.cam.attention()
             self.localmap.map.attention()
             self.pointcloud.pointcloud.attention()
 
-            viewPolicy.setHorizontalStretch(2)
-            viewPolicy.setVerticalStretch(2)
+            viewPolicy.setHorizontalStretch(self.priority_stretch)
+            viewPolicy.setVerticalStretch(self.priority_stretch)
             self.pointcloud.setSizePolicy(sizePolicy)
         elif decision == 'exploring':
-            sizePolicy.setHorizontalStretch(2)
-            sizePolicy.setVerticalStretch(2)
+            sizePolicy.setHorizontalStretch(self.priority_stretch)
+            sizePolicy.setVerticalStretch(self.priority_stretch)
             self.setSizePolicy(sizePolicy)
 
             self.camera1.cam.attention()
             self.localmap.map.attention()
             self.globalmap.map.attention()
 
-            viewPolicy.setHorizontalStretch(2)
-            viewPolicy.setVerticalStretch(2)
+            viewPolicy.setHorizontalStretch(self.priority_stretch)
+            viewPolicy.setVerticalStretch(self.priority_stretch)
             self.localmap.setSizePolicy(sizePolicy)
         elif decision == 'navigation':
-            sizePolicy.setHorizontalStretch(2)
-            sizePolicy.setVerticalStretch(2)
+            sizePolicy.setHorizontalStretch(self.priority_stretch)
+            sizePolicy.setVerticalStretch(self.priority_stretch)
             self.setSizePolicy(sizePolicy)
 
             self.camera1.cam.attention()
             self.localmap.map.attention()
             self.camera2.cam.attention()
 
-            viewPolicy.setHorizontalStretch(2)
-            viewPolicy.setVerticalStretch(2)
+            viewPolicy.setHorizontalStretch(self.priority_stretch)
+            viewPolicy.setVerticalStretch(self.priority_stretch)
             self.camera1.setSizePolicy(sizePolicy)
         elif decision == 'minimum_C2':
             self.camera1.cam.attention()
@@ -188,8 +190,8 @@ class MainViews(QWidget, ui_views.Ui_viewsWidget):
             self.camera2.cam.attention()
 
         elif decision == 'mapping_C2':
-            sizePolicy.setHorizontalStretch(2)
-            sizePolicy.setVerticalStretch(2)
+            sizePolicy.setHorizontalStretch(self.priority_stretch)
+            sizePolicy.setVerticalStretch(self.priority_stretch)
             self.setSizePolicy(sizePolicy)
 
             self.camera1.cam.attention()
@@ -197,12 +199,12 @@ class MainViews(QWidget, ui_views.Ui_viewsWidget):
             self.camera2.cam.attention()
             self.pointcloud.pointcloud.attention()
 
-            viewPolicy.setHorizontalStretch(2)
-            viewPolicy.setVerticalStretch(2)
+            viewPolicy.setHorizontalStretch(self.priority_stretch)
+            viewPolicy.setVerticalStretch(self.priority_stretch)
             self.pointcloud.setSizePolicy(sizePolicy)
         elif decision == 'exploring_C2':
-            sizePolicy.setHorizontalStretch(2)
-            sizePolicy.setVerticalStretch(2)
+            sizePolicy.setHorizontalStretch(self.priority_stretch)
+            sizePolicy.setVerticalStretch(self.priority_stretch)
             self.setSizePolicy(sizePolicy)
 
             self.camera1.cam.attention()
@@ -210,32 +212,32 @@ class MainViews(QWidget, ui_views.Ui_viewsWidget):
             self.camera2.cam.attention()
             self.globalmap.map.attention()
 
-            viewPolicy.setHorizontalStretch(2)
-            viewPolicy.setVerticalStretch(2)
+            viewPolicy.setHorizontalStretch(self.priority_stretch)
+            viewPolicy.setVerticalStretch(self.priority_stretch)
             self.localmap.setSizePolicy(sizePolicy)
         elif decision == 'navigation_C2':
-            sizePolicy.setHorizontalStretch(2)
-            sizePolicy.setVerticalStretch(2)
+            sizePolicy.setHorizontalStretch(self.priority_stretch)
+            sizePolicy.setVerticalStretch(self.priority_stretch)
             self.setSizePolicy(sizePolicy)
 
             self.camera1.cam.attention()
             self.localmap.map.attention()
             self.camera2.cam.attention()
 
-            viewPolicy.setHorizontalStretch(2)
-            viewPolicy.setVerticalStretch(2)
+            viewPolicy.setHorizontalStretch(self.priority_stretch)
+            viewPolicy.setVerticalStretch(self.priority_stretch)
             self.camera2.setSizePolicy(sizePolicy)
         elif decision == 'navigation_C1C2':
-            sizePolicy.setHorizontalStretch(2)
-            sizePolicy.setVerticalStretch(2)
+            sizePolicy.setHorizontalStretch(self.priority_stretch)
+            sizePolicy.setVerticalStretch(self.priority_stretch)
             self.setSizePolicy(sizePolicy)
 
             self.camera1.cam.attention()
             self.localmap.map.attention()
             self.camera2.cam.attention()
 
-            viewPolicy.setHorizontalStretch(2)
-            viewPolicy.setVerticalStretch(2)
+            viewPolicy.setHorizontalStretch(self.priority_stretch)
+            viewPolicy.setVerticalStretch(self.priority_stretch)
             self.camera1.setSizePolicy(sizePolicy)
             self.camera2.setSizePolicy(sizePolicy)
 

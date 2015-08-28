@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/battery.ui'
 #
-# Created: Wed Aug 26 20:25:56 2015
+# Created: Thu Aug 27 21:54:00 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,24 +26,26 @@ except AttributeError:
 class Ui_batteryStatus(object):
     def setupUi(self, batteryStatus):
         batteryStatus.setObjectName(_fromUtf8("batteryStatus"))
-        batteryStatus.resize(109, 103)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        batteryStatus.resize(105, 108)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(batteryStatus.sizePolicy().hasHeightForWidth())
         batteryStatus.setSizePolicy(sizePolicy)
         batteryStatus.setMinimumSize(QtCore.QSize(100, 0))
+        batteryStatus.setMaximumSize(QtCore.QSize(150, 16777215))
         self.BatteryLayout = QtGui.QVBoxLayout(batteryStatus)
         self.BatteryLayout.setSpacing(0)
         self.BatteryLayout.setMargin(0)
         self.BatteryLayout.setObjectName(_fromUtf8("BatteryLayout"))
         self.batteryLevel = QtGui.QGroupBox(batteryStatus)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Maximum)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.batteryLevel.sizePolicy().hasHeightForWidth())
         self.batteryLevel.setSizePolicy(sizePolicy)
         self.batteryLevel.setMinimumSize(QtCore.QSize(0, 30))
+        self.batteryLevel.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.batteryLevel.setFont(font)
@@ -58,17 +60,12 @@ class Ui_batteryStatus(object):
         self.batteryBoxLayout.setMargin(0)
         self.batteryBoxLayout.setObjectName(_fromUtf8("batteryBoxLayout"))
         self.frame = QtGui.QFrame(self.batteryLevel)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy)
         self.frame.setStyleSheet(_fromUtf8(""))
         self.frame.setFrameShape(QtGui.QFrame.NoFrame)
         self.frame.setFrameShadow(QtGui.QFrame.Plain)
         self.frame.setObjectName(_fromUtf8("frame"))
         self.verticalLayout = QtGui.QVBoxLayout(self.frame)
-        self.verticalLayout.setSpacing(-1)
+        self.verticalLayout.setSpacing(25)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.battery = CProgressBar(self.frame)

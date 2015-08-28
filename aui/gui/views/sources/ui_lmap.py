@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/lmap.ui'
 #
-# Created: Sat Aug 22 15:47:07 2015
+# Created: Thu Aug 27 22:39:01 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -45,8 +45,8 @@ class Ui_NewView(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.map.setFont(font)
-        self.map.setStyleSheet(_fromUtf8("border-image: url(:/maps/local);\n"
-""))
+        self.map.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.map.setFrameShadow(QtGui.QFrame.Sunken)
         self.map.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.map.setObjectName(_fromUtf8("map"))
         self.layout.addWidget(self.map)

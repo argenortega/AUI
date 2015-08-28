@@ -33,7 +33,7 @@ class CProgressBar(QProgressBar):
         elif 70 >= p_int > 50:
             self.change_color('rgb(255, 193, 7)')  # Yellow
         elif p_int <= 50:
-            self.change_color('rgb(244, 67, 54)')  # Red
+            self.change_color('rgb(211, 47, 47)')  # Red
 
     def change_color(self, color):
         template_css = """
@@ -54,7 +54,7 @@ class CProgressBar(QProgressBar):
 class CButton(QPushButton):
     green = 'rgb(76, 175, 80)'
     yellow = 'rgb(255, 193, 7)'
-    red = 'rgb(244, 67, 54)'
+    red = 'rgb(211, 47, 47)'
     white = 'rgb(255, 255, 255)'
     black = 'rgb(0, 0, 0)'
     template_css = """
@@ -95,7 +95,7 @@ class CButton(QPushButton):
 class ColorGroupBox(QGroupBox):
     green = 'rgb(76, 175, 80)'
     yellow = 'rgb(255, 193, 7)'
-    red = 'rgb(244, 67, 54)'
+    red = 'rgb(211, 47, 47)'
     white = 'rgb(255, 255, 255)'
     black = 'rgb(0, 0, 0)'
     template_css = """

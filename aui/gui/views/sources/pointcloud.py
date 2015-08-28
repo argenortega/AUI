@@ -25,9 +25,32 @@ class Pointcloud(QWidget, ui_pointcloud.Ui_PointcloudWidget):
         
     def initUI(self):
         self.setObjectName("PC")
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHeightForWidth(True)
-        self.setSizePolicy(sizePolicy)
+        #sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        #sizePolicy.setHeightForWidth(True)
+        #self.setSizePolicy(sizePolicy)
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.drag_start_position = event.pos()
+
+    def mouseMoveEvent(self, event):
+        if not (event.buttons() and Qt.LeftButton):
+            return
+
+        if ((event.pos() - self.drag_start_position).manhattanLength()
+            < QApplication.startDragDistance()):
+            return
+
+        drag = QDrag(self)
+        pix = QPixmap.grabWidget(self)
+        drag.setPixmap(pix)
+        mime_data = QMimeData()
+        mime_data.setText(self.pointcloud.text())
+        # mime_data.setImageData(self.currentmap)
+        drag.setMimeData(mime_data)
+
+        self.drop_action = drag.exec_(Qt.CopyAction | Qt.MoveAction)
+
 
 
 def main():
