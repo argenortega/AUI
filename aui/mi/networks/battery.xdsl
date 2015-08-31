@@ -57,6 +57,7 @@
 			<state id="Hide" />
 			<parents>SoM Battery</parents>
 			<probabilities>0.6 0.4 0.4 0.6 0.9 0.1 0.1 0.9 0.75 0.25 0.25 0.75</probabilities>
+			<property id="DSL_OUTCOME_ORDER">-1</property>
 		</cpt>
 	</nodes>
 	<extensions>

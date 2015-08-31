@@ -9,8 +9,8 @@ import sys
 import os
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtCore import pyqtSignal
-from PyQt4.QtGui import (QMainWindow, QHBoxLayout, QVBoxLayout)
+from PyQt4.QtCore import pyqtSignal, QObject, SIGNAL
+from PyQt4.QtGui import (QMainWindow, QHBoxLayout, QVBoxLayout, QDialog, QMessageBox)
 
 from aui.gui.views.sources import camera, lmap, gmap, pointcloud
 from aui.gui.robot.internal import battery, wifi
@@ -21,10 +21,25 @@ from aui.gui.status import statusbar
 from aui.mi import mixed_initative
 from aui.mi import parameters
 
-import ui_aui
-
+import ui_aui, ui_user
 
 from PyQt4.uic import loadUi
+
+
+class Login(QDialog, ui_user.Ui_Dialog):
+    def __init__(self):
+        QDialog.__init__(self)
+        self.setupUi(self)
+        self.loginButton.clicked.connect(self.login)
+
+    def login(self):
+        if self.operatorProfile.isChecked() and self.user.text() == 'user':
+            print self.user.text()
+            print self.password.text()
+            self.accept()
+        else:
+            QMessageBox.warning(self, 'Error', 'Bad user')
+
 
 class AUI(QMainWindow, ui_aui.Ui_MainWin):
     """
@@ -112,18 +127,24 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         # QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.value.setNum)
         # QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"),
         # self.battery.value.setNum)
-        QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"),
+        QObject.connect(self.parameters.batterySlider, SIGNAL("valueChanged(int)"),
                                self.battery.battery.setValue)
         QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"), self.wifi.wifi.setValue)
 
+        #QObject.connect(self.battery.battery.valueChanged, SIGNAL('valueChanged(int)'), self.parameters.battery)
+        #QObject.connect(self.wifi.wifi.valueChanged, SIGNAL('valueChanged(int)'), self.parameters.wifi)
+
+        #self.battery.charge.clicked.connect(self.chargeBattery)
+        #self.wifi.repair.clicked.connect(self.repairWifi)
+
+        self.battery.recharge_signal.connect(self.parameters.batterySlider.setValue)
+        self.wifi.repair_signal.connect(self.parameters.wifiSlider.setValue)
+
+        QObject.connect(self.wifi.wifi, SIGNAL("valueChanged(int)"), self.statusBar.wifiBar.setValue)
+        QObject.connect(self.battery.battery, SIGNAL("valueChanged(int)"), self.statusBar.batteryBar.setValue)
+
         self.Screenshots.newS.clicked.connect(self.new_screenshot)
 
-        self.battery.charge.clicked.connect(self.chargeBattery)
-        self.wifi.repair.clicked.connect(self.repairWifi)
-        QtCore.QObject.connect(self.parameters.wifiSlider, QtCore.SIGNAL("valueChanged(int)"),
-                               self.statusBar.wifiBar.setValue)
-        QtCore.QObject.connect(self.parameters.batterySlider, QtCore.SIGNAL("valueChanged(int)"),
-                               self.statusBar.batteryBar.setValue)
         self.views.camera1.cam.inside.connect(self.parameters.insideWidget)
         self.views.camera2.cam.inside.connect(self.parameters.insideWidget)
         self.views.localmap.map.inside.connect(self.parameters.insideWidget)
@@ -171,7 +192,7 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
 
         # Evidence initialization (manual)
         # TODO find a way to initialize evidence automatically
-        self.evidence.update({'C1': 'MV', 'C2': 'AV', 'PC': 'AV', 'LM': 'AV', 'GM': 'AV'})
+        self.evidence.update({'C1': 'MV', 'C2': 'MV', 'PC': 'AV', 'LM': 'AV', 'GM': 'AV'})
         self.evidence.update({'battery_level': 'Ok', 'battery_visible': str(self.battery.batteryLevel.isChecked())})
         self.evidence.update({'wifi_level': 'Ok', 'wifi_visible': str(self.wifi.wifiLevel.isChecked())})
         self.evidence.update({'AV_visible': str(self.views.viewsGroup.isChecked())})
@@ -189,6 +210,7 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         self.mixedInitiative.decision.connect(self.Screenshots.atomic_decision)
         self.mixedInitiative.decision.connect(self.views.atomic_decision)
 
+        self.logbar.showMessage('Ready')
         self.showMaximized()
 
     def get_evidence(self):
@@ -221,13 +243,22 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         self.closing.emit()
 
 
+def login():
+    app = QtGui.QApplication(sys.argv)
+    if Login().exec_() == QDialog.Accepted:
+        print 'Done'
+        adaptive_interface = AUI()
+        adaptive_interface.show()
+        sys.exit(app.exec_())
+
+
 def main():
     app = QtGui.QApplication(sys.argv)
     adaptive_interface = AUI()
     adaptive_interface.show()
-
     sys.exit(app.exec_())
 
 
 if __name__ == "__main__":
-    main()
+    login()
+    # main()

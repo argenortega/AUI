@@ -8,10 +8,16 @@ Created on Mon Dec 29 18:33:54 2014
 import sys
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtGui import (QWidget)
+from PyQt4.QtGui import (QWidget, QDialog, QMessageBox)
 from PyQt4.QtCore import pyqtSignal, pyqtSlot
 
-from aui.gui.robot.internal import ui_battery
+from aui.gui.robot.internal import ui_battery, ui_dialog
+
+
+class Dialog(QMessageBox, ui_dialog.Ui_Dialog):
+    def __init__(self):
+        QMessageBox.__init__(self)
+        self.setupUi(self)
 
 
 class Battery(QWidget, ui_battery.Ui_batteryStatus):
@@ -20,11 +26,17 @@ class Battery(QWidget, ui_battery.Ui_batteryStatus):
     '''
     lev = pyqtSignal(str, str, name='battery_level')
     vis = pyqtSignal(str, str, name='battery_visible')
+    recharge_signal = pyqtSignal(int, name='recharge')
 
-    def __init__(self,parent):
-        QWidget.__init__(self,parent)
+    def __init__(self, parent):
+        QWidget.__init__(self, parent)
         self.setupUi(self)
         self.initUI()
+        self.charge.clicked.connect(self.recharge)
+        self.recharge_signal.connect(self.battery.setValue)
+        #self.battery.setValue(30)
+
+
 
     def initUI(self):
         self.battery.valueChanged[int].connect(self.send_level)
@@ -34,13 +46,38 @@ class Battery(QWidget, ui_battery.Ui_batteryStatus):
     def send_level(self, value):
         if value > 70:
             self.lev.emit('battery_level', 'Ok')
-            # self.change_color('rgb(76, 175, 80)')
         elif 70 >= value > 50:
             self.lev.emit('battery_level', 'Warn')
-            # self.change_color('rgb(255, 193, 7)')
+            if value == 70:
+                self.alert('Warn')
         elif value <= 50:
             self.lev.emit('battery_level', 'Critical')
-            # self.change_color('rgb(244, 67, 54)')
+            if value == 50:
+                self.alert('Critical')
+
+    def alert(self, alert_type='Warn'):
+        diag = Dialog()
+        diag.setInformativeText('Return to command center to recharge?')
+        diag.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
+
+        if alert_type == 'Critical':
+            diag.setText('Critical Battery Level')
+            diag.setIcon(QMessageBox.Critical)
+            diag.setDefaultButton(QMessageBox.Yes)
+        elif alert_type == 'Warn':
+            diag.setText('Battery level under 70%')
+            diag.setIcon(QMessageBox.Warning)
+            diag.setDefaultButton(QMessageBox.No)
+
+
+        if diag.exec_() == QMessageBox.Yes:
+            self.recharge()
+        elif diag.exec_() == QMessageBox.No:
+            pass
+
+    def recharge(self):
+        self.recharge_signal.emit(100)
+        self.lev.emit('battery_level', 'Ok')
 
     @pyqtSlot(bool)
     def send_visible(self, checked):
@@ -66,10 +103,11 @@ class Battery(QWidget, ui_battery.Ui_batteryStatus):
 def main():
     app = QtGui.QApplication(sys.argv)
     main = Battery(None)
-    
+
     main.show()
- 
+
     sys.exit(app.exec_())
- 
+
+
 if __name__ == "__main__":
     main()

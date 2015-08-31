@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/battery.ui'
 #
-# Created: Thu Aug 27 21:54:00 2015
+# Created: Mon Aug 31 12:21:33 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!

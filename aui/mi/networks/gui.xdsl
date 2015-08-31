@@ -49,12 +49,6 @@
 			<parents>joystick_input</parents>
 			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05 0.05 0.1499999999999999 0.4</probabilities>
 		</cpt>
-		<cpt id="Assist">
-			<state id="True" />
-			<state id="False" />
-			<parents>som</parents>
-			<probabilities>0.9 0.1 0.4 0.6 0.7 0.3</probabilities>
-		</cpt>
 		<cpt id="battery_visible">
 			<state id="True" />
 			<state id="False" />
@@ -183,13 +177,6 @@
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
 				<position>299 403 351 435</position>
-			</node>
-			<node id="Assist">
-				<name>Assist</name>
-				<interior color="ffffff" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>822 471 870 501</position>
 			</node>
 			<node id="critical_state">
 				<name>Critical State</name>

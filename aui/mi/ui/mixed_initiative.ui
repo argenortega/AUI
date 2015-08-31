@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1054</width>
+    <width>1116</width>
     <height>50</height>
    </rect>
   </property>
@@ -308,12 +308,6 @@ QPushButton:hover{
         </property>
         <property name="mouseTracking">
          <bool>true</bool>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
-        </property>
-        <property name="locale">
-         <locale language="English" country="UnitedStates"/>
         </property>
         <property name="horizontalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOff</enum>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/statusbar.ui'
 #
-# Created: Tue Aug 18 00:07:26 2015
+# Created: Mon Aug 31 02:35:04 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -75,8 +75,8 @@ class Ui_statusBarWidget(object):
 "            border-style: transparent;\n"
 "            border-width: 1px;\n"
 "            border-radius: 6px;\n"
-"            background-color: rgb(244, 67, 54);\n"
-"            color: rgb(255, 255, 255);\n"
+"            background-color: rgb(255, 255, 255);\n"
+"            color: rgb(0, 0, 0);\n"
 "            }\n"
 "QPushButton:checked {\n"
 "            border-style: solid;\n"

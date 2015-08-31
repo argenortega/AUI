@@ -1,37 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>UserProfile</class>
- <widget class="QWidget" name="UserProfile">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
-    <height>152</height>
+    <width>457</width>
+    <height>269</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>User Roles</string>
+   <string>User Profile</string>
   </property>
-  <property name="autoFillBackground">
-   <bool>true</bool>
-  </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
-   <item>
-    <widget class="QToolButton" name="leaderProfile">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>1</horstretch>
-       <verstretch>1</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QToolButton{	
+  <property name="styleSheet">
+   <string notr="true">QPushButton{	
+	background-color: rgb(255, 255, 255);
+    border-style: outset;
+    border-width: 1px;
+    border-radius: 6px;
+	border-color: rgb(193, 193, 193);
+	border-style: solid;
+	padding: 2px;
+	min-width: 44px;
+	min-height: 44px;
+	
+}
+QPushButton:default{	
+	background-color: rgb(48, 131, 251);
+	color: rgb(255, 255, 255);
+    border-width: 1px;
+    border-radius: 6px;
+	border-color: rgb(193, 193, 193);
+	border-style: solid;
+	padding: 2px;
+	min-width: 44px;
+	min-height: 44px;
+}
+
+QPushButton:pressed {	
+    border-style: solid;
+	border-width: 1px;
+    border-radius: 6px;
+	background-color: rgb(48, 131, 251);
+	color: rgb(255, 255, 255);
+	min-width: 44px;
+	min-height: 44px;
+}
+
+QPushButton:hover{
+	border-color: rgb(164, 205, 255);
+    border-radius: 6px;
+	border-width: 3px;
+	border-style: solid;
+	min-width: 44px;
+	min-height: 44px;
+}
+
+QToolButton:checked{	
+	border-color: rgb(48, 131, 251);
+	color: rgb(0, 0, 0);
+    border-width: 3px;
+    border-radius: 6px;
+	background-color: rgb(255, 255, 255);
+	border-style: solid;
+	padding: 2px;
+}
+QToolButton{	
 	background-color: rgb(255, 255, 255);
     border-style: outset;
     border-width: 1px;
@@ -55,6 +90,79 @@ QToolButton:hover{
 	border-width: 3px;
 	border-style: solid;
 }</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0">
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>User</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Password</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="user">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Normal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="password">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QToolButton" name="teamLeaderProfile">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>135</width>
+       <height>135</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Team Leader</string>
@@ -69,49 +177,38 @@ QToolButton:hover{
        <height>100</height>
       </size>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
      <property name="toolButtonStyle">
       <enum>Qt::ToolButtonTextUnderIcon</enum>
      </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttonGroup</string>
+     </attribute>
     </widget>
    </item>
-   <item>
+   <item row="0" column="1">
     <widget class="QToolButton" name="operatorProfile">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>1</horstretch>
-       <verstretch>1</verstretch>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>135</width>
+       <height>135</height>
+      </size>
      </property>
      <property name="font">
       <font>
        <pointsize>14</pointsize>
       </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QToolButton{	
-	background-color: rgb(255, 255, 255);
-    border-style: outset;
-    border-width: 1px;
-    border-radius: 6px;
-	border-color: rgb(193, 193, 193);
-	border-style: solid;
-	padding: 6px;
-	
-}
-QToolButton:pressed {	
-    border-style: solid;
-	border-width: 1px;
-    border-radius: 6px;
-	background-color: rgb(48, 131, 251);
-	color: rgb(255, 255, 255);
-}
-
-QToolButton:hover{
-	border-color: rgb(164, 205, 255);
-    border-radius: 6px;
-	border-width: 3px;
-	border-style: solid;
-}</string>
      </property>
      <property name="text">
       <string>Operator</string>
@@ -126,30 +223,36 @@ QToolButton:hover{
        <height>100</height>
       </size>
      </property>
-     <property name="autoExclusive">
+     <property name="checkable">
       <bool>true</bool>
      </property>
-     <property name="popupMode">
-      <enum>QToolButton::DelayedPopup</enum>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
      </property>
      <property name="toolButtonStyle">
       <enum>Qt::ToolButtonTextUnderIcon</enum>
      </property>
-     <property name="autoRaise">
-      <bool>true</bool>
-     </property>
-     <property name="arrowType">
-      <enum>Qt::NoArrow</enum>
-     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttonGroup</string>
+     </attribute>
     </widget>
    </item>
-   <item>
+   <item row="0" column="3">
     <widget class="QToolButton" name="infieldProfile">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>1</horstretch>
-       <verstretch>1</verstretch>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>135</width>
+       <height>135</height>
+      </size>
      </property>
      <property name="font">
       <font>
@@ -157,30 +260,7 @@ QToolButton:hover{
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">QToolButton{	
-	background-color: rgb(255, 255, 255);
-    border-style: outset;
-    border-width: 1px;
-    border-radius: 6px;
-	border-color: rgb(193, 193, 193);
-	border-style: solid;
-	padding: 6px;
-	
-}
-QToolButton:pressed {	
-    border-style: solid;
-	border-width: 1px;
-    border-radius: 6px;
-	background-color: rgb(48, 131, 251);
-	color: rgb(255, 255, 255);
-}
-
-QToolButton:hover{
-	border-color: rgb(164, 205, 255);
-    border-radius: 6px;
-	border-width: 3px;
-	border-style: solid;
-}</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Infield Responder</string>
@@ -195,8 +275,39 @@ QToolButton:hover{
        <height>100</height>
       </size>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
      <property name="toolButtonStyle">
       <enum>Qt::ToolButtonTextUnderIcon</enum>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">buttonGroup</string>
+     </attribute>
+    </widget>
+   </item>
+   <item row="4" column="3">
+    <widget class="QPushButton" name="loginButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>50</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Login</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -206,4 +317,7 @@ QToolButton:hover{
   <include location="../resources.qrc"/>
  </resources>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>

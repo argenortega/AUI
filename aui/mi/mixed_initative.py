@@ -232,12 +232,13 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         self.hsm_evidence = {}
         self.answerTimer.stop()
 
-        if not self.small_pause.isActive() and self.AUItoggleButton.isChecked():
-            self.small_pause.singleShot(5000, self.update_decision)
+
 
         if self.evidence.has_key(k):
             if not self.evidence.get(k) == v:
                 self.evidence[k] = v
+                if not self.small_pause.isActive() and self.AUItoggleButton.isChecked():
+                    self.small_pause.singleShot(5000, self.update_decision)
                 #if self.AUItoggleButton.isChecked():
                 #    # print 'Updating decision'
                 #    path = nx.shortest_path(self.hid, 'gui', self.node)

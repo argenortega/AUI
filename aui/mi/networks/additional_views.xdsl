@@ -147,18 +147,6 @@
 			<parents>AV decision</parents>
 			<utilities>0 100 100 0</utilities>
 		</utility>
-		<cpt id="HSM_AV_Content">
-			<state id="True" />
-			<state id="False" />
-			<parents>som Content</parents>
-			<probabilities>0.6 0.4 0.4 0.6 0.95 0.05000000000000004 0.05000000000000004 0.95 0.75 0.25 0.25 0.75</probabilities>
-		</cpt>
-		<cpt id="HSM_Attention">
-			<state id="Show" />
-			<state id="Hide" />
-			<parents>som Attention</parents>
-			<probabilities>0.6 0.4 0.4 0.6 0.95 0.05000000000000004 0.05000000000000004 0.95 0.75 0.25 0.25 0.75</probabilities>
-		</cpt>
 		<cpt id="HSM_AV">
 			<state id="show" />
 			<state id="hide" />
@@ -274,13 +262,6 @@
 				<font color="000000" name="Arial" size="8" />
 				<position>236 424 305 454</position>
 			</node>
-			<node id="HSM_AV_Content">
-				<name>HSM AV Content</name>
-				<interior color="00ccff" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>897 512 966 555</position>
-			</node>
 			<node id="focus">
 				<name>Focus</name>
 				<interior color="c0c0c0" />
@@ -315,13 +296,6 @@
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
 				<position>768 360 828 390</position>
-			</node>
-			<node id="HSM_Attention">
-				<name>HSM Attention</name>
-				<interior color="ffffff" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>779 449 853 493</position>
 			</node>
 			<node id="SL">
 				<name>SL</name>

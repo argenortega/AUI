@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mixed_initiative.ui'
 #
-# Created: Thu Aug 27 21:32:41 2015
+# Created: Mon Aug 31 02:59:12 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_mixedInitiative(object):
     def setupUi(self, mixedInitiative):
         mixedInitiative.setObjectName(_fromUtf8("mixedInitiative"))
-        mixedInitiative.resize(1054, 50)
+        mixedInitiative.resize(1116, 50)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -197,8 +197,6 @@ class Ui_mixedInitiative(object):
         font.setPointSize(14)
         self.messages.setFont(font)
         self.messages.setMouseTracking(True)
-        self.messages.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);"))
-        self.messages.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
         self.messages.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.messages.setTextInteractionFlags(QtCore.Qt.TextSelectableByKeyboard|QtCore.Qt.TextSelectableByMouse)
         self.messages.setObjectName(_fromUtf8("messages"))

@@ -69,7 +69,7 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
             print 'Expanding'
         elif decision == 'decrease':
             print 'Atomic decision: %s' % decision
-            sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
+            sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
             sizePolicy.setHeightForWidth(True)
             sizePolicy.setHorizontalStretch(self.normal_stretch)
             sizePolicy.setVerticalStretch(self.normal_stretch)
@@ -78,7 +78,7 @@ class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):
             self.updateGeometry()
         elif decision in ['minimum', 'mapping', 'navigation', 'exploring', 'minimum_C2', 'navigation_C2',
                           'mapping_C2', 'exploring_C2', 'minimum_C2', 'navigation_C1C2' ]:
-            sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
+            sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
             sizePolicy.setHeightForWidth(True)
             sizePolicy.setHorizontalStretch(self.normal_stretch)
             sizePolicy.setVerticalStretch(self.normal_stretch)

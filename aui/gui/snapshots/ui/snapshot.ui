@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>340</width>
-    <height>700</height>
+    <height>600</height>
    </size>
   </property>
   <property name="mouseTracking">
@@ -229,9 +229,6 @@ QPushButton:hover{
         </property>
         <property name="widgetResizable">
          <bool>true</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
         </property>
         <widget class="QWidget" name="extraScreenshots">
          <property name="geometry">

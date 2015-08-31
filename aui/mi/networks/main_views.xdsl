@@ -67,7 +67,7 @@
 			<state id="move" />
 			<state id="keep" />
 			<parents>som GM Context</parents>
-			<probabilities>0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.9 0.1 0.9 0.1 0.05 0.95 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.9 0.1 0.1 0.9 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9</probabilities>
+			<probabilities>1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 0 1 0.9 0.09999999999999998 0.9 0.09999999999999998 0.05 0.95 0 1 0 1 0 1 0 1 0.9 0.09999999999999998 0 1 1 0 1 0 1 0 0.1 0.9 1 0 0 1 0 1 0 1 0.1 0.9 0 1</probabilities>
 		</cpt>
 		<cpt id="C2">
 			<state id="MV" />
@@ -83,7 +83,7 @@
 			<state id="move" />
 			<state id="keep" />
 			<parents>som PC Context</parents>
-			<probabilities>0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.9 0.1 0.1 0.9 0.9 0.1 0.9 0.1 0.9 0.1 0.1 0.9 0.9 0.1 0.1 0.9 0.1 0.9 0.1 0.9 0.9 0.1 0.1 0.9 0.9 0.1 0.9 0.1 0.9 0.1 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9</probabilities>
+			<probabilities>1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 0 1 0.1 0.9 0.9 0.09999999999999998 0.9 0.09999999999999998 0 1 0 1 0.9 0.09999999999999998 0 1 0 1 0 1 1 0 0.1 0.9 1 0 1 0 1 0 0 1 0.1 0.9 0 1 0 1 0 1</probabilities>
 		</cpt>
 		<cpt id="PC_View">
 			<state id="add" />
@@ -149,7 +149,7 @@
 			<state id="remove" />
 			<state id="keep" />
 			<parents>som PC_View</parents>
-			<probabilities>0.6 0.05 0.35 0.05 0.6 0.35 0.05000000000000004 0.35 0.6 0.9 0.05 0.05 0.05 0.9 0.05 0.05 0.05 0.9 0.75 0.05 0.2 0.05 0.75 0.2 0.05 0.2 0.75</probabilities>
+			<probabilities>0.6 0 0.4 0 0.6 0.4 0 0 1 0.9 0 0.1 0 0.9 0.1 0 0 1 0.75 0 0.25 0 0.75 0.25 0 0 1</probabilities>
 			<property id="DSL_OUTCOME_ORDER">-1</property>
 		</cpt>
 		<cpt id="HSM_GM_View">
@@ -157,7 +157,7 @@
 			<state id="remove" />
 			<state id="keep" />
 			<parents>som GM_View</parents>
-			<probabilities>0.6 0.05 0.35 0.05 0.6 0.35 0.05000000000000004 0.35 0.6 0.9 0.05 0.05 0.05 0.9 0.05 0.05 0.05 0.9 0.75 0.05 0.2 0.05 0.75 0.2 0.05 0.2 0.75</probabilities>
+			<probabilities>0.6 0 0.4 0 0.6 0.4 0 0 1 0.9 0 0.1 0 0.9 0.1 0 0 1 0.75 0 0.25 0 0.75 0.25 0 0 1</probabilities>
 			<property id="DSL_OUTCOME_ORDER">-1</property>
 		</cpt>
 		<cpt id="HSM_C2_View">
@@ -165,7 +165,7 @@
 			<state id="remove" />
 			<state id="keep" />
 			<parents>som C2_View</parents>
-			<probabilities>0.6 0.05 0.35 0.05 0.6 0.35 0.05000000000000004 0.35 0.6 0.9 0.05 0.05 0.05 0.9 0.05 0.05 0.05 0.9 0.75 0.05 0.2 0.05 0.75 0.2 0.05 0.2 0.75</probabilities>
+			<probabilities>0.6 0 0.4 0 0.6 0.4 0 0 1 0.9 0 0.1 0 0.9 0.1 0 0 1 0.75 0 0.25 0 0.75 0.25 0 0 1</probabilities>
 			<property id="DSL_OUTCOME_ORDER">-1</property>
 		</cpt>
 		<cpt id="HSM_LM_View">
@@ -288,7 +288,7 @@
 				<interior color="ffffff" />
 				<outline color="000000" />
 				<font color="000000" name="Arial" size="8" />
-				<position>633 503 705 539</position>
+				<position>637 476 709 512</position>
 			</node>
 			<node id="C1_View">
 				<name>C1 View</name>

@@ -178,7 +178,13 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
         elif value == 3:
             self.cl_level.emit('CL', 'high')
 
+    @pyqtSlot(int)
+    def battery(self, value):
+        self.batterySlider.setValue(value)
 
+    @pyqtSlot(int)
+    def wifi(self, value):
+        self.wifiSlider.setValue(value)
 
 def main():
     app = QtGui.QApplication(sys.argv)
