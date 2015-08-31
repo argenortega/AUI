@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mixed_initiative.ui'
 #
-# Created: Mon Aug 31 02:59:12 2015
+# Created: Tue Sep  1 00:25:38 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_mixedInitiative(object):
     def setupUi(self, mixedInitiative):
         mixedInitiative.setObjectName(_fromUtf8("mixedInitiative"))
-        mixedInitiative.resize(1116, 50)
+        mixedInitiative.resize(1056, 50)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -76,9 +76,15 @@ class Ui_mixedInitiative(object):
 "}"))
         self.hsmWidget.setObjectName(_fromUtf8("hsmWidget"))
         self.hsmLayout = QtGui.QHBoxLayout(self.hsmWidget)
+        self.hsmLayout.setSpacing(15)
         self.hsmLayout.setMargin(0)
         self.hsmLayout.setObjectName(_fromUtf8("hsmLayout"))
         self.defaultButton = QtGui.QPushButton(self.hsmWidget)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.defaultButton.sizePolicy().hasHeightForWidth())
+        self.defaultButton.setSizePolicy(sizePolicy)
         self.defaultButton.setMinimumSize(QtCore.QSize(60, 44))
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -117,6 +123,11 @@ class Ui_mixedInitiative(object):
         self.buttonGroup.addButton(self.defaultButton)
         self.hsmLayout.addWidget(self.defaultButton)
         self.button2 = QtGui.QPushButton(self.hsmWidget)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.button2.sizePolicy().hasHeightForWidth())
+        self.button2.setSizePolicy(sizePolicy)
         self.button2.setMinimumSize(QtCore.QSize(60, 44))
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -150,7 +161,7 @@ class Ui_mixedInitiative(object):
         self.buttonGroup.addButton(self.button2)
         self.hsmLayout.addWidget(self.button2)
         self.button4 = QtGui.QPushButton(self.hsmWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.button4.sizePolicy().hasHeightForWidth())
@@ -161,7 +172,7 @@ class Ui_mixedInitiative(object):
         self.buttonGroup.addButton(self.button4)
         self.hsmLayout.addWidget(self.button4)
         self.button3 = QtGui.QPushButton(self.hsmWidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.button3.sizePolicy().hasHeightForWidth())
@@ -292,8 +303,8 @@ class Ui_mixedInitiative(object):
         mixedInitiative.setWindowTitle(_translate("mixedInitiative", "Form", None))
         self.defaultButton.setText(_translate("mixedInitiative", "Accept", None))
         self.button2.setText(_translate("mixedInitiative", "Reject", None))
-        self.button4.setText(_translate("mixedInitiative", "PushButton", None))
-        self.button3.setText(_translate("mixedInitiative", "PushButton", None))
+        self.button4.setText(_translate("mixedInitiative", "Opt 3", None))
+        self.button3.setText(_translate("mixedInitiative", "Opt 4", None))
         self.AUIStatusLabel.setText(_translate("mixedInitiative", "AUI Status", None))
         self.AUItoggleButton.setText(_translate("mixedInitiative", "Off", None))
 

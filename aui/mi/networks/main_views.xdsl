@@ -6,10 +6,31 @@
 			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
+		<cpt id="C1_View">
+			<state id="add" />
+			<state id="keep" />
+			<parents>C1</parents>
+			<probabilities>0 1 1 0</probabilities>
+			<property id="DSL_OUTCOME_ORDER">-1</property>
+		</cpt>
 		<cpt id="LM">
 			<state id="MV" />
 			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="LM_View">
+			<state id="add" />
+			<state id="keep" />
+			<parents>LM</parents>
+			<probabilities>0 1 1 0</probabilities>
+			<property id="DSL_OUTCOME_ORDER">-1</property>
+		</cpt>
+		<cpt id="joystick_direction">
+			<state id="Forward" />
+			<state id="LeftRight" />
+			<state id="Backwards" />
+			<state id="False" />
+			<probabilities>0.25 0.25 0.25 0.25</probabilities>
 		</cpt>
 		<cpt id="CL">
 			<state id="high" />
@@ -36,17 +57,10 @@
 			<parents>CL SL SA</parents>
 			<probabilities>1 0 0 0.9 0.07000000000000001 0.03 0.8 0.15 0.05 0.9 0.07000000000000001 0.03 0.8 0.15 0.05 0.7 0.25 0.05 0.8 0.15 0.05 0.7 0.25 0.05 0.6 0.3 0.1 0.15 0.8 0.04999999999999993 0.1 0.85 0.05000000000000004 0.07000000000000001 0.9 0.03 0.04999999999999998 0.9 0.05 0.03 0.95 0.02000000000000002 0.01 0.99 0 0.15 0.8 0.05 0.1 0.8 0.09999999999999998 0 1 0 0 0.2 0.8 0 0.65 0.35 0 0.95 0.05000000000000004 0 0.2 0.8 0 0.65 0.35 0 0.95 0.05000000000000004 0 0 1 0 0.8 0.2 0 0.95 0.05</probabilities>
 		</cpt>
-		<cpt id="GM">
+		<cpt id="C2">
 			<state id="MV" />
 			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="joystick_direction">
-			<state id="Forward" />
-			<state id="LeftRight" />
-			<state id="Backwards" />
-			<state id="False" />
-			<probabilities>0.25 0.25 0.25 0.25</probabilities>
 		</cpt>
 		<deterministic id="joystick_input">
 			<state id="True" />
@@ -63,49 +77,57 @@
 			<parents>joystick_input</parents>
 			<probabilities>0.05 0.2 0.3 0.4 0.05 0.35 0.05 0.05 0.1499999999999999 0.4</probabilities>
 		</cpt>
-		<cpt id="GM_Action">
-			<state id="move" />
-			<state id="keep" />
-			<parents>som GM Context</parents>
-			<probabilities>1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 0 1 0.9 0.09999999999999998 0.9 0.09999999999999998 0.05 0.95 0 1 0 1 0 1 0 1 0.9 0.09999999999999998 0 1 1 0 1 0 1 0 0.1 0.9 1 0 0 1 0 1 0 1 0.1 0.9 0 1</probabilities>
+		<cpt id="C2_Parent">
+			<state id="MV" />
+			<state id="AV" />
+			<parents>joystick_direction som C2 Context</parents>
+			<probabilities>0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 0.4 0.6 0.8 0.2 0.4 0.6 1 0 0 1 0.05 0.95 0.95 0.05000000000000004 0.05 0.95 0 1 0 1 0.03 0.97 0.95 0.05000000000000004 0.03 0.97 0 1 0 1 0.03 0.97 0.03 0.97 0.03 0.97 0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 0.6 0.4 0.8 0.2 0.6 0.4 1 0 0 1 0.05 0.95 0.95 0.05000000000000004 0.05 0.95 0 1 1 0 0 1 0.95 0.05000000000000004 0 1 1 0 0 1 0 1 0.03 0.97 0 1 0 1</probabilities>
 		</cpt>
-		<cpt id="C2">
+		<cpt id="C2_View">
+			<state id="add" />
+			<state id="remove" />
+			<state id="keep" />
+			<parents>C2_Parent C2</parents>
+			<probabilities>0 0 1 1 0 0 0 1 0 0 0 1</probabilities>
+			<property id="DSL_OUTCOME_ORDER">-1</property>
+		</cpt>
+		<cpt id="GM">
 			<state id="MV" />
 			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="GM_Parent">
+			<state id="MV" />
+			<state id="AV" />
+			<parents>som GM Context</parents>
+			<probabilities>0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 0.4 0.6 0.4 0.6 0.8 0.2 1 0 0 1 0.05 0.95 0.05 0.95 0.95 0.05000000000000004 0 1 0 1 0.03 0.97 0.03 0.97 0.95 0.05000000000000004 0 1 0 1 0.03 0.97 0.03 0.97 0.03 0.97 0 1</probabilities>
+		</cpt>
+		<cpt id="GM_View">
+			<state id="add" />
+			<state id="remove" />
+			<state id="keep" />
+			<parents>GM_Parent GM</parents>
+			<probabilities>0 0 1 1 0 0 0 1 0 0 0 1</probabilities>
+			<property id="DSL_OUTCOME_ORDER">-1</property>
 		</cpt>
 		<cpt id="PC">
 			<state id="MV" />
 			<state id="AV" />
 			<probabilities>0.5 0.5</probabilities>
 		</cpt>
-		<cpt id="PC_Action">
-			<state id="move" />
-			<state id="keep" />
+		<cpt id="PC_Parent">
+			<state id="MV" />
+			<state id="AV" />
 			<parents>som PC Context</parents>
-			<probabilities>1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 0 1 0.1 0.9 0.9 0.09999999999999998 0.9 0.09999999999999998 0 1 0 1 0.9 0.09999999999999998 0 1 0 1 0 1 1 0 0.1 0.9 1 0 1 0 1 0 0 1 0.1 0.9 0 1 0 1 0 1</probabilities>
+			<probabilities>0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 0.8 0.2 0.4 0.6 0.4 0.6 1 0 0 1 0.95 0.05000000000000004 0.05 0.95 0.05000000000000004 0.95 0 1 0 1 0.95 0.05000000000000004 0.03 0.97 0.03 0.97 0 1 0 1 0.03 0.97 0.03 0.97 0.03 0.97 0 1</probabilities>
 		</cpt>
 		<cpt id="PC_View">
 			<state id="add" />
 			<state id="remove" />
 			<state id="keep" />
-			<parents>PC_Action PC</parents>
-			<probabilities>0 1 0 1 0 0 0 0 1 0 0 1</probabilities>
+			<parents>PC_Parent PC</parents>
+			<probabilities>0 0 1 1 0 0 0 1 0 0 0 1</probabilities>
 			<property id="DSL_OUTCOME_ORDER">-1</property>
-		</cpt>
-		<cpt id="GM_View">
-			<state id="add" />
-			<state id="remove" />
-			<state id="keep" />
-			<parents>GM_Action GM</parents>
-			<probabilities>0 1 0 1 0 0 0 0 1 0 0 1</probabilities>
-			<property id="DSL_OUTCOME_ORDER">-1</property>
-		</cpt>
-		<cpt id="C2_Action">
-			<state id="move" />
-			<state id="keep" />
-			<parents>joystick_direction som C2 Context</parents>
-			<probabilities>1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 0 1 0.9 0.1 0 1 0.9 0.1 0 1 0 1 0.1 0.9 1 0 0.1 0.9 0 1 1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 1 0 1</probabilities>
 		</cpt>
 		<decision id="decision">
 			<state id="add_C1" />
@@ -118,54 +140,29 @@
 			<state id="remove_PC" />
 			<state id="nothing" />
 		</decision>
-		<cpt id="C1_View">
-			<state id="add" />
-			<state id="keep" />
-			<parents>C1</parents>
-			<probabilities>0 1 1 0</probabilities>
-			<property id="DSL_OUTCOME_ORDER">-1</property>
-		</cpt>
-		<cpt id="LM_View">
-			<state id="add" />
-			<state id="keep" />
-			<parents>LM</parents>
-			<probabilities>0 1 1 0</probabilities>
-			<property id="DSL_OUTCOME_ORDER">-1</property>
-		</cpt>
-		<cpt id="C2_View">
-			<state id="add" />
-			<state id="remove" />
-			<state id="keep" />
-			<parents>C2_Action C2</parents>
-			<probabilities>0 1 0 1 0 0 0 0 1 0 0 1</probabilities>
-			<property id="DSL_OUTCOME_ORDER">-1</property>
-		</cpt>
 		<utility id="U">
 			<parents>C1_View LM_View C2_View GM_View PC_View decision</parents>
 			<utilities>100 75 75 20 20 0 0 0 0 100 75 75 20 0 0 0 50 0 100 75 75 20 0 0 0 0 0 100 75 75 0 20 0 50 0 0 100 75 75 0 0 0 50 50 0 100 75 75 0 0 0 50 0 0 100 75 75 0 20 0 0 0 0 100 75 75 0 0 0 0 50 0 100 75 75 0 0 0 0 0 0 100 0 75 20 20 50 0 0 0 100 0 75 20 0 50 0 50 0 100 0 75 20 0 50 0 0 0 100 0 75 0 20 50 50 0 0 100 0 75 0 0 50 50 50 0 100 0 75 0 0 50 50 0 0 100 0 75 0 20 50 0 0 0 100 0 75 0 0 50 0 50 0 100 0 75 0 0 50 0 0 0 100 0 75 20 20 0 0 0 0 100 0 75 20 0 0 0 50 0 100 0 75 20 0 0 0 0 0 100 0 75 0 20 0 50 0 0 100 0 75 0 0 0 50 50 0 100 0 75 0 0 0 50 0 0 100 0 75 0 20 0 0 0 0 100 0 75 0 0 0 0 50 0 100 0 75 0 0 0 0 0 0 100 75 0 20 20 0 0 0 0 100 75 0 20 0 0 0 50 0 100 75 0 20 0 0 0 0 0 100 75 0 0 20 0 50 0 0 100 75 0 0 0 0 50 50 0 100 75 0 0 0 0 50 0 0 100 75 0 0 20 0 0 0 0 100 75 0 0 0 0 0 50 0 100 75 0 0 0 0 0 0 0 100 0 0 20 20 50 0 0 0 100 0 0 20 0 50 0 50 0 100 0 0 20 0 50 0 0 0 100 0 0 0 20 50 50 0 0 100 0 0 0 0 50 50 50 0 100 0 0 0 0 50 50 0 0 100 0 0 0 20 50 0 0 0 100 0 0 0 0 50 0 50 0 100 0 0 0 0 50 0 0 0 100 0 0 20 20 0 0 0 0 100 0 0 20 0 0 0 50 0 100 0 0 20 0 0 0 0 0 100 0 0 0 20 0 50 0 0 100 0 0 0 0 0 50 50 0 100 0 0 0 0 0 50 0 0 100 0 0 0 20 0 0 0 0 100 0 0 0 0 0 0 50 0 100 0 0 0 0 0 0 0 0 0 75 100 20 20 0 0 0 0 0 75 100 20 0 0 0 50 0 0 75 100 20 0 0 0 0 0 0 75 100 0 20 0 50 0 0 0 75 100 0 0 0 50 50 0 0 75 100 0 0 0 50 0 0 0 75 100 0 20 0 0 0 0 0 75 100 0 0 0 0 50 0 0 75 100 0 0 0 0 0 0 0 0 100 20 20 50 0 0 0 0 0 100 20 0 50 0 50 0 0 0 100 20 0 50 0 0 0 0 0 100 0 20 50 50 0 0 0 0 100 0 0 50 50 50 0 0 0 100 0 0 50 50 0 0 0 0 100 0 20 50 0 0 0 0 0 100 0 0 50 0 50 0 0 0 100 0 0 50 0 0 0 0 0 100 20 20 0 0 0 0 0 0 100 20 0 0 0 50 0 0 0 100 20 0 0 0 0 0 0 0 100 0 20 0 50 0 0 0 0 100 0 0 0 50 50 0 0 0 100 0 0 0 50 0 0 0 0 100 0 20 0 0 0 0 0 0 100 0 0 0 0 50 0 0 0 100 0 0 0 0 0 0 0 100 0 20 20 0 0 0 0 0 100 0 20 0 0 0 50 0 0 100 0 20 0 0 0 0 0 0 100 0 0 20 0 50 0 0 0 100 0 0 0 0 50 50 0 0 100 0 0 0 0 50 0 0 0 100 0 0 20 0 0 0 0 0 100 0 0 0 0 0 50 0 0 100 0 0 0 0 0 0 0 0 0 0 20 20 50 0 0 0 0 0 0 20 0 50 0 50 0 0 0 0 20 0 50 0 0 0 0 0 0 0 20 50 0 0 0 0 0 0 0 0 50 50 50 0 0 0 0 0 0 50 50 0 0 0 0 0 0 20 50 0 0 0 0 0 0 0 0 50 0 50 0 0 0 0 0 0 100 0 0 0 0 0 0 20 20 0 0 0 0 0 0 0 20 0 0 0 60 0 0 0 0 100 0 0 0 0 0 0 0 0 0 20 0 50 0 0 0 0 0 0 0 0 50 50 0 0 0 0 0 0 0 100 0 0 0 0 0 0 100 0 0 0 0 0 0 0 0 0 0 0 100 0 0 0 0 0 0 0 0 0 100</utilities>
 		</utility>
-		<cpt id="HSM_PC_View">
-			<state id="add" />
-			<state id="remove" />
-			<state id="keep" />
-			<parents>som PC_View</parents>
-			<probabilities>0.6 0 0.4 0 0.6 0.4 0 0 1 0.9 0 0.1 0 0.9 0.1 0 0 1 0.75 0 0.25 0 0.75 0.25 0 0 1</probabilities>
+		<cpt id="HSM_PC_Parent">
+			<state id="MV" />
+			<state id="AV" />
+			<parents>som PC_Parent</parents>
+			<probabilities>0.6 0.4 0.4 0.6 0.9 0.09999999999999998 0.1 0.9 0.75 0.25 0.25 0.75</probabilities>
 			<property id="DSL_OUTCOME_ORDER">-1</property>
 		</cpt>
-		<cpt id="HSM_GM_View">
-			<state id="add" />
-			<state id="remove" />
-			<state id="keep" />
-			<parents>som GM_View</parents>
-			<probabilities>0.6 0 0.4 0 0.6 0.4 0 0 1 0.9 0 0.1 0 0.9 0.1 0 0 1 0.75 0 0.25 0 0.75 0.25 0 0 1</probabilities>
+		<cpt id="HSM_GM_Parent">
+			<state id="MV" />
+			<state id="AV" />
+			<parents>som GM_Parent</parents>
+			<probabilities>0.6 0.4 0.4 0.6 0.9 0.09999999999999998 0.1 0.9 0.75 0.25 0.25 0.75</probabilities>
 			<property id="DSL_OUTCOME_ORDER">-1</property>
 		</cpt>
-		<cpt id="HSM_C2_View">
-			<state id="add" />
-			<state id="remove" />
-			<state id="keep" />
-			<parents>som C2_View</parents>
-			<probabilities>0.6 0 0.4 0 0.6 0.4 0 0 1 0.9 0 0.1 0 0.9 0.1 0 0 1 0.75 0 0.25 0 0.75 0.25 0 0 1</probabilities>
+		<cpt id="HSM_C2_Parent">
+			<state id="MV" />
+			<state id="AV" />
+			<parents>som C2_Parent</parents>
+			<probabilities>0.6 0.4 0.4 0.6 0.9 0.09999999999999998 0.1 0.9 0.75 0.25 0.25 0.75</probabilities>
 			<property id="DSL_OUTCOME_ORDER">-1</property>
 		</cpt>
 		<cpt id="HSM_LM_View">
@@ -190,189 +187,189 @@
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>1015 742 1042 774</position>
+				<position>1010 586 1037 618</position>
 			</node>
 			<node id="decision">
 				<name>Main Views</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>995 219 1065 245</position>
+				<position>972 189 1042 215</position>
 			</node>
 			<node id="joystick_input">
 				<name>Joystick Input</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>725 248 807 292</position>
+				<position>783 239 865 283</position>
 			</node>
 			<node id="Context">
 				<name>Context</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>685 337 737 369</position>
+				<position>743 328 795 360</position>
 			</node>
 			<node id="som">
 				<name>State of Mind</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>57 84 133 122</position>
+				<position>115 75 191 113</position>
 			</node>
 			<node id="C1">
 				<name>C1</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>656 81 699 110</position>
+				<position>714 72 757 101</position>
 			</node>
 			<node id="C2">
 				<name>C2</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>502 81 545 110</position>
+				<position>560 72 603 101</position>
 			</node>
 			<node id="LM">
 				<name>LM</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>592 81 636 111</position>
+				<position>650 72 694 102</position>
 			</node>
 			<node id="joystick_direction">
 				<name>Joystick Direction</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>756 81 856 118</position>
+				<position>814 72 914 109</position>
 			</node>
 			<node id="PC">
 				<name>PC</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>232 81 275 110</position>
+				<position>290 72 333 101</position>
 			</node>
 			<node id="GM">
 				<name>GM</name>
 				<interior color="c0c0c0" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" bold="true" />
-				<position>342 81 387 111</position>
+				<position>400 72 445 102</position>
 			</node>
-			<node id="PC_Action">
-				<name>PC Action</name>
+			<node id="PC_Parent">
+				<name>PC Parent</name>
 				<interior color="ffffff" />
 				<outline color="000000" />
 				<font color="000000" name="Arial" size="8" />
-				<position>217 325 289 361</position>
+				<position>275 316 347 352</position>
 			</node>
-			<node id="GM_Action">
-				<name>GM Action</name>
+			<node id="GM_Parent">
+				<name>GM Parent</name>
 				<interior color="ffffff" />
 				<outline color="000000" />
 				<font color="000000" name="Arial" size="8" />
-				<position>333 278 405 314</position>
+				<position>391 269 463 305</position>
 			</node>
-			<node id="C2_Action">
-				<name>C2 Action</name>
+			<node id="C2_Parent">
+				<name>C2 Parent</name>
 				<interior color="ffffff" />
 				<outline color="000000" />
 				<font color="000000" name="Arial" size="8" />
-				<position>465 268 537 304</position>
+				<position>523 259 595 295</position>
 			</node>
 			<node id="LM_View">
 				<name>LM View</name>
 				<interior color="ffffff" />
 				<outline color="000000" />
 				<font color="000000" name="Arial" size="8" />
-				<position>637 476 709 512</position>
+				<position>682 363 754 399</position>
 			</node>
 			<node id="C1_View">
 				<name>C1 View</name>
 				<interior color="ffffff" />
 				<outline color="000000" />
 				<font color="000000" name="Arial" size="8" />
-				<position>764 492 836 528</position>
+				<position>809 379 881 415</position>
 			</node>
 			<node id="PC_View">
 				<name>PC View</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>124 558 192 588</position>
+				<position>182 549 250 579</position>
 			</node>
 			<node id="GM_View">
 				<name>GM View</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>231 612 295 652</position>
+				<position>289 603 353 643</position>
 			</node>
 			<node id="C2_View">
 				<name>C2 View</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>317 657 379 695</position>
+				<position>375 648 437 686</position>
 			</node>
-			<node id="HSM_PC_View">
-				<name>HSM PC View</name>
+			<node id="HSM_PC_Parent">
+				<name>HSM PC Parent</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>107 638 161 671</position>
+				<position>67 370 121 403</position>
 			</node>
-			<node id="HSM_GM_View">
-				<name>HSM GM View</name>
+			<node id="HSM_GM_Parent">
+				<name>HSM GM Parent</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>230 695 286 730</position>
+				<position>83 456 139 491</position>
 			</node>
-			<node id="HSM_C2_View">
-				<name>HSM C2 View</name>
+			<node id="HSM_C2_Parent">
+				<name>HSM C2 Parent</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>325 724 379 757</position>
+				<position>109 531 163 564</position>
 			</node>
 			<node id="HSM_LM_View">
 				<name>HSM LM View</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>648 591 702 624</position>
+				<position>693 478 747 511</position>
 			</node>
 			<node id="HSM_C1_View">
 				<name>HSM C1 View</name>
 				<interior color="ffffff" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>776 619 830 652</position>
+				<position>821 506 875 539</position>
 			</node>
 			<node id="SL">
 				<name>SL</name>
 				<interior color="ffffff" />
 				<outline color="ff0000" width="2" />
 				<font color="000000" name="Arial" size="8" />
-				<position>109 21 158 51</position>
+				<position>167 12 216 42</position>
 			</node>
 			<node id="CL">
 				<name>CL</name>
 				<interior color="ffffff" />
 				<outline color="ff0000" width="2" />
 				<font color="000000" name="Arial" size="8" />
-				<position>172 21 225 53</position>
+				<position>230 12 283 44</position>
 			</node>
 			<node id="SA">
 				<name>SA</name>
 				<interior color="ffffff" />
 				<outline color="ff0000" width="2" />
 				<font color="000000" name="Arial" size="8" />
-				<position>47 19 96 50</position>
+				<position>105 10 154 41</position>
 			</node>
 		</genie>
 	</extensions>

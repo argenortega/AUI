@@ -177,6 +177,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
                         ask = ask.replace('HSM_', '')
                         n.updateBeliefs()
                         options = dict(zip(n.getOutcomeIds(ask), n.getNodeValue(ask)))
+                        print 'Options: ',options
                         self.hsm_dialogue(node, ask, options)
                         self.answerTimer.start(15000)
                         self.answer()
@@ -256,7 +257,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
             'Error: %s is not yet in evidence.' % key
 
     def update_decision(self):
-        print self.evidence
+        print 'Evidence: ', self.evidence
         if self.AUItoggleButton.isChecked():
             path = nx.shortest_path(self.hid, 'gui', self.node)
             parent = path.pop()
@@ -292,7 +293,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
 
         b = 0
         for k, v in sorted(options.iteritems(), key= options.get):
-            if isclose(v,0):
+            if not isclose(v,0):
                 self.buttonGroup.button(b).setVisible(True)
                 self.buttonGroup.button(b).setText(k)
                 b += 1
@@ -302,14 +303,14 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
 
         if question == 'C1_View':
             message = message + 'Add Camera 1?'
-        if question == 'C2_View':
-            message = message + 'Add Camera 2?'
+        if question == 'C2_Parent':
+            message = message + 'Location of Camera 2?'
         if question == 'LM_View':
             message = message + 'Add Local Map?'
-        if question == 'GM_View':
-            message = message + 'Add Global Map?'
-        if question == 'PC_View':
-            message = message + 'Add Point Cloud?'
+        if question == 'GM_Parent':
+            message = message + 'Location of Global Map?'
+        if question == 'PC_Parent':
+            message = message + 'Location of Point Cloud?'
         if question == 'AV':
             message = message + 'Visibility of Additional Views?'
         if question == 'View_Content':
