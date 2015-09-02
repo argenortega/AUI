@@ -3,8 +3,8 @@ __author__ = 'Argen'
 import sys
 from PyQt4 import QtGui
 
-from PyQt4.QtGui import QProgressBar, QPushButton, QGroupBox
-from PyQt4.QtCore import pyqtSlot, QTimer, pyqtSignal
+from PyQt4.QtGui import QProgressBar, QPushButton, QGroupBox, QLabel
+from PyQt4.QtCore import pyqtSlot, QTimer, pyqtSignal, QObject
 
 DEFAULT_STYLE = """
 QProgressBar{
@@ -22,7 +22,6 @@ QProgressBar::chunk {
 class CProgressBar(QProgressBar):
     def __init__(self, parent):
         QProgressBar.__init__(self, parent)
-        # self.setStyleSheet('border: 2px solid grey')
         self.setStyleSheet(DEFAULT_STYLE)
         self.setMaximumHeight(7)
 
@@ -134,15 +133,47 @@ class FocusGroupBox(QGroupBox):
 
     def enterEvent(self, QEvent):
         QTimer.singleShot(3000, self.focusing)
-        # print 'Enter'
 
     def focusing(self):
         if self.underMouse():
-            print 'Focus ', self.accessibleName()
-            # self.inside.emit('focus', str(self.accessibleName()))
+            self.inside.emit('focus', str(self.accessibleName()))
 
     def leaveEvent(self, QEvent):
         pass
+
+
+class View(QLabel, QObject):
+    inside = pyqtSignal(str, str, name='inside')
+    focus = False
+    default_style = 'border-color: rgb(154, 154, 154); border-style: solid; border-width: 2px; border-radius: 6px;'
+
+    def __init__(self, parent):
+        QLabel.__init__(self, parent)
+        self.outside = pyqtSignal(str)
+        self.setStyleSheet(self.default_style)
+
+    def enterEvent(self, event):
+        self.setStyleSheet(
+            'border-color: rgb(164, 205, 255); border-radius: 6px; border-width: 3px; border-style: solid;')
+        QTimer.singleShot(5000, self.focusing)
+
+    def leaveEvent(self, event):
+        self.setStyleSheet(self.default_style)
+        self.focus = False
+
+    def focusing(self):
+        if self.underMouse():
+            self.inside.emit('focus', str(self.accessibleName()))
+            self.setStyleSheet(
+                'border-color: rgb(9, 80, 208); border-radius: 6px; border-width: 4px; border-style: solid;')
+            self.focus = True
+
+    def attention(self):
+        self.setStyleSheet(
+            'border-color: rgb(139, 195, 74); border-radius: 6px; border-width: 4px; border-style: solid;')
+
+    def focused(self):
+        return self.focus
 
 
 def main():

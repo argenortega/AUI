@@ -34,7 +34,7 @@ class ActLabel(QLabel, QObject):
 
     def attention(self):
         self.setStyleSheet(
-            'border-color: rgb(139, 195, 74); border-radius: 6px; border-width: 2px; border-style: solid;')  # + self.default_style)
+            'border-color: rgb(139, 195, 74); border-radius: 6px; border-width: 4px; border-style: solid;')  # + self.default_style)
 
     def focused(self):
         return self.focus

@@ -181,13 +181,14 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
                         self.hsm_dialogue(node, ask, options)
                         self.answerTimer.start(15000)
                         self.answer()
+                        self.hide_buttons()
 
                         for k, v in self.hsm_evidence.iteritems():
                             n.setEvidence(k, v)
 
             n.updateBeliefs()
             result = n.getOutcomeId('decision', argmax(n.getNodeValue('decision')))
-            print 'Decision: ', result
+            # print 'Decision: ', result
 
 
             return result
@@ -196,7 +197,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
 
     def hid_decision(self, node):
         result = self.make_decision(node)
-        self.decision_path.append(result)
+        #self.decision_path.append(result)
 
         if result is not None:
             self.node = result
@@ -207,6 +208,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
                 # self.decision.emit(result)
                 self.messages.setCurrentCharFormat(self.decisionFormat)
                 self.messages.append('[%s] Decision: %s'%(self.timestamp(),result))
+                print 'Decision path: ', nx.shortest_path(self.hid, 'gui', self.node)
                 return result
         else:
             return 'User input required'
