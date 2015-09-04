@@ -52,6 +52,9 @@
         <property name="acceptDrops">
          <bool>true</bool>
         </property>
+        <property name="accessibleName">
+         <string>MV</string>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -93,6 +96,9 @@
         </property>
         <property name="acceptDrops">
          <bool>true</bool>
+        </property>
+        <property name="accessibleName">
+         <string>MV</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -137,6 +143,9 @@
         <property name="acceptDrops">
          <bool>true</bool>
         </property>
+        <property name="accessibleName">
+         <string>MV</string>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -178,6 +187,9 @@
         </property>
         <property name="acceptDrops">
          <bool>true</bool>
+        </property>
+        <property name="accessibleName">
+         <string>MV</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -464,6 +476,9 @@ QPushButton:hover{
         </property>
         <property name="acceptDrops">
          <bool>true</bool>
+        </property>
+        <property name="accessibleName">
+         <string>AV</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>

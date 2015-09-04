@@ -1,9 +1,17 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
-Created on Mon Dec 29 04:42:13 2014
+Mixed-Initiative Module
 
-@author: Argen
+This module users the SMILE reasoning engine developed by the Decision Systems Laboratory of the University of
+Pittsburgh available at http://genie.sis.pitt.edu/.
 """
+
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
+
 
 import sys
 import jpype
@@ -84,7 +92,6 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
 
         self.setSizePolicy(self.sizePolicy)
 
-        #self.messages.setText('[00:00]: Adaptive capabilities turned on.\n')
         self.messages.setReadOnly(True)
 
         self.AUIStatus.setVisible(False)
@@ -99,7 +106,6 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         self.buttonGroup.setId(self.button4, 3)
 
         self.buttonGroup.buttonClicked.connect(self.atomic_decision)
-        # self.buttonGroup.moveToThread(self.buttonThread)
 
         # self.make_decision('main_views')
         # self.check_files()
@@ -242,19 +248,6 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
                 self.evidence[k] = v
                 if not self.small_pause.isActive() and self.AUItoggleButton.isChecked():
                     self.small_pause.singleShot(5000, self.update_decision)
-                #if self.AUItoggleButton.isChecked():
-                #    # print 'Updating decision'
-                #    path = nx.shortest_path(self.hid, 'gui', self.node)
-                #    parent = path.pop()
-                #    path.reverse()
-                #    for p in path:
-                #        if k in self.hid.node[p]['evidence']:
-                #            parent = p
-
-                #    self.node = self.hid_decision(parent)
-                #    self.decision.emit(self.node)
-
-                #    # self.hid_decision(parent)
         else:
             'Error: %s is not yet in evidence.' % key
 
@@ -272,7 +265,6 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
             self.decision.emit(self.node)
 
     def closeEvent(self, event):
-        # print 'MI shutdown'
         self.answerTimer.stop()
         shutdownJVM()
 
@@ -283,7 +275,6 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
 
     def hsm_dialogue(self, node, question, options=None):
         print 'ID: %s Question: %s'%(node, question)
-        #print 'Previous info: ', self.hsm_node, self.question, self.hsm_evidence
         if node != self.hsm_node:
             self.hsm_node = node
 
@@ -333,19 +324,15 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         while self.answerTimer.isActive():
             QApplication.processEvents()
 
-        # print self.hsm_evidence
 
     def atomic_decision(self, button):
-        # self.decision.emit(button.text())
-        # print button.text()
         self.hsm_evidence[self.question] = str(button.text())
         self.answerTimer.stop()
         self.hide_buttons()
         message = '[%s] User input: %s'%(self.timestamp(), button.text())
         self.messages.setCurrentCharFormat(self.questionFormat)
         self.messages.append(message)
-        # print self.hsm_node, self.question, self.hsm_evidence
-        # self.hid_decision(self.hsm_node)
+
 
 def main():
     app = QtGui.QApplication(sys.argv)

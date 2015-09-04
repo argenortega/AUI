@@ -1,9 +1,13 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
-Created on Mon Dec 29 15:28:25 2014
+Global Map Widget
+"""
 
-@author: Argen
-"""
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
 
 import sys
 
@@ -23,9 +27,6 @@ class GlobalMap(QWidget, ui_gmap.Ui_MapWidget):
         self.setObjectName("GM")
         self.currentmap = 'border-image: url(:/maps/global/global2);'
         #self.map.setStyleSheet(self.currentmap)
-        #sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        #sizePolicy.setHeightForWidth(True)
-        #self.setSizePolicy(sizePolicy)
 
     def heightForWidth(self, p_int):
         return p_int

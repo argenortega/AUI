@@ -1,11 +1,18 @@
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
+"""
+Main Views and Additional Views Drag and Drop Behavior
+"""
+
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
+
+
 from PyQt4.QtCore import pyqtSignal
-
-__author__ = 'Argen'
-
-from PyQt4 import QtCore, QtGui
+from PyQt4 import QtCore
 from PyQt4.QtGui import (QFrame, QLabel)
-
-from aui.gui.views.sources import camera
 
 
 class DView(QFrame):
@@ -127,7 +134,6 @@ class DAvailableView(QFrame):
         widget.show()
 
         self.av_wid.emit(str(widget.objectName()), 'AV')
-
 
     def dragEnterEvent(self, event):
         if event.mimeData().hasText():

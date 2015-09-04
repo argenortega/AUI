@@ -1,9 +1,14 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
-Created on Mon Dec 29 18:33:45 2014
+Wifi Widget
+"""
 
-@author: Argen
-"""
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
+
 import sys
 
 from PyQt4 import QtGui, QtCore
@@ -97,6 +102,13 @@ class Wifi(QWidget, ui_wifi.Ui_WifiStatus):
             self.frame.setVisible(True)
             self.send_visible(True)
 
+    def get_level(self):
+        if self.wifi.value() > 70:
+            return 'Ok'
+        elif 70 >= self.wifi.value() > 50:
+            return 'Warn'
+        elif self.wifi.value() <= 50:
+            return 'Critical'
 
 def main():
     app = QtGui.QApplication(sys.argv)

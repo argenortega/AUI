@@ -1,14 +1,16 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
-Created on Sun Dec 14 03:33:10 2014
+Demonstration Widget to set evidence required by the MI-module.
 
-@author: Argen
-@version: 2.0
-
-
-Timer function is based on the stopwatch found here: 
+Timer function is based on the stopwatch found here:
 http://thecodeinn.blogspot.de/2013/08/pyqt-stopwatch-and-timer.html
 """
+
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
 
 import sys
 
@@ -49,14 +51,6 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
         self.stopEpisodeButton.clicked.connect(lambda: self.timer.stop())
         self.resetEpisodeButton.clicked.connect(self.Reset)
 
-        # self.focusWidgetButtons.setVisible(False)
-
-        # self.tab2 = utilities.Utilities(self)
-
-        # self.tab3 = probabilities.Probabilities(self)
-
-        # self.contents.addTab(self.tab2, "Utilities")
-        # self.contents.addTab(self.tab3, "Probabilities")
         self.setWidget(self.contents)
 
         desktop = QDesktopWidget()
@@ -65,8 +59,6 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
 
         win_size = 'Window: %d x %d' % (win.height(), win.width())
         screen_size = 'Screen: %d x %d' % (available.height(), available.width())
-        print win_size
-        print screen_size
 
         self.info.setText(win_size + '\n' + screen_size)
 
@@ -86,16 +78,12 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
         self.focusButtonGroup.setId(self.focus_S, 5)
         self.focusButtonGroup.setId(self.focus_AS, 6)
 
-        # self.joystickButtonGroup.buttonClicked.connect(self.context_slot)
         self.contextButtonGroup.buttonClicked.connect(self.context_slot)
         self.focusButtonGroup.buttonClicked.connect(self.focus_slot)
 
         QtCore.QObject.connect(self.saSlider, QtCore.SIGNAL("valueChanged(int)"), self.situation_awareness)
         QtCore.QObject.connect(self.stressSlider, QtCore.SIGNAL("valueChanged(int)"), self.stress_level)
         QtCore.QObject.connect(self.cognitiveLoadSlider, QtCore.SIGNAL("valueChanged(int)"), self.cognitive_load)
-        # print self.contextButtonGroup.buttonClicked()
-
-        # self.userInfo.setVisible(False)
 
     def Reset(self):
         global s, m, h
@@ -185,6 +173,7 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
     @pyqtSlot(int)
     def wifi(self, value):
         self.wifiSlider.setValue(value)
+
 
 def main():
     app = QtGui.QApplication(sys.argv)

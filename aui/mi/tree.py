@@ -1,4 +1,13 @@
-__author__ = 'Argen'
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
+"""
+Script for creating the gpickle HID file used by the MI-module
+"""
+
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
 
 import networkx as nx
 import matplotlib.pyplot as plt

@@ -1,4 +1,13 @@
-__author__ = 'Argen'
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
+"""
+Hover Buttons. Deprecated and replaced by use of stylesheets
+"""
+
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
 
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QPushButton, QSizePolicy, QLabel, QVBoxLayout, QFrame,

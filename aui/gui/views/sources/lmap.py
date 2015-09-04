@@ -1,9 +1,13 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
-Created on Mon Dec 29 15:28:54 2014
+Local Map Widget
+"""
 
-@author: Argen
-"""
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
 
 import sys
 
@@ -11,7 +15,6 @@ from PyQt4.QtCore import pyqtSignal, Qt, QMimeData
 from PyQt4.QtGui import (QWidget, QSizePolicy, QApplication, QDrag, QPixmap)
 
 from aui.gui.views.sources import ui_lmap
-#from aui.utilities.DragWidget import DView
 
 class LocalMap(QWidget, ui_lmap.Ui_NewView):
     '''
@@ -29,12 +32,6 @@ class LocalMap(QWidget, ui_lmap.Ui_NewView):
         self.currentmap = 'border-image: url(:/maps/local/local1);'
         #self.map.setStyleSheet(self.currentmap)
 
-        '''
-        Size of the widget
-        '''
-        #sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        #sizePolicy.setHeightForWidth(True)
-        #self.setSizePolicy(sizePolicy)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:

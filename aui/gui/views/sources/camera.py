@@ -1,9 +1,14 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
-Created on Tue Dec  2 00:48:21 2014
+Camera widgets
+"""
 
-@author: Argen
-"""
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
+
 import sys
 
 from PyQt4 import QtGui
@@ -22,9 +27,7 @@ class Camera(QWidget, ui_camera.Ui_Camera):
         self.setupUi(self)
         self.num = num
         self.initui()
-        settings = QSettings()
-        settings.setValue("MainWindow/Size",QVariant(self.size()))
-        
+
     def initui(self):
         self.setObjectName("C%d" % self.num)
         self.setAccessibleName("C%d" % self.num)
@@ -37,20 +40,6 @@ class Camera(QWidget, ui_camera.Ui_Camera):
             self.cam.setText("Back Camera")
         else:
             self.cam.setText("Bird's Eye Camera")
-
-
-        '''
-        Size of the widget
-        '''
-        #sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
-        #sizePolicy.setHeightForWidth(True)
-        #self.setSizePolicy(sizePolicy)
-
-    # def sizeHint(self):
-    #    return QSize(300,300)
-
-    # def heightForWidth(self, width):
-    #    return width * 1
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
@@ -77,9 +66,6 @@ class Camera(QWidget, ui_camera.Ui_Camera):
 
 def main():
     app = QtGui.QApplication(sys.argv)
-    app.setOrganizationName("TRADR")
-    #app.setOrganizationDomain("UGV OCU")
-    app.setApplicationName("UGV OCU")
     cam = Camera(None, 1)
     cam.show()
     sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -90,7 +76,7 @@ def main():
     cam.cam.resize(700, 700)
     cam.cam.updateGeometry()
 
- 
+
     sys.exit(app.exec_())
  
 if __name__ == "__main__":

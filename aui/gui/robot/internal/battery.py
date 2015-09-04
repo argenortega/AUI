@@ -1,9 +1,13 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
-Created on Mon Dec 29 18:33:54 2014
+Battery Widget
+"""
 
-@author: Argen
-"""
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
 
 import sys
 
@@ -35,8 +39,6 @@ class Battery(QWidget, ui_battery.Ui_batteryStatus):
         self.charge.clicked.connect(self.recharge)
         self.recharge_signal.connect(self.battery.setValue)
         #self.battery.setValue(30)
-
-
 
     def initUI(self):
         self.battery.valueChanged[int].connect(self.send_level)
@@ -98,6 +100,14 @@ class Battery(QWidget, ui_battery.Ui_batteryStatus):
             self.batteryLevel.setChecked(True)
             self.frame.setVisible(True)
             self.send_visible(True)
+
+    def get_level(self):
+        if self.battery.value() > 70:
+            return 'Ok'
+        elif 70 >= self.battery.value() > 50:
+            return 'Warn'
+        elif self.battery.value() <= 50:
+            return 'Critical'
 
 
 def main():

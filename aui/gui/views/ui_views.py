@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/views.ui'
 #
-# Created: Thu Aug 27 23:06:10 2015
+# Created: Fri Sep  4 01:29:58 2015
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -275,15 +275,20 @@ class Ui_viewsWidget(object):
 
     def retranslateUi(self, viewsWidget):
         viewsWidget.setWindowTitle(_translate("viewsWidget", "Form", None))
+        self.tleft.setAccessibleName(_translate("viewsWidget", "MV", None))
         self.tleftLabel.setText(_translate("viewsWidget", "Drag any view here", None))
+        self.bleft.setAccessibleName(_translate("viewsWidget", "MV", None))
         self.bleftLabel.setText(_translate("viewsWidget", "Drag any view here", None))
+        self.bright.setAccessibleName(_translate("viewsWidget", "MV", None))
         self.brightLabel.setText(_translate("viewsWidget", "Drag any view here", None))
+        self.tright.setAccessibleName(_translate("viewsWidget", "MV", None))
         self.trightLabel.setText(_translate("viewsWidget", "Drag any view here", None))
         self.four.setText(_translate("viewsWidget", "┼", None))
         self.vert.setText(_translate("viewsWidget", "│", None))
         self.hor.setText(_translate("viewsWidget", "─", None))
         self.viewsGroup.setAccessibleName(_translate("viewsWidget", "AV", None))
         self.viewsGroup.setTitle(_translate("viewsWidget", "Available Views", None))
+        self.availableViews.setAccessibleName(_translate("viewsWidget", "AV", None))
 
 from aui.mi.visual import FocusGroupBox
 from aui.utilities.DropView import DCurrentView, Marker, DAvailableView

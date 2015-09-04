@@ -1,9 +1,13 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
-Created on Mon Dec 29 15:28:42 2014
+Point Cloud Widget
+"""
 
-@author: Argen
-"""
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
 
 import sys
 
@@ -25,9 +29,6 @@ class Pointcloud(QWidget, ui_pointcloud.Ui_PointcloudWidget):
         
     def initUI(self):
         self.setObjectName("PC")
-        #sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        #sizePolicy.setHeightForWidth(True)
-        #self.setSizePolicy(sizePolicy)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:

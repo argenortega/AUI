@@ -1,9 +1,13 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
-Created on Mon Dec 29 18:34:05 2014
+Joystick Widget
+"""
 
-@author: Argen
-"""
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
 
 import sys
 
@@ -16,7 +20,7 @@ from aui.gui.robot.joystick import ui_joystick
 
 class Joystick(QWidget, ui_joystick.Ui_joystickWidget):
     '''
-    Simulation of a Battery level widget
+    Simulation of a Joystick widget
     '''
     joystick_direction = pyqtSignal(str, str, name='joystick_direction')
     joystick_input = pyqtSignal(str, str, name='joystick_input')

@@ -1,7 +1,16 @@
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
+"""
+Drag widget behavior
+"""
+
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
+
+
 from PyQt4 import QtGui
-
-__author__ = 'Argen'
-
 from PyQt4.QtCore import Qt, QMimeData
 from PyQt4.QtGui import (QWidget, QApplication, QDrag, QPixmap)
 from PyQt4 import QtCore

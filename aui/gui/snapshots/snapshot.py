@@ -1,9 +1,13 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
-Created on Mon Dec 29 17:21:56 2014
+Snapshots Widget
+"""
 
-@author: Argen
-"""
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
 
 import sys
 
@@ -12,7 +16,6 @@ from PyQt4.QtGui import QWidget, QSizePolicy, QFrame
 from PyQt4.QtCore import QSize, pyqtSignal, pyqtSlot
 
 from aui.gui.snapshots import ui_snapshot
-#import ActiveLabel
 
 
 class Screenshots(QWidget, ui_snapshot.Ui_ScreenshotWidget):

@@ -1,16 +1,20 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
 """
-Created on Sat Dec 27 02:57:21 2014
+Mixed-Initiative Adaptive User Interface
+"""
 
-@author: Argentina Ortega Sáinz
-@version: 0.0.2
-"""
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
+
 import sys
 import os
 
 from PyQt4 import QtGui, QtCore
-from PyQt4.QtCore import pyqtSignal, QObject, SIGNAL
-from PyQt4.QtGui import (QMainWindow, QHBoxLayout, QVBoxLayout, QDialog, QMessageBox)
+from PyQt4.QtCore import pyqtSignal, QObject, SIGNAL, QSettings, QSize, QPoint
+from PyQt4.QtGui import (QMainWindow, QHBoxLayout, QVBoxLayout, QDialog, QMessageBox, QDesktopWidget, QFrame)
 
 from aui.gui.views.sources import camera, lmap, gmap, pointcloud
 from aui.gui.robot.internal import battery, wifi
@@ -31,32 +35,60 @@ class Login(QDialog, ui_user.Ui_Dialog):
         QDialog.__init__(self)
         self.setupUi(self)
         self.loginButton.clicked.connect(self.login)
+        self.username = 'user'
+        self.passphrase = '1234'
+        self.device = 'UGV'
 
     def login(self):
-        if self.operatorProfile.isChecked() and self.user.text() == 'user':
-            print self.user.text()
-            print self.password.text()
-            self.accept()
-        else:
-            QMessageBox.warning(self, 'Error', 'Bad user')
+        self.username = self.user.text()
+        self.passphrase = self.password.text()
+        self.device = self.profile()
+        self.accept()
+
+    def getValues(self):
+        return self.username, self.device
+
+    def profile(self):
+        if self.operatorProfile.isChecked():
+            return 'UGV'
+        elif self.teamLeaderProfile.isChecked():
+            return 'CommandTable'
+        elif self.infieldProfile.isChecked():
+            return 'InField'
 
 
 class AUI(QMainWindow, ui_aui.Ui_MainWin):
     """
-    Adaptive User Interface for TRADR project
+    Adaptive User Interface
     """
     closing = pyqtSignal()
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, user='user', device='UGV'):
         super(AUI, self).__init__()
+        self.setupUi(self)
+        self.user = user
+        desktop = QDesktopWidget()
+        self.available = QtCore.QRect(desktop.screenGeometry())
+        screen_size = 'Screen: %d x %d' % (self.available.height(), self.available.width())
+        print screen_size
+
+        QSettings.setPath(QSettings.IniFormat, QSettings.UserScope, 'config/user')
+        QSettings.setPath(QSettings.IniFormat, QSettings.SystemScope, 'config/sys')
+
+        self.globalsettings = QSettings(QSettings.IniFormat, QSettings.SystemScope, "TRADR", device)
+        self.usersettings = QSettings(QSettings.IniFormat, QSettings.UserScope, "TRADR", device)
+
         self.sc_num = 0
         self.evidence = {}
-        self.setupUi(self)
         self.initUI()
+        self.read_settings()
         self.closing.connect(self.mixedInitiative.close)
+        self.showMaximized()
+        win = QtCore.QRect(self.geometry())
+        win_size = 'Window: %d x %d' % (win.height(), win.width())
+        print win_size
 
     def initUI(self):
-        # self.setGeometry(0, 0, 1280, 800)
         self.setWindowTitle("Adaptive TRADR OCU")
         self.setMouseTracking(True)
 
@@ -211,7 +243,81 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         self.mixedInitiative.decision.connect(self.views.atomic_decision)
 
         self.logbar.showMessage('Ready')
-        self.showMaximized()
+
+    def read_settings(self):
+        self.globalsettings.beginGroup('Views')
+
+        self.views.camera1.setVisible(self.globalsettings.value('Camera1', True).toBool())
+        self.views.camera2.setVisible(self.globalsettings.value('Camera2', True).toBool())
+        self.views.localmap.setVisible(self.globalsettings.value('LocalMap', True).toBool())
+        self.views.globalmap.setVisible(self.globalsettings.value('GlobalMap', True).toBool())
+        self.views.pointcloud.setVisible(self.globalsettings.value('PointCloud', True).toBool())
+        self.globalsettings.endGroup()
+
+        self.globalsettings.beginGroup("Snapshots")
+        self.Screenshots.setVisible(self.globalsettings.value("Snapshots", True).toBool())
+        self.globalsettings.endGroup()
+
+        self.globalsettings.beginGroup("RobotState")
+        self.battery.setVisible(self.globalsettings.value("Battery", True).toBool())
+        self.wifi.setVisible(self.globalsettings.value("Wifi", True).toBool())
+        self.joystick.setVisible(self.globalsettings.value("Joystick", True).toBool())
+        self.globalsettings.endGroup()
+
+        self.usersettings.beginGroup(self.user)
+
+        self.resize(self.usersettings.value('MainWindow/size', QSize(751, 1280)).toSize())
+        self.move(self.usersettings.value('MainWindow/pos', QPoint(200,200)).toPoint())
+        # self.restoreState(self.usersettings.value('windowState').toByteArray())
+
+        parent_str = self.usersettings.value('Camera1').toString()
+        parent = self.views.findChild(QFrame, parent_str)
+        self.views.camera1.setParent(parent)
+        parent.add_widget(self.views.camera1)
+
+        parent_str = self.usersettings.value('Camera2').toString()
+        parent = self.views.findChild(QFrame, parent_str)
+        self.views.camera2.setParent(parent)
+        parent.add_widget(self.views.camera2)
+
+        parent_str = self.usersettings.value('LocalMap').toString()
+        parent = self.views.findChild(QFrame, parent_str)
+        self.views.localmap.setParent(parent)
+        parent.add_widget(self.views.localmap)
+
+        parent_str = self.usersettings.value('GlobalMap').toString()
+        parent = self.views.findChild(QFrame, parent_str)
+        self.views.globalmap.setParent(parent)
+        parent.add_widget(self.views.globalmap)
+
+        parent_str = self.usersettings.value('PointCloud').toString()
+        parent = self.views.findChild(QFrame, parent_str)
+        self.views.pointcloud.setParent(parent)
+        parent.add_widget(self.views.pointcloud)
+
+
+
+        visible = self.usersettings.value('AV', True).toBool()
+        self.views.availableViews.setVisible(visible)
+        self.views.viewsGroup.setChecked(visible)
+        self.evidence.update({'AV_visible': str(visible)})
+
+        visible = self.usersettings.value('AS', True).toBool()
+        self.Screenshots.extraScreenGroup.setChecked(visible)
+        self.Screenshots.scrollArea.setVisible(visible)
+        self.evidence.update({'AS_visible': str(visible)})
+
+        visible = self.usersettings.value('Battery', True).toBool()
+        self.battery.batteryLevel.setChecked(visible)
+        self.battery.frame.setVisible(visible)
+        self.evidence.update({'battery_level': str(self.battery.get_level()), 'battery_visible': str(visible)})
+
+        visible = self.usersettings.value('Wifi', True).toBool()
+        self.wifi.wifiLevel.setChecked(visible)
+        self.wifi.frame.setVisible(visible)
+        self.evidence.update({'wifi_level': str(self.wifi.get_level()), 'wifi_visible': str(visible)})
+
+        self.usersettings.endGroup()
 
     def get_evidence(self):
         return self.evidence
@@ -239,16 +345,50 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         ns.chosen.connect(self.Screenshots.setScreenshot)
         ns.screenshot.inside.connect(self.mixedInitiative.update_evidence)
 
+    def write_settings(self):
+
+        self.usersettings.beginGroup(self.user)
+
+        self.usersettings.setValue('MainWindow/size', self.size())
+        self.usersettings.setValue('MainWindow/pos', self.pos())
+
+        self.usersettings.setValue('Camera1', self.views.camera1.parent().objectName())
+        self.usersettings.setValue('Camera2', self.views.camera2.parent().objectName())
+        self.usersettings.setValue('LocalMap', self.views.localmap.parent().objectName())
+        self.usersettings.setValue('GlobalMap', self.views.globalmap.parent().objectName())
+        self.usersettings.setValue('PointCloud', self.views.pointcloud.parent().objectName())
+
+
+        self.usersettings.setValue('AV', str(self.views.viewsGroup.isChecked()))
+
+        self.usersettings.setValue('AS', str(self.Screenshots.extraScreenGroup.isChecked()))
+
+        self.usersettings.setValue('Battery', str(self.battery.batteryLevel.isChecked()))
+
+        self.usersettings.setValue('Wifi', str(self.wifi.wifiLevel.isChecked()))
+
+        self.usersettings.remove('windowState')
+
+        # self.usersettings.setValue('windowState', self.saveState())
+
+        self.usersettings.endGroup()
+
+        self.usersettings.sync()
+
     def closeEvent(self, event):
+        self.write_settings()
         self.closing.emit()
 
 
 def login():
     app = QtGui.QApplication(sys.argv)
-    if Login().exec_() == QDialog.Accepted:
-        print 'Done'
-        adaptive_interface = AUI()
+    login_widget = Login()
+
+    if login_widget.exec_():
+        username, device = login_widget.getValues()
+        adaptive_interface = AUI(user=username, device=device)
         adaptive_interface.show()
+        adaptive_interface.raise_()
         sys.exit(app.exec_())
 
 

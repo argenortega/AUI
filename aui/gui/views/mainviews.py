@@ -1,4 +1,13 @@
-__author__ = 'Argen'
+#!/usr/bin/env python
+#  -*- coding: utf-8 -*-
+"""
+Main Views Widget
+"""
+
+__author__ = "Argentina Ortega Sainz"
+__copyright__ = "Copyright (C) 2015 Argentina Ortega Sainz"
+__license__ = "MIT"
+__version__ = "2.0"
 
 import sys
 
@@ -21,27 +30,26 @@ class MainViews(QWidget, ui_views.Ui_viewsWidget):
         self.initUI()
 
     def initUI(self):
-        #self.pushButton.clicked[bool].connect(self.press)
         self.hor.clicked[bool].connect(self.horizontalView)
         self.vert.clicked[bool].connect(self.verticalView)
         self.four.clicked[bool].connect(self.fourViews)
         self.horizontalView()
         self.viewsGroup.clicked[bool].connect(self.send_visible)
 
-        self.pointcloud = pointcloud.Pointcloud(self)
+        self.pointcloud = pointcloud.Pointcloud(self.availableViews)
         self.availableViewsLayout.addWidget(self.pointcloud)
 
-        self.globalmap = gmap.GlobalMap(self)
+        self.globalmap = gmap.GlobalMap(self.availableViews)
         self.availableViewsLayout.addWidget(self.globalmap)
 
-        self.localmap = lmap.LocalMap(self)
+        self.localmap = lmap.LocalMap(self.availableViews)
         self.availableViewsLayout.addWidget(self.localmap)
 
-        self.camera1 = camera.Camera(self, 1)
+        self.camera1 = camera.Camera(self.tleft, 1)
         self.tleftLayout.addWidget(self.camera1)
         self.tleftLabel.setVisible(False)
 
-        self.camera2 = camera.Camera(self, 2)
+        self.camera2 = camera.Camera(self.bleft, 2)
         self.bleftLayout.addWidget(self.camera2)
         self.bleftLabel.setVisible(False)
 
@@ -62,20 +70,6 @@ class MainViews(QWidget, ui_views.Ui_viewsWidget):
         self.tright.setVisible(True)
         self.tleft.setVisible(True)
         self.bleft.setVisible(True)
-
-    def press(self,toggled):
-        if toggled:
-            self.pushButton.setText("+")
-            self.availableViews.setVisible(False)
-            #children = self.findChildren(QtGui.QLabel)
-            #for child in children:
-                #child.setVisible(False)
-        else:
-            self.pushButton.setText("-")
-            self.availableViews.setVisible(True)
-            #children = self.findChildren(QtGui.QLabel)
-            #for child in children:
-                #child.setVisible(True)
 
     @pyqtSlot(bool)
     def send_visible(self, checked):
