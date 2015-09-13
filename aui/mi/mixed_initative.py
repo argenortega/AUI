@@ -32,6 +32,8 @@ from aui.mi import ui_mixed_initiative as MixInitUI
 
 class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
     decision = pyqtSignal(str, name='decision')
+    decision_path_signal = pyqtSignal(str, name='decision_path')
+    evidence_signal = pyqtSignal(str, str, name='complete_evidence')
 
     def __init__(self, parent):
         QWidget.__init__(self, parent)
@@ -63,11 +65,11 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         self.infoFormat.setFontWeight(QtGui.QFont.Normal)
         self.infoFormat.setForeground(Qt.black)
 
-        self.evidence = {'battery_level': 'Ok', 'wifi_level': 'Ok', 'LM': 'MV', 'focus': 'S', 'PC': 'AV',
-                         'AS_visible': 'True', 'wifi_visible': 'True', 'battery_visible': 'True',
-                         'C2': 'MV', 'C1': 'MV', 'AV_visible': 'True', 'GM': 'AV', 'joystick_direction': 'Backwards',
-                         'SA': 'L2', 'SL': 'medium', 'CL': 'medium',
-                         'Context': 'Exploration'}
+        #self.evidence = {'battery_level': 'Ok', 'wifi_level': 'Ok', 'LM': 'MV', 'focus': 'S', 'PC': 'AV',
+        #                 'AS_visible': 'True', 'wifi_visible': 'True', 'battery_visible': 'True',
+        #                 'C2': 'MV', 'C1': 'MV', 'AV_visible': 'True', 'GM': 'AV', 'joystick_direction': 'Backwards',
+        #                 'SA': 'L2', 'SL': 'medium', 'CL': 'medium',
+        #                 'Context': 'Exploration'}
         self.evidence = {}
 
         self.decision_path = []
@@ -114,6 +116,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
 
     def initial_evidence(self, ev):
         self.evidence.update(ev)
+        self.display_evidence()
         # print self.evidence
 
     def voi_cost(self, value):
@@ -214,7 +217,7 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
                 # self.decision.emit(result)
                 self.messages.setCurrentCharFormat(self.decisionFormat)
                 self.messages.append('[%s] Decision: %s'%(self.timestamp(),result))
-                print 'Decision path: ', nx.shortest_path(self.hid, 'gui', self.node)
+                self.decision_path_signal.emit('->'.join(nx.shortest_path(self.hid, 'gui', self.node)))
                 return result
         else:
             return 'User input required'
@@ -246,6 +249,8 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         if self.evidence.has_key(k):
             if not self.evidence.get(k) == v:
                 self.evidence[k] = v
+                self.display_evidence()
+
                 if not self.small_pause.isActive() and self.AUItoggleButton.isChecked():
                     self.small_pause.singleShot(5000, self.update_decision)
         else:
@@ -271,7 +276,6 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
     def hide_buttons(self):
         for b in self.buttonGroup.buttons():
             b.setVisible(False)
-
 
     def hsm_dialogue(self, node, question, options=None):
         print 'ID: %s Question: %s'%(node, question)
@@ -332,6 +336,10 @@ class MixedInitiative(QWidget, MixInitUI.Ui_mixedInitiative):
         message = '[%s] User input: %s'%(self.timestamp(), button.text())
         self.messages.setCurrentCharFormat(self.questionFormat)
         self.messages.append(message)
+
+    def display_evidence(self):
+        sorted(self.evidence)
+        self.evidence_signal.emit('\n'.join(self.evidence.keys()), '\n'.join(self.evidence.values()))
 
 
 def main():

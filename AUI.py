@@ -202,6 +202,9 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         self.views.pointcloud.pointcloud.inside.connect(self.mixedInitiative.update_evidence)
         self.views.globalmap.map.inside.connect(self.mixedInitiative.update_evidence)
         self.Screenshots.currentScreenshot.inside.connect(self.mixedInitiative.update_evidence)
+        self.Screenshots.extraScreenGroup.inside.connect(self.mixedInitiative.update_evidence)
+        self.views.viewsGroup.inside.connect(self.mixedInitiative.update_evidence)
+
 
         self.joystick.joystick_direction.connect(self.mixedInitiative.update_evidence)
         self.joystick.joystick_input.connect(self.mixedInitiative.update_evidence)
@@ -243,6 +246,9 @@ class AUI(QMainWindow, ui_aui.Ui_MainWin):
         self.mixedInitiative.decision.connect(self.views.atomic_decision)
 
         self.logbar.showMessage('Ready')
+
+        self.mixedInitiative.evidence_signal.connect(self.parameters.set_evidence)
+        self.mixedInitiative.decision_path_signal.connect(self.parameters.set_decision_path)
 
     def read_settings(self):
         self.globalsettings.beginGroup('Views')

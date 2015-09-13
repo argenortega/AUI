@@ -70,16 +70,16 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
         self.contextButtonGroup.setId(self.mapping, 2)
         self.contextButtonGroup.setId(self.inspection, 3)
 
-        self.focusButtonGroup.setId(self.focus_C1, 0)
-        self.focusButtonGroup.setId(self.focus_C2, 1)
-        self.focusButtonGroup.setId(self.focus_LM, 2)
-        self.focusButtonGroup.setId(self.focus_GM, 3)
-        self.focusButtonGroup.setId(self.focus_PC, 4)
-        self.focusButtonGroup.setId(self.focus_S, 5)
-        self.focusButtonGroup.setId(self.focus_AS, 6)
+        #self.focusButtonGroup.setId(self.focus_C1, 0)
+        #self.focusButtonGroup.setId(self.focus_C2, 1)
+        #self.focusButtonGroup.setId(self.focus_LM, 2)
+        #self.focusButtonGroup.setId(self.focus_GM, 3)
+        #self.focusButtonGroup.setId(self.focus_PC, 4)
+        #self.focusButtonGroup.setId(self.focus_S, 5)
+        #self.focusButtonGroup.setId(self.focus_AS, 6)
 
         self.contextButtonGroup.buttonClicked.connect(self.context_slot)
-        self.focusButtonGroup.buttonClicked.connect(self.focus_slot)
+        #self.focusButtonGroup.buttonClicked.connect(self.focus_slot)
 
         QtCore.QObject.connect(self.saSlider, QtCore.SIGNAL("valueChanged(int)"), self.situation_awareness)
         QtCore.QObject.connect(self.stressSlider, QtCore.SIGNAL("valueChanged(int)"), self.stress_level)
@@ -173,6 +173,15 @@ class AUIParameters(QDockWidget, ui_parameters.Ui_AUIParameters):
     @pyqtSlot(int)
     def wifi(self, value):
         self.wifiSlider.setValue(value)
+
+    @pyqtSlot(str, str)
+    def set_evidence(self, key, value):
+        self.keys.setText(key)
+        self.values.setText(value)
+
+    @pyqtSlot(str)
+    def set_decision_path(self, value):
+        self.decision_path.setText(value)
 
 
 def main():
